@@ -21,12 +21,12 @@
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
 
-if exists('b:info')
-	augroup InfoStatusLine
+if &buftype == 'help'
+	augroup HelpStatusLine
 		autocmd!
-		autocmd BufEnter <buffer> call s:setStl(s:activeStatus (b:info))
-		autocmd WinEnter <buffer> call s:setStl(s:activeStatus (b:info))
-		autocmd WinLeave <buffer> call s:setStl(s:passiveStatus(b:info))
+		autocmd BufEnter <buffer> call s:setStl(s:activeStatus())
+		autocmd WinEnter <buffer> call s:setStl(s:activeStatus())
+		autocmd WinLeave <buffer> call s:setStl(s:passiveStatus())
 	augroup END
 endif
 
@@ -34,12 +34,13 @@ function! s:setStl(stl)
 	call nvim_win_set_option(nvim_get_current_win(),'stl',a:stl)
 endfunction
 
-function! s:activeStatus(info)
+function! s:activeStatus()
+	let l:name = nvim_buf_get_name(nvim_get_current_buf())
+
 	let l:stl = ''
-	let l:stl.= '%#StatusLine# Info %#User5# '
+	let l:stl.= '%#StatusLine# Help %#User5# '
 	let l:stl.= '%#User3#'
-	let l:stl.= a:info.File . '  '
-	let l:stl.= a:info.Node . ' %#User4#'
+	let l:stl.= fnamemodify(l:name, ':t:r').'%#User4#'
 	let l:stl.= '%#TabLineFill#'
 	let l:stl.= '%='
 	let l:stl.= '%#User4#%#User3# %3.p%%'
@@ -47,11 +48,12 @@ function! s:activeStatus(info)
 	return l:stl
 endfunction
 
-function! s:passiveStatus(info)
+function! s:passiveStatus()
+	let l:name = nvim_buf_get_name(nvim_get_current_buf())
+
 	let l:stl = ''
 	let l:stl.= '%#TabLineFill#'
-	let l:stl.= b:info.File . '  '
-	let l:stl.= b:info.Node
+	let l:stl.= fnamemodify(l:name, ':t:r').'  '
 	let l:stl.= '%='
 	let l:stl.= '%3.p%%'
 	let l:stl.= ' %#User4#%#User3#%3.l:%-3.c'
