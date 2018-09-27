@@ -67,9 +67,8 @@ Plug 'luochen1990/rainbow'              " Differently coloured parentheses
 Plug 'bronson/vim-visual-star-search'   " Use * on a selection to search for it
 Plug 'SirVer/ultisnips'                 " Snippets
 Plug 'honza/vim-snippets'               " Snippets for UltiSnips
-Plug '~/Developer/info.vim/'
-Plug '~/Developer/repl.nvim/'
-Plug '~/Developer/cheat-sheet.vim/'
+Plug '~/Developer/vim/info.vim/'
+Plug '~/Developer/vim/repl.nvim/'
 
 
 " ===[ Windows, navigation and so on ]=========================================
@@ -86,7 +85,7 @@ Plug 'neomake/neomake'       " Asynchronous syntax checker for Neovim
 " ===[ Language-specific plugins ]=============================================
 
 " Awk
-Plug '~/Developer/awk-ward.nvim/'
+Plug '~/Developer/vim/awk-ward.nvim/'
 
 " C
 Plug 'Rip-Rip/clang_complete'
@@ -104,7 +103,7 @@ Plug 'adolenc/cl-neovim'
 Plug 'ternjs/tern_for_vim', {'for': 'javacript', 'do': 'npm install'}
 
 " Jinja
-Plug '~/Developer/jinja.vim/'
+Plug '~/Developer/vim/jinja.vim/'
 
 " Lua
 Plug 'xolox/vim-misc'  " Needed by the below
