@@ -50,6 +50,7 @@ call plug#end()
 
 " Vim settings
 set listchars=tab:├─,trail:•,eol:¬
+set fillchars=msgsep:─
 set number              " Line numbers.
 set numberwidth=1       " Use minimum width of 1.
 set wildmode=list,full  " Kind of completion in command-mode.
