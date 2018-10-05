@@ -50,6 +50,11 @@ snippet @titlepage "Title page"
 @end titlepage
 endsnippet
 
+snippet @block "Generic block command"
+@${1:command}
+${0:Body}
+@end $1
+endsnippet
 
 snippet @node "Document node"
 @node ${1:title}
@@ -61,4 +66,11 @@ snippet @menu "Node menu"
 @menu
 * ${1:Menu entry}:: ${2:Description}
 @end menu
+endsnippet
+
+
+snippet @deffn "Definition"
+@deffn {${1:Category}} ${2:name}
+${0:body}
+@end deffn
 endsnippet
