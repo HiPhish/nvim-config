@@ -26,7 +26,7 @@ autocmd! BufRead,BufNewFile *.scm set ft=scheme | call <SID>detect_implementatio
 " Detect the implementation and append it to the file type.
 function! s:detect_implementation()
 	" Guile uses the shebang in the first line
-	if getline(1) =~? '\v^#!.*uile'
+	if getline(1) =~? '\v^#!.*[Gg]uile'
 		let &filetype .= '.guile'
 	endif
 endfunction
