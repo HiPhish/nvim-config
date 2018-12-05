@@ -30,8 +30,9 @@
 scriptencoding utf-8
 
 
-" Make space the leader
+" Make space the leader and local leader
 let g:mapleader = ' '
+let g:maplocalleader = ' '
 
 
 " Swap ':' and ';'
