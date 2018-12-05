@@ -53,7 +53,7 @@ set listchars=tab:├─,trail:•,eol:¬
 set fillchars=msgsep:─
 set number              " Line numbers.
 set numberwidth=1       " Use minimum width of 1.
-set wildmode=list,full  " Kind of completion in command-mode.
+set wildmode=list:full  " Kind of completion in command-mode.
 set mouse=a             " Enable mouse in all modes.
 set noshowmatch         " Don't jump to matching braces.
 set showcmd             " Display command in the last line of the screen.
@@ -63,6 +63,9 @@ set conceallevel=2      " Conceal and replace
 if has('nvim')
 	set inccommand=nosplit
 endif
+
+" Open splits the way I prefer it
+set splitright
 
 " Search settings: Jump to match while typing, ignore case except when upper,
 " highlight search results
