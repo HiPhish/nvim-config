@@ -30,5 +30,6 @@
 " Make Shift-K look up the word under the cursor
 noremap <buffer> <S-K> <C-]>
 
-" No line numbers and no fold column
-setlocal foldcolumn=0 nonumber
+if nvim_buf_get_option(nvim_get_current_buf(), 'buftype') == 'help'
+	setlocal foldcolumn=0 nonumber
+endif
