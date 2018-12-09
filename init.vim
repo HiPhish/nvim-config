@@ -51,15 +51,15 @@ call plug#end()
 " Vim settings
 set listchars=tab:├─,trail:•,eol:¬
 set fillchars=msgsep:─
-set number              " Line numbers.
-set numberwidth=1       " Use minimum width of 1.
-set wildmode=list:full  " Kind of completion in command-mode.
-set mouse=a             " Enable mouse in all modes.
-set noshowmatch         " Don't jump to matching braces.
-set showcmd             " Display command in the last line of the screen.
-set noshowmode          " Don't display the mode in the last line.
-set showtabline=2       " Always show the tab line.
-set conceallevel=2      " Conceal and replace
+set number                      " Line numbers.
+set numberwidth=1               " Use minimum width of 1.
+set wildmode=list:longest,full  " Kind of completion in command-mode.
+set mouse=a                     " Enable mouse in all modes.
+set noshowmatch                 " Don't jump to matching braces.
+set showcmd                     " Display command in the last line of the screen.
+set noshowmode                  " Don't display the mode in the last line.
+set showtabline=2               " Always show the tab line.
+set conceallevel=2              " Conceal and replace
 if has('nvim')
 	set inccommand=nosplit
 endif
