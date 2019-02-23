@@ -97,7 +97,8 @@ Plug 'OmniSharp/omnisharp-vim'
 " My quicklisp is installed to a non-standard location
 let g:lisp_host_quicklisp_setup = '~/.local/share/quicklisp/setup.lisp'
 Plug 'adolenc/cl-neovim'
-" Plug 'l04m33/vlime', {'rtp': 'vim'}
+Plug 'l04m33/vlime', {'rtp': 'vim'}
+Plug '~/Developer/vim/quicklisp.nvim/'
 
 " JavaScript
 Plug 'ternjs/tern_for_vim', {'for': 'javacript', 'do': 'npm install'}
