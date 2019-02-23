@@ -68,6 +68,7 @@ Plug 'bronson/vim-visual-star-search'   " Use * on a selection to search for it
 Plug 'SirVer/ultisnips'                 " Snippets
 Plug 'honza/vim-snippets'               " Snippets for UltiSnips
 Plug '~/Developer/vim/info.vim/'
+Plug '~/Developer/vim/info+.vim/'
 Plug '~/Developer/vim/repl.nvim/'
 
 
