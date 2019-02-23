@@ -83,7 +83,7 @@ endif
 
 " Chromatica - asynchronous clang-based syntax highlighting
 if exists('g:plugs["chromatica.nvim"]')
-	let g:chromatica#libclang_path='/usr/lib/llvm-6.0/lib/'
+	let g:chromatica#libclang_path='/usr/lib/llvm-6.0/lib/libclang.so.1'
 	execute 'ChromaticaStart'
 endif
 
