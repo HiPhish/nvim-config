@@ -105,3 +105,16 @@ augroup autocompile
 	" this one is which you're most likely to use?
 	autocmd BufWritePost *.tex call CompileLaTeX('pdf')
 augroup end
+
+
+" ===[ auto-detect language ]==================================================
+let s:languages = {'german': 'de', 'ngerman': 'de', 'english': 'en'}
+let s:curpos = getcurpos()
+" Set language according to the Polyglossia package
+let s:lang_line = search('\v\\setdefaultlanguage(\[.+\])?\{.+\}')
+if s:lang_line
+	let s:lang = matchstr(getline('.'), '\v\\setdefaultlanguage(\[.+\])?\{\zs.+\ze\}')
+	let &spelllang = get(s:languages, s:lang, &spelllang)
+endif
+call setpos('.', s:curpos)
+unlet s:curpos
