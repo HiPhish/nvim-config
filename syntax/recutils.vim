@@ -21,13 +21,13 @@
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
 
-syntax match recUtilComment    '\v^#x.*$'
-syntax match recUtilSpecial    '\v^\zs\%[a-zA-Z%][a-zA-Z0-9_]*\ze:\s'
-syntax match recUtilFieldName  '\v^\zs[a-zA-Z][a-zA-Z0-9_]*\ze:\s'
-syntax match recUtilFieldValue '\v^[a-zA-Z%][a-zA-Z0-9_]*:\s\zs.*\ze\n'
+syntax match recutilsComment    '\v^#.*$'
+syntax match recutilsSpecial    '\v^\zs\%[a-zA-Z%][a-zA-Z0-9_]*\ze:\s'
+syntax match recutilsFieldName  '\v^\zs[a-zA-Z][a-zA-Z0-9_]*\ze:\s'
+syntax match recutilsFieldValue '\v^[a-zA-Z%][a-zA-Z0-9_]*:\s\zs.*\ze\n'
 
 
 " =============================================================================
-highlight link recUtilComment   Comment
-highlight link recUtilSpecial   Special
-highlight link recUtilFieldName Type
+highlight link recutilsComment   Comment
+highlight link recutilsSpecial   Special
+highlight link recutilsFieldName Type
