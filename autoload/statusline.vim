@@ -68,9 +68,12 @@ function! statusline#tabline()
 	for l:tab in range(1, tabpagenr('$'))
 		" TODO: If the file name is a directory then display the last element
 		" of the path
-		let l:fname=fnamemodify(bufname(tabpagebuflist(l:tab)[tabpagewinnr(l:tab) - 1]), ':t')
-		if empty(l:fname)
-			let l:fname = '[No name]'
+		let l:bufname = nvim_buf_get_name(nvim_win_get_buf(nvim_tabpage_get_win(l:tab)))
+		if empty(l:bufname)
+			let l:bufname = '[No Name]'
+		else
+			let l:bufname = substitute(l:bufname, '\v\%', '%%', 'g')
+			let l:bufname = fnamemodify(l:bufname, ':t')
 		endif
 
 		" Different highlighting for active and passive tabs
@@ -81,7 +84,7 @@ function! statusline#tabline()
 		endif
 
 		" [tab-number] [file-name] 
-		let l:line .= '%'.l:tab.'T '.l:tab.' '.l:fname.' %T'
+		let l:line .= '%'.l:tab.'T '.l:tab.' '.l:bufname.' %T'
 
 		" Separator and highlighting, a PITA due to the triangles
 		if s:isActiveTab(l:tab) && s:isLastTab(l:tab)
