@@ -29,6 +29,9 @@ syntax region guileComment start='\v<#!' end='\v!#'
 
 " Syntax
 syntax keyword guileSyntax λ
+syntax keyword guileSyntax define*
+syntax keyword guileSyntax define-module
+syntax keyword guileSyntax define-public
 
 " Keywords
 syntax match guileKeyword '\v<#:[^ ()]+>'
