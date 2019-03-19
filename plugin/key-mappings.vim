@@ -129,7 +129,7 @@ let s:langmap .= 'АA,СS,ДD,ФF,ГG,ХH,ЈJ,КK,ЛL,Ч\;,Ћ",'
 let s:langmap .= 'жz,џx,цc,вv,бb,нn,мm,'
 let s:langmap .= 'ЖZ,ЏX,ЦC,ВV,БB,НN,МM,'
 " Greek
-let s:langmap .= ';q,ςw,εe,ρr,τt,υy,θu,ιi,οo,πp,'
-let s:langmap .= 'αa,σs,δd,φf,γg,ηh,ξj,κk,λl,´;,'
+let s:langmap .= '\;q,ςw,εe,ρr,τt,υy,θu,ιi,οo,πp,'
+let s:langmap .= 'αa,σs,δd,φf,γg,ηh,ξj,κk,λl,´\;,'
 let s:langmap .= 'ζz,χx,ψc,ωv,βb,νn,μm'
 call nvim_set_option('langmap', s:langmap)
