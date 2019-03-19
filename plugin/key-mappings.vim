@@ -89,17 +89,14 @@ noremap +S ]S
 
 " Quickly exit insert- and command mode by pressing kj in succession (supports
 " Latin, Cyrillic and Greek)
-inoremap kj <esc>
-cnoremap kj <esc>
-inoremap кј <esc>
-cnoremap кј <esc>
-inoremap κξ <esc>
-cnoremap κξ <esc>
+inoremap kj <esc> | cnoremap kj <esc> | inoremap KJ <esc> | cnoremap KJ <esc>
+inoremap кј <esc> | cnoremap кј <esc> | inoremap КЈ <esc> | cnoremap КЈ <esc>
+inoremap κξ <esc> | cnoremap κξ <esc> | inoremap ΚΞ <esc> | cnoremap ΚΞ <esc>
 
 if has('nvim')
-	tnoremap kj <C-\><C-N>`.$
-	tnoremap кј <C-\><C-N>`.$
-	tnoremap κξ <C-\><C-N>`.$
+	tnoremap kj <C-\><C-N>`.$ | tnoremap KJ <C-\><C-N>`.$
+	tnoremap кј <C-\><C-N>`.$ | tnoremap КЈ <C-\><C-N>`.$
+	tnoremap κξ <C-\><C-N>`.$ | tnoremap ΚΞ <C-\><C-N>`.$
 endif
 
 
@@ -120,3 +117,19 @@ nnoremap <silent> <leader>l :set list!<CR>
 
 " Turn off search highlights using <CR>
 nnoremap <silent> <leader>hls :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+
+
+" Langmap map a language code to a list of pairs. Each pair consists of one
+" character in the foreign language, followed by one character in English
+" Cyrillic
+let s:langmap  = 'љq,њw,еe,рr,тt,зy,уu,иi,оo,пp,'
+let s:langmap .= 'ЉQ,ЊW,ЕE,РR,ТT,ЗY,УU,ИI,ОO,ПP,'
+let s:langmap .= 'аa,сs,дd,фf,гg,хh,јj,кk,лl,ч:,ћ'','
+let s:langmap .= 'АA,СS,ДD,ФF,ГG,ХH,ЈJ,КK,ЛL,Ч\;,Ћ",'
+let s:langmap .= 'жz,џx,цc,вv,бb,нn,мm,'
+let s:langmap .= 'ЖZ,ЏX,ЦC,ВV,БB,НN,МM,'
+" Greek
+let s:langmap .= ';q,ςw,εe,ρr,τt,υy,θu,ιi,οo,πp,'
+let s:langmap .= 'αa,σs,δd,φf,γg,ηh,ξj,κk,λl,´;,'
+let s:langmap .= 'ζz,χx,ψc,ωv,βb,νn,μm'
+call nvim_set_option('langmap', s:langmap)
