@@ -28,5 +28,3 @@
 " }}}
                    
 set iskeyword+=-
-call deoplete#custom#option('omni_patterns', {'css': '\k'})
-let g:deoplete#sources.css = ['omni', 'ultisnips']

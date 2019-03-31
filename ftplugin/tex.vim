@@ -33,10 +33,6 @@
 " glyphs)
 let g:tex_conceal =''
 
-if exists('g:plugs["ultisnips"]')
-	let g:deoplete#sources.tex = ['ultisnips', 'buffer']
-endif
-
 if exists('g:plugs["neomake"]')
 	let g:neomake_tex_enabled_makers = ['chktex']
 endif

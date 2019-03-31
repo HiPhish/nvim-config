@@ -44,20 +44,6 @@
 "     -I../common
 "     -I/usr/include/c++/4.5.3/
 "     -I/usr/include/c++/4.5.3/x86_64-slackware-linux/
-"
-" deoplete-clang:
-" --------------
-"    A source for deoplete, based on clang. We use this instead of
-"    clang_complete. A project can have a .clang file which contains compiler
-"    flags in the format
-"
-"      flags = <flags>
-"
-"    or
-"
-"      compilation_database = "<path to compilation_database>"
-"
-" 
 
 setlocal cinkeys-=0# "don't indent preprocessor directives
 setlocal foldmethod=syntax
@@ -72,13 +58,6 @@ if exists('g:plugs["clang_complete"]')
 	let g:clang_library_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
 	nnoremap <buffer> <silent> gd :call g:ClangGotoDeclaration()<CR>
 	nnoremap <buffer> <silent> gp :call g:ClangGotoDeclarationPreview()<CR>
-endif
-
-" Deoplete sources
-let g:deoplete#sources.c = ['ultisnips', 'member', 'buffer', 'tag']
-if exists('g:plugs["deoplete-clang2"]')
-	let g:deoplete#sources#clang#executable = '/usr/bin/clang'
-	let g:deoplete#sources.c = ['clang2'] + g:deoplete#sources.c
 endif
 
 " Chromatica - asynchronous clang-based syntax highlighting

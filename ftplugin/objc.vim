@@ -56,8 +56,3 @@ augroup autochecking
 	autocmd!
 	autocmd! BufWritePost <buffer> Neomake
 augroup END
-
-" Deoplete sources
-if exists('g:plugs["deoplete"]')
-	let g:deoplete#sources.objc = ['clang', 'ultisnips', 'buffer', 'member', 'tag', 'omni']
-endif

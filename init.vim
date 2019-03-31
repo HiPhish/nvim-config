@@ -60,6 +60,8 @@ set showcmd                     " Display command in the last line of the screen
 set noshowmode                  " Don't display the mode in the last line.
 set showtabline=2               " Always show the tab line.
 set conceallevel=2              " Conceal and replace
+set shortmess+=c                " Don't show messages from completion menu
+set completeopt=noinsert,menuone,noselect
 if has('nvim')
 	set inccommand=nosplit
 endif

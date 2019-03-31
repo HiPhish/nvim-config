@@ -36,7 +36,3 @@ augroup autochecking
 	autocmd!
 	autocmd! BufWritePost <buffer> Neomake
 augroup END
-
-" Deoplete sources
-let g:deoplete#sources.objcpp = ['clang', 'ultisnips', 'buffer', 'member', 'tag', 'omni']
-

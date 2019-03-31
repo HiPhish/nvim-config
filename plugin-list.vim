@@ -39,16 +39,24 @@ Plug 'tpope/vim-characterize'  " Better display of character character codes
 
 " ===[ Shougo ]================================================================
 Plug 'Shougo/denite.nvim'
-Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/neopairs.vim'  " Automatically close parentheses
 
 
 " ===[ Auto-Completion ]=======================================================
-Plug 'Shougo/deoplete.nvim'          " Auto-completion framework
-Plug 'Shougo/neoinclude.vim/'        " Include files
-Plug 'tweekmonster/deoplete-clang2'  " C/C++ and Objective-C/C++
-Plug 'carlitux/deoplete-ternjs'      " JavaScript
-Plug 'zchee/deoplete-jedi'           " Python
+Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" Completion sources
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-ultisnips' | let g:UltiSnipsEditSplit = 'context'
+Plug 'ncm2/ncm2-cssomni'
+Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
+Plug 'ncm2/ncm2-pyclang'
+let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang.so.1'
+let g:ncm2_pyclang#args_file_path = ['.clang_complete']
+Plug '~/Developer/vim/ncm2-vlime/'
 
 
 " ===[ Kana ]==================================================================

@@ -38,18 +38,8 @@ augroup autochecking
 	autocmd! BufWritePost <buffer> Neomake
 augroup END
 
-" Auto-Completion
-let g:deoplete#sources.python = ['ultisnips', 'member', 'buffer', 'tag']
-if exists('g:plugs["deoplete-jedi"]')
-	let g:deoplete#sources#jedi#show_docstring = v:true
-	let g:deoplete#sources#jedi#python_path='/usr/bin/python3'
-	let g:deoplete#sources.python = ['jedi'] + g:deoplete#sources.python
-endif
-
 if exists('g:plugs["jedi-vim"]')
-	let g:jedi#completions_enabled = 0  " We use deoplete-jedi for completions
-
-	" Key mappings
+	let g:jedi#completions_enabled = 0  " We use ncm2-jedi for completions
 endif
 
 " REPL support

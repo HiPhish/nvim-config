@@ -55,12 +55,6 @@ endif
 
 " ===[ Auto=completion ]======================================================
 setlocal omnifunc=OmniSharp#Complete
-let g:deoplete#sources.cs = ['omni', 'buffer', 'ultisnips', 'member']
-
-if !exists('g:deoplete#omni#input_patterns')
-	let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.cs = ['\w+\.\w*', '^\s*\w']
 
 
 " ===[ Omnisharp ]============================================================

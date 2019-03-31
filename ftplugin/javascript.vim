@@ -34,6 +34,4 @@ if exists('g:plugs["tern_for_vim"]')
 	setlocal omnifunc=tern#Complete
 endif
 
-let g:deoplete#sources.javascript = ['ternjs', 'ultisnips', 'buffer']
-
 nnoremap <silent> <buffer> gd :TernDef<CR>

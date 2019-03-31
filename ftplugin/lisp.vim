@@ -36,16 +36,14 @@ omap <buffer> ie i(
 vmap <buffer> ae a(
 vmap <buffer> ie i(
 
-" call deoplete#custom#option('omni_patterns', {'lisp': '\S.\+'})
-let g:deoplete#sources.lisp = ['ultisnips', 'omni', 'buffer', 'tag']
-
 " Repl settings
 call repl#define_repl('lisp', {'bin': 'sbcl', 'args': ['--linedit']}, 'force')
 
 
 " ===[ Vlime settings ]========================================================
 " Enable interaction mode by default (this API function is not in master yet)
-silent call vlime#plugin#InteractionMode(v:true)
+" silent call vlime#plugin#InteractionMode(v:true)
+silent call vlime#plugin#InteractionMode()
 
 " Compile the current file on saving if there is a connection
 augroup vlime
