@@ -89,14 +89,14 @@ noremap +S ]S
 
 " Quickly exit insert- and command mode by pressing kj in succession (supports
 " Latin, Cyrillic and Greek)
-inoremap kj <esc> | cnoremap kj <esc> | inoremap KJ <esc> | cnoremap KJ <esc>
-inoremap кј <esc> | cnoremap кј <esc> | inoremap КЈ <esc> | cnoremap КЈ <esc>
-inoremap κξ <esc> | cnoremap κξ <esc> | inoremap ΚΞ <esc> | cnoremap ΚΞ <esc>
+inoremap kj <esc>| cnoremap kj <esc>| inoremap KJ <esc>| cnoremap KJ <esc>
+inoremap кј <esc>| cnoremap кј <esc>| inoremap КЈ <esc>| cnoremap КЈ <esc>
+inoremap κξ <esc>| cnoremap κξ <esc>| inoremap ΚΞ <esc>| cnoremap ΚΞ <esc>
 
 if has('nvim')
-	tnoremap kj <C-\><C-N>`.$ | tnoremap KJ <C-\><C-N>`.$
-	tnoremap кј <C-\><C-N>`.$ | tnoremap КЈ <C-\><C-N>`.$
-	tnoremap κξ <C-\><C-N>`.$ | tnoremap ΚΞ <C-\><C-N>`.$
+	tnoremap kj <C-\><C-N>`.$| tnoremap KJ <C-\><C-N>`.$
+	tnoremap кј <C-\><C-N>`.$| tnoremap КЈ <C-\><C-N>`.$
+	tnoremap κξ <C-\><C-N>`.$| tnoremap ΚΞ <C-\><C-N>`.$
 endif
 
 
