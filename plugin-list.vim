@@ -49,6 +49,7 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-ultisnips' | let g:UltiSnipsEditSplit = 'context'
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 Plug 'ncm2/ncm2-cssomni'
 Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
@@ -57,6 +58,11 @@ Plug 'ncm2/ncm2-pyclang'
 let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang.so.1'
 let g:ncm2_pyclang#args_file_path = ['.clang_complete']
 Plug '~/Developer/vim/ncm2-vlime/'
+
+
+" ===[ Language Server Protocol ]==============================================
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+let g:LanguageClient_hasSnippetSupport = 1
 
 
 " ===[ Kana ]==================================================================
@@ -75,6 +81,10 @@ Plug 'luochen1990/rainbow'              " Differently coloured parentheses
 Plug 'bronson/vim-visual-star-search'   " Use * on a selection to search for it
 Plug 'SirVer/ultisnips'                 " Snippets
 Plug 'honza/vim-snippets'               " Snippets for UltiSnips
+Plug 'RRethy/vim-hexokinase'            " Colour preview
+let g:Hexokinase_virtualText = '⬤'
+let g:Hexokinase_ftAutoload = ['css']
+let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba', 'colour_names']
 Plug '~/Developer/vim/info.vim/'
 Plug '~/Developer/vim/info+.vim/'
 Plug '~/Developer/vim/repl.nvim/'
