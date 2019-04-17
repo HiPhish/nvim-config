@@ -85,6 +85,11 @@ Plug 'RRethy/vim-hexokinase'            " Colour preview
 let g:Hexokinase_virtualText = '⬤'
 let g:Hexokinase_ftAutoload = ['css']
 let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba', 'colour_names']
+Plug 'KabbAmine/vCoolor.vim'            " Colour picker
+let g:vcoolor_disable_mappings = 1
+let g:vcoolor_custom_picker = 'kcolorchooser --print'
+inoremap <c-x><c-c> <c-o>:VCoolIns ra<cr>
+
 Plug '~/Developer/vim/info.vim/'
 Plug '~/Developer/vim/info+.vim/'
 Plug '~/Developer/vim/repl.nvim/'
