@@ -71,10 +71,6 @@ augroup Lisp-Family
 augroup END
 
 
-augroup C-Family
-	au FileType c,cpp,obj-c,obj-cpp let b:delimitMate_eol_marker = ";"
-augroup END
-
 augroup Info-Files
 	autocmd FileType info let b:delimitMate_matchpairs = &matchpairs.',‘:’'
 augroup END
