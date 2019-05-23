@@ -39,6 +39,8 @@ Plug 'tpope/vim-characterize'  " Better display of character character codes
 
 " ===[ Shougo ]================================================================
 Plug 'Shougo/denite.nvim'
+" Use <C-P> as file finder
+nnoremap <silent> <C-P> :Denite file/rec<CR>
 
 
 " ===[ Auto-Completion ]=======================================================

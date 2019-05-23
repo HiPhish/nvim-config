@@ -81,6 +81,4 @@ set softtabstop=0 shiftwidth=4 tabstop=4
 set spell
 set spelllang=en
 
-" Use <C-P> as file finder
-nnoremap <silent> <C-P> :Denite file_rec<CR>
 colorscheme NeoSolarized
