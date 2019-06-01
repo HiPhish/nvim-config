@@ -132,6 +132,9 @@ Plug 'ternjs/tern_for_vim', {'for': 'javacript', 'do': 'npm install'}
 " Jinja
 Plug '~/Developer/vim/jinja.vim/'
 
+" Kotlin
+Plug 'udalov/kotlin-vim'
+
 " Lua
 Plug 'xolox/vim-misc'  " Needed by the below
 Plug 'xolox/vim-lua-ftplugin', {'for': 'lua'}

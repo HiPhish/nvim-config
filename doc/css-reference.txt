@@ -1,0 +1,149 @@
+*css-reference.txt*
+
+                                                               *css-reference*
+
+         ____ ____ ____    ____       __        (CSS quick reference)~
+        / ___/ ___/ ___|  |  _ \ ___ / _| ___ _ __ ___ _ __   ___ ___ ~
+       | |   \___ \___ \  | |_) / _ \ |_ / _ \ '__/ _ \ '_ \ / __/ _ \~
+       | |___ ___) |__) | |  _ <  __/  _|  __/ | |  __/ | | | (_|  __/~
+        \____|____/____/  |_| \_\___|_|  \___|_|  \___|_| |_|\___\___|~
+                                                
+
+
+==============================================================================
+TABLE OF CONTENTS                                     *css-reference-contents*
+
+    0. Box model ............................................. |css-box-model|
+    1. Selectors ............................................. |css-selectors|
+       1. Basic  ....................................... |css-selectors-basic|
+       1. Combinators ...........................  |css-selectors-combinators|
+    2. Pseudo classes ................................... |css-pseudo-classes|
+    3. Pseudo elements ................................. |css-pseudo-elements|
+
+Appendix~
+    A. References ........................................... |css-references|
+
+
+==============================================================================
+BOX MODEL                                                      *css-box-model*
+------------------------------------------------------------------------------
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model
+>
+     ┌────────────────────────────────────────────────┐
+     │                     margin                     │
+     │  ┏━━━━━━━━━━━━━━━━━━border━━━━━━━━━━━━━━━━━━┓  │
+     │  ┃  ┌────────────────────────────────────┐  ┃  │
+     │  ┃  │              padding               │  ┃  │
+     │  ┃  │  ┌──────────────────────────────┐  │  ┃  │
+     │  ┃  │  │                              │  │  ┃  │
+     │  ┃  │  │           content            │  │  ┃  │
+     │  ┃  │  │                              │  │  ┃  │
+     │  ┃  │  └──────────────────────────────┘  │  ┃  │
+     │  ┃  └────────────────────────────────────┘  ┃  │
+     │  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛  │
+     └────────────────────────────────────────────────┘
+<
+
+==============================================================================
+SELECTORS                                                      *css-selectors*
+------------------------------------------------------------------------------
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
+
+CSS selectors define the elements to which a set of CSS rules apply.  Simple
+selectors
+
+
+------------------------------------------------------------------------------
+BASIC SELECTORS                                          *css-selectors-basic*
+------------------------------------------------------------------------------
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors#Simple_selectors
+
+Type selector: eltname~
+    Selects all elements that match the given node name.
+
+Class selector: .classname~
+    Selects all elements that have the given `class` attribute.
+
+ID selector: #idname~
+    Selects an element based on the value of its `id` attribute. There should
+    be only one element with a given ID in a document.
+
+Universal selector: *, ns|*, *|*, |*~
+    Selects all elements. Optionally, it may be restricted to a specific
+    namespace or to all namespaces.
+
+Attribute selector: [attr], [attr=value], [attr~=value], [attr|=value]~
+                    [attr^=value], [attr$=value], [=tt~*=value]~
+    Selects elements based on the value of the given attribute.
+
+
+------------------------------------------------------------------------------
+COMBINATORS                                        *css-selectors-combinators*
+------------------------------------------------------------------------------
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors#Combinators
+
+Adjacent sibling combinator: A + B~
+    The `+` combinator selects adjacent siblings. This means that the second
+    element directly follows the first, and both share the same parent.
+
+General sibling combinator: A ~ B~
+    The `~` combinator selects siblings. This means that the second element
+    follows the first (though not necessarily immediately), and both share the
+    same parent.
+
+Child combinator: A > B~
+    The `>` combinator selects nodes that are direct children of the first
+    element.
+
+Descendant combinator: A B~
+    The ` ` (space) combinator selects nodes that are descendants of the first
+    element.
+
+Column combinator: A || B~
+    The `||` combinator selects nodes which belong to a column.
+
+
+==============================================================================
+PSEUDO-CLASSES                                            *css-pseudo-classes*
+------------------------------------------------------------------------------
+https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
+
+A CSS pseudo-class is a keyword added to a selector that specifies a special
+state of the selected element(s). For example, `:hover` can be used to change
+a button's color when the user's pointer hovers over it.
+
+
+==============================================================================
+PSEUDO-ELEMENTS                                          *css-pseudo-elements*
+------------------------------------------------------------------------------
+https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
+
+A CSS pseudo-element is a keyword added to a selector that lets you style a
+specific part of the selected element(s). For example, `::first-line` can be
+used to change the font of the first line of a paragraph.
+
+::after (:after)~
+::backdrop ~
+::before (:before)~
+::cue (:cue)~
+::first-letter (:first-letter)~
+::first-line (:first-line)~
+::grammar-error ~
+::marker ~
+::placeholder ~
+::selection~
+::slotted()~
+::spelling-error ~
+
+
+
+==============================================================================
+ APPENDIX~
+==============================================================================
+REFERENCES                                                    *css-references*
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+https://en.wikipedia.org/wiki/Cascading_Style_Sheets
+
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:
