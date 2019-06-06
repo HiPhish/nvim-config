@@ -126,6 +126,11 @@ Plug 'adolenc/cl-neovim'
 Plug 'l04m33/vlime', {'rtp': 'vim'}
 Plug '~/Developer/vim/quicklisp.nvim/'
 
+" Java
+" Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
+" Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
+let g:JavaComplete_CheckServerVersionAtStartup = 0
+
 " JavaScript
 Plug 'ternjs/tern_for_vim', {'for': 'javacript', 'do': 'npm install'}
 
