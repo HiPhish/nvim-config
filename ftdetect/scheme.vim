@@ -1,5 +1,5 @@
 " License:  The MIT License (MIT) {{{
-"    Copyright (c) 2018 HiPhish
+"    Copyright (c) 2018-2019 HiPhish
 "
 "    Permission is hereby granted, free of charge, to any person obtaining a
 "    copy of this software and associated documentation files (the
@@ -28,5 +28,13 @@ function! s:detect_implementation()
 	" Guile uses the shebang in the first line
 	if getline(1) =~? '\v^#!.*[Gg]uile'
 		let &filetype .= '.guile'
+		return
 	endif
+	" Search for a module definition
+	let l:save_cursor = getcurpos()
+	call cursor(1, 1)
+	if search('\v\(\s*(define-module|use-modules)\s*\(', 'c', 0, 1000)
+		let &filetype .= '.guile'
+	endif
+	call setpos('.', l:save_cursor)
 endfunction
