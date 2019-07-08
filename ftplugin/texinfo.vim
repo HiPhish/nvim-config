@@ -21,5 +21,6 @@
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
 
+setlocal commentstring=@c%s
 " Limit the text width to something reasonable for prose writing
 setlocal textwidth=79
