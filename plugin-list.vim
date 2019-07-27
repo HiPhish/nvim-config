@@ -154,6 +154,9 @@ Plug 'wlangstroth/vim-racket'
 " ReStructuredText
 Plug 'Rykka/riv.vim'
 
+" Scheme
+Plug '~/Developer/vim/guile.vim'
+
 
 " ===[ Colour schemes ]========================================================
 Plug 'arakashic/chromatica.nvim'  " Asynchronous clang-based syntax highlighting
