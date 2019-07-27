@@ -37,12 +37,6 @@ Plug 'tpope/vim-ragtag'        " Complete HTML tabs
 Plug 'tpope/vim-characterize'  " Better display of character character codes
 
 
-" ===[ Shougo ]================================================================
-Plug 'Shougo/denite.nvim'
-" Use <C-P> as file finder
-nnoremap <silent> <C-P> :Denite file/rec<CR>
-
-
 " ===[ Auto-Completion ]=======================================================
 Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -74,6 +68,10 @@ Plug 'kana/vim-operator-user'  " has some libraries used by other packages
 " ===[ Enhance Vim ]===========================================================
 Plug 'junegunn/vader.vim'               " Testing framework
 Plug 'junegunn/vim-slash'               " Clear highlight after a search
+Plug 'junegunn/fzf'                     " Fuzzy finder for various things
+Plug 'junegunn/fzf.vim'
+nnoremap <C-P> :FZF<CR>
+let g:fzf_layout = {'down': '~30%'}
 Plug 'rhysd/vim-operator-surround'      " Surround text objects
 Plug 'MarcWeber/vim-addon-local-vimrc'  " Project-local .vimrc file
 Plug 'chrisbra/NrrwRgn'                 " Narrowing feature
