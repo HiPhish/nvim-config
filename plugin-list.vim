@@ -72,6 +72,7 @@ Plug 'junegunn/fzf'                     " Fuzzy finder for various things
 Plug 'junegunn/fzf.vim'
 nnoremap <C-P> :FZF<CR>
 let g:fzf_layout = {'down': '~30%'}
+
 Plug 'rhysd/vim-operator-surround'      " Surround text objects
 Plug 'MarcWeber/vim-addon-local-vimrc'  " Project-local .vimrc file
 Plug 'chrisbra/NrrwRgn'                 " Narrowing feature
@@ -85,10 +86,15 @@ Plug 'RRethy/vim-hexokinase'            " Colour preview
 let g:Hexokinase_virtualText = '⬤'
 let g:Hexokinase_ftAutoload = ['css']
 let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba', 'colour_names']
+
 Plug 'KabbAmine/vCoolor.vim'            " Colour picker
 let g:vcoolor_disable_mappings = 1
 let g:vcoolor_custom_picker = 'kcolorchooser --print'
 inoremap <c-x><c-c> <c-o>:VCoolIns ra<cr>
+
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Dependency of vim-vebugger
+Plug 'idanarye/vim-vebugger'                " Debugger integration
+let g:vebugger_leader='<leader>d'
 
 Plug '~/Developer/vim/info.vim/'
 Plug '~/Developer/vim/info+.vim/'
