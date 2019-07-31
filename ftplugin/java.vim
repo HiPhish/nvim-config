@@ -6,9 +6,13 @@
 
 
 if filereadable('build.gradle')
-	setlocal makeprg=gradle
+	set makeprg=gradle
+	if executable('./gradlew')
+		set makeprg=./gradlew
+	endif
 endif
 
 let g:LanguageClient_serverCommands['java'] = ['sh', '~/.bin/java-lsp.sh']
-nnoremap gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
