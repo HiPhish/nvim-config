@@ -63,9 +63,13 @@ endfunction
 
 function! statusline#tabline()
 	let l:line=''
+	" List of tab handles; the handles are numbers in any order, so we will
+	" loop over the indices into the list instead of the list itself.
+	let l:tabs = nvim_list_tabpages()
 
 	" Loop over the individual tabs
-	for l:tab in range(1, tabpagenr('$'))
+	for l:idx in range(0, len(l:tabs)-1)
+		let l:tab = l:tabs[l:idx]
 		" TODO: If the file name is a directory then display the last element
 		" of the path
 		let l:bufname = nvim_buf_get_name(nvim_win_get_buf(nvim_tabpage_get_win(l:tab)))
@@ -84,7 +88,7 @@ function! statusline#tabline()
 		endif
 
 		" [tab-number] [file-name] 
-		let l:line .= '%'.l:tab.'T '.l:tab.' '.l:bufname.' %T'
+		let l:line .= '%'.nvim_tabpage_get_number(l:tab).'T '.nvim_tabpage_get_number(l:tab).' '.l:bufname.' %T'
 
 		" Separator and highlighting, a PITA due to the triangles
 		if s:isActiveTab(l:tab) && s:isLastTab(l:tab)
@@ -93,7 +97,7 @@ function! statusline#tabline()
 			let l:line .= '%#TabSepActivePassive#'
 		elseif s:isLastTab(l:tab)
 			let l:line .= '%#TabSepPassiveLast#'
-		elseif s:isActiveTab(l:tab+1)
+		elseif s:isActiveTab(l:tabs[l:idx + 1])
 			let l:line .= '%#TabSepPassiveActive#'
 		else
 			let l:line .= ''
@@ -111,10 +115,10 @@ function! statusline#tabline()
 endfunction
 
 function! s:isActiveTab(tab)
-	return a:tab == tabpagenr()
+	return a:tab == nvim_get_current_tabpage()
 endfunction
 
 function! s:isLastTab(tab)
-	return a:tab == tabpagenr('$')
+	return a:tab == nvim_list_tabpages()[-1]
 endfunction
 
