@@ -12,6 +12,12 @@ if filereadable('build.gradle')
 	endif
 endif
 
+" A makefile takes precedence over Gradle because it is likely to contain
+" special individual settings on top of the project's Gradle settings.
+if filereadable('makefile') || filereadable('Makefile')
+	set makeprg=make
+endif
+
 let g:LanguageClient_serverCommands['java'] = ['sh', '~/.bin/java-lsp.sh']
 nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
