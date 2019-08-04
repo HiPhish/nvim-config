@@ -50,9 +50,26 @@ augroup vlime
 	au! BufWritePost <buffer> call s:compile_current_file()
 augroup END
 
+nnoremap K  :call <SID>go_documentation()<CR>
+nnoremap gd :call <SID>go_definition()<CR>
+
 function! s:compile_current_file()
 	let l:connection = vlime#connection#Get(v:true)
 	if type(l:connection) == type({}) && l:connection.IsConnected()
 		call vlime#plugin#CompileFile(expand('%'))
+	endif
+endfunction
+
+function! s:go_documentation()
+	let l:connection = vlime#connection#Get(v:true)
+	if type(l:connection) == type({}) && l:connection.IsConnected()
+		call vlime#plugin#DocumentationSymbol(vlime#ui#CurAtom())
+	endif
+endfunction
+
+function! s:go_definition()
+	let l:connection = vlime#connection#Get(v:true)
+	if type(l:connection) == type({}) && l:connection.IsConnected()
+		call vlime#plugin#FindDefinition(vlime#ui#CurAtom())
 	endif
 endfunction
