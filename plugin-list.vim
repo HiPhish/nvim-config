@@ -59,6 +59,9 @@ Plug '~/Developer/vim/ncm2-vlime/'
 " ===[ Language Server Protocol ]==============================================
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 let g:LanguageClient_hasSnippetSupport = 1
+let g:LanguageClient_serverCommands = {
+	\ 'java': ['sh', '~/.bin/java-lsp.sh', '-data', getcwd().'/.java-lsp/']
+\ }
 
 
 " ===[ Kana ]==================================================================
