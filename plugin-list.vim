@@ -70,7 +70,6 @@ Plug 'kana/vim-operator-user'  " has some libraries used by other packages
 
 " ===[ Enhance Vim ]===========================================================
 Plug 'junegunn/vader.vim'               " Testing framework
-Plug 'junegunn/vim-slash'               " Clear highlight after a search
 Plug 'junegunn/fzf'                     " Fuzzy finder for various things
 Plug 'junegunn/fzf.vim'
 nnoremap <C-P> :FZF<CR>

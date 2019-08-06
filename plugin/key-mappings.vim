@@ -116,7 +116,7 @@ nnoremap <silent> <leader>l :set list!<CR>
 
 
 " Turn off search highlights using <CR>
-nnoremap <silent> <leader>hls :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+nnoremap <silent> <leader>hl :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 
 " Langmap map a language code to a list of pairs. Each pair consists of one
