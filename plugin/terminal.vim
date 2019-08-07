@@ -38,3 +38,14 @@ augroup Terminal
 	autocmd TermOpen * setlocal nonumber  " Hide line numbers in terminal windows
 	autocmd TermOpen * setlocal nospell   " Turn off spell checking in the terminal
 augroup END
+
+" An alternative terminal command, opens the terminal in a new window
+command! -bang -nargs=? -complete=shellcmd Terminal :call <SID>term(<q-bang>, <q-mods>, <q-args>)
+
+function! s:term(bang, mods, args)
+	if empty(a:bang)
+		execute a:mods 'new'
+	endif
+	execute 'terminal' a:args
+	normal! G$a
+endfunction
