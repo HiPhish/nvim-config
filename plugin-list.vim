@@ -130,6 +130,7 @@ Plug 'OmniSharp/omnisharp-vim'
 let g:lisp_host_quicklisp_setup = '~/.local/share/quicklisp/setup.lisp'
 Plug 'adolenc/cl-neovim'
 Plug 'l04m33/vlime', {'rtp': 'vim'}
+au BufReadPost,BufNewFile vlime* setlocal nonumber nospell
 Plug '~/Developer/vim/quicklisp.nvim/'
 
 " JavaScript
