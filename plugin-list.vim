@@ -39,7 +39,8 @@ Plug 'tpope/vim-characterize'  " Better display of character character codes
 
 " ===[ Auto-Completion ]=======================================================
 Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
-autocmd BufEnter * call ncm2#enable_for_buffer()
+autocmd BufEnter     * call ncm2#enable_for_buffer()
+autocmd TextChangedI * call ncm2#auto_trigger()
 
 " Completion sources
 Plug 'ncm2/ncm2-path'
