@@ -51,6 +51,7 @@ call plug#end()
 " Vim settings
 set listchars=tab:├─,trail:•,eol:¬
 set fillchars=msgsep:─
+set splitright                  " Open splits the way I prefer it
 set number                      " Line numbers.
 set numberwidth=1               " Use minimum width of 1.
 set wildmode=list:longest,full  " Kind of completion in command-mode.
@@ -66,8 +67,6 @@ if has('nvim')
 	set inccommand=nosplit
 endif
 
-" Open splits the way I prefer it
-set splitright
 
 " Search settings: Jump to match while typing, ignore case except when upper,
 " highlight search results
@@ -81,4 +80,25 @@ set softtabstop=0 shiftwidth=4 tabstop=4
 set spell
 set spelllang=en
 
+
+" ---[ THEME SETTINGS ]--------------------------------------------------------
 colorscheme NeoSolarized
+
+" Alternate cursor shape in insert mode
+if has('nvim')
+	set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+		  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+		  \,sm:block-blinkwait175-blinkoff150-blinkon175
+elseif $TERM_PROGRAM =~? 'iTerm'
+	" iTerm2 only
+	let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+	let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+
+if has('nvim')
+	set termguicolors   " Use GUI colours in the terminal
+endif
+
+set background=dark
+let g:neosolarized_italic = 1
+highlight link MsgSeparator VertSplit

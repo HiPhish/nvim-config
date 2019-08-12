@@ -77,6 +77,9 @@ nnoremap <C-P> :FZF<CR>
 let g:fzf_layout = {'down': '~30%'}
 
 Plug 'rhysd/vim-operator-surround'      " Surround text objects
+map <silent>sa <Plug>(operator-surround-append)
+map <silent>sd <Plug>(operator-surround-delete)
+map <silent>sc <Plug>(operator-surround-replace)
 Plug 'MarcWeber/vim-addon-local-vimrc'  " Project-local .vimrc file
 Plug 'chrisbra/NrrwRgn'                 " Narrowing feature
 Plug 'fmoralesc/vim-tutor-mode'         " Interactive Vim tutorials
@@ -107,6 +110,9 @@ Plug '~/Developer/vim/repl.nvim/'
 " ===[ Windows, navigation and so on ]=========================================
 Plug 'airblade/vim-gitgutter'  " Git gutter symbols
 Plug 'scrooloose/nerdtree'     " Project drawer
+let g:NERDTreeMinimalUI=1  " Remove boilerplate clutter
+
+let g:NERDTreeIgnore=['\v\.pyc$', '\v\~$', '\v\.meta$'] " Ignore compiled files
 Plug 'justinmk/vim-dirvish'    " File system browser
 
 

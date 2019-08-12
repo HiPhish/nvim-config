@@ -35,8 +35,7 @@
 
 augroup Terminal
 	autocmd!
-	autocmd TermOpen * setlocal nonumber  " Hide line numbers in terminal windows
-	autocmd TermOpen * setlocal nospell   " Turn off spell checking in the terminal
+	autocmd TermOpen * setlocal nonumber nospell
 augroup END
 
 " An alternative terminal command, opens the terminal in a new window
