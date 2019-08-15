@@ -39,7 +39,7 @@ augroup Terminal
 augroup END
 
 " An alternative terminal command, opens the terminal in a new window
-command! -bang -nargs=? -complete=shellcmd Terminal :call <SID>term(<q-bang>, <q-mods>, <q-args>)
+command! -bang -nargs=? -complete=shellcmd Terminal call <SID>term(<q-bang>, <q-mods>, <q-args>)
 
 function! s:term(bang, mods, args)
 	if empty(a:bang)
