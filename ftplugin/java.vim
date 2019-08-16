@@ -18,6 +18,8 @@ if filereadable('makefile') || filereadable('Makefile')
 	set makeprg=make
 endif
 
-nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
+" LanguageClient Neovim settings
+nnoremap <buffer> <silent> gd    :call LanguageClient#textDocument_definition()<CR>
+nnoremap <buffer> <silent> <C-S> :call LanguageClient#textDocument_documentSymbol()<CR>
+nnoremap <buffer> <silent> <F2>  :call LanguageClient#textDocument_rename()<CR>
+nnoremap <buffer> <silent> K     :call LanguageClient#textDocument_hover()<CR>

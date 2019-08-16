@@ -73,9 +73,10 @@ Plug 'kana/vim-operator-user'  " has some libraries used by other packages
 " ===[ Enhance Vim ]===========================================================
 Plug 'junegunn/vader.vim'               " Testing framework
 Plug 'junegunn/fzf'                     " Fuzzy finder for various things
+let g:fzf_layout = {'down': '~30%'}
 Plug 'junegunn/fzf.vim'
 nnoremap <C-P> :FZF<CR>
-let g:fzf_layout = {'down': '~30%'}
+nnoremap <C-N> :Buffers<CR>
 
 Plug 'rhysd/vim-operator-surround'      " Surround text objects
 map <silent>sa <Plug>(operator-surround-append)
