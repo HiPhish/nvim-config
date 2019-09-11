@@ -92,7 +92,7 @@ Plug 'SirVer/ultisnips'                 " Snippets
 Plug 'honza/vim-snippets'               " Snippets for UltiSnips
 Plug 'RRethy/vim-hexokinase'            " Colour preview
 let g:Hexokinase_virtualText = '⬤'
-let g:Hexokinase_ftAutoload = ['css', 'zathura']
+let g:Hexokinase_ftAutoload = ['css', 'conf', 'zathura']
 let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba', 'colour_names']
 
 Plug 'KabbAmine/vCoolor.vim'            " Colour picker
