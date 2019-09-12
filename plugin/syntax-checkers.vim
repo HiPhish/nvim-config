@@ -32,8 +32,8 @@ let g:syntastic_mode_map = {
 let g:syntastic_always_populate_loc_list = 1
 
 " The only good use I have ever found for Emoji
-let g:syntastic_error_symbol   = 'X '
-let g:syntastic_warning_symbol = '! '
+let g:syntastic_error_symbol   = '🚫 '
+let g:syntastic_warning_symbol = '⚠️ '
 let g:syntastic_style_error_symbol = '⁉️ '
 let g:syntastic_style_warning_symbol = '💩 '
 
@@ -48,24 +48,23 @@ highlight link SyntasticWarningSign LineNr
 let g:neomake_open_list  = 2
 let g:neomake_verbose    = 0  " Only show error messages
 
-" Signs using Emoji (use LineNr highlight: 🚫,⚠️  ,💡
+" Signs using Emoji (use LineNr highlight: 🚫,⚠️ ,💡
 let g:neomake_error_sign = {
-	\ 'text': 'X ',
+	\ 'text': '🚫 ',
 	\ 'texthl': 'Error',
 \ }
 
 let g:neomake_warning_sign = {
-	\ 'text': '! ',
+	\ 'text': '⚠️ ',
 	\ 'texthl': 'Error',
 \ }
 
 let g:neomake_message_sign = {
-	\ 'text': '? ',
+	\ 'text': '💡 ',
 	\ 'texthl': 'LineNr',
 \ }
 
 let g:neomake_informational_sign = {
-	\ 'text': 'i ',
+	\ 'text': 'ℹ️ ',
 	\ 'texthl': 'LineNr',
 \ }
-
