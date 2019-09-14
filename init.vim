@@ -82,6 +82,13 @@ set spelllang=en
 
 
 " ---[ THEME SETTINGS ]--------------------------------------------------------
+" #073642
+" #082d36
+augroup neosolarized-overrides
+	autocmd!
+	autocmd ColorScheme NeoSolarized hi TabLine    guibg=#657b83 guifg=#073642
+	autocmd ColorScheme NeoSolarized hi TabLineSel guibg=NONE    guifg=#93a1a1
+augroup END
 colorscheme NeoSolarized
 
 " Alternate cursor shape in insert mode

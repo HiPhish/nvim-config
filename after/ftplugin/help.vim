@@ -38,13 +38,13 @@ function! s:activeStatus()
 	let l:name = nvim_buf_get_name(nvim_get_current_buf())
 
 	let l:stl = ''
-	let l:stl.= '%#StatusLine# Help %#User5# '
-	let l:stl.= '%#User3#'
-	let l:stl.= fnamemodify(l:name, ':t:r').'%#User4#'
-	let l:stl.= '%#TabLineFill#'
+	let l:stl.= '%#StatusLine# Help '
+	let l:stl.= '%#TabLine# '
+	let l:stl.= fnamemodify(l:name, ':t:r')
+	let l:stl.= ' %#TabLineFill#'
 	let l:stl.= '%='
-	let l:stl.= '%#User4#%#User3# %3.p%%'
-	let l:stl.= ' %#User5#%#StatusLine#%3.l:%-3.c'
+	let l:stl.= '%#TabLine#%3.p%%'
+	let l:stl.= ' %#StatusLine#%3.l:%-3.c'
 	return l:stl
 endfunction
 
@@ -53,9 +53,9 @@ function! s:passiveStatus()
 
 	let l:stl = ''
 	let l:stl.= '%#TabLineFill#'
-	let l:stl.= fnamemodify(l:name, ':t:r').'  '
+	let l:stl.= fnamemodify(l:name, ':t:r')
 	let l:stl.= '%='
 	let l:stl.= '%3.p%%'
-	let l:stl.= ' %#User4#%#User3#%3.l:%-3.c'
+	let l:stl.= ' %#TabLine#%3.l:%-3.c'
 	return l:stl
 endfunction

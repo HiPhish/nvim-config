@@ -36,24 +36,24 @@ endfunction
 
 function! s:activeStatus(info)
 	let l:stl = ''
-	let l:stl.= '%#StatusLine# Info %#User5# '
-	let l:stl.= '%#User3#'
-	let l:stl.= a:info.File . '  '
-	let l:stl.= a:info.Node . ' %#User4#'
+	let l:stl.= '%#StatusLine# Info '
+	let l:stl.= '%#TabLine# '
+	let l:stl.= a:info.File . ' │ '
+	let l:stl.= a:info.Node . ' '
 	let l:stl.= '%#TabLineFill#'
 	let l:stl.= '%='
-	let l:stl.= '%#User4#%#User3# %3.p%%'
-	let l:stl.= ' %#User5#%#StatusLine#%3.l:%-3.c'
+	let l:stl.= '%#TabLine#%3.p%%'
+	let l:stl.= ' %#StatusLine#%3.l:%-3.c'
 	return l:stl
 endfunction
 
 function! s:passiveStatus(info)
 	let l:stl = ''
 	let l:stl.= '%#TabLineFill#'
-	let l:stl.= b:info.File . '  '
+	let l:stl.= b:info.File . ' | '
 	let l:stl.= b:info.Node
 	let l:stl.= '%='
 	let l:stl.= '%3.p%%'
-	let l:stl.= ' %#User4#%#User3#%3.l:%-3.c'
+	let l:stl.= ' %#TabLine#%3.l:%-3.c'
 	return l:stl
 endfunction

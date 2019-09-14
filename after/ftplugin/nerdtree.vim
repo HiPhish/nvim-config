@@ -10,9 +10,9 @@ function! s:setStl(stl)
 endfunction
 
 function! s:activeStatus()
-	return '%#User3# NERDTree %#User4#%#TabLineFill#'
+	return '%#TabLine# NERDTree %#TabLineFill#'
 endfunction
 
 function! s:passiveStatus()
-	return '%#TabLineFill# NERDTree '
+	return '%#TabLineFill# NERDTree'
 endfunction

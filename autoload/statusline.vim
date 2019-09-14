@@ -48,7 +48,6 @@ function! statusline#mode()
 	let [l:modeString, l:bg, l:fg] = get(l:modeString, mode(), [mode(), '268bd2', '082d36'])
 
 	exe 'hi StatusMode    guibg='.l:bg.' guifg='.l:fg
-	exe 'hi StatusModeSep guibg=#657b83  guifg='.l:bg
 
 	return l:modeString
 endfunction
@@ -87,29 +86,23 @@ function! statusline#tabline()
 			let l:line .= '%#TabLine#'
 		endif
 
-		" [tab-number] [file-name] 
+		" [tab-number] [file-name]
 		let l:line .= '%'.nvim_tabpage_get_number(l:tab).'T '.nvim_tabpage_get_number(l:tab).' '.l:bufname.' %T'
 
-		" Separator and highlighting, a PITA due to the triangles
-		if s:isActiveTab(l:tab) && s:isLastTab(l:tab)
-			let l:line .= '%#TabSepActiveLast#'
-		elseif s:isActiveTab(l:tab)
-			let l:line .= '%#TabSepActivePassive#'
-		elseif s:isLastTab(l:tab)
-			let l:line .= '%#TabSepPassiveLast#'
-		elseif s:isActiveTab(l:tabs[l:idx + 1])
-			let l:line .= '%#TabSepPassiveActive#'
+		" Separator and highlighting
+		if !s:isActiveTab(l:tab) && !s:isLastTab(l:tab) && !s:isActiveTab(l:tabs[l:idx + 1])
+			let l:line .= '│'
 		else
-			let l:line .= ''
+			let l:line .= ' '
 		endif
 	endfor
 
 	" Git branch if applicable
 	let l:line.= '%#TabLineFill#%=%{statusline#fugitive(" "," ")}'
 	" Clock and calendar
-	let l:line.='%=%#User6#%#StatusLine#'
+	let l:line.='%=%#StatusLine#'
 	let l:line.=' %{strftime("%H:%M")}'
-	let l:line.='  %{strftime("%F %a")} '
+	let l:line.=' │ %{strftime("%F %a")} '
 
 	return l:line
 endfunction
