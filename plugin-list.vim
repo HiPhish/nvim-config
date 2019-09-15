@@ -104,6 +104,9 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Dependency of vim-vebugger
 Plug 'idanarye/vim-vebugger'                " Debugger integration
 let g:vebugger_leader='<leader>d'
 
+Plug 'itchyny/lightline.vim'
+
+
 Plug '~/Developer/vim/info.vim/'
 Plug '~/Developer/vim/info+.vim/'
 Plug '~/Developer/vim/repl.nvim/'
