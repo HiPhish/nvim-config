@@ -27,7 +27,12 @@ scriptencoding utf-8
 let g:lightline = {}
 
 " ===[ Appearance ]============================================================
-let g:lightline.colorscheme = 'solarized'
+augroup lightline-colorscheme-overrides
+	autocmd!
+	autocmd ColorScheme * call s:onColorChange()
+augroup END
+
+let g:lightline.colorscheme = 'gruvbox'
 let g:lightline.separator = {'left': '', 'right': ''}
 let g:lightline.subseparator = {'left': '', 'right': ''}
 
@@ -57,3 +62,29 @@ let g:lightline.component_visible_condition = {
 " ===[ Status lines ]==========================================================
 let g:lightline.tabline = {'right': [['clock', 'date'], ['gitbranch']]}
 let g:lightline.inactive = {'left': [['filename', 'modified']]}
+
+
+" =============================================================================
+let s:colour_map = {'NeoSolarized': 'solarized', 'gruvbox': 'gruvbox'}
+function! s:onColorChange()
+	" If we cannot get the name of the colour scheme all bets are off
+	if !exists('g:colors_name')
+		echom "No colours name"
+		return
+	endif
+	" Try a scheme provided already
+	if exists('lightline#colorscheme#{g:colors_name}#palette')
+		let g:lightline.colorscheme = g:colors_name
+	else
+		" Last resort: try falling back to a known colour scheme
+		let l:colors_name = get(s:colour_map, g:colors_name, '')
+		if empty(l:colors_name)
+			return
+		else
+			let g:lightline.colorscheme = l:colors_name
+		endif
+	endif
+	call lightline#init()
+	call lightline#colorscheme()
+	call lightline#update()
+endfunction

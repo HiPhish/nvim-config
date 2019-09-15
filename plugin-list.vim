@@ -170,4 +170,5 @@ Plug '~/Developer/vim/guile.vim'
 
 " ===[ Colour schemes ]========================================================
 Plug 'arakashic/chromatica.nvim'  " Asynchronous clang-based syntax highlighting
+Plug 'gruvbox-community/gruvbox'
 Plug 'icymind/NeoSolarized'
