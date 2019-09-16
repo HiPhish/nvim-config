@@ -24,15 +24,14 @@
 scriptencoding utf-8
 
 
-let g:lightline = {}
+let g:lightline = exists('g:lightline') ? g:lightline : {}
 
 " ===[ Appearance ]============================================================
 augroup lightline-colorscheme-overrides
 	autocmd!
-	autocmd ColorScheme * call s:onColorChange()
+	autocmd ColorScheme * call s:onColorSchemeChange()
 augroup END
 
-let g:lightline.colorscheme = 'gruvbox'
 let g:lightline.separator = {'left': '', 'right': ''}
 let g:lightline.subseparator = {'left': '', 'right': ''}
 
@@ -64,20 +63,23 @@ let g:lightline.tabline = {'right': [['clock', 'date'], ['gitbranch']]}
 let g:lightline.inactive = {'left': [['filename', 'modified']]}
 
 
-" =============================================================================
-let s:colour_map = {'NeoSolarized': 'solarized', 'gruvbox': 'gruvbox'}
-function! s:onColorChange()
+" ===[ Other stuff ]===========================================================
+" Switching colours on the fly: if ':colorscheme' has been executed the
+" following callback function will be called.
+let s:colour_scheme_map = {'NeoSolarized': 'solarized'}
+function! s:onColorSchemeChange()
 	" If we cannot get the name of the colour scheme all bets are off
 	if !exists('g:colors_name')
-		echom "No colours name"
+		echom "No 'g:colors_name' defined"
 		return
 	endif
-	" Try a scheme provided already
-	if exists('lightline#colorscheme#{g:colors_name}#palette')
+	" Try a scheme provided already; this will fail if the auto-loaded file
+	" has not been sourced yet
+	if exists('g:lightline#colorscheme#{g:colors_name}#palette')
 		let g:lightline.colorscheme = g:colors_name
 	else
 		" Last resort: try falling back to a known colour scheme
-		let l:colors_name = get(s:colour_map, g:colors_name, '')
+		let l:colors_name = get(s:colour_scheme_map, g:colors_name, '')
 		if empty(l:colors_name)
 			return
 		else

@@ -5,7 +5,7 @@
 "    \_/  |_|_| |_| |_|_| \_\\____/_/  |___|_| |_|_|\__(_)_/ |_|_| |_| |_|
 "
 " License:  The MIT License (MIT) {{{
-"    Copyright (c) 2018 HiPhish
+"    Copyright (c) 2018,2019 HiPhish
 "
 "    Permission is hereby granted, free of charge, to any person obtaining a
 "    copy of this software and associated documentation files (the
@@ -87,7 +87,9 @@ augroup colorscheme-overrides
 	autocmd ColorScheme NeoSolarized hi TabLine    guibg=#657b83 guifg=#073642
 	autocmd ColorScheme NeoSolarized hi TabLineSel guibg=NONE    guifg=#93a1a1
 augroup END
+
 colorscheme gruvbox
+let g:lightline = {'colorscheme': 'gruvbox'}
 
 " Alternate cursor shape in insert mode
 if has('nvim')
