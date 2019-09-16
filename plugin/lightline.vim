@@ -75,6 +75,7 @@ function! s:onColorSchemeChange()
 	endif
 	" Try a scheme provided already; this will fail if the auto-loaded file
 	" has not been sourced yet
+	execute 'runtime autoload/lightline/colorscheme/'.g:colors_name.'.vim'
 	if exists('g:lightline#colorscheme#{g:colors_name}#palette')
 		let g:lightline.colorscheme = g:colors_name
 	else
@@ -90,3 +91,6 @@ function! s:onColorSchemeChange()
 	call lightline#colorscheme()
 	call lightline#update()
 endfunction
+
+" Perform an initial automatic colour setting
+call s:onColorSchemeChange()
