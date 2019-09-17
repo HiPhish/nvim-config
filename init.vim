@@ -88,7 +88,7 @@ augroup colorscheme-overrides
 	autocmd ColorScheme NeoSolarized hi TabLineSel guibg=NONE    guifg=#93a1a1
 augroup END
 
-colorscheme NeoSolarized
+colorscheme gruvbox
 
 " Alternate cursor shape in insert mode
 if has('nvim')
