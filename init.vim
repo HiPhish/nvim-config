@@ -62,6 +62,7 @@ set noshowmode                  " Don't display the mode in the last line.
 set showtabline=2               " Always show the tab line.
 set conceallevel=2              " Conceal and replace
 set shortmess+=c                " Don't show messages from completion menu
+set termguicolors               " Use GUI colours in the terminal
 set completeopt=noinsert,menuone,noselect
 if has('nvim')
 	set inccommand=nosplit
@@ -102,9 +103,6 @@ elseif $TERM_PROGRAM =~? 'iTerm'
 	let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
 
-if has('nvim')
-	set termguicolors   " Use GUI colours in the terminal
-endif
 
 set background=dark
 let g:neosolarized_italic = 1
