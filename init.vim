@@ -84,8 +84,9 @@ set spelllang=en
 " ---[ THEME SETTINGS ]--------------------------------------------------------
 augroup colorscheme-overrides
 	autocmd!
-	autocmd ColorScheme NeoSolarized hi TabLine    guibg=#657b83 guifg=#073642
-	autocmd ColorScheme NeoSolarized hi TabLineSel guibg=NONE    guifg=#93a1a1
+	au ColorScheme NeoSolarized hi TabLine    guibg=#657b83 guifg=#073642
+	au ColorScheme NeoSolarized hi TabLineSel guibg=NONE    guifg=#93a1a1
+	au ColorScheme gruvbox      hi LineNr     guibg=#3c3836
 augroup END
 
 colorscheme gruvbox
