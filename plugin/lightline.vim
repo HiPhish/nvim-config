@@ -27,9 +27,9 @@ scriptencoding utf-8
 let g:lightline = exists('g:lightline') ? g:lightline : {}
 
 " ===[ Appearance ]============================================================
-augroup lightline-colorscheme-overrides
+augroup lightline-events
 	autocmd!
-	autocmd ColorScheme * call s:onColorSchemeChange()
+	autocmd ColorScheme * call s:onColorSchemeChange(expand('<amatch>'))
 augroup END
 
 let g:lightline.separator = {'left': '', 'right': ''}
@@ -67,20 +67,14 @@ let g:lightline.inactive = {'left': [['filename', 'modified']]}
 " Switching colours on the fly: if ':colorscheme' has been executed the
 " following callback function will be called.
 let s:colour_scheme_map = {'NeoSolarized': 'solarized'}
-function! s:onColorSchemeChange()
-	" If we cannot get the name of the colour scheme all bets are off
-	if !exists('g:colors_name')
-		echom "No 'g:colors_name' defined"
-		return
-	endif
+function! s:onColorSchemeChange(scheme)
 	" Try a scheme provided already; this will fail if the auto-loaded file
 	" has not been sourced yet
-	execute 'runtime autoload/lightline/colorscheme/'.g:colors_name.'.vim'
-	if exists('g:lightline#colorscheme#{g:colors_name}#palette')
-		let g:lightline.colorscheme = g:colors_name
-	else
-		" Last resort: try falling back to a known colour scheme
-		let l:colors_name = get(s:colour_scheme_map, g:colors_name, '')
+	execute 'runtime autoload/lightline/colorscheme/'.a:scheme.'.vim'
+	if exists('g:lightline#colorscheme#{a:scheme}#palette')
+		let g:lightline.colorscheme = a:scheme
+	else  " Try falling back to a known colour scheme
+		let l:colors_name = get(s:colour_scheme_map, a:scheme, '')
 		if empty(l:colors_name)
 			return
 		else
@@ -93,4 +87,4 @@ function! s:onColorSchemeChange()
 endfunction
 
 " Perform an initial automatic colour setting
-call s:onColorSchemeChange()
+call s:onColorSchemeChange(g:colors_name)
