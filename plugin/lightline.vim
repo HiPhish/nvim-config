@@ -66,7 +66,11 @@ let g:lightline.inactive = {'left': [['filename', 'modified']]}
 " ===[ Other stuff ]===========================================================
 " Switching colours on the fly: if ':colorscheme' has been executed the
 " following callback function will be called.
-let s:colour_scheme_map = {'NeoSolarized': 'solarized'}
+let s:colour_scheme_map = {
+	\ 'NeoSolarized': 'solarized',
+	\ 'gruvbox-material': 'gruvbox_material',
+\ }
+
 function! s:onColorSchemeChange(scheme)
 	" Try a scheme provided already; this will fail if the auto-loaded file
 	" has not been sourced yet

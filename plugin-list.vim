@@ -90,9 +90,9 @@ Plug 'luochen1990/rainbow'              " Differently coloured parentheses
 Plug 'bronson/vim-visual-star-search'   " Use * on a selection to search for it
 Plug 'SirVer/ultisnips'                 " Snippets
 Plug 'honza/vim-snippets'               " Snippets for UltiSnips
-Plug 'RRethy/vim-hexokinase'            " Colour preview
+Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}  " Colour preview
 let g:Hexokinase_virtualText = '⬤'
-let g:Hexokinase_ftAutoload = ['css', 'conf', 'zathura']
+let g:Hexokinase_ftAutoload = ['vim', 'css', 'conf', 'zathura']
 let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba', 'colour_names']
 
 Plug 'KabbAmine/vCoolor.vim'            " Colour picker
@@ -172,3 +172,4 @@ Plug '~/Developer/vim/guile.vim'
 Plug 'arakashic/chromatica.nvim'  " Asynchronous clang-based syntax highlighting
 Plug 'gruvbox-community/gruvbox'
 Plug 'icymind/NeoSolarized'
+Plug 'sainnhe/gruvbox-material'
