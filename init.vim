@@ -85,11 +85,13 @@ set spelllang=en
 " ---[ THEME SETTINGS ]--------------------------------------------------------
 augroup colorscheme-overrides
 	autocmd!
-	au ColorScheme NeoSolarized     hi TabLine    guibg=#657b83 guifg=#073642
-	au ColorScheme NeoSolarized     hi TabLineSel guibg=NONE    guifg=#93a1a1
-	au ColorScheme gruvbox          hi LineNr     guibg=#3c3836
-	au ColorScheme gruvbox-material hi SpellBad   guifg=NONE
-	au ColorScheme gruvbox-material hi MatchParen ctermbg=241   guibg=#665c54
+	au ColorScheme NeoSolarized     hi TabLine     guibg=#657b83 guifg=#073642
+	au ColorScheme NeoSolarized     hi TabLineSel  guibg=NONE    guifg=#93a1a1
+	au ColorScheme gruvbox          hi LineNr      guibg=#3c3836
+	au ColorScheme gruvbox-material hi SpellBad    guifg=NONE
+	au ColorScheme gruvbox-material hi ErrorMsg    gui=bold
+	au ColorScheme gruvbox-material hi LineNr      guibg=#3c3836
+	au ColorScheme gruvbox-material hi MatchParen  ctermbg=241   guibg=#665c54
 augroup END
 
 colorscheme gruvbox-material
