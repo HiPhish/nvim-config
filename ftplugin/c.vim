@@ -55,16 +55,16 @@ setlocal spellfile=~/.config/nvim/spell/en.utf-8.add
 setlocal spellfile+=~/.config/nvim/spell/programmer-jargon.utf-8.add
 
 " LSP support
-let g:LanguageClient_serverCommands['c'] = ['clangd-7', '-mwarn-sign-mismatch', '-mwarn-missing-parenthesis']
+let g:LanguageClient_serverCommands['c'] = ['clangd-8', '-mwarn-sign-mismatch', '-mwarn-missing-parenthesis']
 
 if exists('g:plugs["clang_complete"]')
-	let g:clang_library_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
+	let g:clang_library_path = '/usr/lib/llvm-8/lib/libclang.so.1'
 	nnoremap <buffer> <silent> gd :call g:ClangGotoDeclaration()<CR>
 	nnoremap <buffer> <silent> gp :call g:ClangGotoDeclarationPreview()<CR>
 endif
 
 " Chromatica - asynchronous clang-based syntax highlighting
 if exists('g:plugs["chromatica.nvim"]')
-	let g:chromatica#libclang_path='/usr/lib/llvm-6.0/lib/libclang.so.1'
+	let g:chromatica#libclang_path='/usr/lib/llvm-8/lib/libclang.so.1'
 	execute 'ChromaticaStart'
 endif
