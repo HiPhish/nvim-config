@@ -47,11 +47,25 @@ silent call vlime#plugin#InteractionMode()
 
 " Compile the current file on saving if there is a connection
 augroup vlime
-	au! BufWritePost <buffer> call s:compile_current_file()
+	au! BufWritePost <buffer> call s:loadFile(expand('%'))
 augroup END
 
 nnoremap K  :call <SID>go_documentation()<CR>
 nnoremap gd :call <SID>go_definition()<CR>
+
+function! s:compileFileForEmacs(file)
+	let l:connection = vlime#connection#Get(v:true)
+	if type(l:connection) == type({}) && l:connection.IsConnected()
+		call l:connection.CompileFileForEmacs(a:file, 1, {"DEBUG": 3, "SPEED": 0})
+	endif
+endfunction
+
+function! s:loadFile(filename)
+	let l:connection = vlime#connection#Get(v:true)
+	if type(l:connection) == type({}) && l:connection.IsConnected()
+		call vlime#plugin#LoadFile(a:filename)
+	endif
+endfunction
 
 function! s:compile_current_file()
 	let l:connection = vlime#connection#Get(v:true)
