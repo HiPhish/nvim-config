@@ -1,9 +1,3 @@
-"     __  __ ______ __  ___ __
-"    / / / //_  __//  |/  // /   Hyper
-"   / /_/ /  / /  / /|_/ // /    Text
-"  / __  /  / /  / /  / // /___  Markup
-" /_/ /_/  /_/  /_/  /_//_____/  Language
-"
 " License:  The MIT License (MIT) {{{
 "    Copyright (c) 2018 HiPhish
 "
@@ -26,8 +20,13 @@
 "    OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-
-
+"
+"    _  __ __  _____ 
+"   | |/ //  |/  / /    Extensible
+"   |   // /|_/ / /     Markup
+"  /   |/ /  / / /___   Language
+" /_/|_/_/  /_/_____/
+                   
 " Use tabs for indentation, appear two spaces wide
 setlocal noexpandtab copyindent preserveindent
 setlocal softtabstop=0 shiftwidth=2 tabstop=2
