@@ -20,8 +20,8 @@
 "    OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-"     _                  
-"    | | __ ___   ____ _ 
+"     _
+"    | | __ ___   ____ _
 " _  | |/ _` \ \ / / _` |
 "| |_| | (_| |\ V / (_| |
 " \___/ \__,_| \_/ \__,_|
@@ -41,8 +41,8 @@ let s:build_systems = [
 for [s:makeprg, s:settings, s:wrapper] in s:build_systems
 	if filereadable(s:settings)
 		exe 'set makeprg='..(executable(s:wrapper)?'./'..s:wrapper:s:makeprg)
+		break
 	endif
-	break
 endfor
 
 
