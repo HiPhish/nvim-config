@@ -47,7 +47,7 @@ endfor
 
 
 " ---[ LanguageClient Neovim settings ]----------------------------------------
-nnoremap <buffer> <silent> <CR>  :call LanguageClient_contextMenu()
+nnoremap <buffer> <silent> <CR>  :call LanguageClient_contextMenu()<CR>
 nnoremap <buffer> <silent> gd    :call LanguageClient#textDocument_definition()<CR>
 nnoremap <buffer> <silent> <C-S> :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <buffer> <silent> <F2>  :call LanguageClient#textDocument_rename()<CR>
