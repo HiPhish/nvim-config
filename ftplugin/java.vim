@@ -1,3 +1,25 @@
+" License:  The MIT License (MIT) {{{
+"    Copyright (c) 2019 HiPhish
+"
+"    Permission is hereby granted, free of charge, to any person obtaining a
+"    copy of this software and associated documentation files (the
+"    "Software"), to deal in the Software without restriction, including
+"    without limitation the rights to use, copy, modify, merge, publish,
+"    distribute, sublicense, and/or sell copies of the Software, and to permit
+"    persons to whom the Software is furnished to do so, subject to the
+"    following conditions:
+"
+"    The above copyright notice and this permission notice shall be included
+"    in all copies or substantial portions of the Software.
+"
+"    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+"    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+"    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+"    NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+"    DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+"    OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+"    USE OR OTHER DEALINGS IN THE SOFTWARE.
+" }}}
 "     _                  
 "    | | __ ___   ____ _ 
 " _  | |/ _` \ \ / / _` |
@@ -5,20 +27,27 @@
 " \___/ \__,_| \_/ \__,_|
 
 
-if filereadable('build.gradle')
-	set makeprg=gradle
-	if executable('./gradlew')
-		set makeprg=./gradlew
+" ---[ Build system detection ]------------------------------------------------
+" Known build system specifications in decreasing order of relevance; a
+" specifications is a list of three elements: the name of the build system
+" binary, the settings file, and the wrapper file
+let s:build_systems = [
+	\ ['make', 'makefile', ''],
+	\ ['make', 'Makefile', ''],
+	\ ['gradle', 'build.gradle', 'gradlew'],
+	\ ['mvn', 'pom.xml', 'mvnw'],
+\ ]
+
+for [s:makeprg, s:settings, s:wrapper] in s:build_systems
+	if filereadable(s:settings)
+		exe 'set makeprg='..(executable(s:wrapper)?'./'..s:wrapper:s:makeprg)
 	endif
-endif
+	break
+endfor
 
-" A makefile takes precedence over Gradle because it is likely to contain
-" special individual settings on top of the project's Gradle settings.
-if filereadable('makefile') || filereadable('Makefile')
-	set makeprg=make
-endif
 
-" LanguageClient Neovim settings
+" ---[ LanguageClient Neovim settings ]----------------------------------------
+nnoremap <buffer> <silent> <CR>  :call LanguageClient_contextMenu()
 nnoremap <buffer> <silent> gd    :call LanguageClient#textDocument_definition()<CR>
 nnoremap <buffer> <silent> <C-S> :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <buffer> <silent> <F2>  :call LanguageClient#textDocument_rename()<CR>
