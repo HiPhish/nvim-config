@@ -49,9 +49,11 @@ call plug#end()
 
 
 " Vim settings
-set listchars=tab:├─,trail:•,eol:¬
+set listchars=tab:├─,space:·,trail:•,eol:¬,extends:…,precedes:…
 set fillchars=msgsep:─
 set splitright                  " Open splits the way I prefer it
+set textwidth=79                " Limit line length (usually for comments)
+set formatoptions-=t            " Do not auto-wrap text
 set number                      " Line numbers.
 set numberwidth=1               " Use minimum width of 1.
 set wildmode=list:longest,full  " Kind of completion in command-mode.
