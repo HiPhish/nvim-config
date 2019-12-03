@@ -101,7 +101,7 @@ let g:vcoolor_custom_picker = 'kcolorchooser --print'
 inoremap <c-x><c-c> <c-o>:VCoolIns ra<cr>
 
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Dependency of vim-vebugger
-Plug 'idanarye/vim-vebugger'                " Debugger integration
+Plug 'idanarye/vim-vebugger', {'branch': 'develop'}  " Debugging
 let g:vebugger_leader='<leader>d'
 
 Plug 'itchyny/lightline.vim'
