@@ -1,10 +1,10 @@
-"    The shitty markup everyone is using             ╭────────────────╮
-"  __  __            _       _                       │  __  __    __  │
-" |  \/  | __ _ _ __| | ____| | _____      ___ __    │ |  \/  |   ||  │
-" | |\/| |/ _` | '__| |/ / _` |/ _ \ \ /\ / / '_ \   │ | |\/| |  _||_ │
-" | |  | | (_| | |  |   < (_| | (_) \ V  V /| | | |  │ | |  | |  \  / │
-" |_|  |_|\__,_|_|  |_|\_\__,_|\___/ \_/\_/ |_| |_|  │ |_|  |_|   \/  │
-"                                                    ╰────────────────╯
+"    The shitty markup everyone is using
+"  __  __            _       _                          __  __   __
+" |  \/  | __ _ _ __| | ____| | _____      ___ __      |  \/  |  ||
+" | |\/| |/ _` | '__| |/ / _` |/ _ \ \ /\ / / '_ \     | |\/| | _||_
+" | |  | | (_| | |  |   < (_| | (_) \ V  V /| | | |    | |  | | \  /
+" |_|  |_|\__,_|_|  |_|\_\__,_|\___/ \_/\_/ |_| |_|    |_|  |_|  \/
+"
 " License:  The MIT License (MIT) {{{
 "    Copyright (c) 2018 HiPhish
 "
@@ -34,3 +34,10 @@ setlocal textwidth=79
 
 " Use spaces instead of tabs
 setlocal tabstop=3 softtabstop=3 shiftwidth=3 expandtab
+
+" Disable some features for special Markdown buffers. These buffers are usually
+" created by Vim to be read by a person, not to be edited. For such buffers
+" the following features are more distracting than they are useful.
+if &buftype =~ 'nofile'
+	setlocal nospell
+endif
