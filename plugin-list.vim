@@ -116,9 +116,13 @@ Plug '~/Developer/vim/repl.nvim/'
 Plug 'airblade/vim-gitgutter'  " Git gutter symbols
 Plug 'scrooloose/nerdtree'     " Project drawer
 let g:NERDTreeMinimalUI=1  " Remove boilerplate clutter
-
 let g:NERDTreeIgnore=['\v\.pyc$', '\v\~$', '\v\.meta$'] " Ignore compiled files
+let g:NERDTreeMouseMode = 2  " Single-click for directories
+
 Plug 'justinmk/vim-dirvish'    " File system browser
+" Disable NetRW, Dirvish will take its place
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
 
 
 " ===[ Syntax checking ]=======================================================
