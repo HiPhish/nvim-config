@@ -71,8 +71,6 @@ noremap Ä "
 noremap # \
 noremap ' \|
 
-noremap < `
-noremap > ~
 noremap , ,
 noremap ; <
 noremap . .
