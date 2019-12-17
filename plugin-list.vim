@@ -62,7 +62,7 @@ Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh
 let g:LanguageClient_hasSnippetSupport = 1
 let g:LanguageClient_serverCommands = {
 	\ 'java': ['sh', '~/.bin/java-lsp.sh', '-data',
-	\ '~/.local/share/eclipse/jdt/ls/'.fnamemodify(getcwd(), ':t')]
+	\ '~/.local/share/eclipse/workspace/'.fnamemodify(getcwd(), ':t')]
 \ }
 
 
@@ -71,6 +71,9 @@ Plug 'kana/vim-operator-user'  " has some libraries used by other packages
 
 
 " ===[ Enhance Vim ]===========================================================
+Plug 'editorconfig/editorconfig-vim'    " EditorConfig support
+let g:EditorConfig_exclude_patterns = ['scp://.*', 'fugitive://.*']
+
 Plug 'junegunn/vader.vim'               " Testing framework
 Plug 'junegunn/fzf'                     " Fuzzy finder for various things
 let g:fzf_layout = {'down': '~30%'}
