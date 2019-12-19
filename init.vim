@@ -57,6 +57,7 @@ set formatoptions-=t            " Do not auto-wrap text
 set number                      " Line numbers.
 set numberwidth=1               " Use minimum width of 1.
 set wildmode=list:longest,full  " Kind of completion in command-mode.
+set wildignorecase              " Ignore case when completing command-line
 set mouse=a                     " Enable mouse in all modes.
 set noshowmatch                 " Don't jump to matching braces.
 set showcmd                     " Display command in the last line of the screen.
