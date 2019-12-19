@@ -84,6 +84,9 @@ set softtabstop=0 shiftwidth=4 tabstop=4
 set spell
 set spelllang=en
 
+" Use Ack instead of Grep
+set grepprg=ack\ --nogroup\ --column\ $*
+set grepformat=%f:%l:%c:%m
 
 " ---[ THEME SETTINGS ]--------------------------------------------------------
 augroup colorscheme-overrides
