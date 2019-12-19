@@ -4,14 +4,8 @@ for ${1:i} = ${2:first}, ${3:last}, ${4:step} do
 end
 endsnippet
 
-snippet fori "pair for loop"
-for ${1:idx}, ${2:val} in pairs(${3:table_name}) do
-	$0
-end
-endsnippet
-
-snippet fori "ipair for loop"
-for ${1:idx}, ${2:val} in ipairs(${3:table_name}) do
+snippet forin "for-in loop"
+for ${1:var} in ${2:iterator} do
 	$0
 end
 endsnippet
