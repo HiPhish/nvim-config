@@ -123,9 +123,9 @@ syn keyword rasiTagName ml-row-right ml-row-up modi padding parse-hosts
 syn keyword rasiTagName parse-known-hosts pid syn keyword rasiTagName
 syn keyword rasiTagName run-command run-list-command run-shell-command
 syn keyword rasiTagName scrollbar-width scroll-method separator-style
-syn keyword rasiTagName show-icons show-match sidebar-mode sort ssh-client
-syn keyword rasiTagName ssh-command terminal theme threads tokenize width
-syn keyword rasiTagName window-command window-format window-match-fields
+syn keyword rasiTagName show-icons show-match sidebar-mode sort sorting-method
+syn keyword rasiTagName ssh-client ssh-command terminal theme threads tokenize
+syn keyword rasiTagName width window-command window-format window-match-fields
 syn keyword rasiTagName xoffset yoffset
 
 
