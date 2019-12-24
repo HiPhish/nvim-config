@@ -32,15 +32,13 @@ scriptencoding utf-8
 
 setlocal textwidth=79
 " Use spaces instead of tabs
-setlocal tabstop=3 softtabstop=3 shiftwidth=3 expandtab
+setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 " Do not hide any characters
 setlocal conceallevel=0
 
-" Disable some features for special Markdown buffers. These buffers are usually
+" Change some settings for special Markdown buffers. These buffers are usually
 " created by Vim to be read by a person, not to be edited. For such buffers
-" the following features are more distracting than they are useful.
+" the following settings are easier on the eyes when reading.
 if &buftype =~ 'nofile'
-	setlocal nospell
-	setlocal conceallevel=2
-	setlocal concealcursor=nc
+	setlocal nospell conceallevel=2 concealcursor=nc
 endif
