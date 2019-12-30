@@ -53,3 +53,9 @@ nnoremap <buffer> <silent> <C-S> :call LanguageClient#textDocument_documentSymbo
 nnoremap <buffer> <silent> <C-G> :call LanguageClient#textDocument_references()<CR>
 nnoremap <buffer> <silent> <F2>  :call LanguageClient#textDocument_rename()<CR>
 nnoremap <buffer> <silent> K     :call LanguageClient#textDocument_hover()<CR>
+
+
+" ---[ vim-test integration ]--------------------------------------------------
+if filereadable('build.gradle')
+    let test#java#runner = 'gradletest'
+endif

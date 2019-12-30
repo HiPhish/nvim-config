@@ -81,6 +81,8 @@ Plug 'junegunn/fzf.vim'
 nnoremap <C-P> :FZF<CR>
 nnoremap <C-N> :Buffers<CR>
 
+Plug 'janko/vim-test'                   " Run tests
+let test#strategy = "neovim"
 Plug 'rhysd/vim-operator-surround'      " Surround text objects
 map <silent>sa <Plug>(operator-surround-append)
 map <silent>sd <Plug>(operator-surround-delete)
