@@ -81,8 +81,11 @@ Plug 'junegunn/fzf.vim'
 nnoremap <C-P> :FZF<CR>
 nnoremap <C-N> :Buffers<CR>
 
-Plug 'janko/vim-test'                   " Run tests
+" Plug 'janko/vim-test'                   " Run tests
+" Use my own fork for better Gradle support
+Plug 'HiPhish/vim-test', {'branch': 'gradle'}
 let test#strategy = "neovim"
+
 Plug 'rhysd/vim-operator-surround'      " Surround text objects
 map <silent>sa <Plug>(operator-surround-append)
 map <silent>sd <Plug>(operator-surround-delete)
