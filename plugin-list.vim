@@ -42,11 +42,14 @@ Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
 autocmd BufEnter     * call ncm2#enable_for_buffer()
 autocmd TextChangedI * call ncm2#auto_trigger()
 
-" Completion sources
+" ---[ NCM2 completion sources ]-----------------------------------------------
+" General
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-bufword'
+" Snippets
 Plug 'ncm2/ncm2-ultisnips' | let g:UltiSnipsEditSplit = 'context'
 inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+" Programming language
 Plug 'ncm2/ncm2-cssomni'
 Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
@@ -66,30 +69,9 @@ let g:LanguageClient_serverCommands = {
 \ }
 
 
-" ===[ Kana ]==================================================================
+" ===[ Enhance Vim ]===========================================================
 Plug 'kana/vim-operator-user'  " has some libraries used by other packages
 
-
-" ===[ Enhance Vim ]===========================================================
-Plug 'editorconfig/editorconfig-vim'    " EditorConfig support
-let g:EditorConfig_exclude_patterns = ['scp://.*', 'fugitive://.*']
-
-Plug 'junegunn/vader.vim'               " Testing framework
-Plug 'junegunn/fzf'                     " Fuzzy finder for various things
-let g:fzf_layout = {'down': '~30%'}
-Plug 'junegunn/fzf.vim'
-nnoremap <C-P> :FZF<CR>
-nnoremap <C-N> :Buffers<CR>
-
-" Plug 'janko/vim-test'                   " Run tests
-" Use my own fork for better Gradle support
-Plug 'HiPhish/vim-test', {'branch': 'gradle'}
-let test#strategy = "neovim"
-
-Plug 'rhysd/vim-operator-surround'      " Surround text objects
-map <silent>sa <Plug>(operator-surround-append)
-map <silent>sd <Plug>(operator-surround-delete)
-map <silent>sc <Plug>(operator-surround-replace)
 Plug 'MarcWeber/vim-addon-local-vimrc'  " Project-local .vimrc file
 Plug 'chrisbra/NrrwRgn'                 " Narrowing feature
 Plug 'fmoralesc/vim-tutor-mode'         " Interactive Vim tutorials
@@ -98,23 +80,53 @@ Plug 'luochen1990/rainbow'              " Differently coloured parentheses
 Plug 'bronson/vim-visual-star-search'   " Use * on a selection to search for it
 Plug 'SirVer/ultisnips'                 " Snippets
 Plug 'honza/vim-snippets'               " Snippets for UltiSnips
+Plug 'itchyny/lightline.vim'
+
+" Editor config: editor-agnostic configuration
+Plug 'editorconfig/editorconfig-vim'    " EditorConfig support
+let g:EditorConfig_exclude_patterns = ['scp://.*', 'fugitive://.*']
+
+" FZF, the fuzzy finder
+Plug 'junegunn/fzf'
+let g:fzf_layout = {'down': '~30%'}
+Plug 'junegunn/fzf.vim'
+nnoremap <C-P> :FZF<CR>
+nnoremap <C-N> :Buffers<CR>
+
+" Vim script testing framework
+Plug 'junegunn/vader.vim'               " Testing framework
+
+" Running tests from inside Vim (use my own fork for better Gradle support)
+" Plug 'janko/vim-test'
+Plug 'HiPhish/vim-test', {'branch': 'gradle'}
+if has('nvim')
+	let test#strategy = "neovim"
+endif
+
+" Surround text objects
+Plug 'rhysd/vim-operator-surround'
+map <silent>sa <Plug>(operator-surround-append)
+map <silent>sd <Plug>(operator-surround-delete)
+map <silent>sc <Plug>(operator-surround-replace)
+
+" Colour preview inside the text editor
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}  " Colour preview
 let g:Hexokinase_virtualText = '⬤'
 let g:Hexokinase_ftAutoload = ['vim', 'css', 'conf', 'zathura']
 let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba', 'colour_names']
 
-Plug 'KabbAmine/vCoolor.vim'            " Colour picker
+" Colour picker
+Plug 'KabbAmine/vCoolor.vim'
 let g:vcoolor_disable_mappings = 1
 let g:vcoolor_custom_picker = 'kcolorchooser --print'
 inoremap <c-x><c-c> <c-o>:VCoolIns ra<cr>
 
+" A generic debugger front end
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Dependency of vim-vebugger
 Plug 'idanarye/vim-vebugger', {'branch': 'develop'}  " Debugging
 let g:vebugger_leader='<leader>d'
 
-Plug 'itchyny/lightline.vim'
-
-
+" My own plugins
 Plug '~/Developer/vim/info.vim/'
 Plug '~/Developer/vim/info+.vim/'
 Plug '~/Developer/vim/repl.nvim/'
@@ -122,12 +134,15 @@ Plug '~/Developer/vim/repl.nvim/'
 
 " ===[ Windows, navigation and so on ]=========================================
 Plug 'airblade/vim-gitgutter'  " Git gutter symbols
-Plug 'scrooloose/nerdtree'     " Project drawer
+
+" Project drawer
+Plug 'scrooloose/nerdtree'
 let g:NERDTreeMinimalUI=1  " Remove boilerplate clutter
 let g:NERDTreeIgnore=['\v\.pyc$', '\v\~$', '\v\.meta$'] " Ignore compiled files
 let g:NERDTreeMouseMode = 2  " Single-click for directories
 
-Plug 'justinmk/vim-dirvish'    " File system browser
+" File system browser
+Plug 'justinmk/vim-dirvish'
 " Disable NetRW, Dirvish will take its place
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
@@ -174,7 +189,7 @@ Plug '~/Developer/neovim.rkt/', {'rtp': 'nvim'}
 Plug 'wlangstroth/vim-racket'
 
 " ReStructuredText
-Plug 'Rykka/riv.vim'
+Plug 'Rykka/riv.vim', {'for': 'rst'}
 
 " Scheme
 Plug '~/Developer/vim/guile.vim'
