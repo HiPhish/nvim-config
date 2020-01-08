@@ -100,7 +100,7 @@ augroup colorscheme-overrides
 	au ColorScheme gruvbox-material hi MatchParen  ctermbg=241   guibg=#665c54
 augroup END
 
-colorscheme gruvbox-material
+colorscheme NeoSolarized
 
 " Alternate cursor shape in insert mode
 if has('nvim')
@@ -115,5 +115,5 @@ endif
 
 
 set background=dark
-let g:neosolarized_italic = 1
+let g:neosolarized_italic = v:true
 highlight link MsgSeparator VertSplit
