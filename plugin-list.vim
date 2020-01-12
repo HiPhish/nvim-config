@@ -172,6 +172,10 @@ Plug 'l04m33/vlime', {'rtp': 'vim'}
 au BufReadPost,BufNewFile vlime* setlocal nonumber nospell
 Plug '~/Developer/vim/quicklisp.nvim/'
 
+" Java
+" Use my NCM2 completion fork until it gets implemented and merged upstream
+Plug 'HiPhish/Comrade', {'branch': 'ncm2'}
+
 " JavaScript
 Plug 'ternjs/tern_for_vim', {'for': 'javacript', 'do': 'npm install'}
 
