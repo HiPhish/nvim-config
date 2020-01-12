@@ -6,7 +6,7 @@
 "                /____/
 "
 " License:  The MIT License (MIT) {{{
-"    Copyright (c) 2018 HiPhish
+"    Copyright (c) 2018-2020 HiPhish
 "
 "    Permission is hereby granted, free of charge, to any person obtaining a
 "    copy of this software and associated documentation files (the
@@ -92,6 +92,20 @@ let g:fzf_layout = {'down': '~30%'}
 Plug 'junegunn/fzf.vim'
 nnoremap <C-P> :FZF<CR>
 nnoremap <C-N> :Buffers<CR>
+
+" Window-management mode
+Plug 'dstein64/vim-win'
+let g:win_resize_height = 1
+let g:win_resize_width = 1
+let g:win_ext_command_map = {
+	\ 'q': 'quit',
+	\ 'Q': 'quit!',
+	\ 'H': 'wincmd >',
+	\ 'J': 'wincmd +',
+	\ 'K': 'wincmd -',
+	\ 'L': 'wincmd <',
+	\ '=': 'wincmd =',
+\} 
 
 " Vim script testing framework
 Plug 'junegunn/vader.vim'               " Testing framework
