@@ -98,13 +98,6 @@ if has('nvim')
 endif
 
 
-" Faster switching between windows
-nnoremap <C-H> <C-W>h
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-
-
 " Map keys for scrolling though command line history
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
