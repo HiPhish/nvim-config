@@ -44,6 +44,8 @@ autocmd TextChangedI * call ncm2#auto_trigger()
 
 " ---[ NCM2 completion sources ]-----------------------------------------------
 " General
+Plug 'ncm2/float-preview.nvim'
+let g:float_preview#docked = 0
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-bufword'
 " Snippets
