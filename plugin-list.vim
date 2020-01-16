@@ -28,6 +28,11 @@
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
 
+" ===[ Neovim ]================================================================
+if has('nvim-0.5.0')
+	Plug 'neovim/nvim-lsp'
+endif
+
 
 " ===[ Tim Pope ]==============================================================
 Plug 'tpope/vim-fugitive'      " Git support
