@@ -50,6 +50,12 @@ snippet defmacro "Macro definition" b
   }${0:(body)})
 endsnippet
 
+snippet defpackage "Package definition" b
+(defpackage ${1::package}
+  (:use ${2::cl}))
+endsnippet
+	
+
 
 # Flow control
 snippet ife "If-expression with alternative"
