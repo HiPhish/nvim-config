@@ -79,7 +79,6 @@ let g:LanguageClient_serverCommands = {
 " ===[ Enhance Vim ]===========================================================
 Plug 'kana/vim-operator-user'  " has some libraries used by other packages
 
-Plug 'MarcWeber/vim-addon-local-vimrc'  " Project-local .vimrc file
 Plug 'chrisbra/NrrwRgn'                 " Narrowing feature
 Plug 'fmoralesc/vim-tutor-mode'         " Interactive Vim tutorials
 Plug 'Raimondi/delimitMate'             " Auto-insert matching braces
@@ -88,6 +87,10 @@ Plug 'bronson/vim-visual-star-search'   " Use * on a selection to search for it
 Plug 'SirVer/ultisnips'                 " Snippets
 Plug 'honza/vim-snippets'               " Snippets for UltiSnips
 Plug 'itchyny/lightline.vim'
+
+" Settings local to a given project
+Plug 'MarcWeber/vim-addon-local-vimrc'
+let g:local_vimrc = {'names':['.vimrc', 'vimrc', 'init.vim']}
 
 " Editor config: editor-agnostic configuration
 Plug 'editorconfig/editorconfig-vim'    " EditorConfig support
@@ -195,7 +198,7 @@ Plug '~/Developer/vim/quicklisp.nvim/'
 
 " Java
 " Use my NCM2 completion fork until it gets implemented and merged upstream
-Plug 'HiPhish/Comrade', {'branch': 'ncm2'}
+" Plug 'HiPhish/Comrade', {'branch': 'ncm2'}
 
 " JavaScript
 Plug 'ternjs/tern_for_vim', {'for': 'javacript', 'do': 'npm install'}
