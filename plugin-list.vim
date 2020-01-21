@@ -90,7 +90,7 @@ Plug 'itchyny/lightline.vim'
 
 " Settings local to a given project
 Plug 'MarcWeber/vim-addon-local-vimrc'
-let g:local_vimrc = {'names':['.vimrc', 'vimrc', 'init.vim']}
+let g:local_vimrc = {'names':['.vimrc', 'vimrc', 'rc.vim']}
 
 " Editor config: editor-agnostic configuration
 Plug 'editorconfig/editorconfig-vim'    " EditorConfig support
