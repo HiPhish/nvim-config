@@ -76,6 +76,11 @@ let g:LanguageClient_serverCommands = {
 \ }
 
 
+" ===[ Debug Adapter Protocol ]================================================
+let g:vimspector_enable_mappings = 'HUMAN'
+Plug 'puremourning/vimspector'
+
+
 " ===[ Enhance Vim ]===========================================================
 Plug 'kana/vim-operator-user'  " has some libraries used by other packages
 
