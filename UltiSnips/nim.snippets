@@ -1,0 +1,21 @@
+snippet proc "Procedure definition" b
+proc ${1:name}(${2:parameter}): ${3:returnType} =
+	${4:body}
+endsnippet
+
+snippet const "Compile time constant" b
+const ${1:name}: ${2:type} = ${3:value}
+endsnippet
+
+snippet let "Runtime constant" b
+let ${1:name}: ${2:type} = ${3:value}
+endsnippet
+
+snippet var "Runtime variable" b
+var ${1:name}: ${2:type} = ${3:value}
+endsnippet
+
+snippet for "For-loop" b
+for ${1:binding} in ${2:iterator}:
+	${0:body}
+endsnippet

@@ -214,6 +214,9 @@ Plug '~/Developer/vim/jinja.vim/'
 " Kotlin
 Plug 'udalov/kotlin-vim'
 
+" Nim
+Plug 'zah/nim.vim'
+
 " Python
 Plug 'davidhalter/jedi-vim'
 
