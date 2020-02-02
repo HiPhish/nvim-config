@@ -30,7 +30,8 @@
 
 " ===[ Neovim ]================================================================
 if has('nvim-0.5.0')
-	Plug 'neovim/nvim-lsp'
+	" Use my fork until Java gets merged upstream
+	Plug 'HiPhish/nvim-lsp', {'branch': 'eclipse.jdt.ls'}
 endif
 
 
