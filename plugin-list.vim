@@ -30,7 +30,6 @@
 
 " ===[ Neovim ]================================================================
 if has('nvim-0.5.0')
-	" Use my fork until Java gets merged upstream
 	Plug 'neovim/nvim-lsp'
 endif
 
@@ -69,12 +68,14 @@ Plug '~/Developer/vim/ncm2-vlime/'
 
 
 " ===[ Language Server Protocol ]==============================================
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-let g:LanguageClient_hasSnippetSupport = 1
-let g:LanguageClient_serverCommands = {
-	\ 'java': ['sh', '~/.bin/java-lsp.sh', '-data',
-	\ '~/.local/share/eclipse/workspace/'.fnamemodify(getcwd(), ':t')]
-\ }
+if !has('nvim-0.5.0')
+	Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+	let g:LanguageClient_hasSnippetSupport = 1
+	let g:LanguageClient_serverCommands = {
+		\ 'java': ['sh', '~/.bin/java-lsp.sh', '-data',
+		\ '~/.local/share/eclipse/workspace/'.fnamemodify(getcwd(), ':t')]
+	\ }
+endif
 
 
 " ===[ Debug Adapter Protocol ]================================================

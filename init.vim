@@ -47,6 +47,10 @@ call plug#begin(stdpath('data').'/site-packages/')
 execute 'source ' . stdpath('config') . '/plugin-list.vim'
 call plug#end()
 
+if has('nvim-0.5.0')
+	execute 'luafile ' .. stdpath('config') .. '/init.lua'
+endif
+
 
 " Vim settings
 set listchars=tab:├─,space:·,trail:•,eol:¬,extends:…,precedes:…
