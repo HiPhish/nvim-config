@@ -3,15 +3,19 @@
 
 local nvim_lsp = require 'nvim_lsp'
 local configs = require'nvim_lsp/configs'
+local util = require'nvim_lsp/util'
 
 local workspace = '~/.local/share/eclipse/workspace/' .. vim.call('fnamemodify', vim.call('getcwd'), ':t')
+
+local pom_rp = util.root_pattern("pom.xml")
+local gradle_rp = util.root_pattern("build.gradle")
 
 configs.eclipse_jdt_ls= {
 	default_config = {
 		cmd = {'sh', vim.loop.os_homedir() .. '/.bin/java-lsp.sh', '-data', workspace};
 		filetypes = {'java'};
 		root_dir = function(fname)
-			return nvim_lsp.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+			return nvim_lsp.util.find_git_ancestor(fname) or pom_rp(fname) or gradle_rp(fname) or vim.loop.os_homedir()
 		end;
 		log_level = vim.lsp.protocol.MessageType.Warning;
 		settings = {};
