@@ -3,9 +3,13 @@
 -- https://github.com/neovim/nvim-lsp/issues/41
 
 ---[ SERVER CONFIGURATION ]----------------------------------------------------
+local lsp = require 'vim/lsp'
 local nvim_lsp = require 'nvim_lsp'
 local configs = require'nvim_lsp/configs'
 local util = require'nvim_lsp/util'
+
+local capabilities = lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- The workspace directory is generated from the file path
 local workspace = '~/.local/share/eclipse/workspace/' .. vim.call('fnamemodify', vim.call('getcwd'), ':t')
@@ -16,7 +20,7 @@ local  maven_rp = util.root_pattern("pom.xml")
 local gradle_rp = util.root_pattern("build.gradle")
 
 configs.eclipse_jdt_ls= {
-	default_config = {
+	default_config = util.utf8_config {
 		cmd = {'sh', vim.loop.os_homedir() .. '/.bin/java-lsp.sh', '-data', workspace};
 		filetypes = {'java'};
 		root_dir = function(fname)
@@ -24,12 +28,15 @@ configs.eclipse_jdt_ls= {
 		end;
 		log_level = vim.lsp.protocol.MessageType.Warning;
 		settings = {};
+		capabilities = capabilities;
 	};
 }
 
 
----[ SETTING UP SERVERS ]------------------------------------------------------
-nvim_lsp.eclipse_jdt_ls.setup{}
-
-
 ---[ EDITOR SETTINGS ]---------------------------------------------------------
+local ncm2 = require('ncm2')
+
+
+---[ SETTING UP SERVERS ]------------------------------------------------------
+-- nvim_lsp.eclipse_jdt_ls.setup{}
+nvim_lsp.eclipse_jdt_ls.setup{on_init = ncm2.register_lsp_source}
