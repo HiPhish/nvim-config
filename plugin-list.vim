@@ -69,12 +69,35 @@ Plug '~/Developer/vim/ncm2-vlime/'
 
 " ===[ Language Server Protocol ]==============================================
 if !has('nvim-0.5.0')
-	Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-	let g:LanguageClient_hasSnippetSupport = 1
-	let g:LanguageClient_serverCommands = {
-		\ 'java': ['sh', '~/.bin/java-lsp.sh', '-data',
-		\ '~/.local/share/eclipse/workspace/'.fnamemodify(getcwd(), ':t')]
-	\ }
+	Plug 'prabirshrestha/async.vim'
+	Plug 'prabirshrestha/vim-lsp'
+	Plug 'ncm2/ncm2-vim-lsp'
+	Plug 'thomasfaingnaert/vim-lsp-snippets'
+	Plug 'thomasfaingnaert/vim-lsp-ultisnips'
+
+	let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
+	autocmd User lsp_server_init echom "LSP setup"
+	autocmd User lsp_setup call lsp#register_server({
+		\ 'name': 'eclipse.jdt.ls',
+		\ 'cmd': [
+			\ 'java',
+			\ '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+			\ '-Dosgi.bundles.defaultStartLevel=4',
+			\ '-Declipse.product=org.eclipse.jdt.ls.core.product',
+			\ '-Dlog.level=ALL',
+     		\ '-noverify',
+     		\ '-Xmx1G',
+     		\ '-jar',
+    		\ expand('~/.bin/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.*.jar'),
+     		\ '-configuration',
+    		\ expand('~/.bin/eclipse.jdt.ls/config_linux'),
+    		\ '-data',
+    		\ expand('~/.local/share/eclipse/workspace/').fnamemodify(getcwd(), ':t')
+		\ ],
+		\ 'whitelist': ['java'],
+	\ })
 endif
 
 
