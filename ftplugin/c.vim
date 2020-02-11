@@ -54,9 +54,6 @@ setlocal spelllang=en
 setlocal spellfile=~/.config/nvim/spell/en.utf-8.add
 setlocal spellfile+=~/.config/nvim/spell/programmer-jargon.utf-8.add
 
-" LSP support
-let g:LanguageClient_serverCommands['c'] = ['clangd', '-mwarn-sign-mismatch', '-mwarn-missing-parenthesis']
-
 if exists('g:plugs["clang_complete"]')
 	let g:clang_library_path = '/usr/lib/llvm-8/lib/libclang.so.1'
 	nnoremap <buffer> <silent> gd :call g:ClangGotoDeclaration()<CR>

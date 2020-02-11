@@ -97,6 +97,16 @@ if !has('nvim-0.5.0')
 		\ ],
 		\ 'whitelist': ['java'],
 	\ })
+
+	autocmd User lsp_setup call lsp#register_server({
+		\ 'name': 'clangd',
+		\ 'cmd': [
+			\ 'clangd',
+			\ '-mwarn-sign-mismatch',
+			\ '-mwarn-missing-parenthesis'
+		\ ],
+		\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp']
+	\ })
 endif
 
 
