@@ -48,9 +48,8 @@ endfor
 
 " ---[ LanguageClient Neovim settings ]----------------------------------------
 if !has('nvim-0.5.0')
-	nnoremap <buffer> <silent> <CR>  :call LanguageClient_contextMenu()<CR>
 	nnoremap <buffer> <silent> gd    :LspDefinition<CR>
-	nnoremap <buffer> <silent> gO    :LspDocumentSymbol
+	nnoremap <buffer> <silent> gO    :LspDocumentSymbol<CR>
 	nnoremap <buffer> <silent> <C-G> :LspReferences<CR>
 	nnoremap <buffer> <silent> <F2>  :LspRename<CR>
 	nnoremap <buffer> <silent> K     :LspHover<CR>
