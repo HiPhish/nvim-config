@@ -75,9 +75,6 @@ if !has('nvim-0.5.0')
 	Plug 'thomasfaingnaert/vim-lsp-snippets'
 	Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 
-	let g:lsp_log_verbose = 1
-	let g:lsp_log_file = expand('~/vim-lsp.log')
-
 	autocmd User lsp_setup call lsp#register_server({
 		\ 'name': 'eclipse.jdt.ls',
 		\ 'cmd': [
