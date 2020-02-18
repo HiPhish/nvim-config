@@ -128,10 +128,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'MarcWeber/vim-addon-local-vimrc'
 let g:local_vimrc = {'names':['.vimrc', 'vimrc', 'rc.vim']}
 
-" Editor config: editor-agnostic configuration
-Plug 'editorconfig/editorconfig-vim'    " EditorConfig support
-let g:EditorConfig_exclude_patterns = ['scp://.*', 'fugitive://.*']
-
 " FZF, the fuzzy finder
 Plug 'junegunn/fzf'
 let g:fzf_layout = {'down': '~30%'}
