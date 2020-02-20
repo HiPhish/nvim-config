@@ -199,6 +199,7 @@ let g:NERDTreeMouseMode = 2  " Single-click for directories
 
 " File system browser
 Plug 'justinmk/vim-dirvish'
+nnoremap <silent> <C-j> :execute "Dirvish" expand('%:h')<CR>
 " Disable NetRW, Dirvish will take its place
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
