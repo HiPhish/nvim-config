@@ -61,6 +61,6 @@ endif
 
 
 " ---[ vim-test integration ]--------------------------------------------------
-if filereadable('build.gradle')
-    let test#java#runner = 'gradletest'
+if filereadable('build.gradle') && !has_key(g:, 'test#java#runner')
+   	let test#java#runner = 'gradletest'
 endif
