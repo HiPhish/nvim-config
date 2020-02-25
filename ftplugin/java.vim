@@ -53,7 +53,7 @@ if !has('nvim-0.5.0')
 	nnoremap <buffer> <silent> <C-G> :LspReferences<CR>
 	nnoremap <buffer> <silent> <F2>  :LspRename<CR>
 	nnoremap <buffer> <silent> K     :LspHover<CR>
-	nnoremap <buffer> <silent> <C-R> :LspCodeAction<CR>
+	nnoremap <buffer> <silent> <CR>  :LspCodeAction<CR>
 else
 	nnoremap <buffer> <silent> K :lua vim.lsp.buf.hover()<CR>
 	nnoremap <buffer> <silent> gd :lua vim.lsp.buf.definition()<CR>
