@@ -75,9 +75,7 @@ if !has('nvim-0.5.0')
 	Plug 'thomasfaingnaert/vim-lsp-snippets'
 	Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 
-	autocmd User lsp_setup call lsp#register_server({
-		\ 'name': 'eclipse.jdt.ls',
-		\ 'cmd': [
+	let s:eclipse_jdt_ls_args = [
 			\ 'java',
 			\ '-Declipse.application=org.eclipse.jdt.ls.core.id1',
 			\ '-Dosgi.bundles.defaultStartLevel=4',
@@ -90,8 +88,20 @@ if !has('nvim-0.5.0')
 			\ '-configuration',
 			\ expand('~/.bin/eclipse.jdt.ls/config_linux'),
 			\ '-data',
-			\ expand('~/.local/share/eclipse/workspace/').fnamemodify(getcwd(), ':t')
-		\ ],
+			\ expand('~/.local/share/eclipse/workspace/').fnamemodify(getcwd(), ':t'),
+		\ ]
+	if exists('$JAVA_HOME') && matchstr($JAVA_HOME, '\v\d+$') != '8'
+		call extend(s:eclipse_jdt_ls_args, [
+			\ '--add-modules=ALL-SYSTEM',
+			\ '--add-opens',
+			\ 'java.base/java.util=ALL-UNNAMED',
+			\ '--add-opens',
+			\ 'java.base/java.lang=ALL-UNNAMED'
+		\ ])
+	endif
+	autocmd User lsp_setup call lsp#register_server({
+		\ 'name': 'eclipse.jdt.ls',
+		\ 'cmd': s:eclipse_jdt_ls_args,
 		\ 'whitelist': ['java'],
 	\ })
 
