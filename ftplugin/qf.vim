@@ -36,11 +36,11 @@ nnoremap <buffer> o <CR>
 
 " Get the file type of the associated window
 function! s:associated_ft() abort
-    let l:win_ids = get(gettabinfo(tabpagenr())[0], 'windows', {})
-    let l:loc_id = win_getid()
+	let l:win_ids = get(gettabinfo(tabpagenr())[0], 'windows', {})
+	let l:loc_id = win_getid()
 	let l:Predicate = {_,v -> get(getloclist(v, {'winid': 0}), 'winid', 0) ==# l:loc_id && v !=# l:loc_id }
-    let l:win_id = get(filter(l:win_ids, l:Predicate), 0, 0)
-    return getbufvar(winbufnr(l:win_id), '&filetype', '')
+	let l:win_id = get(filter(l:win_ids, l:Predicate), 0, 0)
+	return getbufvar(winbufnr(l:win_id), '&filetype', '')
 endfunction
 
 " Automatically close the location list window for the following parent window
