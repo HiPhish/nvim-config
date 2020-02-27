@@ -48,12 +48,13 @@ endfor
 
 " ---[ LanguageClient Neovim settings ]----------------------------------------
 if !has('nvim-0.5.0')
-	nnoremap <buffer> <silent> gd    :LspDefinition<CR>
-	nnoremap <buffer> <silent> gO    :LspDocumentSymbol<CR>
-	nnoremap <buffer> <silent> <C-G> :LspReferences<CR>
-	nnoremap <buffer> <silent> <F2>  :LspRename<CR>
-	nnoremap <buffer> <silent> K     :LspHover<CR>
-	nnoremap <buffer> <silent> <CR>  :LspCodeAction<CR>
+	nmap <buffer> gd    <plug>(lsp-definition)
+	nmap <buffer> gD    <plug>(lsp-peek-definition)
+	nmap <buffer> gO    <plug>(lsp-document-symbol)
+	nmap <buffer> <C-G> <plug>(lsp-references)
+	nmap <buffer> <F2>  <plug>(lsp-rename)
+	nmap <buffer> K     <plug>(lsp-hover)
+	nmap <buffer> <CR>  <plug>(lsp-code-action)
 else
 	nnoremap <buffer> <silent> K :lua vim.lsp.buf.hover()<CR>
 	nnoremap <buffer> <silent> gd :lua vim.lsp.buf.definition()<CR>
