@@ -19,6 +19,12 @@ autocmd User lsp_setup call lsp#register_server({
 
 
 " ===[ Java ]==================================================================
+function! s:get_java_version()
+	let l:version = matchstr(systemlist(['java', '-version'])[0], '\v\".*\"')
+	let l:version = matchstr(l:version, '\v\d+')
+	return l:version + 0  " Convert to number
+endfunction
+
 let s:eclipse_jdt_ls_args = [
 		\ 'java',
 		\ '-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -34,7 +40,8 @@ let s:eclipse_jdt_ls_args = [
 		\ '-data',
 		\ expand('~/.local/share/eclipse/workspace/').fnamemodify(getcwd(), ':t'),
 	\ ]
-if exists('$JAVA_HOME') && matchstr($JAVA_HOME, '\v\d+$') != '8'
+
+if s:get_java_version() > 1
 	call extend(s:eclipse_jdt_ls_args, [
 		\ '--add-modules=ALL-SYSTEM',
 		\ '--add-opens',
