@@ -70,9 +70,7 @@ Plug '~/Developer/vim/ncm2-vlime/'
 " ===[ Language Server Protocol ]==============================================
 if !has('nvim-0.5.0')
 	Plug 'prabirshrestha/async.vim'
-	" https://github.com/prabirshrestha/vim-lsp/issues/
-	" Fix commit until #805 and #796 are fxed
-	Plug 'prabirshrestha/vim-lsp', {'commit': '5f8f3fbeb7349fba53cb69fb60b9068de396a2f6'}
+	Plug 'prabirshrestha/vim-lsp'
 	Plug 'ncm2/ncm2-vim-lsp'
 	Plug 'thomasfaingnaert/vim-lsp-snippets'
 	Plug 'thomasfaingnaert/vim-lsp-ultisnips'
