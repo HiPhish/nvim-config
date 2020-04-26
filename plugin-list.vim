@@ -202,6 +202,11 @@ au BufReadPost,BufNewFile vlime* setlocal nonumber nospell
 Plug '~/Developer/vim/quicklisp.nvim/'
 
 " Java
+if isdirectory(expand('~/Developer/vim/gradle.nvim/'))
+	Plug '~/Developer/vim/gradle.nvim/', {'do': 'gradle wrapper && ./gradlew install'}
+else
+	Plug 'https://gitlab.com/HiPhish/gradle.nvim', {'do': 'gradle wrapper && ./gradlew install'}
+endif
 " Use my NCM2 completion fork until it gets implemented and merged upstream
 " Plug 'HiPhish/Comrade', {'branch': 'ncm2'}
 
