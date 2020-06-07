@@ -230,6 +230,9 @@ Plug 'wlangstroth/vim-racket'
 " Scheme
 Plug '~/Developer/vim/guile.vim'
 
+" Vala
+Plug 'arrufat/vala.vim'
+
 
 " ===[ Colour schemes ]========================================================
 Plug 'arakashic/chromatica.nvim'  " Asynchronous clang-based syntax highlighting
