@@ -139,7 +139,7 @@ map <silent>sc <Plug>(operator-surround-replace)
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}  " Colour preview
 let g:Hexokinase_virtualText = '⬤'
 let g:Hexokinase_ftAutoload = ['vim', 'css', 'conf', 'zathura']
-let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba', 'colour_names']
+let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba']
 
 " Colour picker
 Plug 'KabbAmine/vCoolor.vim'
