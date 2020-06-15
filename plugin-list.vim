@@ -29,9 +29,6 @@
 " }}}
 
 " ===[ Neovim ]================================================================
-if has('nvim-0.5.0')
-	Plug 'neovim/nvim-lsp'
-endif
 
 
 " ===[ Tim Pope ]==============================================================
@@ -71,9 +68,11 @@ Plug '~/Developer/vim/ncm2-vlime/'
 if !has('nvim-0.5.0')
 	Plug 'prabirshrestha/async.vim'
 	Plug 'prabirshrestha/vim-lsp'
-	Plug 'ncm2/ncm2-vim-lsp'
+	Plug 'HiPhish/ncm2-vim-lsp', {'branch': 'fix'}
 	Plug 'thomasfaingnaert/vim-lsp-snippets'
 	Plug 'thomasfaingnaert/vim-lsp-ultisnips'
+else
+	Plug 'neovim/nvim-lsp'
 endif
 
 
