@@ -91,7 +91,10 @@ local config = {
 		log_level = vim.lsp.protocol.MessageType.Warning;
 		settings = {};
 		capabilities = capabilities;
-	};
+	},
+	docs = {
+		description = "Eclipse JDT language server"
+	}
 }
 
 configs.jdt_ls = config
