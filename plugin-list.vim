@@ -40,28 +40,45 @@ Plug 'tpope/vim-characterize'  " Better display of character character codes
 
 
 " ===[ Auto-Completion ]=======================================================
-Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
-autocmd BufEnter     * call ncm2#enable_for_buffer()
-autocmd TextChangedI * call ncm2#auto_trigger()
+if has('nvim-0.5.0')
+	Plug 'haorenW1025/completion-nvim'
+	set completeopt=menuone,noinsert,noselect
+	let g:completion_enable_snippet = 'UltiSnips'
+	let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+	let g:completion_matching_ignore_case = 1
+	Plug 'hrsh7th/vim-vsnip'
+	Plug 'hrsh7th/vim-vsnip-integ'
+	imap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
+	smap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
+	imap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
+	smap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
+else
+	Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
+	autocmd BufEnter     * call ncm2#enable_for_buffer()
+	autocmd TextChangedI * call ncm2#auto_trigger()
+endif
 
 " ---[ NCM2 completion sources ]-----------------------------------------------
-" General
-Plug 'ncm2/float-preview.nvim'
-let g:float_preview#docked = 0
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-bufword'
-" Snippets
-Plug 'ncm2/ncm2-ultisnips' | let g:UltiSnipsEditSplit = 'context'
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-" Programming language
-Plug 'ncm2/ncm2-cssomni'
-Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
-Plug 'ncm2/ncm2-pyclang'
-let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang.so.1'
-let g:ncm2_pyclang#args_file_path = ['.clang_complete']
-Plug '~/Developer/vim/ncm2-vlime/'
+if has('nvim-0.5.0')
+else
+	" General
+	Plug 'ncm2/float-preview.nvim'
+	let g:float_preview#docked = 0
+	Plug 'ncm2/ncm2-path'
+	Plug 'ncm2/ncm2-bufword'
+	" Snippets
+	Plug 'ncm2/ncm2-ultisnips' | let g:UltiSnipsEditSplit = 'context'
+	inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+	" Programming language
+	Plug 'ncm2/ncm2-cssomni'
+	Plug 'ncm2/ncm2-jedi'
+	Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+	Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
+	Plug 'ncm2/ncm2-pyclang'
+	let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang.so.1'
+	let g:ncm2_pyclang#args_file_path = ['.clang_complete']
+	Plug '~/Developer/vim/ncm2-vlime/'
+endif
 
 
 " ===[ Language Server Protocol ]==============================================
