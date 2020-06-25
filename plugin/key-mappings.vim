@@ -44,7 +44,6 @@ nnoremap ; :
 noremap ^ §
 noremap ° ±
 noremap ! !
-noremap " @
 noremap § #
 noremap $ $
 noremap % %
@@ -69,7 +68,6 @@ noremap Ö ;
 noremap ä '
 noremap Ä "
 noremap # \
-noremap ' \|
 
 noremap , ,
 noremap ; <
