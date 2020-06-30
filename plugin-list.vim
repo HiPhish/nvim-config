@@ -43,15 +43,31 @@ Plug 'tpope/vim-characterize'  " Better display of character character codes
 if has('nvim-0.5.0')
 	Plug 'haorenW1025/completion-nvim'
 	set completeopt=menuone,noinsert,noselect
+	augroup completion_nvim
+    	autocmd BufEnter * lua require'completion'.on_attach()
+	augroup END
 	let g:completion_enable_snippet = 'UltiSnips'
 	let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 	let g:completion_matching_ignore_case = 1
+	let g:completion_trigger_keyword_length = 1
+	let g:completion_auto_change_source = 1
+	let g:completion_chain_complete_list = {
+		\ 'default': [
+			\ {'complete_items': ['snippet', 'lsp', 'path']}
+		\ ], 
+		\ 'lisp': [
+			\ {'complete_items': ['snippet', 'vlime', 'path']}
+		\ ]
+	\ }
+
 	Plug 'hrsh7th/vim-vsnip'
 	Plug 'hrsh7th/vim-vsnip-integ'
 	imap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
 	smap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
 	imap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 	smap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
+
+	Plug '~/Developer/vim/completion-nvim-vlime/'
 else
 	Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
 	autocmd BufEnter     * call ncm2#enable_for_buffer()
