@@ -2,4 +2,5 @@ autoload/plug.vim
 autoload/plug.vim.old
 rplugin
 spell/*.spl
+spell/*.sug
 doc/tags
