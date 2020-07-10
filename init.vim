@@ -115,3 +115,9 @@ endif
 set background=dark
 let g:neosolarized_italic = v:true
 highlight link MsgSeparator VertSplit
+
+if has('nvim-0.5.0')
+	" Require LSP settings after setting the colour scheme, or else colours
+	" won't work properly.
+	lua require 'lsp-config'
+endif
