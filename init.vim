@@ -86,7 +86,7 @@ set softtabstop=0 shiftwidth=4 tabstop=4
 
 " Spell checking (in comments)
 set spell
-set spelllang=en
+set spelllang=en,technical
 
 " Use Ack instead of Grep
 set grepprg=ack\ --nogroup\ --column\ $*
