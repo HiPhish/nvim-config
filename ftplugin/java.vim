@@ -26,7 +26,9 @@
 "| |_| | (_| |\ V / (_| |
 " \___/ \__,_| \_/ \__,_|
 
-set textwidth=100
+if !&textwidth
+	setlocal textwidth=100
+endif
 
 " ---[ Build system detection ]------------------------------------------------
 " Known build system specifications in decreasing order of relevance; a
