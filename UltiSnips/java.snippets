@@ -10,6 +10,16 @@ try {
 }
 endsnippet
 
+snippet twr "Try with resources"
+try (${1:Resource})
+{
+	$2${VISUAL}
+} catch (${3:Exception} ${4:e}) {
+	${5:e.printStackTrace();}
+}
+endsnippet
+	
+
 snippet mthd "Method definition" b
 ${1:private} ${2:void} ${3:name}($4) {
 	$0
