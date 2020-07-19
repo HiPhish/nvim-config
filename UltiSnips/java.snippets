@@ -1,5 +1,13 @@
+snippet f "Class field definition"
+${1:private} ${2:var} ${3:name} = ${4:value};
+endsnippet
+
+snippet v "Variable definition"
+${1:var} ${2:name} = ${3:value};
+endsnippet
+
 snippet ims "import static"
-import static $0
+import static ${0:package}
 endsnippet
 
 snippet try "try/catch" b
