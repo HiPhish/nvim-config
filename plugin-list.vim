@@ -68,6 +68,8 @@ if has('nvim-0.5.0')
 	smap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 
 	Plug '~/Developer/vim/completion-nvim-vlime/'
+
+	Plug 'mfussenegger/nvim-jdtls'
 else
 	Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
 	autocmd BufEnter     * call ncm2#enable_for_buffer()

@@ -3,6 +3,7 @@
 -- https://github.com/neovim/nvim-lsp/issues/41
 
 local lsp = require 'vim/lsp'
+local api = vim.api
 local nvim_lsp = require 'nvim_lsp'
 local configs = require'nvim_lsp/configs'
 local util = require'nvim_lsp/util'
@@ -67,7 +68,7 @@ local cmd = {
 	'-configuration',
 	install_dir .. 'config_linux',
 	'-data',
-	workspace
+	workspace,
 }
 
 if get_jdk_version() > 1 then
@@ -83,17 +84,25 @@ if get_jdk_version() > 1 then
 	end
 end
 
+local status_callback = vim.schedule_wrap(function(_, _, result)
+	api.nvim_command(string.format(':echohl ModeMsg | echo "%s" | echohl None', result.message))
+end)
+
+
 local config = {
 	default_config = util.utf8_config {
 		cmd = cmd,
-		filetypes = {'java'};
-		root_dir = root_dir;
-		log_level = vim.lsp.protocol.MessageType.Warning;
-		settings = {};
-		capabilities = capabilities;
+		filetypes = {'java'},
+		root_dir = root_dir,
+		log_level = vim.lsp.protocol.MessageType.Warning,
+		settings = {},
+		capabilities = capabilities,
+		callbacks = {
+			['language/status'] = status_callback
+		},
 	},
 	docs = {
-		description = "Eclipse JDT language server"
+		description = "Eclipse JDT language server",
 	}
 }
 
