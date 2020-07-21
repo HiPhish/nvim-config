@@ -64,7 +64,7 @@ else
 	nnoremap <buffer> <silent> gD    :lua vim.lsp.buf.declaration()<CR>
 	nnoremap <buffer> <silent> gO    :lua vim.lsp.buf.document_symbol()<CR>
 	nnoremap <buffer> <silent> g?    :lua vim.lsp.util.show_line_diagnostics()<CR>
-	nnoremap <buffer> <silent> <C-G> :lua vim.lsp.buf.vim.lsp.buf.references()<CR>
+	nnoremap <buffer> <silent> <C-G> :lua vim.lsp.buf.references()<CR>
 	nnoremap <buffer> <silent> <F2>  :lua vim.lsp.buf.rename()<CR>
 	nnoremap <buffer> <silent> K     :lua vim.lsp.buf.hover()<CR>
 	nnoremap <buffer> <silent> <CR>  :lua require'jdtls'.code_action()<CR>
