@@ -1,9 +1,25 @@
-snippet f "Class field definition"
+snippet f "Instance field definition"
 ${1:private} ${2:var} ${3:name} = ${4:value};
+endsnippet
+
+snippet ff "Instance constant definition"
+${1:private} final ${2:var} ${3:name} = ${4:value};
+endsnippet
+
+snippet sf "Class field definition"
+static ${1:private} ${2:var} ${3:name} = ${4:value};
+endsnippet
+
+snippet sff "Class constant definition"
+static ${1:private} final ${2:var} ${3:name} = ${4:value};
 endsnippet
 
 snippet v "Variable definition"
 ${1:var} ${2:name} = ${3:value};
+endsnippet
+
+snippet fv "Constant definition"
+final ${1:var} ${2:name} = ${3:value};
 endsnippet
 
 snippet ims "import static"
