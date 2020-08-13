@@ -51,5 +51,5 @@ cnoremap <C-N> <Down>
 " Shortcut to rapidly toggle 'set list'
 nnoremap <silent> <leader>l :set list!<CR>
 
-" Turn off search highlights using <CR>
-nnoremap <silent> <leader>hl :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+" Turn off search highlights when refreshing the screen
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
