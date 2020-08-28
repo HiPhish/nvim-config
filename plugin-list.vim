@@ -233,6 +233,9 @@ Plug 'l04m33/vlime', {'rtp': 'vim'}
 au BufReadPost,BufNewFile vlime* setlocal nonumber nospell
 Plug '~/Developer/vim/quicklisp.nvim/'
 
+" GDScript (Godot)
+Plug 'habamax/vim-godot'
+
 " Java
 if isdirectory(expand('~/Developer/vim/gradle.nvim/'))
 	Plug '~/Developer/vim/gradle.nvim/', {'do': 'gradle wrapper && ./gradlew install'}
