@@ -1,3 +1,4 @@
+local nvim_lsp = require 'nvim_lsp'
 local util = require 'vim.lsp.util'
 
 ---[ OVERRIDE CLIENT FUNCTIONS ]-----------------------------------------------
@@ -26,7 +27,6 @@ end
 
 
 ---[ ECLIPSE.JDT.LS ]----------------------------------------------------------
-local nvim_lsp = require 'nvim_lsp'
 
 -- Load the server configuration into the global table as a side effect
 require 'lsp_config/jdt_ls'
@@ -59,3 +59,7 @@ jdt_ls_config.capabilities.textDocument.codeAction = {
 jdt_ls_config.init_options.extendedClientCapabilities.classFileContentsSupport = false
 
 nvim_lsp.jdt_ls.setup(jdt_ls_config)
+
+
+---[ GODOT GAME ENGINE ]-------------------------------------------------------
+nvim_lsp.gdscript.setup{}
