@@ -14,11 +14,11 @@ local function expand(expr, nosuf, list)
 	return vim.call('expand', expr, nosuf, list)
 end
 
+--- Attempts to find the root directory of the project based on the current
+--  file name.
 local function root_dir(fname)
 	return nvim_lsp.util.find_git_ancestor(fname)
-		or util.root_pattern('build.gradle')
-		or util.root_pattern('pom.xml')
-		or util.root_pattern('build.xml')
+		or util.root_pattern('build.gradle', 'pom.xml', 'build.xml')(fname)
 		or vim.call('getcwd')
 end
 
