@@ -107,7 +107,7 @@ if !has('nvim-0.5.0')
 	Plug 'thomasfaingnaert/vim-lsp-snippets'
 	Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 else
-	Plug 'neovim/nvim-lsp'
+	Plug 'neovim/nvim-lspconfig'
 endif
 
 
