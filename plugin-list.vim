@@ -222,9 +222,6 @@ Plug '~/Developer/vim/awk-ward.nvim/'
 " C
 Plug 'Rip-Rip/clang_complete'
 
-" C#
-" Plug 'OmniSharp/omnisharp-vim'
-
 " Common Lisp
 " My quicklisp is installed to a non-standard location
 let g:lisp_host_quicklisp_setup = '~/.local/share/quicklisp/setup.lisp'
