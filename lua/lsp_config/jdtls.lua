@@ -73,7 +73,8 @@ if get_jdk_version() > 1 then
 	end
 end
 
--- [ EXPORTED FUNCTIONS ] -----------------------------------------------------
+
+--- [ EXPORTED FUNCTIONS ]-----------------------------------------------------
 -- These functions will be used in the configuration
 
 --- Root directory detection.
@@ -127,7 +128,6 @@ local config = {
 	init_options = vim.tbl_extend('keep', init_options, default.init_options or {}),
 	log_level = vim.lsp.protocol.MessageType.Warning,
 	callbacks = vim.tbl_extend('keep', default.callbacks or {}, callbacks),
-	on_attach = require'completion'.on_attach,
 }
 
 -- Override some of the configuration settings

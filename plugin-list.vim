@@ -223,7 +223,7 @@ Plug '~/Developer/vim/awk-ward.nvim/'
 Plug 'Rip-Rip/clang_complete'
 
 " C#
-Plug 'OmniSharp/omnisharp-vim'
+" Plug 'OmniSharp/omnisharp-vim'
 
 " Common Lisp
 " My quicklisp is installed to a non-standard location
