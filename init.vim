@@ -47,11 +47,6 @@ call plug#begin(stdpath('data').'/site-packages/')
 execute 'source ' . stdpath('config') . '/plugin-list.vim'
 call plug#end()
 
-if has('nvim-0.5.0')
-	execute 'luafile ' .. stdpath('config') .. '/init.lua'
-endif
-
-
 " Vim settings
 set listchars=tab:├─,space:·,trail:•,eol:¬,extends:…,precedes:…
 set fillchars=msgsep:─
@@ -116,8 +111,9 @@ set background=dark
 let g:neosolarized_italic = v:true
 highlight link MsgSeparator VertSplit
 
-if has('nvim-0.5.0')
-	" Require LSP settings after setting the colour scheme, or else colours
-	" won't work properly.
-	lua require 'lsp-config'
+
+" ---[ LUA CONFIGURATION ]-----------------------------------------------------
+" Use init.lua as an additional init file after sourcing init.vim
+if filereadable(stdpath('config') .. '/init.lua')
+	execute 'luafile ' .. stdpath('config') .. '/init.lua'
 endif
