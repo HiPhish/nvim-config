@@ -113,6 +113,10 @@ highlight link MsgSeparator VertSplit
 
 
 " ---[ LUA CONFIGURATION ]-----------------------------------------------------
+if !has('nvim-0.5')
+	finish
+endif
+
 " Use init.lua as an additional init file after sourcing init.vim
 if filereadable(stdpath('config') .. '/init.lua')
 	execute 'luafile ' .. stdpath('config') .. '/init.lua'
