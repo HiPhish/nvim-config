@@ -84,6 +84,35 @@ nvim_lsp.gdscript.setup {
 }
 
 
+--- [ KOTLIN LANGUAGE SERVER ]-------------------------------------------------
+do
+	local util = require'nvim_lsp.util'
+
+	-- The presence of one of these files indicates a project root directory
+	local root_files = {
+		'build.xml',
+		'pom.xml',
+		'build.gradle',
+		'build.gradle.kts',
+		'settings.gradle',
+		'settings.gradle.kts',
+	}
+
+	-- The custom configuration
+	local config = {
+		cmd = {
+			vim.loop.os_homedir()
+				.. '/.cache/nvim/nvim_lsp/'
+				.. 'kotlin-language-server/server/bin/kotlin-language-server',
+		},
+    	root_dir = util.root_pattern(unpack(root_files)),
+		on_attach = on_attach,
+	}
+
+	nvim_lsp.kotlin_language_server.setup(config)
+end
+
+
 --- [ OMNISHARP ] -------------------------------------------------------------
 nvim_lsp.omnisharp.setup {
 	on_attach = on_attach,
