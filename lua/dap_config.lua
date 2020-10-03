@@ -2,6 +2,15 @@ local dap = require 'dap'
 dap.set_log_level('trace')
 
 
+--- [ KOTLIN DEBUG ADAPTER ]---------------------------------------------------
+dap.adapters.kotlin_da = {
+	type = 'executable',
+	command = vim.fn.stdpath('cache')
+		.. '/nvim-dap/kotlin-debug-adapter/adapter/bin/kotlin-debug-adapter',
+	args = {}
+}
+
+
 --- [ PYTHON ] ----------------------------------------------------------------
 dap.adapters.python = {
 	type = 'executable',
@@ -28,14 +37,14 @@ dap.configurations.python = {
 do
 	local opts = {noremap = true, silent = true}
 	local mappings = {
-		{'<F4>' , '<cmd>lua require"dap".continue()<CR>'},
 		{'<F3>' , '<cmd>lua require"dap".toggle_breakpoint()<CR>'},
+		{'<F4>' , '<cmd>lua require"dap".continue()<CR>'},
     	{'<F10>', '<cmd>lua require"dap".step_over()<CR>'},
     	{'<F11>', '<cmd>lua require"dap".step_into()<CR>'},
     	{'<F12>', '<cmd>lua require"dap".step_out()<CR>'},
 	}
 
-	for mapping in mappings do
+	for _, mapping in pairs(mappings) do
 		local lhs = mapping[1]
 		local rhs = mapping[2]
 		vim.fn.nvim_buf_set_keymap(0, 'n', lhs, rhs, opts)
