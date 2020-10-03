@@ -117,7 +117,10 @@ local callbacks = {
 }
 
 local init_options = {
-	extendedClientCapabilities = jdtls.extendedClientCapabilities;
+	extendedClientCapabilities = jdtls.extendedClientCapabilities,
+	bundles = {
+		vim.fn.glob("~/.cache/nvim/nvim-dap/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"),
+	},
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -112,8 +112,12 @@ endif
 
 
 " ===[ Debug Adapter Protocol ]================================================
-let g:vimspector_enable_mappings = 'HUMAN'
-Plug 'puremourning/vimspector'
+if has('nvim-0.5')
+	Plug 'mfussenegger/nvim-dap'
+else
+	let g:vimspector_enable_mappings = 'HUMAN'
+	Plug 'puremourning/vimspector'
+endif
 
 
 " ===[ Enhance Vim ]===========================================================

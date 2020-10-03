@@ -72,6 +72,7 @@ do
 		if old_on_attach then
 			old_on_attach(client, buffer)
 		end
+		require('jdtls').setup_dap()
 	end
 
 	nvim_lsp.jdtls.setup(config)
