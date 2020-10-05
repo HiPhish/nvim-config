@@ -1,9 +1,15 @@
 local dap = require 'dap'
 dap.set_log_level('trace')
 
+local adapters       = dap.adapters
+local configurations = dap.configurations
+
+--- [ C FAMILY ]---------------------------------------------------------------
+require 'dap_config.lldb'  -- Defines adapter and sets up command
+
 
 --- [ KOTLIN DEBUG ADAPTER ]---------------------------------------------------
-dap.adapters.kotlin_da = {
+adapters.kotlin_da = {
 	type = 'executable',
 	command = vim.fn.stdpath('cache')
 		.. '/nvim-dap/kotlin-debug-adapter/adapter/bin/kotlin-debug-adapter',
@@ -12,23 +18,20 @@ dap.adapters.kotlin_da = {
 
 
 --- [ PYTHON ] ----------------------------------------------------------------
-dap.adapters.python = {
+adapters.python = {
 	type = 'executable',
 	command = '/usr/bin/python3',
 	args = {'-m', 'debugpy.adapter'}
 }
 
 
-dap.configurations.python = {
+configurations.python = {
 	{
 		type = 'python',
 		request = 'launch',
 		name = 'Launch file',
 		program = "${file}",
-		pythonPath = function(adapter)
-			-- Should be able to handle virtual environment as well
-			return '/usr/bin/python3'
-		end,
+		console = 'internalConsole',
 	}
 }
 
@@ -38,10 +41,10 @@ do
 	local opts = {noremap = true, silent = true}
 	local mappings = {
 		{'<F3>' , '<cmd>lua require"dap".toggle_breakpoint()<CR>'},
-		{'<F4>' , '<cmd>lua require"dap".continue()<CR>'},
-    	{'<F10>', '<cmd>lua require"dap".step_over()<CR>'},
-    	{'<F11>', '<cmd>lua require"dap".step_into()<CR>'},
-    	{'<F12>', '<cmd>lua require"dap".step_out()<CR>'},
+		{'<F4>' , '<cmd>lua require"dap".continue()<CR>'         },
+    	{'<F10>', '<cmd>lua require"dap".step_over()<CR>'        },
+    	{'<F11>', '<cmd>lua require"dap".step_into()<CR>'        },
+    	{'<F12>', '<cmd>lua require"dap".step_out()<CR>'         },
 	}
 
 	for _, mapping in pairs(mappings) do
