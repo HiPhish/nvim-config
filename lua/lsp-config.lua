@@ -106,6 +106,15 @@ do
 				.. '/.cache/nvim/nvim_lsp/'
 				.. 'kotlin-language-server/server/bin/kotlin-language-server',
 		},
+		settings = {
+			kotlin = {
+				compiler = {
+					jvm = {
+						target = '1.8'  -- Required for Spring Boot projects
+					}
+				}
+			},
+		},
     	root_dir = util.root_pattern(unpack(root_files)),
 		on_attach = on_attach,
 	}
