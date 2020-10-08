@@ -9,12 +9,7 @@ require 'dap_config.lldb'  -- Defines adapter and sets up command
 
 
 --- [ KOTLIN DEBUG ADAPTER ]---------------------------------------------------
-adapters.kotlin_da = {
-	type = 'executable',
-	command = vim.fn.stdpath('cache')
-		.. '/nvim-dap/kotlin-debug-adapter/adapter/bin/kotlin-debug-adapter',
-	args = {}
-}
+require 'dap_config.kotlin'
 
 
 --- [ PYTHON ] ----------------------------------------------------------------
