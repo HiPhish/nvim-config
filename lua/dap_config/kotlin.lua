@@ -20,9 +20,9 @@ local function configure(main_class, project_root)
 	end
 
 	local config = {
-		type = kotlin,
+		type = 'kotlin_da',
 		request = 'launch',
-		name = main_class
+		name = main_class,
 		mainClass = main_class,
 		projectRoot = project_root or vim.fn.getcwd(),
 	}
