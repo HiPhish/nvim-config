@@ -30,6 +30,12 @@ if !&textwidth
 	setlocal textwidth=100
 endif
 
+" Automatically continue comments on line break or new line insertion
+setlocal formatoptions+=ro
+
+" Single-line comments and multi-line comment
+setlocal comments=://,s1:/*,mb:*,ex:*/
+
 
 " ---[ Build system detection ]------------------------------------------------
 " Known build system specifications in decreasing order of relevance; a
