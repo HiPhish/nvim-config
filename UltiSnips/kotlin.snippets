@@ -9,3 +9,19 @@ snippet /** "Multi-line comment"
  * $0
  */
 endsnippet
+
+snippet val "Immutable value (type inferred)"
+	val ${1:name} = $0
+endsnippet
+
+snippet tval "Immutable value (explicit type)"
+	val ${1:name}: ${2:String} = $0
+endsnippet
+
+snippet var "Mutable variable (type inferred)"
+	var ${1:name} = $0
+endsnippet
+
+snippet tvar "Mutable variable (explicit type)"
+	var ${1:name}: ${2:String} = $0
+endsnippet
