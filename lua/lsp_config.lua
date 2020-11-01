@@ -123,6 +123,15 @@ do
 end
 
 
+--- [ LUA LANGUAGE SERVER ]----------------------------------------------------
+do
+	local config = require'lsp_config.sumneko_lua'
+	config.on_attach = on_attach
+
+	nvim_lsp.sumneko_lua.setup(config)
+end
+
+
 --- [ OMNISHARP ] -------------------------------------------------------------
 nvim_lsp.omnisharp.setup {
 	on_attach = on_attach,
