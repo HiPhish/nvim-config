@@ -37,6 +37,12 @@ function! s:actions(vargs)
 	lua require'jdtls'.code_action()
 endfunction
 
+" Forcefully stop all clients, restart the current client
+function! s:reset(vargs)
+	lua vim.lsp.stop_client(vim.lsp.get_active_clients())
+	edit
+endfunction
+
 " -----------------------------------------------------------------------------
 function! s:lsp(cmd, ...) abort
 	if luaeval('vim.tbl_count(vim.lsp.buf_get_clients())') < 1
@@ -60,6 +66,7 @@ let s:commands = {
 	\ 'rename': function('s:rename'),
 	\ 'actions': function('s:actions'),
 	\ 'symbols': function('s:symbols'),
+	\ 'reset': function('s:reset'),
 \ }
 
 " Put sub-command completion function here; the sub-command is the key
