@@ -85,6 +85,12 @@ nvim_lsp.gdscript.setup {
 }
 
 
+--- [ HTML ]-------------------------------------------------------------------
+nvim_lsp.html.setup {
+	on_attach = on_attach,
+}
+
+
 --- [ KOTLIN LANGUAGE SERVER ]-------------------------------------------------
 do
 	local util = require'nvim_lsp.util'
