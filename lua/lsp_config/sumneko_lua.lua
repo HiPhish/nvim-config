@@ -15,6 +15,7 @@
 local M = {}
 
 local util = require'nvim_lsp.util'
+local rules = require'lsp_config.sumneko_lua.rules'
 
 
 ---[ Helpers ]-----------------------------------------------------------------
@@ -48,7 +49,7 @@ M.config = {
 			or vim.fn.getcwd()
 	end,
 
-	settings = vim.tbl_deep_extend('force', require'lsp_config.sumneko_lua.settings'.default , settings),
+	settings = rules.apply(),
 }
 
 return M.config

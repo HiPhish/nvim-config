@@ -69,4 +69,5 @@ M.nvim = {
 	}
 }
 
+
 return M
