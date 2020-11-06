@@ -1,6 +1,12 @@
 local settings = require'lsp_config.sumneko_lua.settings'
 
 
+-- [ HELPERS ] ----------------------------------------------------------------
+local function filereadable(fname)
+	return vim.fn.filereadable(fname) ~= 0
+end
+
+
 -- [ TESTS ] ------------------------------------------------------------------
 
 --- Test which will always pass
@@ -10,17 +16,26 @@ end
 
 --- There is a local primary LSP settings file.
 local function has_local_settings_file()
-	return vim.fn.filereadable('lua-lsp.json') ~= 0
+	return filereadable('lua-lsp.json')
 end
 
 --- There is a local secondary LSP settings file.
 local function has_local_extra_file()
-	return vim.fn.filereadable('lua-lsp-extra.json') ~= 0
+	return filereadable('lua-lsp-extra.json')
 end
 
---- Whether the current directory is the Neovim config directory.
+--- The current directory is the Neovim config directory.
 local function is_nvim_conf_dir()
 	return vim.fn.getcwd() == vim.fn.stdpath('config')
+end
+
+--- There exists a `.rockspec` file.
+local function has_rockspec()
+	local specs = vim.fn.glob('*.rockspec', true, true)
+	for _, spec in ipairs(specs) do
+		if filereadable(spec) then return true end
+	end
+	return false
 end
 
 
