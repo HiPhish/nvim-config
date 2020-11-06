@@ -37,6 +37,10 @@ function! s:actions(vargs)
 	lua require'jdtls'.code_action()
 endfunction
 
+function! s:get_clients(varargs)
+	lua print(vim.inspect(vim.lsp.buf_get_clients()))	
+endfunction
+
 " Forcefully stop all clients, restart the current client
 function! s:reset(vargs)
 	lua vim.lsp.stop_client(vim.lsp.get_active_clients())
@@ -67,6 +71,7 @@ let s:commands = {
 	\ 'actions': function('s:actions'),
 	\ 'symbols': function('s:symbols'),
 	\ 'reset': function('s:reset'),
+	\ 'get-clients': function('s:get_clients'),
 \ }
 
 " Put sub-command completion function here; the sub-command is the key
