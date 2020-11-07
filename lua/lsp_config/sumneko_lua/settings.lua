@@ -70,4 +70,14 @@ M.nvim = {
 }
 
 
+--- Load modules from Luarocks directory
+M.luarocks = {
+	Lua = {
+		runtime = {
+			vim.split(vim.fn.systemlist({'luarocks', 'path', '--lr-path'})[1], ';', true)
+		}
+	}
+}
+
+
 return M
