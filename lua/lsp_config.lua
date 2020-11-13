@@ -85,6 +85,15 @@ nvim_lsp.gdscript.setup {
 }
 
 
+--- [ GROOVY ]-----------------------------------------------------------------
+-- Guard until Groovy support gets added to upstream
+if nvim_lsp.groovy then
+	nvim_lsp.groovy.setup {
+		on_attach = on_attach,
+	}
+end
+
+
 --- [ HTML ]-------------------------------------------------------------------
 nvim_lsp.html.setup {
 	on_attach = on_attach,
