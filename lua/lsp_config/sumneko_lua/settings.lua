@@ -74,7 +74,9 @@ M.nvim = {
 M.luarocks = {
 	Lua = {
 		runtime = {
+			vim.fn.executable('luarocks') ~= 0 and
 			vim.split(vim.fn.systemlist({'luarocks', 'path', '--lr-path'})[1], ';', true)
+			or {}
 		}
 	}
 }
