@@ -1,42 +1,5 @@
 local settings = require'lsp_config.sumneko_lua.settings'
-
-
--- [ HELPERS ] ----------------------------------------------------------------
-local function filereadable(fname)
-	return vim.fn.filereadable(fname) ~= 0
-end
-
-
--- [ TESTS ] ------------------------------------------------------------------
-
---- Test which will always pass
-local function always()
-	return true
-end
-
---- There is a local primary LSP settings file.
-local function has_local_settings_file()
-	return filereadable('lua-lsp.json')
-end
-
---- There is a local secondary LSP settings file.
-local function has_local_extra_file()
-	return filereadable('lua-lsp-extra.json')
-end
-
---- The current directory is the Neovim config directory.
-local function is_nvim_conf_dir()
-	return vim.fn.getcwd() == vim.fn.stdpath('config')
-end
-
---- There exists a `.rockspec` file.
-local function has_rockspec()
-	local specs = vim.fn.glob('*.rockspec', true, true)
-	for _, spec in ipairs(specs) do
-		if filereadable(spec) then return true end
-	end
-	return false
-end
+local tests    = require'lsp_config.sumneko_lua.tests'
 
 
 -- [ RULES ] ------------------------------------------------------------------
@@ -49,21 +12,21 @@ end
 --- Rules sorted by order of application.
 local rules = {
 	{
-		test = always,
+		test = tests.always,
 		settings = settings.default,
 		priority = 0,
 	}, {
-		test = has_local_settings_file,
+		test = tests.has_local_settings_file,
 		settings = function ()
 			vim.fn.json_decode(vim.fn.readfile('lua-lsp.json'))
 		end,
 		priority = 3,
 	}, {
-		test = is_nvim_conf_dir,
+		test = tests.is_nvim_conf_dir,
 		settings = settings.nvim,
 		priority = 1,
 	}, {
-		test = has_local_extra_file,
+		test = tests.has_local_extra_file,
 		settings = function ()
 			vim.fn.json_decode(vim.fn.readfile('lua-lsp-extra.json'))
 		end,
