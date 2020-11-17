@@ -1,4 +1,4 @@
-# Copyright (c) 2018 HiPhish
+# Copyright (c) 2020 HiPhish
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,5 +20,17 @@
 
 
 snippet import "Import statement"
-import {${2:identifier}} from ${1:package}
+import {${2:identifier}} from ${1:package};
+endsnippet
+
+snippet var: "Variable definition (typed)"
+var ${1:name}: ${2:type} = ${3:value};
+endsnippet
+
+snippet let: "Variable definition (typed)"
+let ${1:name}: ${2:type} = ${3:value};
+endsnippet
+
+snippet const: "Constant definition (typed)"
+const ${1:name}: ${2:type} = ${3:value};
 endsnippet
