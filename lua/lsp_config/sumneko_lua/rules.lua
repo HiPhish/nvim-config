@@ -22,6 +22,10 @@ local rules = {
 		end,
 		priority = 3,
 	}, {
+		test = tests.has_rockspec,
+		settings = settings.luarocks,
+		priority = 1,
+	}, {
 		test = tests.is_nvim_conf_dir,
 		settings = settings.nvim,
 		priority = 1,
