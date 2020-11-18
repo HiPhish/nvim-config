@@ -20,6 +20,18 @@ local function get_lua_runtime()
     return result;
 end
 
+--- Same as running `luarocks path --lr-path`, but result is a list.
+local function get_luarocks_paths()
+	if vim.fn.executable('luarocks') == 0 then return {} end
+	return vim.split(vim.fn.systemlist({'luarocks', 'path', '--lr-path'})[1], ';', true)
+end
+
+--- Convert a list of paths to a table suitable for `Lua.workspace.library`.
+local function paths_to_library(paths)
+	local result = {}
+	for _, path in ipairs(paths) do result[#result+1] = {[path] = true} end
+	return result
+end
 
 -- [ SETTINGS ]----------------------------------------------------------------
 
@@ -29,9 +41,6 @@ end
 -- this table.
 M.default = {
 	Lua = {
-		runtime = {
-			path = {'?.lua', '?/init.lua', '?/?.lua'}
-		},
 		completion = {
 			callSnippet = 'Both'
 		},
@@ -48,10 +57,6 @@ M.nvim = {
 	Lua = {
 		runtime = {
 			version = 'LuaJIT',
-			path = vim.tbl_flatten {
-				M.default.Lua.runtime.path,
-				vim.split(package.path, ';')
-			},
 		},
 
 		diagnostics = {
@@ -74,10 +79,12 @@ M.nvim = {
 M.luarocks = {
 	Lua = {
 		runtime = {
-			vim.fn.executable('luarocks') ~= 0 and
-			vim.split(vim.fn.systemlist({'luarocks', 'path', '--lr-path'})[1], ';', true)
-			or {}
-		}
+			version = 'Lua 5.3',
+		},
+		workspace = {
+			-- TODO: strip the qutestion mark form the paths
+			library = paths_to_library(get_luarocks_paths())
+		},
 	}
 }
 
