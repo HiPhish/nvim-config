@@ -83,8 +83,10 @@ set spell
 set spelllang=en
 
 " Use Ack instead of Grep
-set grepprg=ack\ --nogroup\ --column\ $*
-set grepformat=%f:%l:%c:%m
+if executable('ack')
+	set grepprg=ack\ --nogroup\ --column\ $*
+	set grepformat=%f:%l:%c:%m
+endif
 
 " ---[ THEME SETTINGS ]--------------------------------------------------------
 augroup colorscheme-overrides
