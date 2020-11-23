@@ -40,10 +40,9 @@ local function get_luarocks_paths()
 	return 
 end
 
-
-
 --- Convert a list of paths to a table suitable for `Lua.workspace.library`.
 local function paths_to_library(paths)
+	paths = paths or {}
 	local result = {}
 	for _, path in ipairs(paths) do result[path] = true end
 	return result
@@ -57,6 +56,7 @@ end
 -- @param patterns
 --   Optional list of patterns to append to each path.
 local function paths_to_require_patterns(paths, patterns)
+	paths = paths or {}
 	patterns = patterns or {'?.lua', '?/init.lua'}
 	local result = {}
 
@@ -68,6 +68,7 @@ local function paths_to_require_patterns(paths, patterns)
 
 	return result
 end
+
 
 -- [ SETTINGS ]----------------------------------------------------------------
 
