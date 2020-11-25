@@ -1,6 +1,33 @@
 --- Various predefined settings for the language server
 local M = {}
 
+-- NOTE
+--
+-- The values of `Lua.runtime.path` and `Lua.workspace.library` are still a
+-- mystery to me. According to the author it works as follows:
+--
+--   - `Lua.runtime.path` is used for `require` and contains the same patterns
+--     as `package.path` in Lua, except as a list table instead of a string
+--   - `Lua.library.workspace` is a table with paths for keys; these paths are
+--     recursively searched for global definitions.
+--
+-- Either his explanation is wrong, or the code does not work properly. The
+-- below values are just me randomly poking at things until everything works,
+-- or at least seems to work.
+--
+-- Here are my findings:
+--
+--   - The directories in `Lua.workspace.library` need to be one level *above*
+--     the directory containing the modules. E.g. for Luarocks use
+--     `~/.luarocks/share/lua` instead of `~/.luarocks/share/lua/5.3`
+--
+--   - The patterns in `Lua.runtime.require` should be the usual patterns (e.g.
+--     `{'?.lua', '?/init.lua}`, except prefixed with the directory missing
+--     from above. E.g. for Luarocks use `{'5.3/?.lua', '5.3/?/init.lua'}`
+--
+-- Any other combination seems to produce either too many (and wrong)
+-- suggestions, or the symbol cannot be resolved.
+
 
 -- [ HELPER FUNCTIONS ]--------------------------------------------------------
 
@@ -10,7 +37,8 @@ local function get_runtime_paths()
     for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
         local lua_path = path .. '/lua/';
         if vim.fn.isdirectory(lua_path) ~= 0 then
-            result[#result + 1] = path
+            -- result[#result + 1] = path
+            result[#result + 1] = lua_path
         end
     end
 
@@ -37,14 +65,15 @@ local function get_luarocks_paths()
 		end
 	end
 
-	return 
+	return result
 end
 
 --- Convert a list of paths to a table suitable for `Lua.workspace.library`.
 local function paths_to_library(paths)
 	paths = paths or {}
 	local result = {}
-	for _, path in ipairs(paths) do result[path] = true end
+	for _, path in ipairs(paths) do result[path .. '/..'] = true end
+	-- for _, path in ipairs(paths) do result[path] = true end
 	return result
 end
 
@@ -94,7 +123,7 @@ M.nvim = {
 	Lua = {
 		runtime = {
 			version = 'LuaJIT',
-			path = paths_to_require_patterns(get_runtime_paths())
+			path = paths_to_require_patterns({'lua/'})
 		},
 
 		diagnostics = {
@@ -118,13 +147,11 @@ M.luarocks = {
 	Lua = {
 		runtime = {
 			version = 'Lua 5.3',
-			-- TODO: add current directory `.` to the paths
-			path = paths_to_require_patterns(get_luarocks_paths())
+			path = paths_to_require_patterns{'5.3/'}
 		},
 
 		workspace = {
-			-- TODO: add current directory `.` to the paths
-			library = paths_to_library(get_runtime_paths())
+			library = paths_to_library(get_luarocks_paths())
 		},
 	}
 }
