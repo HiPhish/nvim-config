@@ -186,9 +186,11 @@ let g:vcoolor_custom_picker = 'kcolorchooser --print'
 inoremap <c-x><c-c> <c-o>:VCoolIns ra<cr>
 
 " A generic debugger front end
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Dependency of vim-vebugger
-Plug 'idanarye/vim-vebugger', {'branch': 'develop'}  " Debugging
-let g:vebugger_leader='<leader>d'
+if !has('nvim-0.5')
+	Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Dependency of vim-vebugger
+	Plug 'idanarye/vim-vebugger', {'branch': 'develop'}  " Debugging
+	let g:vebugger_leader='<leader>d'
+endif
 
 " My own plugins
 Plug '~/Developer/vim/info.vim/'
