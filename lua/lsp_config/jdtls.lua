@@ -7,11 +7,9 @@
 --
 -- https://github.com/mfussenegger/nvim-jdtls
 
-local lsp      = require'vim/lsp'
-local nvim_lsp = require'nvim_lsp'
-local util     = require'nvim_lsp/util'
-local jdtls    = require'jdtls'
-local api      = vim.api
+local util  = require'lspconfig'.util
+local jdtls = require'jdtls'
+local api   = vim.api
 
 
 ---[ HELPER FUNCTIONS ]--------------------------------------------------------
@@ -34,8 +32,14 @@ end
 --   A function of zero arguments (a thunk) which will return the path to the
 --   root directory.
 local function root_dir(fname)
+	local root_files = {
+		'pom.xml',                                 -- Ant
+		'build.xml',                               -- Maven
+		'settings.gradle', 'settings.gradle.kts',  -- Gradle, multi-project
+		'build.gradle', 'build.gradle.kts'         -- Gradle, single project
+	}
 	return util.find_git_ancestor(fname)
-		or util.root_pattern('build.gradle', 'pom.xml', 'build.xml')(fname)
+		or util.root_pattern(unpack(root_files))(fname)
 		or vim.call('getcwd')
 end
 
@@ -58,7 +62,7 @@ local workspace = expand('~/.local/share/eclipse/workspace/')
 -- [ CONFIGURATION TABLE ] ----------------------------------------------------
 -- Here is where the additional settings from the jdtls plugin are added.
 
-local default = require'nvim_lsp'.jdtls.document_config.default_config
+local default = require'lspconfig'.jdtls.document_config.default_config
 
 local callbacks = {
 	['language/status'] = status_callback

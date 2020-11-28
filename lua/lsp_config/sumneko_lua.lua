@@ -14,7 +14,7 @@
 -- be better if a function was executed.
 local M = {}
 
-local util = require'nvim_lsp.util'
+local util = require'lspconfig'.util
 local rules = require'lsp_config.sumneko_lua.rules'
 
 

@@ -1,4 +1,4 @@
-local nvim_lsp = require'nvim_lsp'
+local nvim_lsp = require'lspconfig'
 local util     = require'vim.lsp.util'
 
 --- [ OVERRIDE CLIENT FUNCTIONS ] ---------------------------------------------
@@ -104,7 +104,7 @@ nvim_lsp.html.setup {
 
 --- [ KOTLIN LANGUAGE SERVER ]-------------------------------------------------
 do
-	local util = require'nvim_lsp.util'
+	local util = require'lspconfig'.util
 
 	-- The presence of one of these files indicates a project root directory
 	local root_files = {
