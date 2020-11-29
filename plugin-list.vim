@@ -130,6 +130,7 @@ Plug 'luochen1990/rainbow'              " Differently coloured parentheses
 Plug 'bronson/vim-visual-star-search'   " Use * on a selection to search for it
 Plug 'SirVer/ultisnips'                 " Snippets
 Plug 'honza/vim-snippets'               " Snippets for UltiSnips
+Plug 'guns/vim-sexp'                    " Normal-mode motions for S-expressions
 Plug 'itchyny/lightline.vim'
 
 " Settings local to a given project
