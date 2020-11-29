@@ -46,7 +46,7 @@ end
 --
 -- Individual server configurations can included this one as part of their
 -- callback.
-local function on_attach(client, bufnr)
+local function on_attach(client, _)
 	-- Support for completion-nvim
 	completion_on_attach(client)
 
@@ -58,7 +58,7 @@ local function on_attach(client, bufnr)
 	map('n', '<F2>' , '<cmd>lua vim.lsp.buf.rename()<CR>')
 	map('n', 'K'    , '<cmd>lua vim.lsp.buf.hover()<CR>')
 	map('n', '<CR>' , '<cmd>lua vim.lsp.buf.code_action()<CR>')
-	map('n', 'g?'   , '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
+	map('n', 'g?'   , '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
 end
 
 
@@ -66,11 +66,11 @@ end
 do
 	local config = require'lsp_config.jdtls'
 	local old_on_attach = config.on_attach
-	config.on_attach = function (client, buffer)
+	config.on_attach = function (client, bufnr)
 		on_attach(client, bufnr)
 		map('n', '<CR>' , '<cmd>lua require"jdtls".code_action()<CR>')
 		if old_on_attach then
-			old_on_attach(client, buffer)
+			old_on_attach(client, bufnr)
 		end
 		require('jdtls').setup_dap()
 	end
