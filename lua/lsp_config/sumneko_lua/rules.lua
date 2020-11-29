@@ -30,6 +30,17 @@ local rules = {
 		settings = settings.nvim,
 		priority = 1,
 	}, {
+		test = tests.is_vim_plugin_dir,
+		settings = function ()
+			local result = settings.nvim
+			local cwd = vim.fn.getcwd()
+			if vim.fn.isdirectory(cwd .. '/lua') ~= 0 then
+				result.Lua.workspace.library[cwd .. '/lua/..'] = true
+			end
+			return result
+		end,
+		priority = 1,
+	}, {
 		test = tests.has_local_extra_file,
 		settings = function ()
 			vim.fn.json_decode(vim.fn.readfile('lua-lsp-extra.json'))
@@ -52,7 +63,7 @@ return {
 			if priority < rule.priority and rule.test() then
 				priority = rule.priority
 				local current = type(rule.settings) == 'function'
-					and rule.setting()
+					and rule.settings()
 					or rule.settings
 				result = vim.tbl_deep_extend('force', result, current)
 			end

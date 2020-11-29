@@ -12,10 +12,12 @@ local function map(list, fun)
 	return result
 end
 
+--- Whether the file path argument is a readable file.
 local function filereadable(fname)
 	return vim.fn.filereadable(fname) ~= 0
 end
 
+--- Whether the file path argument is a directory.
 local function isdirectory(directory)
 	return vim.fn.isdirectory(directory) ~= 0
 end
@@ -69,10 +71,10 @@ end
 --- The current directory is a Vim plugin directory; only an educated guess.
 function M.is_vim_plugin_dir()
 	-- This is flawed because it does not search sub-directories of 'autoload'.
-	local plugin_dirs = {'plugin', 'autoload'}
+	local plugin_dirs = {'plugin', 'autoload', 'after/plugin'}
 	for _, plugin_dir in ipairs(plugin_dirs) do
 		if isdirectory(plugin_dir) then
-			local vim_files = vim.fn.glob('*.vim')
+			local vim_files = vim.fn.glob(plugin_dir .. '/*.vim')
 			if #vim_files > 0 then return true end
 		end
 	end
