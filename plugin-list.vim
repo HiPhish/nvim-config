@@ -131,6 +131,7 @@ Plug 'bronson/vim-visual-star-search'   " Use * on a selection to search for it
 Plug 'SirVer/ultisnips'                 " Snippets
 Plug 'honza/vim-snippets'               " Snippets for UltiSnips
 Plug 'guns/vim-sexp'                    " Normal-mode motions for S-expressions
+Plug 'Olical/conjure',{'tag': 'v4.9.0'} " Live Lisp programming
 Plug 'itchyny/lightline.vim'
 
 " Settings local to a given project
@@ -239,6 +240,9 @@ Plug '~/Developer/vim/quicklisp.nvim/'
 
 " GDScript (Godot)
 Plug 'habamax/vim-godot'
+
+" Fennel
+Plug 'bakpakin/fennel.vim'
 
 " Java
 if isdirectory(expand('~/Developer/vim/gradle.nvim/'))
