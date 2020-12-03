@@ -110,10 +110,10 @@ do
 	local root_files = {
 		'build.xml',
 		'pom.xml',
-		-- 'build.gradle',
-		-- 'build.gradle.kts',
 		'settings.gradle',
 		'settings.gradle.kts',
+		'build.gradle',
+		'build.gradle.kts',
 	}
 
 	-- The custom configuration
