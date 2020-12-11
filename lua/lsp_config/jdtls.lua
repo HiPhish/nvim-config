@@ -64,7 +64,7 @@ local workspace = expand('~/.local/share/eclipse/workspace/')
 
 local default = require'lspconfig'.jdtls.document_config.default_config
 
-local callbacks = {
+local handlers = {
 	['language/status'] = status_callback
 }
 
@@ -82,7 +82,7 @@ local config = {
 	capabilities = vim.tbl_extend('keep', capabilities, default.capabilities or {}),
 	init_options = vim.tbl_extend('keep', init_options, default.init_options or {}),
 	log_level = vim.lsp.protocol.MessageType.Warning,
-	callbacks = vim.tbl_extend('keep', default.callbacks or {}, callbacks),
+	handlers = vim.tbl_extend('keep', default.handlers or {}, handlers),
 }
 
 -- Override some of the configuration settings
