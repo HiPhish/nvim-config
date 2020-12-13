@@ -95,6 +95,13 @@ end
 do
 	local config = require'lsp_config.jdtls'
 	local old_on_attach = config.on_attach
+
+	local plain_root_files = {
+		'build.xml', 'pom.xml', 'settings.gradle', 'settings.gradle.kts'
+	}
+	local nested_root_files = {'build.gradle', 'build.gradle.kts'}
+	config.root_dir = root_patterns(plain_root_files, nested_root_files)
+
 	config.on_attach = function (client, bufnr)
 		on_attach(client, bufnr)
 		map('n', '<CR>' , '<cmd>lua require"jdtls".code_action()<CR>')
