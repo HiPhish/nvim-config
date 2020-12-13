@@ -1,6 +1,35 @@
 local nvim_lsp = require'lspconfig'
 local util     = require'vim.lsp.util'
 
+--- [ helper functions ] ------------------------------------------------------
+
+--- Generate a depth-first root directory matcher
+---
+--- The arguments are list of root directory patterns.
+---
+--- @return function
+---   For each argument first try to match its patterns before trying to match
+---   the next set of patterns.
+local function root_patterns(...)
+	local util = require'lspconfig.util'
+	local searchers = {}
+
+	for _, patterns in ipairs({...}) do
+		local searcher = type(patterns) == 'table'
+			and util.root_pattern(unpack(patterns))
+			or util.root_pattern(patterns)
+		searchers[#searchers] = searcher
+	end
+
+	return function(startpath)
+		for _, searcher in ipairs(searchers) do
+			local root = searcher(startpath)
+			if root then return root end
+		end
+	end
+end
+
+
 --- [ OVERRIDE CLIENT FUNCTIONS ] ---------------------------------------------
 -- Here I override the functions of the LSP client to my liking. An override
 -- should preferably still call the original function for better
@@ -104,24 +133,16 @@ nvim_lsp.html.setup {
 
 --- [ KOTLIN LANGUAGE SERVER ]-------------------------------------------------
 do
-	local util = require'lspconfig'.util
-
-	-- The presence of one of these files indicates a project root directory
-	local root_files = {
-		'build.xml',
-		'pom.xml',
-		'settings.gradle',
-		'settings.gradle.kts',
-		'build.gradle',
-		'build.gradle.kts',
+	local plain_root_files = {
+		'build.xml', 'pom.xml', 'settings.gradle', 'settings.gradle.kts'
 	}
+	local nested_root_files = {'build.gradle', 'build.gradle.kts'}
 
-	-- The custom configuration
-	local config = {
+
+	nvim_lsp.kotlin_language_server.setup{
 		cmd = {
-			vim.loop.os_homedir()
-				.. '/.cache/nvim/nvim_lsp/'
-				.. 'kotlin-language-server/server/bin/kotlin-language-server',
+			vim.fn.stdpath('cache') .. '/nvim_lsp'
+			.. '/kotlin-language-server/server/bin/kotlin-language-server',
 		},
 		settings = {
 			kotlin = {
@@ -132,11 +153,9 @@ do
 				}
 			},
 		},
-    	root_dir = util.root_pattern(unpack(root_files)),
+    	root_dir = root_patterns(plain_root_files, nested_root_files),
 		on_attach = on_attach,
 	}
-
-	nvim_lsp.kotlin_language_server.setup(config)
 end
 
 
@@ -150,9 +169,24 @@ end
 
 
 --- [ OMNISHARP ] -------------------------------------------------------------
-nvim_lsp.omnisharp.setup {
-	on_attach = on_attach,
-}
+do
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities['workspace/workspaceFolders'] = nil
+	nvim_lsp.omnisharp.setup {
+		-- cmd = {
+		-- 	'mono',
+		-- 	-- vim.fn.expand'~/Applications/omnisharp-linux-x64/run',
+		-- 	vim.fn.expand'~/Applications/omnisharp-mono/Omnisharp.mono',
+		-- 	'--languageserver' ,
+		-- 	'--hostPID',
+		-- 	tostring(vim.fn.getpid())
+		-- };
+    	-- filetypes = {"cs", "vb"};
+    	-- root_dir = nvim_lsp.util.root_pattern("*.csproj", "*.sln");
+    	capabilities = capabilities,
+		on_attach = on_attach,
+	}
+end
 
 
 --- [ TYPESCRIPT ]-------------------------------------------------------------
