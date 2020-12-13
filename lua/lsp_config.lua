@@ -177,20 +177,7 @@ end
 
 --- [ OMNISHARP ] -------------------------------------------------------------
 do
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities['workspace/workspaceFolders'] = nil
 	nvim_lsp.omnisharp.setup {
-		-- cmd = {
-		-- 	'mono',
-		-- 	-- vim.fn.expand'~/Applications/omnisharp-linux-x64/run',
-		-- 	vim.fn.expand'~/Applications/omnisharp-mono/Omnisharp.mono',
-		-- 	'--languageserver' ,
-		-- 	'--hostPID',
-		-- 	tostring(vim.fn.getpid())
-		-- };
-    	-- filetypes = {"cs", "vb"};
-    	-- root_dir = nvim_lsp.util.root_pattern("*.csproj", "*.sln");
-    	capabilities = capabilities,
 		on_attach = on_attach,
 	}
 end
