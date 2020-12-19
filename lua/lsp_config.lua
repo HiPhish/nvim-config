@@ -18,7 +18,7 @@ local function root_patterns(...)
 		local searcher = type(patterns) == 'table'
 			and util.root_pattern(unpack(patterns))
 			or util.root_pattern(patterns)
-		searchers[#searchers] = searcher
+		searchers[#searchers + 1] = searcher
 	end
 
 	return function(startpath)
