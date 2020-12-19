@@ -93,14 +93,15 @@ end
 
 --- [ ECLIPSE.JDT.LS ] --------------------------------------------------------
 do
+	local root_files = {
+		{'build.xml', 'settings.gradle', 'settings.gradle.kts'},
+		{'pom.xml', 'build.gradle', 'build.gradle.kts'},
+	}
+
 	local config = require'lsp_config.jdtls'
 	local old_on_attach = config.on_attach
 
-	local plain_root_files = {
-		'build.xml', 'pom.xml', 'settings.gradle', 'settings.gradle.kts'
-	}
-	local nested_root_files = {'build.gradle', 'build.gradle.kts'}
-	config.root_dir = root_patterns(plain_root_files, nested_root_files)
+	config.root_dir = root_patterns(unpack(root_files))
 
 	config.on_attach = function (client, bufnr)
 		on_attach(client, bufnr)
@@ -140,10 +141,10 @@ nvim_lsp.html.setup {
 
 --- [ KOTLIN LANGUAGE SERVER ]-------------------------------------------------
 do
-	local plain_root_files = {
-		'build.xml', 'pom.xml', 'settings.gradle', 'settings.gradle.kts'
+	local root_files = {
+		{'build.xml', 'settings.gradle', 'settings.gradle.kts'},
+		{'pom.xml', 'build.gradle', 'build.gradle.kts'},
 	}
-	local nested_root_files = {'build.gradle', 'build.gradle.kts'}
 
 
 	nvim_lsp.kotlin_language_server.setup{
@@ -160,7 +161,7 @@ do
 				}
 			},
 		},
-    	root_dir = root_patterns(plain_root_files, nested_root_files),
+    	root_dir = root_patterns(unpack(root_files)),
 		on_attach = on_attach,
 	}
 end
