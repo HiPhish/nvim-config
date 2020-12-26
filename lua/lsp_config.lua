@@ -176,6 +176,12 @@ do
 end
 
 
+--- [ Nim LS ] ----------------------------------------------------------------
+nvim_lsp.nimls.setup {
+	on_attach = on_attach,
+}
+
+
 --- [ OMNISHARP ] -------------------------------------------------------------
 do
 	nvim_lsp.omnisharp.setup {
