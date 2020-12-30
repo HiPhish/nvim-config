@@ -228,7 +228,9 @@ Plug 'neomake/neomake'       " Asynchronous syntax checker for Neovim
 Plug '~/Developer/vim/awk-ward.nvim/'
 
 " C
-Plug 'Rip-Rip/clang_complete'
+if !has('nvim-0.5')
+	Plug 'Rip-Rip/clang_complete'
+endif
 
 " Common Lisp
 " My quicklisp is installed to a non-standard location

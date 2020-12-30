@@ -91,6 +91,11 @@ local function on_attach(client, _)
 end
 
 
+--- [ CLANGD ]-----------------------------------------------------------------
+nvim_lsp.clangd.setup {
+	on_attach = on_attach,
+}
+
 --- [ ECLIPSE.JDT.LS ] --------------------------------------------------------
 do
 	local root_files = {
