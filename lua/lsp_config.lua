@@ -188,11 +188,9 @@ nvim_lsp.nimls.setup {
 
 
 --- [ OMNISHARP ] -------------------------------------------------------------
-do
-	nvim_lsp.omnisharp.setup {
-		on_attach = on_attach,
-	}
-end
+nvim_lsp.omnisharp.setup {
+	on_attach = on_attach,
+}
 
 
 --- [ TYPESCRIPT ]-------------------------------------------------------------
