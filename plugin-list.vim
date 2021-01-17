@@ -204,7 +204,7 @@ Plug '~/Developer/vim/repl.nvim/'
 Plug 'airblade/vim-gitgutter'  " Git gutter symbols
 
 " Project drawer
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 let g:NERDTreeMinimalUI=1  " Remove boilerplate clutter
 let g:NERDTreeIgnore=['\v\.pyc$', '\v\~$', '\v\.meta$'] " Ignore compiled files
 let g:NERDTreeMouseMode = 2  " Single-click for directories
