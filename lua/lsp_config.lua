@@ -189,6 +189,11 @@ nvim_lsp.nimls.setup {
 
 --- [ OMNISHARP ] -------------------------------------------------------------
 nvim_lsp.omnisharp.setup {
+	cmd = {
+		os.getenv('HOME') .. '/Applications/lsp/omnisharp/run',
+		'--hostPID', tostring(vim.fn.getpid()),
+		'--languageserver'
+	},
 	on_attach = on_attach,
 }
 
