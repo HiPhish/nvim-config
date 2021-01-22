@@ -7,17 +7,8 @@
 --
 -- https://github.com/mfussenegger/nvim-jdtls
 
-local util  = require'lspconfig'.util
 local jdtls = require'jdtls'
 local api   = vim.api
-
-
----[ HELPER FUNCTIONS ]--------------------------------------------------------
--- For internal use, not exported
-
-local function expand(expr, nosuf, list)
-	return vim.call('expand', expr, nosuf, list)
-end
 
 
 -- [ CONFIGURATION TABLE ] ----------------------------------------------------
@@ -41,14 +32,31 @@ local init_options = {
 	},
 }
 
+-- The workspace directory is generated from the file path. This will set the
+-- workspace directory when Neovim starts, rather than when the server is
+-- started.
+local workspace = vim.fn.expand('~/.local/share/eclipse/workspace/')
+	.. vim.call('fnamemodify', vim.call('getcwd'), ':t')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local config = {
-	-- The workspace directory is generated from the file path. This will set
-	-- the workspace directory when Neovim starts, rather than when the server
-	-- is started.
-	workspace = expand('~/.local/share/eclipse/workspace/')
-		.. vim.call('fnamemodify', vim.call('getcwd'), ':t'),
+	cmd = {
+		'java',
+		'-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044',
+		'-Declipse.application=org.eclipse.jdt.ls.core.id1',
+		'-Dosgi.bundles.defaultStartLevel=4',
+		'-Declipse.product=org.eclipse.jdt.ls.core.product',
+		'-Dlog.level=ALL',
+		'-noverify',
+		'-Xmx1G',
+		'-jar', vim.fn.glob('~/Applications/lsp/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
+		'-configuration', vim.fn.glob('~/Applications/lsp/jdtls/config_linux'),
+		'-data', workspace,
+		'--add-modules=ALL-SYSTEM',
+		'--add-opens', 'java.base/java.util=ALL-UNNAMED',
+		'--add-opens', 'java.base/java.lang=ALL-UNNAMED'
+	},
+	workspace = workspace,
 	capabilities = vim.tbl_extend('keep', capabilities, default.capabilities or {}),
 	init_options = vim.tbl_extend('keep', init_options, default.init_options or {}),
 	log_level = vim.lsp.protocol.MessageType.Warning,
