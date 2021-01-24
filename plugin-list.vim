@@ -243,6 +243,9 @@ Plug '~/Developer/vim/quicklisp.nvim/'
 " GDScript (Godot)
 Plug 'habamax/vim-godot'
 
+" Elixir
+Plug 'elixir-editors/vim-elixir'
+
 " Fennel
 Plug 'bakpakin/fennel.vim'
 
@@ -268,7 +271,9 @@ Plug 'udalov/kotlin-vim'
 Plug 'zah/nim.vim'
 
 " Python
-Plug 'davidhalter/jedi-vim'
+if !has('nvim-0.5')
+	Plug 'davidhalter/jedi-vim'
+endif
 
 " Racket
 Plug '~/Developer/neovim.rkt/', {'rtp': 'nvim'}

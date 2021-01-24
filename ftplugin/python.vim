@@ -9,7 +9,7 @@
 "                                                  iiiiii ii
 "                                                   'iiiii'
 " License:  The MIT License (MIT) {{{
-"    Copyright (c) 2018 HiPhish
+"    Copyright (c) 2018-2021 HiPhish
 "
 "    Permission is hereby granted, free of charge, to any person obtaining a
 "    copy of this software and associated documentation files (the
@@ -33,6 +33,17 @@
 
 setlocal foldmethod=indent
 
+" REPL support
+nmap <leader>rs  <Plug>(ReplSend)
+nmap <leader>rss <Plug>(ReplSendLine)
+nmap <leader>rs_ <Plug>(ReplSendLine)
+
+vmap <leader>rs  <Plug>(ReplSend)
+
+if has('nvim-0.5')
+	finish
+endif
+
 augroup autochecking
 	autocmd!
 	autocmd! BufWritePost <buffer> Neomake
@@ -41,10 +52,3 @@ augroup END
 if exists('g:plugs["jedi-vim"]')
 	let g:jedi#completions_enabled = 0  " We use ncm2-jedi for completions
 endif
-
-" REPL support
-nmap <leader>rs  <Plug>(ReplSend)
-nmap <leader>rss <Plug>(ReplSendLine)
-nmap <leader>rs_ <Plug>(ReplSendLine)
-
-vmap <leader>rs  <Plug>(ReplSend)
