@@ -121,6 +121,15 @@ do
 end
 
 
+--- [ ELIXIR LS ]--------------------------------------------------------------
+nvim_lsp.elixirls.setup {
+	cmd = {
+		vim.fn.expand'~/Applications/lsp/elixir-ls/release/language_server.sh'
+	},
+	on_attach = on_attach
+}
+
+
 --- [ GODOT GAME ENGINE ] -----------------------------------------------------
 nvim_lsp.gdscript.setup {
 	on_attach = on_attach,
