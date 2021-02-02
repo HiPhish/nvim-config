@@ -200,6 +200,7 @@ nvim_lsp.omnisharp.setup {
 
 --- [ PYLS ]-------------------------------------------------------------------
 nvim_lsp.pyls.setup {
+	on_attach = on_attach,
 }
 
 
