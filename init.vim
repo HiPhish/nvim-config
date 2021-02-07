@@ -119,5 +119,5 @@ if !has('nvim-0.5')
 	finish
 endif
 
-lua require"lsp_config"
-lua require"dap_config"
+lua require"hiphish.lsp"
+lua require"hiphish.dap"

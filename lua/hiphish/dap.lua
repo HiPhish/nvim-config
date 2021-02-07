@@ -5,11 +5,11 @@ local adapters       = dap.adapters
 local configurations = dap.configurations
 
 --- [ C FAMILY ]---------------------------------------------------------------
-require 'dap_config.lldb'  -- Defines adapter and sets up command
+require 'hiphish.dap.lldb'  -- Defines adapter and sets up command
 
 
 --- [ KOTLIN DEBUG ADAPTER ]---------------------------------------------------
-require 'dap_config.kotlin'
+require 'hiphish.dap.kotlin'
 
 
 --- [ PYTHON ] ----------------------------------------------------------------

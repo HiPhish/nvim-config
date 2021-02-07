@@ -1,5 +1,5 @@
-local settings = require'lsp_config.sumneko_lua.settings'
-local tests    = require'lsp_config.sumneko_lua.tests'
+local settings = require'hiphish.lsp.sumneko_lua.settings'
+local tests    = require'hiphish.lsp.sumneko_lua.tests'
 
 
 -- [ RULES ] ------------------------------------------------------------------

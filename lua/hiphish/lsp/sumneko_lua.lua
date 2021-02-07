@@ -15,7 +15,7 @@
 local M = {}
 
 local util = require'lspconfig'.util
-local rules = require'lsp_config.sumneko_lua.rules'
+local rules = require'hiphish.lsp.sumneko_lua.rules'
 
 
 ---[ Helpers ]-----------------------------------------------------------------
@@ -30,7 +30,7 @@ local install_dir =
 --- LSP settings, either read from local file or defaulting to Neovim plugin.
 local settings = vim.fn.filereadable('lua-lsp.json') ~= 0
 	and vim.fn.json_decode(vim.fn.readfile('lua-lsp.json'))
-	or require'lsp_config.sumneko_lua.settings'.nvim
+	or require'hiphish.lsp.sumneko_lua.settings'.nvim
 
 
 -------------------------------------------------------------------------------

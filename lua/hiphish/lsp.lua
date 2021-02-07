@@ -103,7 +103,7 @@ do
 		{'pom.xml', 'build.gradle', 'build.gradle.kts'},
 	}
 
-	local config = require'lsp_config.jdtls'
+	local config = require'hiphish.lsp.jdtls'
 	local old_on_attach = config.on_attach
 
 	config.root_dir = root_patterns(unpack(root_files))
@@ -183,7 +183,7 @@ end
 
 --- [ LUA LANGUAGE SERVER ]----------------------------------------------------
 do
-	local config = require'lsp_config.sumneko_lua'
+	local config = require'hiphish.lsp.sumneko_lua'
 	config.on_attach = on_attach
 
 	nvim_lsp.sumneko_lua.setup(config)
