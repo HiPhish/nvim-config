@@ -1,7 +1,10 @@
 local nvim_lsp = require'lspconfig'
 local util     = require'vim.lsp.util'
 
---- [ helper functions ] ------------------------------------------------------
+--- [ HELPER FUNCTIONS ] ------------------------------------------------------
+
+--- Directory containing all manually installed servers.
+local server_dir = vim.fn.expand'~/Applications/lsp'
 
 --- Generate a depth-first root directory matcher
 ---
@@ -124,7 +127,7 @@ end
 --- [ ELIXIR LS ]--------------------------------------------------------------
 nvim_lsp.elixirls.setup {
 	cmd = {
-		vim.fn.expand'~/Applications/lsp/elixir-ls/release/language_server.sh'
+		server_dir .. '/elixir-ls/release/language_server.sh'
 	},
 	on_attach = on_attach
 }
@@ -163,8 +166,7 @@ do
 
 	nvim_lsp.kotlin_language_server.setup{
 		cmd = {
-			vim.fn.stdpath('cache') .. '/nvim_lsp'
-			.. '/kotlin-language-server/server/bin/kotlin-language-server',
+			server_dir .. '/kotlin-language-server/server/bin/kotlin-language-server',
 		},
 		settings = {
 			kotlin = {
@@ -199,7 +201,7 @@ nvim_lsp.nimls.setup {
 --- [ OMNISHARP ] -------------------------------------------------------------
 nvim_lsp.omnisharp.setup {
 	cmd = {
-		os.getenv('HOME') .. '/Applications/lsp/omnisharp/run',
+		server_dir .. '/omnisharp/run',
 		'--hostPID', tostring(vim.fn.getpid()),
 		'--languageserver'
 	},

@@ -20,12 +20,9 @@ local rules = require'hiphish.lsp.sumneko_lua.rules'
 
 ---[ Helpers ]-----------------------------------------------------------------
 
---- Helper function, gets a Neovim standard path.
-local sp = vim.fn.stdpath
-
 --- Where the language server is installed
 local install_dir =
-	string.format('%s/nvim_lsp/sumneko_lua/lua-language-server', sp'cache')
+	vim.fn.expand'~/Applications/lsp/sumneko_lua/lua-language-server'
 
 --- LSP settings, either read from local file or defaulting to Neovim plugin.
 local settings = vim.fn.filereadable('lua-lsp.json') ~= 0

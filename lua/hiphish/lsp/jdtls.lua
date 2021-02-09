@@ -32,6 +32,10 @@ local init_options = {
 	},
 }
 
+
+--- Directory containing all manually installed servers.
+local server_dir = vim.fn.expand'~/Applications/lsp/jdtls'
+
 -- The workspace directory is generated from the file path. This will set the
 -- workspace directory when Neovim starts, rather than when the server is
 -- started.
@@ -49,8 +53,8 @@ local config = {
 		'-Dlog.level=ALL',
 		'-noverify',
 		'-Xmx1G',
-		'-jar', vim.fn.glob('~/Applications/lsp/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
-		'-configuration', vim.fn.glob('~/Applications/lsp/jdtls/config_linux'),
+		'-jar', vim.fn.glob(server_dir .. '/plugins/org.eclipse.equinox.launcher_*.jar'),
+		'-configuration', server_dir .. '/config_linux',
 		'-data', workspace,
 		'--add-modules=ALL-SYSTEM',
 		'--add-opens', 'java.base/java.util=ALL-UNNAMED',
