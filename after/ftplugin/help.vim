@@ -27,5 +27,9 @@
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
 
-" Make Shift-K look up the word under the cursor
-noremap <buffer> <S-K> <C-]>
+if &buftype == 'help'
+	setlocal foldcolumn=0 nonumber
+	finish
+endif
+
+setlocal conceallevel=0
