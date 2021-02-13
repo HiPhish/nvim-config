@@ -62,7 +62,7 @@ end
 -- Settings which are relevant and useful for all language servers. Individual
 -- configurations can override or add to the default configuration.
 
-local completion_on_attach = require'completion'.on_attach
+-- local completion_on_attach = require'completion'.on_attach
 
 --- Map keys for the current buffer
 --
@@ -80,7 +80,7 @@ end
 -- callback.
 local function on_attach(client, _)
 	-- Support for completion-nvim
-	completion_on_attach(client)
+	-- completion_on_attach(client)
 
 	-- Remap keys
 	map('n', 'gd'   , '<cmd>lua vim.lsp.buf.definition()<CR>')
@@ -93,10 +93,13 @@ local function on_attach(client, _)
 	map('n', 'g?'   , '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 --- [ CLANGD ]-----------------------------------------------------------------
 nvim_lsp.clangd.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 
 --- [ ECLIPSE.JDT.LS ] --------------------------------------------------------
@@ -120,6 +123,8 @@ do
 		require('jdtls').setup_dap()
 	end
 
+	config.capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 	nvim_lsp.jdtls.setup(config)
 end
 
@@ -129,6 +134,7 @@ nvim_lsp.elixirls.setup {
 	cmd = {
 		server_dir .. '/elixir-ls/release/language_server.sh'
 	},
+	capabilities = capabilities,
 	on_attach = on_attach
 }
 
@@ -136,6 +142,7 @@ nvim_lsp.elixirls.setup {
 --- [ GODOT GAME ENGINE ] -----------------------------------------------------
 nvim_lsp.gdscript.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 
 
@@ -145,6 +152,7 @@ do
 	if status then
 		nvim_lsp.groovy.setup {
 			on_attach = on_attach,
+			capabilities = capabilities,
 		}
 	end
 end
@@ -153,6 +161,7 @@ end
 --- [ HTML ]-------------------------------------------------------------------
 nvim_lsp.html.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 
 
@@ -179,6 +188,7 @@ do
 		},
     	root_dir = root_patterns(unpack(root_files)),
 		on_attach = on_attach,
+		capabilities = capabilities,
 	}
 end
 
@@ -187,6 +197,7 @@ end
 do
 	local config = require'hiphish.lsp.sumneko_lua'
 	config.on_attach = on_attach
+	config.capabilities = capabilities
 
 	nvim_lsp.sumneko_lua.setup(config)
 end
@@ -195,6 +206,7 @@ end
 --- [ Nim LS ] ----------------------------------------------------------------
 nvim_lsp.nimls.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 
 
@@ -206,22 +218,26 @@ nvim_lsp.omnisharp.setup {
 		'--languageserver'
 	},
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 
 
 --- [ PYLS ]-------------------------------------------------------------------
 nvim_lsp.pyls.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 
 
 --- [ TYPESCRIPT ]-------------------------------------------------------------
 nvim_lsp.tsserver.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 
 
 --- [ VUE.JS LANGUAGE SERVER ]-------------------------------------------------
 nvim_lsp.vuels.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
 }

@@ -41,24 +41,21 @@ Plug 'tpope/vim-characterize'  " Better display of character character codes
 
 " ===[ Auto-Completion ]=======================================================
 if has('nvim-0.5.0')
-	Plug 'haorenW1025/completion-nvim'
+	Plug 'hrsh7th/nvim-compe'
 	set completeopt=menuone,noinsert,noselect
-	augroup completion_nvim
-    	autocmd BufEnter * lua require'completion'.on_attach()
-	augroup END
-	let g:completion_enable_snippet = 'UltiSnips'
-	let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-	let g:completion_matching_ignore_case = 1
-	let g:completion_trigger_keyword_length = 1
-	let g:completion_auto_change_source = 1
-	let g:completion_chain_complete_list = {
-		\ 'default': [
-			\ {'complete_items': ['snippet', 'lsp', 'path']}
-		\ ], 
-		\ 'lisp': [
-			\ {'complete_items': ['snippet', 'vlime', 'path']}
-		\ ]
+
+	let g:compe = {
+		\ 'enabled': v:true,
+		\ 'source': {
+			\ 'path': v:true,
+			\ 'buffer': v:true,
+			\ 'nvim_lsp': {'dup': v:true},
+			\ 'vsnip': v:true,
+			\ 'ultisnips': {'dup': v:true, 'priority': 2000},
+		\}
 	\ }
+	inoremap <silent><expr> <CR>  compe#confirm({'keys': "\<Plug>delimitMateCR", 'mode': ''})
+	inoremap <silent><expr> <ESC> compe#close('<ESC>')
 
 	Plug 'hrsh7th/vim-vsnip'
 	Plug 'hrsh7th/vim-vsnip-integ'
@@ -67,7 +64,7 @@ if has('nvim-0.5.0')
 	imap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 	smap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 
-	Plug '~/Developer/vim/completion-nvim-vlime/'
+	" Plug '~/Developer/vim/completion-nvim-vlime/'
 
 	Plug 'mfussenegger/nvim-jdtls'
 else
@@ -255,8 +252,6 @@ if isdirectory(expand('~/Developer/vim/gradle.nvim/'))
 else
 	Plug 'https://gitlab.com/HiPhish/gradle.nvim', {'do': 'gradle wrapper && ./gradlew install'}
 endif
-" Use my NCM2 completion fork until it gets implemented and merged upstream
-" Plug 'HiPhish/Comrade', {'branch': 'ncm2'}
 
 " JavaScript
 Plug 'ternjs/tern_for_vim', {'for': 'javacript', 'do': 'npm install'}
