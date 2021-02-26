@@ -21,13 +21,8 @@
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
 
-setlocal cinkeys-=0# "don't indent preprocessor directives
-
-" spell checking in comments
-setlocal spell
-setlocal spelllang=en
-setlocal spellfile=~/.vim/spell/en.utf-8.add
-setlocal spellfile+=~/.vim/spell/programmer-jargon.utf-8.add
+" Use the same settings as for C as a basis
+runtime ftplugin/c.vim
 
 " Folding
 setlocal foldtext=ObjcFoldText()
@@ -48,12 +43,3 @@ function! ObjcFoldText()
 	
 	return l:indent . l:line
 endfunction
-
-" LSP support
-let g:LanguageClient_serverCommands['objc'] = ['clangd-8', '-mwarn-sign-mismatch', '-mwarn-missing-parenthesis']
-
-if exists('g:plugs["clang_complete"]')
-	let g:clang_library_path = '/usr/lib/llvm-8/lib/libclang.so.1'
-	nnoremap <buffer> <silent> gd :call g:ClangGotoDeclaration()<CR>
-	nnoremap <buffer> <silent> gp :call g:ClangGotoDeclarationPreview()<CR>
-endif

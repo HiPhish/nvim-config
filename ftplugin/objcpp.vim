@@ -21,18 +21,5 @@
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
 
-setlocal cinkeys-=0# "don't indent preprocessor directives
-
-" spell checking in comments
-setlocal spell
-setlocal spelllang=en
-setlocal spellfile=~/.vim/spell/en.utf-8.add
-setlocal spellfile+=~/.vim/spell/programmer-jargon.utf-8.add
-
-" Use Vim to view manpages
-noremap <buffer> <silent> <S-K> :Man <C-R><C-W><CR> 
-
-augroup autochecking
-	autocmd!
-	autocmd! BufWritePost <buffer> Neomake
-augroup END
+" Use the same settings as for Objective-C
+runtime ftplugin/objc.vim

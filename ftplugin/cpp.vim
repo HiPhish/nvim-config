@@ -27,45 +27,5 @@
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
 
-" [ Compiler settings and plugins ] {{{
-"
-" Some plugins are based on clang and require project-specific compiler flags
-" in order to work properly. In particular, if using a non-standard library we
-" need access to the include paths for that library.
-"
-" clang_complete:
-" --------------
-"   This plugin provides code completion, but more importantly, it allows to
-"   jump in code based on semantics. A project can have a '.clang_complete'
-"   file which contains the compiler options, one option at a time. Example:
-"
-"     -DDEBUG
-"     -include ../config.h
-"     -I../common
-"     -I/usr/include/c++/4.5.3/
-"     -I/usr/include/c++/4.5.3/x86_64-slackware-linux/
-" }}}
-
-setlocal cinkeys-=0# "don't indent preprocessor directives
-setlocal foldmethod=syntax
-
-" spell checking in comments
-setlocal spell
-setlocal spelllang=en
-setlocal spellfile=~/.config/nvim/spell/en.utf-8.add
-setlocal spellfile+=~/.config/nvim/spell/programmer-jargon.utf-8.add
-
-" LSP support
-let g:LanguageClient_serverCommands['cpp'] = ['clangd-7', '-mwarn-sign-mismatch', '-mwarn-missing-parenthesis']
-
-if exists('g:plugs["clang_complete"]')
-	let g:clang_library_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
-	nnoremap <buffer> <silent> gd :call g:ClangGotoDeclaration()<CR>
-	nnoremap <buffer> <silent> gp :call g:ClangGotoDeclarationPreview()<CR>
-endif
-
-" Chromatica - asynchronous clang-based syntax highlighting
-if exists('g:plugs["chromatica.nvim"]')
-	let g:chromatica#libclang_path='/usr/lib/llvm-6.0/lib/'
-	execute 'ChromaticaStart'
-endif
+" Use the same settings as for C
+runtime ftplugin/c.vim

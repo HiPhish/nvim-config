@@ -224,11 +224,6 @@ Plug 'neomake/neomake'       " Asynchronous syntax checker for Neovim
 " Awk
 Plug '~/Developer/vim/awk-ward.nvim/'
 
-" C
-if !has('nvim-0.5')
-	Plug 'Rip-Rip/clang_complete'
-endif
-
 " Common Lisp
 " My quicklisp is installed to a non-standard location
 let g:lisp_host_quicklisp_setup = '~/.local/share/quicklisp/setup.lisp'
@@ -282,5 +277,4 @@ Plug 'arrufat/vala.vim'
 
 
 " ===[ Colour schemes ]========================================================
-Plug 'arakashic/chromatica.nvim'  " Asynchronous clang-based syntax highlighting
 Plug 'icymind/NeoSolarized'
