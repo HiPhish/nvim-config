@@ -29,6 +29,9 @@
 " }}}
 
 " ===[ Neovim ]================================================================
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Treesitter does not work with Vim's native spell checker (yet?)
+Plug 'lewis6991/spellsitter.nvim'
 
 
 " ===[ Tim Pope ]==============================================================
