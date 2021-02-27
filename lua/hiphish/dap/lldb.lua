@@ -31,12 +31,12 @@ M.start_c_debugger = function(args, mi_mode, mi_debugger_path)
 			MIDebuggerPath = mi_debugger_path
 		}
 	end
-	
+
 	if not last_lldb_config then
 	    print('No binary to debug set! Use ":DebugC <binary> <args>" or ":DebugRust <binary> <args>"')
 	    return
 	end
-	
+
 	dap.run(last_lldb_config)
 	dap.repl.open()
 end
