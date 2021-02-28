@@ -252,7 +252,9 @@ else
 endif
 
 " JavaScript
-Plug 'ternjs/tern_for_vim', {'for': 'javacript', 'do': 'npm install'}
+if !has('nvim-0.5')
+	Plug 'ternjs/tern_for_vim', {'for': 'javacript', 'do': 'npm install'}
+endif
 
 " Jinja
 Plug '~/Developer/vim/jinja.vim/'
