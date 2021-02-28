@@ -282,4 +282,4 @@ Plug 'arrufat/vala.vim'
 
 
 " ===[ Colour schemes ]========================================================
-Plug 'icymind/NeoSolarized'
+Plug 'lifepillar/vim-solarized8'

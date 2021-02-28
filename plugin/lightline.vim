@@ -68,6 +68,10 @@ let g:lightline.inactive = {'left': [['filename', 'modified']]}
 " following callback function will be called.
 let s:colour_scheme_map = {
 	\ 'NeoSolarized': 'solarized',
+	\ 'solarized8': 'solarized',
+	\ 'solarized8_low': 'solarized',
+	\ 'solarized8_high': 'solarized',
+	\ 'solarized8_flat': 'solarized',
 	\ 'gruvbox-material': 'gruvbox_material',
 \ }
 

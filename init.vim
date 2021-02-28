@@ -41,7 +41,7 @@ if empty(glob(stdpath('config') . '/autoload/plug.vim'))
 	" -L, --location        follow redirections
 	" -o, --output <file>   write to the specified output file
 	"     --create-dirs     create intermediate directories
-	execute '!curl -fLo '.stdpath('config').'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	execute '!curl -fLo '..stdpath('config')..'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 call plug#begin(stdpath('data').'/site-packages/')
 execute 'source ' . stdpath('config') . '/plugin-list.vim'
@@ -88,14 +88,11 @@ if executable('ack')
 	set grepformat=%f:%l:%c:%m
 endif
 
-" ---[ THEME SETTINGS ]--------------------------------------------------------
-augroup colorscheme-overrides
-	autocmd!
-	au ColorScheme NeoSolarized     hi TabLine     guibg=#657b83 guifg=#073642
-	au ColorScheme NeoSolarized     hi TabLineSel  guibg=NONE    guifg=#93a1a1
-augroup END
 
-colorscheme NeoSolarized
+" ---[ THEME SETTINGS ]--------------------------------------------------------
+set background=dark
+let g:solarized_old_cursor_style = v:true
+colorscheme solarized8
 
 " Alternate cursor shape in insert mode
 if has('nvim')
@@ -107,11 +104,6 @@ elseif $TERM_PROGRAM =~? 'iTerm'
 	let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
 	let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
-
-
-set background=dark
-let g:neosolarized_italic = v:true
-highlight link MsgSeparator VertSplit
 
 
 " ---[ LUA CONFIGURATION ]-----------------------------------------------------
