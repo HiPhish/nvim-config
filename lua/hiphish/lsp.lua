@@ -146,6 +146,27 @@ nvim_lsp.gdscript.setup {
 }
 
 
+--- [ GRAPH QL ] --------------------------------------------------------------
+-- For configuration see https://graphql-config.com/introduction
+do
+	local config_files = {
+		'.git', '.graphqlrc',
+		'.graphqlrc.yml', '.graphqlrc.yaml',
+		'graphql.config.json', '.graphqlrc.json',
+		'graphql.config.toml', '.graphqlrc.toml',
+		'graphql.config.js', '.graphqlrc.js',
+		'graphql.config.ts', '.graphqlrc.ts',
+	}
+
+	nvim_lsp.graphql.setup {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		root_dir = require'lspconfig.util'
+			.root_pattern(unpack(config_files))
+	}
+end
+
+
 --- [ GROOVY ]-----------------------------------------------------------------
 do
 	local status, _ = pcall(require, 'nvim_lsp.groovy')

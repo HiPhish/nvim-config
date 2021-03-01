@@ -244,6 +244,9 @@ Plug 'elixir-editors/vim-elixir'
 " Fennel
 Plug 'bakpakin/fennel.vim'
 
+" GraphQL
+Plug 'jparise/vim-graphql'
+
 " Java
 if isdirectory(expand('~/Developer/vim/gradle.nvim/'))
 	Plug '~/Developer/vim/gradle.nvim/', {'do': 'gradle wrapper && ./gradlew install'}
