@@ -90,6 +90,14 @@ endif
 
 
 " ---[ THEME SETTINGS ]--------------------------------------------------------
+augroup ColorSchemeOverrides
+	" Override the BS from Solarized
+	autocmd ColorScheme solarized8 hi SpellBad    guifg=NONE
+	autocmd ColorScheme solarized8 hi SpellCap    guifg=NONE
+	autocmd ColorScheme solarized8 hi SpellLocal  guifg=NONE
+	autocmd ColorScheme solarized8 hi SpellRare   guifg=NONE
+augroup NONE
+
 set background=dark
 let g:solarized_old_cursor_style = v:true
 colorscheme solarized8
