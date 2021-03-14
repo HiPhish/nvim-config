@@ -1,12 +1,13 @@
-require'spellsitter'.setup {
-	captures = {'comment', 'string'}
-}
+-- require'spellsitter'.setup {
+-- 	captures = {'comment', 'string'}
+-- }
 
 require'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true,
 		use_languagetree = true, -- Use this to enable language injection
-		custom_captures = {  -- List of `["capture"] = "Vim HL group"` mappings
+		custom_captures = {
+			-- List of `["capture"] = "Vim HL group"` mappings
 		},
 	},
 	incremental_selection = {
@@ -17,6 +18,10 @@ require'nvim-treesitter.configs'.setup {
 	}
 }
 
+require'nvim-treesitter'.define_modules {
+	fixspell = require 'hiphish.treesitter.fixspell'
+}
+
 local highlight_links = {
 	TSPunctDelimiter = 'NONE',
 	TSTagDelimiter   = 'NONE',
@@ -24,5 +29,5 @@ local highlight_links = {
 }
 
 for key, value in pairs(highlight_links) do
-    vim.cmd(string.format('highlight link %s %s', key, value))
+	vim.cmd(string.format('highlight link %s %s', key, value))
 end
