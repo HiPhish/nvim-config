@@ -257,6 +257,13 @@ nvim_lsp.tsserver.setup {
 }
 
 
+--- [ VALA LANGUAGE SERVER ] --------------------------------------------------
+nvim_lsp.vala_ls.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+
 --- [ VUE.JS LANGUAGE SERVER ]-------------------------------------------------
 nvim_lsp.vuels.setup {
 	on_attach = on_attach,
