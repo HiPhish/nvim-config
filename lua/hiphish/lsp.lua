@@ -259,6 +259,7 @@ nvim_lsp.tsserver.setup {
 
 --- [ VALA LANGUAGE SERVER ] --------------------------------------------------
 nvim_lsp.vala_ls.setup {
+	cmd = {server_dir .. '/vala-language-server/build/src/vala-language-server'},
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
