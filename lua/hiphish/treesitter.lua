@@ -1,7 +1,3 @@
--- require'spellsitter'.setup {
--- 	captures = {'comment', 'string'}
--- }
-
 require'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true,
