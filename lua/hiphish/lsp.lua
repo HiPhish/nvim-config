@@ -262,6 +262,11 @@ nvim_lsp.vala_ls.setup {
 	cmd = {server_dir .. '/vala-language-server/build/src/vala-language-server'},
 	on_attach = on_attach,
 	capabilities = capabilities,
+	-- Workaround for projects with multiple build files
+	root_dir = function(fname)
+      return (vim.fn.filereadable('meson.build') and vim.fn.getcwd())
+      	or nvim_lsp.vala_ls.document_config.default_config.root_dir(fname)
+	end
 }
 
 
