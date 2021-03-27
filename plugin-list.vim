@@ -43,6 +43,7 @@ Plug 'tpope/vim-characterize'  " Better display of character character codes
 " ===[ Auto-Completion ]=======================================================
 if has('nvim-0.5.0')
 	Plug 'hrsh7th/nvim-compe'
+	Plug '~/Developer/vim/nvim-compe-vlime/'
 	set completeopt=menuone,noinsert,noselect
 
 	let g:compe = {
@@ -52,6 +53,7 @@ if has('nvim-0.5.0')
 			\ 'buffer': v:true,
 			\ 'nvim_lsp': {'dup': v:true},
 			\ 'vsnip': v:true,
+			\ 'vlime': v:true,
 			\ 'ultisnips': {'dup': v:true, 'priority': 2000},
 		\}
 	\ }
