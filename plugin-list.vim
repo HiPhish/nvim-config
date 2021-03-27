@@ -265,6 +265,9 @@ Plug '~/Developer/vim/jinja.vim/'
 " Kotlin
 Plug 'udalov/kotlin-vim'
 
+" Meson
+Plug 'igankevich/mesonic'
+
 " Nim
 Plug 'zah/nim.vim'
 
