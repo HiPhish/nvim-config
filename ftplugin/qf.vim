@@ -29,7 +29,7 @@
 " }}}
 
 " We don't want any folds here
-setlocal foldmethod=manual
+setlocal foldmethod=manual cursorline
 
 " Use 'o' key to [o]pen the selected error.
 nnoremap <buffer> o <CR>
