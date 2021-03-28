@@ -45,6 +45,6 @@ do
 	for _, mapping in pairs(mappings) do
 		local lhs = mapping[1]
 		local rhs = mapping[2]
-		vim.fn.nvim_buf_set_keymap(0, 'n', lhs, rhs, opts)
+		vim.api.nvim_buf_set_keymap(0, 'n', lhs, rhs, opts)
 	end
 end

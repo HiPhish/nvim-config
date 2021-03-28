@@ -71,7 +71,7 @@ end
 -- @param rhs   What to map to
 local function map(mode, lhs, rhs)
 	local opts = {noremap = true, silent = true}
-	vim.fn.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
+	vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
 end
 
 --- Default on attach function for all servers
