@@ -41,34 +41,41 @@ Plug 'tpope/vim-characterize'  " Better display of character character codes
 
 " ===[ Auto-Completion ]=======================================================
 if has('nvim-0.5.0')
-	Plug 'hrsh7th/nvim-compe'
-	Plug '~/Developer/vim/nvim-compe-vlime/'
-	set completeopt=menuone,noinsert,noselect
-
-	let g:compe = {
-		\ 'enabled': v:true,
-		\ 'source': {
-			\ 'path': v:true,
-			\ 'buffer': v:true,
-			\ 'nvim_lsp': {'dup': v:true},
-			\ 'vsnip': v:true,
-			\ 'vlime': v:true,
-			\ 'ultisnips': {'dup': v:true, 'priority': 2000},
-		\}
-	\ }
-	inoremap <silent><expr> <CR>  compe#confirm({'keys': "\<Plug>delimitMateCR", 'mode': ''})
-	inoremap <silent><expr> <ESC> compe#close('<ESC>')
-
+	Plug 'nvim-lua/completion-nvim'
 	Plug 'hrsh7th/vim-vsnip'
 	Plug 'hrsh7th/vim-vsnip-integ'
+	Plug '~/Developer/vim/completion-nvim-vlime/'
+
+	set completeopt=menuone,noinsert,noselect
+
+	augroup completion
+		autocmd!
+		autocmd BufEnter * lua require'completion'.on_attach() 
+	augroup END
+
+	" Settings for the completion plugin itself
+	let g:completion_enable_snippet = 'UltiSnips'
+	let g:completion_enable_auto_paren = v:true
+	let g:completion_trigger_on_delete = v:true
+	let g:completion_auto_change_source = 1
+	let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+	let g:completion_chain_complete_list = {
+		\ 'default': [
+			\ {'complete_items': ['snippet', 'lsp', 'path']},
+			\ {'mode': 'keyp'},
+			\ {'mode': 'keyn'},
+		\ ],
+		\ 'lisp': [
+			\ {'complete_items': ['snippet', 'vlime', 'path']},
+			\ {'mode': 'keyp'},
+			\ {'mode': 'keyn'},
+		\ ],
+	\ }
+
 	imap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
 	smap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
 	imap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 	smap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
-
-	" Plug '~/Developer/vim/completion-nvim-vlime/'
-
-	Plug 'mfussenegger/nvim-jdtls'
 else
 	Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
 	autocmd BufEnter     * call ncm2#enable_for_buffer()
@@ -107,6 +114,7 @@ if !has('nvim-0.5.0')
 	Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 else
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'mfussenegger/nvim-jdtls'
 endif
 
 
