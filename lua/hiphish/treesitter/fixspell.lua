@@ -85,7 +85,6 @@ return {
 			return
 		end
 		for _, spec in pairs(specs) do
-			print(vim.inspect(spec))
 			local cmd = spell_spec_to_cmd[spec.type](spec)
 			vim.cmd(cmd)
 		end

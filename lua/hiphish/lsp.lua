@@ -1,5 +1,14 @@
-local nvim_lsp = require'lspconfig'
-local util     = require'vim.lsp.util'
+local nvim_lsp   = require'lspconfig'
+local util       = require'vim.lsp.util'
+local local_util = require'hiphish.lsp.util'
+
+
+--- [ HIGHLIGHT AND SIGNS ] ---------------------------------------------------
+vim.cmd 'sign define LspDiagnosticsSignError text=⛔'
+vim.cmd 'sign define LspDiagnosticsSignWarning text=⚠️'
+vim.cmd 'sign define LspDiagnosticsSignInformation text=ℹ️'
+vim.cmd 'sign define LspDiagnosticsSignHint text=💡'
+
 
 --- [ HELPER FUNCTIONS ] ------------------------------------------------------
 
@@ -14,13 +23,13 @@ local server_dir = vim.fn.expand'~/Applications/lsp'
 ---   For each argument first try to match its patterns before trying to match
 ---   the next set of patterns.
 local function root_patterns(...)
-	local util = require'lspconfig.util'
+	local config_util = require'lspconfig.util'
 	local searchers = {}
 
 	for _, patterns in ipairs({...}) do
 		local searcher = type(patterns) == 'table'
-			and util.root_pattern(unpack(patterns))
-			or util.root_pattern(patterns)
+			and config_util.root_pattern(unpack(patterns))
+			or config_util.root_pattern(patterns)
 		searchers[#searchers + 1] = searcher
 	end
 
@@ -62,17 +71,7 @@ end
 -- Settings which are relevant and useful for all language servers. Individual
 -- configurations can override or add to the default configuration.
 
--- local completion_on_attach = require'completion'.on_attach
-
---- Map keys for the current buffer
---
--- @param mode  Mode for which the mapping applies
--- @param lhs   Key or keys to map
--- @param rhs   What to map to
-local function map(mode, lhs, rhs)
-	local opts = {noremap = true, silent = true}
-	vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
-end
+local completion_on_attach = require'completion'.on_attach
 
 --- Default on attach function for all servers
 --
@@ -80,21 +79,27 @@ end
 -- callback.
 local function on_attach(client, _)
 	-- Support for completion-nvim
-	-- completion_on_attach(client)
+	completion_on_attach(client)
 
 	-- Remap keys
-	map('n', 'gd'   , '<cmd>lua vim.lsp.buf.definition()<CR>')
-	map('n', 'gD'   , '<cmd>lua vim.lsp.buf.declaration()<CR>')
-	map('n', 'gO'   , '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-	map('n', '<C-G>', '<cmd>lua vim.lsp.buf.references()<CR>')
-	map('n', '<F2>' , '<cmd>lua vim.lsp.buf.rename()<CR>')
-	map('n', 'K'    , '<cmd>lua vim.lsp.buf.hover()<CR>')
-	map('n', '<CR>' , '<cmd>lua vim.lsp.buf.code_action()<CR>')
-	map('n', 'g?'   , '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+	local opts = {noremap = true, silent = true}
+	for mode, mappings in pairs(local_util.mappings) do
+		for lhs, rhs in pairs(mappings) do
+			vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
+		end
+	end
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local capabilities = local_util.capabilities {
+	textDocument = {
+		completion = {
+			completionItem = {
+				snippetSupport = true
+			}
+		}
+	}
+}
 
 --- [ CLANGD ]-----------------------------------------------------------------
 nvim_lsp.clangd.setup {
@@ -116,7 +121,7 @@ do
 
 	config.on_attach = function (client, bufnr)
 		on_attach(client, bufnr)
-		map('n', '<CR>' , '<cmd>lua require"jdtls".code_action()<CR>')
+		vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', '<cmd>lua require"jdtls".code_action()<CR>', {noremap = true, silent = true})
 		if old_on_attach then
 			old_on_attach(client, bufnr)
 		end
@@ -234,7 +239,8 @@ nvim_lsp.nimls.setup {
 --- [ OMNISHARP ] -------------------------------------------------------------
 nvim_lsp.omnisharp.setup {
 	cmd = {
-		server_dir .. '/omnisharp/run',
+		-- server_dir .. '/omnisharp/run',
+		server_dir .. '/omnisharp-linux-x64/run',
 		'--hostPID', tostring(vim.fn.getpid()),
 		'--languageserver'
 	},
@@ -248,6 +254,25 @@ nvim_lsp.pyls.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+
+
+--- [ METALS ]-----------------------------------------------------------------
+-- Metals has a lot of extension to the protocol, so we use a dedicated plugin
+-- for it. If the plugin is not installed we fall back to regular Neovim
+-- configuration.
+
+do
+	local success = pcall(function() require 'hiphish.lsp.metals' end)
+
+	if not success then
+		nvim_lsp.metals.setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+		}
+	end
+end
+
+
 
 
 --- [ TYPESCRIPT ]-------------------------------------------------------------

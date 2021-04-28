@@ -5,7 +5,7 @@
 "    \_/  |_|_| |_| |_|_| \_\\____/_/  |___|_| |_|_|\__(_)_/ |_|_| |_| |_|
 "
 " License:  The MIT License (MIT) {{{
-"    Copyright (c) 2018,2019 HiPhish
+"    Copyright (c) 2018-2021 HiPhish
 "
 "    Permission is hereby granted, free of charge, to any person obtaining a
 "    copy of this software and associated documentation files (the
@@ -63,6 +63,7 @@ set noshowmode                  " Don't display the mode in the last line.
 set showtabline=2               " Always show the tab line.
 set conceallevel=2              " Conceal and replace
 set shortmess+=c                " Don't show messages from completion menu
+set shortmess-=F                " Do show file messages
 set termguicolors               " Use GUI colours in the terminal
 set completeopt=noinsert,menuone,noselect
 if has('nvim')

@@ -296,6 +296,11 @@ endif
 Plug '~/Developer/neovim.rkt/', {'rtp': 'nvim'}
 Plug 'wlangstroth/vim-racket'
 
+" Scala
+if has('nvim-0.5')
+	Plug 'scalameta/nvim-metals'
+endif
+
 " Scheme
 Plug '~/Developer/vim/guile.vim'
 
