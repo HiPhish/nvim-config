@@ -70,6 +70,11 @@ if has('nvim-0.5.0')
 			\ {'mode': 'keyp'},
 			\ {'mode': 'keyn'},
 		\ ],
+		\ 'dap-repl': [
+			\ {'mode': 'omni'},
+			\ {'mode': 'keyp'},
+			\ {'mode': 'keyn'},
+		\ ],
 	\ }
 
 	imap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'

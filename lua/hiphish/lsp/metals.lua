@@ -20,7 +20,17 @@ local config = {
 	},
 	on_attach = function(client, bufnr)
 		-- Support for completion-nvim
-		require'completion'.on_attach(client)
+		local status, completion = pcall(require, 'completion')
+		if status then
+			completion.on_attach(client)
+		else
+			vim.cmd 'echohl WarningMsg'
+			vim.cmd 'echomsg "Metals: No completion plugin found, will not display completion candidates"'
+			vim.cmd 'echohl None'
+		end
+
+		-- Debug Adapter Protocol integration
+		metals.setup_dap()
 
 		-- Remap keys
 		local opts = {noremap = true, silent = true}
