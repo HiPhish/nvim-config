@@ -80,8 +80,8 @@ set noexpandtab copyindent preserveindent
 set softtabstop=0 shiftwidth=4 tabstop=4
 
 " Spell checking (in comments)
-set spell
-set spelllang=en
+syntax spell default
+set spell spelllang=en
 
 " Use Ack instead of Grep
 if executable('ack')
