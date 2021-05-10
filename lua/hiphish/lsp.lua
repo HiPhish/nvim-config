@@ -251,6 +251,11 @@ nvim_lsp.omnisharp.setup {
 
 --- [ PYLS ]-------------------------------------------------------------------
 nvim_lsp.pyls.setup {
+	cmd = {
+		vim.fn.executable('pyls') ~= 0
+			and 'pyls'
+			or vim.env.HOME .. '/.local/bin/pyls'
+	},
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
