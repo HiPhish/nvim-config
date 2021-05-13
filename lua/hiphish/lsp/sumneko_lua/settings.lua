@@ -114,6 +114,9 @@ M.default = {
 			maxPreload = 1000,
 			preloadFileSize = 1000,
 		},
+		telemetry = {
+			enable = false
+		},
 	}
 }
 
@@ -122,7 +125,7 @@ M.default = {
 M.nvim = {
 	Lua = {
 		runtime = {
-			version = 'LuaJIT',
+			version = jit and 'LuaJIT' or _VERSION,
 			path = paths_to_require_patterns({'lua/'})
 		},
 
@@ -141,13 +144,18 @@ M.nvim = {
 	}
 }
 
+if jit then
+	local globals = M.nvim.Lua.diagnostics.globals
+	globals[#globals + 1] = 'jit'
+end
+
 
 --- Load modules from Luarocks directory
 M.luarocks = {
 	Lua = {
 		runtime = {
-			version = 'Lua 5.3',
-			path = paths_to_require_patterns{'5.3/'}
+			version = vim.fn.systemlist({'lua', '-e', 'print(_VERSION)'}),
+			path = paths_to_require_patterns{'5.3/'},
 		},
 
 		workspace = {
