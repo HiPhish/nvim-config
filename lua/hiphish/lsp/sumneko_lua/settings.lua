@@ -31,20 +31,6 @@ local M = {}
 
 -- [ HELPER FUNCTIONS ]--------------------------------------------------------
 
---- Collect all Neovim Lua directories (including the ones from plugins).
-local function get_runtime_paths()
-    local result = {};
-    for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
-        local lua_path = path .. '/lua/';
-        if vim.fn.isdirectory(lua_path) ~= 0 then
-            -- result[#result + 1] = path
-            result[#result + 1] = lua_path
-        end
-    end
-
-    return result;
-end
-
 --- Same as running `luarocks path --lr-path`, but result is a list.
 local function get_luarocks_paths()
 	if vim.fn.executable('luarocks') == 0 then return {} end
@@ -122,33 +108,7 @@ M.default = {
 
 
 --- Settings suitable for writing Neovim configuration and plugins.
-M.nvim = {
-	Lua = {
-		runtime = {
-			version = jit and 'LuaJIT' or _VERSION,
-			path = paths_to_require_patterns({'lua/'})
-		},
-
-		diagnostics = {
-			globals = {
-				-- Neovim
-				'vim',
-				-- Busted
-				'describe', 'it', 'before_each', 'after_each', 'teardown', 'pending'
-			},
-		},
-
-		workspace = {
-			library = paths_to_library(get_runtime_paths())
-		},
-	}
-}
-
-if jit then
-	local globals = M.nvim.Lua.diagnostics.globals
-	globals[#globals + 1] = 'jit'
-end
-
+M.nvim = require 'hiphish.lsp.sumneko_lua.settings.nvim'
 
 --- Load modules from Luarocks directory
 M.luarocks = {
