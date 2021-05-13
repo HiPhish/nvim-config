@@ -24,7 +24,7 @@ M.cpp = M.c
 M.python = {
 	name = 'python',
 	type = 'executable',
-	command = '/usr/bin/python3',
+	command = 'python3',
 	args = {'-m', 'debugpy.adapter'}
 }
 
