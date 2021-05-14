@@ -71,5 +71,7 @@ require'lualine'.setup {
 	extensions = {
 		'fzf',
 		'nerdtree',
+		'quickfix',
+		'fugitive',
 	}
 }
