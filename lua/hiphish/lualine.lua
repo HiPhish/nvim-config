@@ -23,8 +23,18 @@ require'lualine'.setup {
 		lualine_b = {filename},
 		lualine_c = {
 			{
+				require 'hiphish.lualine.components.lsp_status',
+				condition = function()
+					return #vim.lsp.buf_get_clients() > 0
+				end
+			}, {
 				'diagnostics',
-				sections = {'error', 'warn'},
+				sections = {'warn'},
+				sources = {'nvim_lsp'},
+				symbols = {error = 'E: ', warn = 'W: ', info = 'I: '},
+			}, {
+				'diagnostics',
+				sections = {'error'},
 				sources = {'nvim_lsp'},
 				symbols = {error = 'E: ', warn = 'W: ', info = 'I: '},
 			}
