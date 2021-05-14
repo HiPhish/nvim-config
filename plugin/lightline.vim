@@ -22,6 +22,9 @@
 " }}}
 
 scriptencoding utf-8
+if has('nvim-0.5')
+	finish
+endif
 
 
 let g:lightline = exists('g:lightline') ? g:lightline : {}

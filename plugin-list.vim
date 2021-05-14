@@ -153,7 +153,11 @@ Plug 'SirVer/ultisnips'                 " Snippets
 Plug 'honza/vim-snippets'               " Snippets for UltiSnips
 Plug 'guns/vim-sexp'                    " Normal-mode motions for S-expressions
 Plug 'Olical/conjure',{'tag': 'v4.9.0'} " Live Lisp programming
-Plug 'itchyny/lightline.vim'
+if has('nvim-0.5')
+	Plug 'hoob3rt/lualine.nvim'
+else
+	Plug 'itchyny/lightline.vim'
+endif
 
 " Settings local to a given project
 Plug 'MarcWeber/vim-addon-local-vimrc'

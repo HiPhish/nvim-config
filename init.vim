@@ -68,6 +68,7 @@ set termguicolors               " Use GUI colours in the terminal
 set completeopt=noinsert,menuone,noselect
 if has('nvim')
 	set inccommand=nosplit
+	set tabline=%!luaeval('require\"hiphish.tabline\"()')
 endif
 
 
@@ -97,6 +98,7 @@ augroup ColorSchemeOverrides
 	autocmd ColorScheme solarized8 hi SpellCap    guifg=NONE
 	autocmd ColorScheme solarized8 hi SpellLocal  guifg=NONE
 	autocmd ColorScheme solarized8 hi SpellRare   guifg=NONE
+	autocmd ColorScheme solarized8 hi TabLineFill guifg=#073642
 augroup NONE
 
 set background=dark
@@ -120,6 +122,7 @@ if !has('nvim-0.5')
 	finish
 endif
 
-lua require"hiphish.lsp"
-lua require"hiphish.dap"
-lua require"hiphish.treesitter"
+lua require 'hiphish.lsp'
+lua require 'hiphish.dap'
+lua require 'hiphish.treesitter'
+lua require 'hiphish.lualine'
