@@ -74,5 +74,6 @@ require'lualine'.setup {
 		'quickfix',
 		'fugitive',
 		require 'hiphish.lualine.extensions.dirvish',
+		require 'hiphish.lualine.extensions.man',
 	}
 }
