@@ -73,5 +73,6 @@ require'lualine'.setup {
 		'nerdtree',
 		'quickfix',
 		'fugitive',
+		require 'hiphish.lualine.extensions.dirvish',
 	}
 }
