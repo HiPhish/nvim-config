@@ -18,5 +18,5 @@ for sign, options in pairs(signs) do
 end
 
 for lhs, rhs in pairs(mappings) do
-	vim.api.nvim_buf_set_keymap(0, 'n', lhs, rhs, {noremap = true, silent = true})
+	vim.api.nvim_set_keymap('n', lhs, rhs, {noremap = true, silent = true})
 end
