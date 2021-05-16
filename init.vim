@@ -98,7 +98,7 @@ augroup ColorSchemeOverrides
 	autocmd ColorScheme solarized8 hi SpellCap    guifg=NONE
 	autocmd ColorScheme solarized8 hi SpellLocal  guifg=NONE
 	autocmd ColorScheme solarized8 hi SpellRare   guifg=NONE
-	autocmd ColorScheme solarized8 hi TabLineFill guifg=#073642
+	autocmd ColorScheme solarized8 hi TabLineFill guifg=#073642 guibg=#586e75
 augroup NONE
 
 set background=dark

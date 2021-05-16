@@ -32,6 +32,10 @@ end
 return function()
 	local result = make_tab_entries(fn.range(fn.tabpagenr('$')), fn.tabpagenr())
 
-	result = result .. '%#TabLineFill#%=%#TabLine# %{strftime("%H:%M")} │ %{strftime("%Y-%m-%d %a")} '
+	result = result .. '%#TabLineFill#%='
+	if fn['fugitive#head'] and fn['fugitive#head'](7) ~= '' then
+		result = result .. ' %{fugitive#head(7)}%='
+	end
+	result = result .. '%#TabLine# %{strftime("%H:%M")} │ %{strftime("%Y-%m-%d %a")} '
 	return result
 end
