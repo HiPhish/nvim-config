@@ -1,3 +1,5 @@
+local fn = vim.fn
+
 --- Various predefined tests for the language server
 --
 -- A test is a thunk which tests whether some condition is true. Usually we
@@ -14,12 +16,12 @@ end
 
 --- Whether the file path argument is a readable file.
 local function filereadable(fname)
-	return vim.fn.filereadable(fname) ~= 0
+	return fn.filereadable(fname) ~= 0
 end
 
 --- Whether the file path argument is a directory.
 local function isdirectory(directory)
-	return vim.fn.isdirectory(directory) ~= 0
+	return fn.isdirectory(directory) ~= 0
 end
 
 --- Returns a directory tree.
@@ -42,7 +44,7 @@ local function tree(dir, parent, when)
 		return isdirectory(path .. '/' .. child) and tree(child, path) or child
 	end
 
-	return { [dir] = map(vim.fn.readdir(path), f) }
+	return { [dir] = map(fn.readdir(path), f) }
 end
 
 
@@ -65,7 +67,7 @@ end
 
 --- The current directory is the Neovim config directory.
 function M.is_nvim_conf_dir()
-	return vim.fn.getcwd() == vim.fn.stdpath('config')
+	return fn.getcwd() == fn.stdpath('config')
 end
 
 --- The current directory is a Vim plugin directory; only an educated guess.
@@ -74,17 +76,20 @@ function M.is_vim_plugin_dir()
 	local plugin_dirs = {'plugin', 'autoload', 'after/plugin'}
 	for _, plugin_dir in ipairs(plugin_dirs) do
 		if isdirectory(plugin_dir) then
-			local vim_files = vim.fn.glob(plugin_dir .. '/*.vim')
+			local vim_files = fn.glob(plugin_dir .. '/*.vim')
 			if #vim_files > 0 then return true end
 		end
 	end
 
-	return false
+	-- Plugin directory names usually end in `.nvim` or start with `nvim-`
+	return
+		fn.fnamemodify(fn.getcwd(), ':e') == 'nvim'
+		or fn.matchstr(fn.fnamemodify(fn.getcwd(), ':t'), '\\v^nvim-.+') ~= ''
 end
 
 --- There exists a `.rockspec` file.
 function M.has_rockspec()
-	local specs = vim.fn.glob('*.rockspec', true, true)
+	local specs = fn.glob('*.rockspec', true, true)
 	return #specs > 0
 end
 
