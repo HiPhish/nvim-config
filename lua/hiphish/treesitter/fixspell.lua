@@ -4,6 +4,7 @@
 --
 -- https://github.com/nvim-treesitter/nvim-treesitter/issues/698
 
+-- Syntax groups which need to be spell-checked, grouped by file type.
 local spellgroups = {
 	c = {
 		{  -- Single-line comment
@@ -54,6 +55,30 @@ local spellgroups = {
 			['end'] = '"\\v\\*\\/"',
 		}
 	},
+	python = {
+		{  -- Double-quote Python string
+			type = 'region',
+			start = [[+"+]],
+			skip = [[+\\"+]],
+			['end'] = [[+"+]],
+		}, {  -- Single-quote Python string
+			type = 'region',
+			start = [[+'+]],
+			skip = [[+\\'+]],
+			['end'] = [[+'+]],
+		}, {  -- Python single-line comment
+			type = 'match',
+			pattern = '"#.*"'
+		}, {  -- Double-quite multi-line strings
+			type = 'region',
+			start = [[+"""+]],
+			['end'] = [[+"""+]],
+		}, {  -- Single-quite multi-line strings
+			type = 'region',
+			start = [[+'''+]],
+			['end'] = [[+'''+]],
+		}
+	}
 }
 
 spellgroups.typescript = spellgroups.javascript
