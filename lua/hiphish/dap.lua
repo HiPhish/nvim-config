@@ -9,3 +9,5 @@ end
 for language, configurations in pairs(require 'hiphish.dap.configurations') do
 	dap.configurations[language] = configurations
 end
+
+require 'hiphish.dap.debugpy'
