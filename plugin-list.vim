@@ -145,6 +145,7 @@ endif
 " ===[ Enhance Vim ]===========================================================
 Plug 'kana/vim-operator-user'  " has some libraries used by other packages
 
+Plug 'nanotee/luv-vimdocs'              " Documentation for libuv bindings
 Plug 'chrisbra/NrrwRgn'                 " Narrowing feature
 Plug 'fmoralesc/vim-tutor-mode'         " Interactive Vim tutorials
 Plug 'Raimondi/delimitMate'             " Auto-insert matching braces
