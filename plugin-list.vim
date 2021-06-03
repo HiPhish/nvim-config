@@ -155,8 +155,21 @@ Plug 'SirVer/ultisnips'                 " Snippets
 Plug 'honza/vim-snippets'               " Snippets for UltiSnips
 Plug 'guns/vim-sexp'                    " Normal-mode motions for S-expressions
 Plug 'Olical/conjure',{'tag': 'v4.9.0'} " Live Lisp programming
+
 if has('nvim-0.5')
 	Plug 'hoob3rt/lualine.nvim'
+
+	Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
+	let g:indent_blankline_filetype = ['python', 'nim']
+	let g:blankline_enabled = v:true
+	let g:indent_blankline_char = '│'
+	let g:indent_blankline_space_char = ' '
+	let g:indent_blankline_space_char_blankline = ' '
+	let g:indent_blankline_use_treesitter = v:true
+	let g:indent_blankline_show_current_context = v:true
+    let g:indent_blankline_context_patterns = ['class', 'function', 'method', '^if', '^for', '^with', '^while', '^until', '^try', '^except', '^finally']
+	" It would be nice if I had some general rainbow highlight groups, then I
+	" could also define g:indent_blankline_context_highlight_list
 else
 	Plug 'itchyny/lightline.vim'
 endif
