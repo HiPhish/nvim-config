@@ -165,11 +165,10 @@ if has('nvim-0.5')
 	let g:indent_blankline_char = '│'
 	let g:indent_blankline_space_char = ' '
 	let g:indent_blankline_space_char_blankline = ' '
-	let g:indent_blankline_use_treesitter = v:true
 	let g:indent_blankline_show_current_context = v:true
     let g:indent_blankline_context_patterns = ['class', 'function', 'method', '^if', '^for', '^with', '^while', '^until', '^try', '^except', '^finally']
-	" It would be nice if I had some general rainbow highlight groups, then I
-	" could also define g:indent_blankline_context_highlight_list
+	let g:indent_blankline_context_highlight_list = ['RainbowRed', 'RainbowYellow', 'RainbowBlue', 'RainbowGreen', 'RainbowCyan', 'RainbowOrange', 'RainbowViolet']
+	let g:indent_blankline_space_char_blankline_highlight_list = g:indent_blankline_context_highlight_list
 else
 	Plug 'itchyny/lightline.vim'
 endif

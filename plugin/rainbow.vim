@@ -25,14 +25,11 @@
 let g:rainbow_active = 1
 
 let s:jinja_statements = 'if|for|raw|block|macro|call|filter|trans|with|autoescape'
-
-" Colours
-" Green, cyan, yellow, orange, blue, red, br-cyan, magenta, br-yellow, violet,
-" br-blue
+let s:guifgs = ['RainbowRed', 'RainbowYellow', 'RainbowBlue', 'RainbowGreen', 'RainbowCyan', 'RainbowOrange', 'RainbowViolet']
 
 " This is the default example, change it
 let g:rainbow_conf = {
-\	'guifgs': ['#859901', '#2aa198', '#b58901', '#cb4b16', '#268bd2', '#dc322f', '#93a1a1', '#d33682', '#657b83', '#6c6ec6', '#839496'],
+\	'guifgs': map(map(map(s:guifgs, {_,v->hlID(v)}), {_,v->synIDtrans(v)}), {_,v->synIDattr(v, 'fg#')}),
 \	'ctermfgs': ['2', '4', '3', '9', '4', '1', '14', '5', '11', '13', '12'],
 \	'operators': '_,_',
 \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],

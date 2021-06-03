@@ -69,6 +69,7 @@ set completeopt=noinsert,menuone,noselect
 if has('nvim')
 	set inccommand=nosplit
 	set tabline=%!luaeval('require\"hiphish.tabline\"()')
+	set pumblend=20
 endif
 
 
@@ -94,11 +95,7 @@ endif
 " ---[ THEME SETTINGS ]--------------------------------------------------------
 augroup ColorSchemeOverrides
 	" Override the BS from Solarized
-	autocmd ColorScheme solarized8 hi SpellBad    guifg=NONE
-	autocmd ColorScheme solarized8 hi SpellCap    guifg=NONE
-	autocmd ColorScheme solarized8 hi SpellLocal  guifg=NONE
-	autocmd ColorScheme solarized8 hi SpellRare   guifg=NONE
-	autocmd ColorScheme solarized8 hi TabLineFill guifg=#073642 guibg=#586e75
+	autocmd ColorScheme solarized8 runtime after/colors/<amatch>.vim
 augroup NONE
 
 set background=dark
