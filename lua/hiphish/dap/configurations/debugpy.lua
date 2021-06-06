@@ -55,6 +55,7 @@ M.base_config = {
 	type = 'python',
 	request = 'launch',
 	console = 'internalConsole',
+	justMyCode = false,
 }
 
 --- Debug a module by name
