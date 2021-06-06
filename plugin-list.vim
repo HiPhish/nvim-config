@@ -166,7 +166,7 @@ if has('nvim-0.5')
 	let g:indent_blankline_space_char = ' '
 	let g:indent_blankline_space_char_blankline = ' '
 	let g:indent_blankline_show_current_context = v:true
-    let g:indent_blankline_context_patterns = ['class', 'function', 'method', '^if', '^for', '^with', '^while', '^until', '^try', '^except', '^finally']
+    let g:indent_blankline_context_patterns = ['class', 'function', 'def', 'method', '^if', '^elif', '^else', '^for', '^with', '^while', '^until', '^try', '^except', '^finally']
 	let g:indent_blankline_context_highlight_list = ['RainbowRed', 'RainbowYellow', 'RainbowBlue', 'RainbowGreen', 'RainbowCyan', 'RainbowOrange', 'RainbowViolet']
 	let g:indent_blankline_space_char_blankline_highlight_list = g:indent_blankline_context_highlight_list
 else
