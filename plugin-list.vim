@@ -136,6 +136,7 @@ endif
 if has('nvim-0.5')
 	Plug 'mfussenegger/nvim-dap'
 	Plug 'mfussenegger/nvim-dap-python/'
+	Plug 'rcarriga/nvim-dap-ui'
 else
 	let g:vimspector_enable_mappings = 'HUMAN'
 	Plug 'puremourning/vimspector'

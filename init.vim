@@ -121,5 +121,6 @@ endif
 
 lua require 'hiphish.lsp'
 lua require 'hiphish.dap'
+lua require 'hiphish.dapui'
 lua require 'hiphish.treesitter'
 lua require 'hiphish.lualine'
