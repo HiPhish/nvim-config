@@ -23,11 +23,6 @@ require'lualine'.setup {
 		lualine_b = {filename},
 		lualine_c = {
 			{
-				require 'hiphish.lualine.components.lsp_status',
-				condition = function()
-					return #vim.lsp.buf_get_clients() > 0
-				end
-			}, {
 				'diagnostics',
 				sections = {'warn'},
 				sources = {'nvim_lsp'},
@@ -50,6 +45,11 @@ require'lualine'.setup {
 			}, {
 				'filetype',
 				condition = width_criterion(60),
+			}, {
+				require 'hiphish.lualine.components.lsp_status',
+				condition = function()
+					return #vim.lsp.buf_get_clients() > 0
+				end
 			},
 		},
 		lualine_y = {
