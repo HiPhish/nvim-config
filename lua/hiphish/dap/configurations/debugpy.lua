@@ -3,6 +3,7 @@
 local dap = require 'dap'
 -- Running tests: https://github.com/mfussenegger/nvim-dap-python/
 local has_testrunners, dap_python = pcall(require, 'dap-python')
+local has_dapui = pcall(require, 'dapui')
 local fn = vim.fn
 
 --- Configurations for debugging Python with Debugpy. Some of the exported
@@ -65,7 +66,7 @@ function M.debug_module(module)
 		module = module,
 	}
 
-	dap.repl.open()
+	if not has_dapui then dap.repl.open() end
 	dap.run(config)
 end
 
@@ -77,7 +78,7 @@ function M.debug_program(program, args)
 		args = args or {},
 	}
 
-	dap.repl.open()
+	if not has_dapui then dap.repl.open() end
 	dap.run(config)
 end
 
@@ -93,7 +94,7 @@ function M.debug_remote(host, port)
 		},
 	}
 
-	dap.repl.open()
+	if not has_dapui then dap.repl.open() end
 	dap.run(config)
 end
 
@@ -103,7 +104,7 @@ function M.debug_test()
 		print_dap_python_info()
 		return
 	end
-	dap.repl.open()
+	if not has_dapui then dap.repl.open() end
 	dap_python.test_method(M.base_config)
 end
 
@@ -113,7 +114,7 @@ function M.debug_class()
 		print_dap_python_info()
 		return
 	end
-	dap.repl.open()
+	if not has_dapui then dap.repl.open() end
 	dap_python.test_class(M.base_config)
 end
 
@@ -123,7 +124,7 @@ function M.debug_selection()
 		print_dap_python_info()
 		return
 	end
-	dap.repl.open()
+	if not has_dapui then dap.repl.open() end
 	dap_python.debug_selection(M.base_config)
 end
 
