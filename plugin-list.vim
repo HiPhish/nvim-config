@@ -159,6 +159,10 @@ Plug 'honza/vim-snippets'               " Snippets for UltiSnips
 Plug 'guns/vim-sexp'                    " Normal-mode motions for S-expressions
 Plug 'Olical/conjure',{'tag': 'v4.9.0'} " Live Lisp programming
 
+Plug 'vim-test/vim-test'                " Run tests
+Plug 'rcarriga/vim-ultest'              " Run tests (extras)
+let g:ultest_icons = v:false
+
 if has('nvim-0.5')
 	Plug 'hoob3rt/lualine.nvim'
 
