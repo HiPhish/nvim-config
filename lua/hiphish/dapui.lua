@@ -10,6 +10,7 @@ require('dapui').setup {
 		edit = {'e'}
 	},
 	sidebar = {
+		open_on_start = true,
 		elements = {
 			'breakpoints',
 			'watches',
@@ -17,9 +18,10 @@ require('dapui').setup {
 			'scopes',
 		},
 		width = 40,
-		position = 'left',
+		position = 'right',
 	},
 	tray = {
+		open_on_start = true,
 		elements = {
 			'repl'
 		},
