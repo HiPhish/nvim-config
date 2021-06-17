@@ -161,7 +161,7 @@ Plug 'Olical/conjure',{'tag': 'v4.9.0'} " Live Lisp programming
 
 Plug 'vim-test/vim-test'                " Run tests
 Plug 'rcarriga/vim-ultest'              " Run tests (extras)
-let g:ultest_icons = v:false
+" let g:ultest_icons = v:false
 
 if has('nvim-0.5')
 	Plug 'hoob3rt/lualine.nvim'
@@ -207,13 +207,6 @@ let g:win_ext_command_map = {
 
 " Vim script testing framework
 Plug 'junegunn/vader.vim'               " Testing framework
-
-" Running tests from inside Vim (use my own fork for better Gradle support)
-" Plug 'janko/vim-test'
-Plug 'HiPhish/vim-test', {'branch': 'gradle'}
-if has('nvim')
-	let test#strategy = "neovim"
-endif
 
 " Surround text objects
 Plug 'rhysd/vim-operator-surround'
