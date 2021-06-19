@@ -14,12 +14,19 @@ require'nvim-treesitter.configs'.setup {
 	},
 	context_commentstring = {
 		enable = true,
+	},
+	playground = {
 	}
 }
 
-require'nvim-treesitter'.define_modules {
-	fixspell = require 'hiphish.treesitter.fixspell'
-}
+do  -- Fix spell checking
+	local success, spellsitter = pcall(require, 'spellsitter')
+	if success then
+		spellsitter.setup {
+			captures = {'comment', 'string'}
+		}
+	end
+end
 
 local highlight_links = {
 	TSPunctDelimiter = 'NONE',

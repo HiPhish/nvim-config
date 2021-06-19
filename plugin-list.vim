@@ -126,9 +126,8 @@ endif
 " ===[ Treesitter ]============================================================
 if has('nvim-0.5')
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-	" Sets the 'commentstring' option using parser information
-	Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+	Plug 'nvim-treesitter/playground'
+	Plug 'lewis6991/spellsitter.nvim'
 endif
 
 
