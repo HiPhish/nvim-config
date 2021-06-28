@@ -147,20 +147,20 @@ endif
 " ===[ Enhance Vim ]===========================================================
 Plug 'kana/vim-operator-user'  " has some libraries used by other packages
 
-Plug 'nanotee/luv-vimdocs'              " Documentation for libuv bindings
-Plug 'chrisbra/NrrwRgn'                 " Narrowing feature
-Plug 'fmoralesc/vim-tutor-mode'         " Interactive Vim tutorials
-Plug 'Raimondi/delimitMate'             " Auto-insert matching braces
-Plug 'luochen1990/rainbow'              " Differently coloured parentheses
-Plug 'bronson/vim-visual-star-search'   " Use * on a selection to search for it
-Plug 'SirVer/ultisnips'                 " Snippets
-Plug 'honza/vim-snippets'               " Snippets for UltiSnips
-Plug 'guns/vim-sexp'                    " Normal-mode motions for S-expressions
-Plug 'Olical/conjure',{'tag': 'v4.9.0'} " Live Lisp programming
+Plug 'nanotee/luv-vimdocs'               " Documentation for libuv bindings
+Plug 'chrisbra/NrrwRgn'                  " Narrowing feature
+Plug 'fmoralesc/vim-tutor-mode'          " Interactive Vim tutorials
+Plug 'Raimondi/delimitMate'              " Auto-insert matching braces
+Plug 'luochen1990/rainbow'               " Differently coloured parentheses
+Plug 'bronson/vim-visual-star-search'    " Use * on a selection to search for it
+Plug 'SirVer/ultisnips'                  " Snippets
+Plug 'honza/vim-snippets'                " Snippets for UltiSnips
+Plug 'guns/vim-sexp'                     " Normal-mode motions for S-expressions
+Plug 'Olical/conjure',{'tag': 'v4.21.0'} " Live Lisp programming
+let g:conjure#filetype#scheme = 'conjure.client.guile.socket'
 
-Plug 'vim-test/vim-test'                " Run tests
-Plug 'rcarriga/vim-ultest'              " Run tests (extras)
-" let g:ultest_icons = v:false
+Plug 'vim-test/vim-test'                 " Run tests
+Plug 'rcarriga/vim-ultest'               " Run tests (extras)
 
 if has('nvim-0.5')
 	Plug 'hoob3rt/lualine.nvim'
