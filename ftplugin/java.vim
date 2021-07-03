@@ -49,19 +49,6 @@ for [s:settings, s:makeprg, s:wrapper] in s:build_systems
 endfor
 
 
-" ---[ LanguageClient Neovim settings ]----------------------------------------
-if !has('nvim-0.5.0')
-	nmap <buffer> gd    <plug>(lsp-definition)
-	nmap <buffer> gD    <plug>(lsp-peek-definition)
-	nmap <buffer> gO    <plug>(lsp-document-symbol)
-	nmap <buffer> g?    <plug>(lsp-document-diagnostics)
-	nmap <buffer> <C-G> <plug>(lsp-references)
-	nmap <buffer> <F2>  <plug>(lsp-rename)
-	nmap <buffer> K     <plug>(lsp-hover)
-	nmap <buffer> <CR>  <plug>(lsp-code-action)
-endif
-
-
 " ---[ vim-test integration ]--------------------------------------------------
 if filereadable('build.gradle') && !has_key(g:, 'test#java#runner')
    	let test#java#runner = 'gradletest'

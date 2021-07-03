@@ -115,10 +115,6 @@ endif
 
 
 " ---[ LUA CONFIGURATION ]-----------------------------------------------------
-if !has('nvim-0.5')
-	finish
-endif
-
 lua require 'hiphish.lsp'
 lua require 'hiphish.dap'
 lua require 'hiphish.dapui'

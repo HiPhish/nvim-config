@@ -1,10 +1,5 @@
 " Custom LSP commands
 
-" The following applies to the built-in LSP client only
-if !has('nvim-0.5')
-	finish
-endif
-
 command! -nargs=+ -complete=custom,<SID>complete Lsp call s:lsp(<f-args>)
 
 

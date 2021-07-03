@@ -40,108 +40,65 @@ Plug 'tpope/vim-characterize'  " Better display of character character codes
 
 
 " ===[ Auto-Completion ]=======================================================
-if has('nvim-0.5.0')
-	Plug 'nvim-lua/completion-nvim'
-	Plug 'hrsh7th/vim-vsnip'
-	Plug 'hrsh7th/vim-vsnip-integ'
-	Plug '~/Developer/vim/completion-nvim-vlime/'
+Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug '~/Developer/vim/completion-nvim-vlime/'
 
-	set completeopt=menuone,noinsert,noselect
+set completeopt=menuone,noinsert,noselect
 
-	augroup completion
-		autocmd!
-		autocmd BufEnter * lua require'completion'.on_attach() 
-	augroup END
+augroup completion
+	autocmd!
+	autocmd BufEnter * lua require'completion'.on_attach() 
+augroup END
 
-	" Settings for the completion plugin itself
-	let g:completion_enable_snippet = 'UltiSnips'
-	let g:completion_enable_auto_paren = v:true
-	let g:completion_trigger_on_delete = v:true
-	let g:completion_auto_change_source = 1
-	let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-	let g:completion_chain_complete_list = {
-		\ 'default': [
-			\ {'complete_items': ['snippet', 'lsp', 'path']},
-			\ {'mode': 'keyp'},
-			\ {'mode': 'keyn'},
-		\ ],
-		\ 'lisp': [
-			\ {'complete_items': ['snippet', 'vlime', 'path']},
-			\ {'mode': 'keyp'},
-			\ {'mode': 'keyn'},
-		\ ],
-		\ 'dap-repl': [
-			\ {'mode': 'omni'},
-			\ {'mode': 'keyp'},
-			\ {'mode': 'keyn'},
-		\ ],
-	\ }
+" Settings for the completion plugin itself
+let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_enable_auto_paren = v:true
+let g:completion_trigger_on_delete = v:true
+let g:completion_auto_change_source = 1
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_chain_complete_list = {
+	\ 'default': [
+		\ {'complete_items': ['snippet', 'lsp', 'path']},
+		\ {'mode': 'keyp'},
+		\ {'mode': 'keyn'},
+	\ ],
+	\ 'lisp': [
+		\ {'complete_items': ['snippet', 'vlime', 'path']},
+		\ {'mode': 'keyp'},
+		\ {'mode': 'keyn'},
+	\ ],
+	\ 'dap-repl': [
+		\ {'mode': 'omni'},
+		\ {'mode': 'keyp'},
+		\ {'mode': 'keyn'},
+	\ ],
+\ }
 
-	imap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
-	smap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
-	imap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
-	smap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
-else
-	Plug 'roxma/nvim-yarp' | Plug 'ncm2/ncm2'
-	autocmd BufEnter     * call ncm2#enable_for_buffer()
-	autocmd TextChangedI * call ncm2#auto_trigger()
-endif
-
-" ---[ NCM2 completion sources ]-----------------------------------------------
-if has('nvim-0.5.0')
-else
-	" General
-	Plug 'ncm2/float-preview.nvim'
-	let g:float_preview#docked = 0
-	Plug 'ncm2/ncm2-path'
-	Plug 'ncm2/ncm2-bufword'
-	" Snippets
-	Plug 'ncm2/ncm2-ultisnips' | let g:UltiSnipsEditSplit = 'context'
-	inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-	" Programming language
-	Plug 'ncm2/ncm2-cssomni'
-	Plug 'ncm2/ncm2-jedi'
-	Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-	Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
-	Plug 'ncm2/ncm2-pyclang'
-	let g:ncm2_pyclang#library_path = '/usr/lib/llvm-7/lib/libclang.so.1'
-	let g:ncm2_pyclang#args_file_path = ['.clang_complete']
-	Plug '~/Developer/vim/ncm2-vlime/'
-endif
+imap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
+smap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-jump-next)' : '<C-j>'
+imap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
+smap <expr> <C-k> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 
 
 " ===[ Language Server Protocol ]==============================================
-if !has('nvim-0.5.0')
-	Plug 'prabirshrestha/async.vim'
-	Plug 'prabirshrestha/vim-lsp'
-	Plug 'ncm2/ncm2-vim-lsp'
-	Plug 'thomasfaingnaert/vim-lsp-snippets'
-	Plug 'thomasfaingnaert/vim-lsp-ultisnips'
-else
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'mfussenegger/nvim-jdtls'
-endif
+Plug 'neovim/nvim-lspconfig'
+Plug 'mfussenegger/nvim-jdtls'
 
 
 " ===[ Treesitter ]============================================================
-if has('nvim-0.5')
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	Plug 'nvim-treesitter/playground'
-	Plug 'lewis6991/spellsitter.nvim'
-endif
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+Plug 'lewis6991/spellsitter.nvim'
 
 
 " ===[ Debug Adapter Protocol ]================================================
-if has('nvim-0.5')
-	Plug 'mfussenegger/nvim-dap'
-	Plug 'mfussenegger/nvim-dap-python/'
-	Plug 'rcarriga/nvim-dap-ui'
-	Plug 'theHamsta/nvim-dap-virtual-text'
-	let g:dap_virtual_text = v:true
-else
-	let g:vimspector_enable_mappings = 'HUMAN'
-	Plug 'puremourning/vimspector'
-endif
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python/'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+let g:dap_virtual_text = v:true
 
 
 " ===[ Enhance Vim ]===========================================================
@@ -162,22 +119,18 @@ let g:conjure#filetype#scheme = 'conjure.client.guile.socket'
 Plug 'vim-test/vim-test'                 " Run tests
 Plug 'rcarriga/vim-ultest'               " Run tests (extras)
 
-if has('nvim-0.5')
-	Plug 'hoob3rt/lualine.nvim'
+Plug 'hoob3rt/lualine.nvim'
 
-	Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
-	let g:indent_blankline_filetype = ['python', 'nim']
-	let g:blankline_enabled = v:true
-	let g:indent_blankline_char = '│'
-	let g:indent_blankline_space_char = ' '
-	let g:indent_blankline_space_char_blankline = ' '
-	let g:indent_blankline_show_current_context = v:true
-    let g:indent_blankline_context_patterns = ['class', 'function', 'def', 'method', '^if', '^elif', '^else', '^for', '^with', '^while', '^until', '^try', '^except', '^finally']
-	let g:indent_blankline_context_highlight_list = ['RainbowRed', 'RainbowYellow', 'RainbowBlue', 'RainbowGreen', 'RainbowCyan', 'RainbowOrange', 'RainbowViolet']
-	let g:indent_blankline_space_char_blankline_highlight_list = g:indent_blankline_context_highlight_list
-else
-	Plug 'itchyny/lightline.vim'
-endif
+Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
+let g:indent_blankline_filetype = ['python', 'nim']
+let g:blankline_enabled = v:true
+let g:indent_blankline_char = '│'
+let g:indent_blankline_space_char = ' '
+let g:indent_blankline_space_char_blankline = ' '
+let g:indent_blankline_show_current_context = v:true
+let g:indent_blankline_context_patterns = ['class', 'function', 'def', 'method', '^if', '^elif', '^else', '^for', '^with', '^while', '^until', '^try', '^except', '^finally']
+let g:indent_blankline_context_highlight_list = ['RainbowRed', 'RainbowYellow', 'RainbowBlue', 'RainbowGreen', 'RainbowCyan', 'RainbowOrange', 'RainbowViolet']
+let g:indent_blankline_space_char_blankline_highlight_list = g:indent_blankline_context_highlight_list
 
 " Settings local to a given project
 Plug 'MarcWeber/vim-addon-local-vimrc'
@@ -224,13 +177,6 @@ Plug 'KabbAmine/vCoolor.vim'
 let g:vcoolor_disable_mappings = 1
 let g:vcoolor_custom_picker = 'kcolorchooser --print'
 inoremap <c-x><c-c> <c-o>:VCoolIns ra<cr>
-
-" A generic debugger front end
-if !has('nvim-0.5')
-	Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Dependency of vim-vebugger
-	Plug 'idanarye/vim-vebugger', {'branch': 'develop'}  " Debugging
-	let g:vebugger_leader='<leader>d'
-endif
 
 " My own plugins
 Plug '~/Developer/vim/info.vim/'
@@ -292,11 +238,6 @@ else
 	Plug 'https://gitlab.com/HiPhish/gradle.nvim', {'do': 'gradle wrapper && ./gradlew install'}
 endif
 
-" JavaScript
-if !has('nvim-0.5')
-	Plug 'ternjs/tern_for_vim', {'for': 'javacript', 'do': 'npm install'}
-endif
-
 " Jinja
 Plug '~/Developer/vim/jinja.vim/'
 
@@ -309,19 +250,12 @@ Plug 'igankevich/mesonic'
 " Nim
 Plug 'zah/nim.vim'
 
-" Python
-if !has('nvim-0.5')
-	Plug 'davidhalter/jedi-vim'
-endif
-
 " Racket
 Plug '~/Developer/neovim.rkt/', {'rtp': 'nvim'}
 Plug 'wlangstroth/vim-racket'
 
 " Scala
-if has('nvim-0.5')
-	Plug 'scalameta/nvim-metals'
-endif
+Plug 'scalameta/nvim-metals'
 
 " Scheme
 Plug '~/Developer/vim/guile.vim'
