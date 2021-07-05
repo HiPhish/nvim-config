@@ -4,3 +4,4 @@ rplugin
 spell/*.spl
 spell/*.sug
 doc/tags
+plugin/packer_compiled.lua

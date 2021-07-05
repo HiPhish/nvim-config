@@ -31,8 +31,3 @@
 " Use tabs for indentation, appear two spaces wide
 setlocal noexpandtab copyindent preserveindent
 setlocal softtabstop=0 shiftwidth=2 tabstop=2
-
-augroup autochecking
-	autocmd!
-	autocmd! BufWritePost <buffer> Neomake
-augroup END

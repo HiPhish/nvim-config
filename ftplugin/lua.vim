@@ -31,8 +31,3 @@
 
 " Auto-wrap at a sensible width (comments only)
 setlocal textwidth=79
-
-augroup autochecking
-	autocmd!
-	autocmd! BufWritePost <buffer> Neomake
-augroup END

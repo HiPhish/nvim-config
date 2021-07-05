@@ -43,8 +43,3 @@ if exists('g:plugs["riv"]')
 	"let g:riv_highlight_code .= ',c'
 	let g:riv_highlight_code='lua,python,c,cpp,cs,javascript,vim,sh,racket,scheme,lisp'
 endif
-
-augroup autochecking
-	autocmd!
-	autocmd! BufWritePost <buffer> Neomake
-augroup END

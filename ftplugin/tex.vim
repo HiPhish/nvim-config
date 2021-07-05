@@ -33,15 +33,6 @@
 " glyphs)
 let g:tex_conceal =''
 
-if exists('g:plugs["neomake"]')
-	let g:neomake_tex_enabled_makers = ['chktex']
-endif
-
-augroup autochecking
-	autocmd!
-	autocmd! BufWritePost <buffer> Neomake
-augroup END
-
 
 " ===[ Auto-compilation ]======================================================
 

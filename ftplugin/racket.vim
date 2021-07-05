@@ -34,12 +34,6 @@ setlocal showmatch
 " Use spaces for aligning braces
 setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
-augroup autochecking
-	autocmd!
-	autocmd! BufWritePost <buffer> Neomake
-augroup END
-
-
 " Open a REPL with the current file entered into
 nnoremap <leader>re :call <SID>enter_repl('')<CR>
 nnoremap <leader>vre :call <SID>enter_repl('vert')<CR>

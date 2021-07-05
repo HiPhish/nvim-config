@@ -35,17 +35,7 @@ if !has('nvim')
 endif
 
 
-" Download 'vim-plug' if it isn't already installed
-if empty(glob(stdpath('config') . '/autoload/plug.vim'))
-	" -f, --fail            fail silently
-	" -L, --location        follow redirections
-	" -o, --output <file>   write to the specified output file
-	"     --create-dirs     create intermediate directories
-	execute '!curl -fLo '..stdpath('config')..'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-endif
-call plug#begin(stdpath('data').'/site-packages/')
-execute 'source ' . stdpath('config') . '/plugin-list.vim'
-call plug#end()
+lua require 'hiphish.plugins'
 
 " Vim settings
 set listchars=tab:├─,space:·,trail:•,eol:¬,extends:…,precedes:…

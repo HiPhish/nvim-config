@@ -26,10 +26,3 @@
 "    OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-
-
-augroup autochecking
-	autocmd!
-	autocmd! BufWritePost <buffer> Neomake
-augroup END
-

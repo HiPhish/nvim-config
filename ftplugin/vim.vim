@@ -43,9 +43,3 @@ function! MyVimFoldText()
 
 	return l:line
 endfunction
-
-
-augroup autochecking
-	autocmd!
-	autocmd! BufWritePost <buffer> Neomake
-augroup END
