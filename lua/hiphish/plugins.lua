@@ -16,7 +16,7 @@ local plugins = {
 			vim.api.nvim_command('colorscheme solarized8')
 		end
 	},
-	'overcache/NeoSolarized',
+	'PascalZh/NeoSolarized',
 }
 
 

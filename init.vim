@@ -85,7 +85,8 @@ endif
 " ---[ THEME SETTINGS ]--------------------------------------------------------
 augroup ColorSchemeOverrides
 	" Override the BS from Solarized
-	autocmd ColorScheme solarized8 runtime after/colors/<amatch>.vim
+	autocmd ColorScheme solarized8   runtime after/colors/<amatch>.vim
+	autocmd ColorScheme NeoSolarized runtime after/colors/<amatch>.vim
 augroup NONE
 
 set background=dark
