@@ -14,4 +14,11 @@ highlight SpellBad    guifg=NONE
 highlight SpellCap    guifg=NONE
 highlight SpellLocal  guifg=NONE
 highlight SpellRare   guifg=NONE
-highlight TabLineFill guifg=#073642 guibg=#586e75
+
+if &background == 'dark'
+	highlight TabLineFill guifg=#073642 guibg=#586e75
+else
+	highlight TabLineSel  guifg=#efe9d6 guibg=#94a1a2 gui=bold
+	highlight TabLine     guifg=#839496 guibg=#efe9d6 gui=none
+	highlight TabLineFill guifg=#efe9d6 guibg=#94a1a2
+endif
