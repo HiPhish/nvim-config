@@ -261,7 +261,7 @@ nvim_lsp.pylsp.setup {
 	settings = {
 		pylsp = {
 			plugins = {
-				mypy_ls = {
+				['pylsp-mypy'] = {
 					enabled = true,
 				},
 			}
