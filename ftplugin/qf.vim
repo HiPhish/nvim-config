@@ -28,6 +28,7 @@
 "    USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
 
+setlocal nospell
 " We don't want any folds here
 setlocal foldmethod=manual cursorline
 
