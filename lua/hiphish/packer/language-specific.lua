@@ -1,8 +1,9 @@
 local util = require 'hiphish.packer.util'
+local either = util.either
 
 return {
 	-- " Awk
-	util.either('~/Developer/vim/awk-ward.nvim/', 'https://gitlab.com/HiPhish/awk-ward.nvim'),
+	either('~/Developer/vim/awk-ward.nvim/', 'https://gitlab.com/HiPhish/awk-ward.nvim'),
 
 	-- " Common Lisp
 	{
@@ -18,7 +19,7 @@ return {
 			vim.api.nvim_command('au BufReadPost,BufNewFile vlime* setlocal nonumber nospell')
 		end
 	},
-	'~/Developer/vim/quicklisp.nvim/',
+	either('~/Developer/vim/quicklisp.nvim/', 'https://gitlab.com/HiPhish/quicklisp.nvim'),
 
 	-- " GDScript (Godot)
 	'habamax/vim-godot',
@@ -33,7 +34,7 @@ return {
 	'jparise/vim-graphql',
 
 	-- Jinja
-	'~/Developer/vim/jinja.vim/',
+	either('~/Developer/vim/jinja.vim/', 'https://gitlab.com/HiPhish/jinja.vim'),
 
 	-- Kotlin
 	'udalov/kotlin-vim',
@@ -46,12 +47,12 @@ return {
 
 	-- Racket
 	{
-		util.either('~/Developer/neovim.rkt/', 'https://gitlab.com/HiPhish/neovim.rkt'),
+		either('~/Developer/neovim.rkt/', 'https://gitlab.com/HiPhish/neovim.rkt'),
 		rtp = 'nvim'
 	},
 
 	-- " Scheme
-	util.either('~/Developer/vim/guile.vim', 'https://gitlab.com/HiPhish/guile.vim'),
+	either('~/Developer/vim/guile.vim', 'https://gitlab.com/HiPhish/guile.vim'),
 
 	-- " Vala
 	'arrufat/vala.vim',
