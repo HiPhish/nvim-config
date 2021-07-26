@@ -11,12 +11,12 @@ local plugins = {
 
 	-- Colour schemes
 	{
-		'lifepillar/vim-solarized8',
+		'https://gitlab.com/HiPhish/resolarized.nvim',
 		config = function()
-			vim.api.nvim_command('colorscheme solarized8')
+			vim.o.background = 'dark'
+			vim.cmd 'colorscheme solarized-dark'
 		end
-	},
-	'PascalZh/NeoSolarized',
+	}
 }
 
 

@@ -83,16 +83,6 @@ endif
 
 
 " ---[ THEME SETTINGS ]--------------------------------------------------------
-augroup ColorSchemeOverrides
-	" Override the BS from Solarized
-	autocmd ColorScheme solarized8   runtime after/colors/<amatch>.vim
-	autocmd ColorScheme NeoSolarized runtime after/colors/<amatch>.vim
-augroup NONE
-
-set background=dark
-let g:solarized_old_cursor_style = v:true
-colorscheme solarized8
-
 " Alternate cursor shape in insert mode
 if has('nvim')
 	set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
