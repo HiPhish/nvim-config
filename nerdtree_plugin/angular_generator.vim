@@ -18,7 +18,7 @@ let s:items = [
 \ ]
 
 for [s:text, s:shortcut, s:name] in s:items
-	s:Callback = function(printf('nerdtree#angular#generator#%s#create', s:name)),
+	let s:Callback = function(printf('nerdtree#angular#generator#%s#create', s:name))
 	call NERDTreeAddMenuItem({
 		\ 'parent': s:ng_menu,
 		\ 'text': s:text,
