@@ -19,9 +19,9 @@ function! s:make_content(name)
 endfunction
 
 function! s:generator(path, name)
-	return [[a:path .. a:name .. '.guard.ts', s:make_guard_content(a:name)]]
+	return [[a:path .. a:name .. '.guard.ts', s:make_content(a:name)]]
 endfunction
 
 function! nerdtree#angular#generator#guard#create()
-	call nerdtree#angular#generator#create('Guard', 'my-guard', function('s:generator'))
+	call nerdtree#angular#generator#create('guard', 'my-guard', function('s:generator'))
 endfunction

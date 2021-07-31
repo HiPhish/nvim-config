@@ -15,13 +15,13 @@ EOF
 
 function! s:make_content(name)
 	let l:Name = nerdtree#angular#generator#snake_kebab_to_Camel(a:name)
-	return printf(join(s:pipe_template, "\n"), a:name, l:Name)
+	return printf(join(s:template, "\n"), a:name, l:Name)
 endfunction
 
 function! s:generator(path, name)
-	return [[a:path .. a:name .. '.pipe.ts', \ s:make_content(a:name)]]
+	return [[a:path .. a:name .. '.pipe.ts', s:make_content(a:name)]]
 endfunction
 
 function! nerdtree#angular#generator#pipe#create()
-	call nerdtree#angular#generator#create('Pipe', 'my-pipe', function('s:generator'))
+	call nerdtree#angular#generator#create('pipe', 'my-pipe', function('s:generator'))
 endfunction

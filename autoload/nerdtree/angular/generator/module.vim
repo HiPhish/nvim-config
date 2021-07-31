@@ -26,5 +26,5 @@ function! s:generator(path, name)
 endfunction
 
 function! nerdtree#angular#generator#module#create()
-	call nerdtree#angular#generator#create('Module', 'my-module', function('s:generator'))
+	call nerdtree#angular#generator#create('module', 'my-module', function('s:generator'))
 endfunction

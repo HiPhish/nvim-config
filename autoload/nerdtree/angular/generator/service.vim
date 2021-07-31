@@ -15,9 +15,9 @@ function! s:make_content(name)
 endfunction
 
 function! s:generator(path, name)
-	return [[a:path .. a:name .. '.service.ts', s:make_service_content(a:name)]]
+	return [[a:path .. a:name .. '.service.ts', s:make_content(a:name)]]
 endfunction
 
 function! nerdtree#angular#generator#service#create()
-	call nerdtree#angular#generator#create('Service', 'my-service', function('s:generator'))
+	call nerdtree#angular#generator#create('service', 'my-service', function('s:generator'))
 endfunction

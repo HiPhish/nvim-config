@@ -41,5 +41,5 @@ function! s:generator(path, name)
 endfunction
 
 function! nerdtree#angular#generator#component#create()
-	call nerdtree#angular#generator#create('Component', 'my-component', function('s:generator'))
+	call nerdtree#angular#generator#create('component', 'my-component', function('s:generator'))
 endfunction

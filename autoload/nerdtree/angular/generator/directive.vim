@@ -21,5 +21,5 @@ function! s:generator(path, name)
 endfunction
 
 function! nerdtree#angular#generator#directive#create()
-	call nerdtree#angular#generator#create('Directive', 'my-directive', function('s:generator'))
+	call nerdtree#angular#generator#create('directive', 'my-directive', function('s:generator'))
 endfunction
