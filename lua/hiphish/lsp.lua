@@ -101,11 +101,20 @@ local capabilities = local_util.capabilities {
 	}
 }
 
+
+--- [ Angular ]----------------------------------------------------------------
+nvim_lsp.angularls.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+
 --- [ CLANGD ]-----------------------------------------------------------------
 nvim_lsp.clangd.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+
 
 --- [ ECLIPSE.JDT.LS ] --------------------------------------------------------
 do
