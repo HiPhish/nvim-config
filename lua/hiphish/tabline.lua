@@ -3,7 +3,7 @@ local fn = vim.fn
 local function get_bufname(i)
 	local buflist = fn.tabpagebuflist(i)
 	local winnr = fn.tabpagewinnr(i)
-	local bufname = fn.bufname(buflist[winnr])
+	local bufname = fn.substitute(fn.bufname(buflist[winnr]), '\\v\\%', '%%', 'g')
 	if bufname == '' then
 		bufname = '[No Name]'
 	end
