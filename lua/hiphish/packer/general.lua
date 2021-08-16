@@ -21,6 +21,12 @@ return {
 	util.either('~/Developer/vim/info.vim/', 'https://gitlab.com/HiPhish/info.vim'),
 	util.either('~/Developer/vim/repl.nvim/', 'https://gitlab.com/HiPhish/repl.nvim'),
 	{
+		'editorconfig/editorconfig-vim',  -- Universal editor configuration files
+		config = function()
+			vim.g.EditorConfig_exclude_patterns = {'fugitive://.*', 'scp://.*'}
+		end
+	},
+	{
 		'Olical/conjure',
 		tag = 'v4.21.0',
 		config = function() vim.g['conjure#filetype#scheme'] = 'conjure.client.guile.socket' end
