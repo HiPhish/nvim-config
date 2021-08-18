@@ -108,7 +108,7 @@ return {
 		config = function ()
 			vim.g.NERDTreeMinimalUI = 1  -- Remove boilerplate clutter
 			-- Ignore compiled files
-			vim.g.NERDTreeIgnore = {'\\v\\.pyc$', '\\v\\~$', '\\v\\.meta$'}
+			vim.g.NERDTreeIgnore = {'\\v\\.pyc$', '\\v\\~$', '\\v\\.meta$', '\\v^__pycache__$'}
 			vim.g.NERDTreeMouseMode = 2  -- Single-click for directories
 		end
 	}, {
