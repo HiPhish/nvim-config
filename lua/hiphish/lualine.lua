@@ -1,6 +1,7 @@
 local fn = vim.fn
 
 local filename = require 'hiphish.lualine.components.filename'
+local gps = require 'hiphish.lualine.components.gps'
 
 local function width_criterion(width)
 	return function()
@@ -13,6 +14,7 @@ local function negate(f)
 		return not f()
 	end
 end
+
 
 require'lualine'.setup {
 	options = {
@@ -32,7 +34,8 @@ require'lualine'.setup {
 				sections = {'error'},
 				sources = {'nvim_lsp'},
 				symbols = {error = 'E: ', warn = 'W: ', info = 'I: '},
-			}
+			},
+			gps,
 		},
 		lualine_x = {
 			{
