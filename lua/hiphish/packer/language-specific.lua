@@ -45,6 +45,9 @@ return {
 	-- Nim
 	'zah/nim.vim',
 
+	-- Python
+	'https://gitlab.com/HiPhish/pycodestyle.nvim',
+
 	-- Racket
 	{
 		either('~/Developer/neovim.rkt/', 'https://gitlab.com/HiPhish/neovim.rkt'),
