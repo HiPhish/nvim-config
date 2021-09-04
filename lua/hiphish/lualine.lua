@@ -24,17 +24,6 @@ require'lualine'.setup {
 		lualine_a = {'mode'},
 		lualine_b = {filename},
 		lualine_c = {
-			{
-				'diagnostics',
-				sections = {'warn'},
-				sources = {'nvim_lsp'},
-				symbols = {error = 'E: ', warn = 'W: ', info = 'I: '},
-			}, {
-				'diagnostics',
-				sections = {'error'},
-				sources = {'nvim_lsp'},
-				symbols = {error = 'E: ', warn = 'W: ', info = 'I: '},
-			},
 			gps,
 		},
 		lualine_x = {
@@ -45,6 +34,16 @@ require'lualine'.setup {
 			}, {
 				'encoding',
 				condition = width_criterion(100),
+			}, {
+				'diagnostics',
+				sections = {'error'},
+				sources = {'nvim_lsp'},
+				symbols = {error = 'E: ', warn = 'W: ', info = 'I: '},
+			}, {
+				'diagnostics',
+				sections = {'warn'},
+				sources = {'nvim_lsp'},
+				symbols = {error = 'E: ', warn = 'W: ', info = 'I: '},
 			}, {
 				'filetype',
 				condition = width_criterion(60),
