@@ -6,8 +6,9 @@ require('dapui').setup {
 	mappings = {
 		expand = {'<CR>', '<LeftMouse>'},
 		open = {'o'},
-		remove = {'d'},
-		edit = {'e'}
+		remove = {'d', 'x'},
+		edit = {'i', 'a'},
+		repl = {'r'},
 	},
 	sidebar = {
 		open_on_start = true,
@@ -17,7 +18,7 @@ require('dapui').setup {
 			'stacks',
 			'scopes',
 		},
-		width = 40,
+		size = 40,
 		position = 'right',
 	},
 	tray = {
@@ -25,7 +26,7 @@ require('dapui').setup {
 		elements = {
 			'repl'
 		},
-		height = 10,
+		size = 10,
 		position = 'bottom',
 	},
 	floating = {
