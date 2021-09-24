@@ -57,6 +57,9 @@ return {
 	-- " Scheme
 	either('~/Developer/vim/guile.vim', 'https://gitlab.com/HiPhish/guile.vim'),
 
+	-- TOML
+	'cespare/vim-toml',
+
 	-- " Vala
 	'arrufat/vala.vim',
 }
