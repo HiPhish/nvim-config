@@ -1,4 +1,19 @@
-require('dapui').setup {
+local dap = require 'dap'
+local ui = require 'dapui'
+
+dap.listeners.after['event_initialized']['dapui_config'] = function()
+	ui.open()
+end
+
+dap.listeners.before['event_terminated']['dapui_config'] = function()
+	ui.close()
+end
+
+dap.listeners.before['event_exited']['dapui_config'] = function()
+	ui.close()
+end
+
+ui.setup {
 	icons = {
 		expanded = '⯆',
 		collapsed = '⯈'
@@ -11,7 +26,6 @@ require('dapui').setup {
 		repl = {'r'},
 	},
 	sidebar = {
-		open_on_start = true,
 		elements = {
 			'breakpoints',
 			'watches',
@@ -22,7 +36,6 @@ require('dapui').setup {
 		position = 'right',
 	},
 	tray = {
-		open_on_start = true,
 		elements = {
 			'repl'
 		},
