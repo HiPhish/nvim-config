@@ -22,4 +22,3 @@
 " }}}
 
 autocmd! BufRead,BufNewFile *.html  set ft=html | call jinja#AdjustFiletype()
-
