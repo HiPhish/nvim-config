@@ -116,6 +116,14 @@ nvim_lsp.clangd.setup {
 }
 
 
+
+--- [ DOCKERFILE LS NODEJS ]---------------------------------------------------
+nvim_lsp.dockerls.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+
 --- [ ECLIPSE.JDT.LS ] --------------------------------------------------------
 do
 	local root_files = {
