@@ -96,5 +96,4 @@ endif
 
 
 " ---[ LUA CONFIGURATION ]-----------------------------------------------------
-lua require 'hiphish.treesitter'
 lua require 'hiphish.lualine'
