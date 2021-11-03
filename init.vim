@@ -97,6 +97,5 @@ endif
 
 " ---[ LUA CONFIGURATION ]-----------------------------------------------------
 lua require 'hiphish.lsp'
-lua require 'hiphish.dap'
 lua require 'hiphish.treesitter'
 lua require 'hiphish.lualine'
