@@ -14,11 +14,6 @@ local function map(list, fun)
 	return result
 end
 
---- Whether the file path argument is a readable file.
-local function filereadable(fname)
-	return fn.filereadable(fname) ~= 0
-end
-
 --- Whether the file path argument is a directory.
 local function isdirectory(directory)
 	return fn.isdirectory(directory) ~= 0
@@ -50,24 +45,51 @@ end
 
 -- [ TESTS ] ------------------------------------------------------------------
 
---- Test which will always pass
+--- Test which will always pass.
 function M.always()
 	return true
 end
 
---- There is a local primary LSP settings file.
-function M.has_local_settings_file()
-	return filereadable('lua-lsp.json')
+--- Test which will always fail.
+function M.never()
+	return false
 end
 
---- There is a local secondary LSP settings file.
-function M.has_local_extra_file()
-	return filereadable('lua-lsp-extra.json')
+--- Returns a test which passes if and only if all its argument tests pass.
+function M.all(...)
+	local tests = {...}
+	return function()
+		for _, test in ipairs(tests) do
+			if not test() then return false end
+		end
+		return true
+	end
 end
 
---- The current directory is the Neovim config directory.
-function M.is_nvim_conf_dir()
-	return fn.getcwd() == fn.stdpath('config')
+--- Returns a test which passes if any of its argument tests pass.
+function M.some(...)
+	local tests = {...}
+	return function()
+		for _, test in ipairs(tests) do
+			if test() then return true end
+		end
+		return false
+	end
+end
+
+--- Returns a test which passes if the given file is readable.
+function M.file(fname)
+	return function ()
+		return fn.filereadable(fname) ~= 0
+	end
+end
+
+--- Returns a test which passes if the current working directory is the same as
+--- the given path.
+function M.cwd(path)
+	return function ()
+		return fn.getcwd() == path
+	end
 end
 
 --- The current directory is a Vim plugin directory; only an educated guess.

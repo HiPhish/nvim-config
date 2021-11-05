@@ -1,4 +1,3 @@
-local settings = require'hiphish.lsp.sumneko_lua.settings'
 local tests    = require'hiphish.lsp.sumneko_lua.tests'
 
 
@@ -13,26 +12,20 @@ local tests    = require'hiphish.lsp.sumneko_lua.tests'
 local rules = {
 	{
 		test = tests.always,
-		settings = settings.default,
+		settings = require 'hiphish.lsp.sumneko_lua.settings.default',
 		priority = 0,
 	}, {
-		test = tests.has_local_settings_file,
-		settings = function ()
-			vim.fn.json_decode(vim.fn.readfile('lua-lsp.json'))
-		end,
-		priority = 3,
-	}, {
 		test = tests.has_rockspec,
-		settings = settings.luarocks,
+		settings = require 'hiphish.lsp.sumneko_lua.settings.luarocks',
 		priority = 1,
 	}, {
-		test = tests.is_nvim_conf_dir,
-		settings = settings.nvim,
+		test = tests.cwd(vim.fn.stdpath('config')),
+		settings = require 'hiphish.lsp.sumneko_lua.settings.nvim',
 		priority = 1,
 	}, {
 		test = tests.is_vim_plugin_dir,
 		settings = function ()
-			local result = settings.nvim
+			local result = require 'hiphish.lsp.sumneko_lua.settings.nvim'
 			local cwd = vim.fn.getcwd()
 			if vim.fn.isdirectory(cwd .. '/lua') ~= 0 then
 				result.Lua.workspace.library[cwd .. '/lua/..'] = true
@@ -41,12 +34,11 @@ local rules = {
 		end,
 		priority = 1,
 	}, {
-		test = tests.has_local_extra_file,
-		settings = function ()
-			vim.fn.json_decode(vim.fn.readfile('lua-lsp-extra.json'))
-		end,
-		priority = 3,
-	}
+		test = tests.file('main.lua'),
+		-- test = tests.never,
+		settings = require 'hiphish.lsp.sumneko_lua.settings.love2d',
+		priority = 1,
+	},
 }
 
 
