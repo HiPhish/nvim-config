@@ -35,8 +35,6 @@ if !has('nvim')
 endif
 
 
-lua require 'hiphish.plugins'
-
 " Vim settings
 set listchars=tab:├─,space:·,trail:•,eol:¬,extends:…,precedes:…
 set fillchars=msgsep:─
