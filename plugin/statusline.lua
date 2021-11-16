@@ -49,7 +49,7 @@ require'lualine'.setup {
 				condition = width_criterion(60),
 			}, {
 				require 'hiphish.lualine.components.lsp_status',
-				condition = function()
+				cond = function()
 					return #vim.lsp.buf_get_clients() > 0
 				end
 			},
