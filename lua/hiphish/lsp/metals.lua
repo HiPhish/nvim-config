@@ -44,7 +44,7 @@ local config = {
 
 --- This function is meant to be called from Scala or sbt buffers.
 function M.init_or_attach()
-	metals.initialize_or_attach(vim.tbl_extend('force', metals.bare_config, config))
+	metals.initialize_or_attach(vim.tbl_extend('force', metals.bare_config(), config))
 end
 
 
