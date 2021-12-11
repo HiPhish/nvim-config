@@ -27,19 +27,6 @@ function! s:remote(args)
 	call luaeval('require("hiphish.dap.configurations.debugpy").debug_remote(_A)', [l:host, l:port])
 endfunction
 
-function! s:test(args)
-	call luaeval('require("hiphish.dap.configurations.debugpy").debug_test()')
-endfunction
-
-function! s:class(args)
-	call luaeval('require("hiphish.dap.configurations.debugpy").debug_class()')
-endfunction
-
-function! s:select(args)
-	call luaeval('require("hiphish.dap.configurations.debugpy").debug_selection()')
-endfunction
-
-
 " ---[ RULES ]-----------------------------------------------------------------
 " Table which maps a sub-command to its specification. The specifications
 " contains the function to dispatch to as well as the arity range of the
@@ -48,9 +35,6 @@ let s:dispatch_table = {
 	\ 'module' : {'func': function('s:module' ), 'minargs': 1, 'maxargs': 1},
 	\ 'program': {'func': function('s:program'), 'minargs': 0,             },
 	\ 'remote' : {'func': function('s:remote' ), 'minargs': 2, 'maxargs': 2},
-	\ 'test'   : {'func': function('s:test'   ), 'minargs': 0, 'maxargs': 0},
-	\ 'class'  : {'func': function('s:class'  ), 'minargs': 0, 'maxargs': 0},
-	\ 'select' : {'func': function('s:select' ), 'minargs': 0, 'maxargs': 0},
 \ }
 
 " Ideas for the future:
