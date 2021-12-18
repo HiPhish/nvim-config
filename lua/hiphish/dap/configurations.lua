@@ -2,20 +2,6 @@
 --- configurations.
 local M = {}
 
-M.python = {
-	{
-		type = 'python',
-		request = 'launch',
-		name = 'Launch file',
-		program = "${file}",
-		console = 'internalConsole',
-		pythonPath = function()
-			return vim.fn.systemlist('which python3')[1]
-				or vim.fn.systemlist('which python')[1]
-		end
-	}
-}
-
 M.scala = {
 	{
 		type = 'scala',
