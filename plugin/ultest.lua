@@ -1,4 +1,5 @@
-local ultest = require 'ultest'
+local ultest  = require 'ultest'
+local debugpy = require 'debugpy'
 
 ultest.setup {
 	builders = {
@@ -18,17 +19,10 @@ ultest.setup {
 				end
 			end
 
-			local module = cmd[module_index]
+			local pytest = cmd[module_index]
 			local args = vim.list_slice(cmd, module_index + 1)
 			return {
-				dap = {
-					type = 'python',
-					request = 'launch',
-					module = module,
-					args = args,
-					console = 'internalConsole',
-					justMyCode = false,
-				}
+				dap = debugpy.configure('module', pytest, unpack(args))
 			}
 		end
 	}
