@@ -12,7 +12,7 @@ ultest.setup {
 			local non_modules = {'python%d?', 'pipenv', 'poetry'}
 			local module_index = 1
 
-			for pattern in pairs(non_modules) do
+			for _, pattern in pairs(non_modules) do
 				if string.match(cmd[1], pattern) then
 					module_index = 3
 					break
