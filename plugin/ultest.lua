@@ -21,8 +21,12 @@ ultest.setup {
 
 			local pytest = cmd[module_index]
 			local args = vim.list_slice(cmd, module_index + 1)
+
+			local config = debugpy.configure('module', pytest, unpack(args))
+			config.justMyCode = false
+
 			return {
-				dap = debugpy.configure('module', pytest, unpack(args))
+				dap = config
 			}
 		end
 	}
