@@ -53,8 +53,3 @@ nnoremap <silent> <leader>l :set list!<CR>
 
 " Turn off search highlights when refreshing the screen
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-
-" Add back this binding if netrw is disabled
-if g:loaded_netrw
-	nnoremap gx <CMD>execute '!xdg-open ' .. shellescape(expand('<cfile>'), v:true)<CR>
-endif
