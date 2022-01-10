@@ -37,12 +37,12 @@ require'lualine'.setup {
 			}, {
 				'diagnostics',
 				sections = {'error'},
-				sources = {'nvim_lsp'},
+				sources = {'nvim_diagnostic'},
 				symbols = {error = 'E: ', warn = 'W: ', info = 'I: '},
 			}, {
 				'diagnostics',
 				sections = {'warn'},
-				sources = {'nvim_lsp'},
+				sources = {'nvim_diagnostic'},
 				symbols = {error = 'E: ', warn = 'W: ', info = 'I: '},
 			}, {
 				'filetype',
