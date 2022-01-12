@@ -9,4 +9,4 @@ let g:NERDTreeMouseMode = 2
 
 " Dirvish
 nnoremap <silent> <C-j> <Cmd>execute 'Dirvish' expand('%:h')<CR>
-nnoremap gx <CMD>execute '!xdg-open ' .. shellescape(expand('<cfile>'), v:true)<CR>
+nnoremap gx <CMD>silent execute '!xdg-open ' .. shellescape(expand('<cfile>'), v:true)<CR>
