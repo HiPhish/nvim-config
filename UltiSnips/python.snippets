@@ -1,0 +1,62 @@
+snippet def "Function definition" b
+def ${1:function}(${2:arg}):
+	${3:"""${4:Docstring}"""
+	}${0:pass}
+endsnippet
+
+snippet defm "Method definition" b
+def ${1:method}(self, ${2:arg}):
+	${3:"""${4:Docstring}"""
+	}${0:pass}
+endsnippet
+
+snippet defi "Constructor definition" b
+def __init__(self, ${1:arg}):
+	${0:pass}
+endsnippet
+
+snippet while "While-loop"
+while ${1:condition}:
+	${0:pass}
+endsnippet
+
+snippet for "For-loop" b
+for ${1:item} in ${2:items}:
+	${0:pass}
+endsnippet
+
+snippet try "Try-except" b
+try:
+	${1:pass}
+except ${2:${3Exception} as ${4:e}}:
+	${5:pass}
+endsnippet
+
+snippet trye "Try-except" b
+try:
+	${1:pass}
+except ${2:${3Exception} as ${4:e}}:
+	${5:pass}
+else:
+	${6:pass}
+endsnippet
+
+snippet tryf "Try-except" b
+try:
+	${1:pass}
+except ${2:${3Exception} as ${4:e}}:
+	${5:pass}
+finally:
+	${6:pass}
+endsnippet
+
+snippet tryef "Try-except" b
+try:
+	${1:pass}
+except ${2:${3Exception} as ${4:e}}:
+	${5:pass}
+else:
+	${6:pass}
+finally:
+	${7:pass}
+endsnippet
