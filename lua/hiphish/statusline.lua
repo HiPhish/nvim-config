@@ -48,14 +48,15 @@ local statusline = {
 				return table.concat {
 					'%#StatusLineAccentMode# Dirvish %#StatusLineAccent# ',
 					fn.fnamemodify(fn.getcwd(), ':~'),
-					' %#StatusLine# ',
 					fn.fnamemodify(fn.expand('%'), ':.'),
+					' %#StatusLine# ',
 					'%=%#StatusLineAccentMode# %2l:%c '
 					}
 			end,
 			inactive = function()
 				return table.concat {
-					'%#StatusLineAccent# Dirvish %#StatusLineNC# ',
+					'%#StatusLineNC# ',
+					fn.fnamemodify(fn.getcwd(), ':~'),
 					fn.fnamemodify(fn.expand('%'), ':.'),
 					'%=%P %l:%c'
 					}
@@ -76,7 +77,7 @@ local statusline = {
 			inactive = function()
 				local fname = fn.fnamemodify(fn.expand('%'), ':t')
 				local ftype = vim.bo.filetype
-				return table.concat{'%#StatusLine# ', fname, ' %=', ftype, ' │ %P │ %l:%c '}
+				return table.concat{'%#StatusLineNC# ', fname, ' %=', ftype, ' │ %P │ %l:%c '}
 			end
 		},
 		nerdtree = {
