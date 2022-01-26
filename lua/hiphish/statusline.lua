@@ -11,6 +11,10 @@ local function not_empty(s)
 	return s ~= ''
 end
 
+local function is_loclist()
+  return vim.fn.getloclist(0, { filewinid = 1 }).filewinid ~= 0
+end
+
 local statusline = {
 	-- Thunks to execute for side effects
 	before = {
@@ -86,6 +90,40 @@ local statusline = {
 			end,
 			inactive = function()
 				return 'NERDTree'
+			end
+		},
+		qf = {
+			active = function()
+				local label = is_loclist() and 'Location' or 'Quickfix'
+				local title
+				if is_loclist() then
+					title = vim.fn.getloclist(0, { title = 0 }).title
+				else
+					title = vim.fn.getqflist({ title = 0 }).title
+				end
+				return table.concat {
+					'%#StatusLineAccentMode#',
+					label,
+					' %#StatusLineAccent# ',
+					title,
+					' %#StatusLine#%=%#StatusLineAccentMode# %P %l:%c'
+				}
+			end,
+			inactive = function()
+				local label = is_loclist() and 'Location' or 'Quickfix'
+				local title
+				if is_loclist() then
+					title = vim.fn.getloclist(0, { title = 0 }).title
+				else
+					title = vim.fn.getqflist({ title = 0 }).title
+				end
+				return table.concat {
+					'%#StatusLineNC#',
+					label,
+					sep,
+					title,
+					'%=%P %l:%c'
+				}
 			end
 		},
 	},
