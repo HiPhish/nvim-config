@@ -66,6 +66,22 @@ local statusline = {
 					}
 			end
 		},
+		fugitive = {
+			active = function()
+				return table.concat {
+					'%#StatusLineAccentMode# ',
+					string.format(' %s', vim.fn.FugitiveHead()),
+					' %#StatusLine#%=%#StatusLineAccentMode# %2l:%2c'
+				}
+			end,
+			inactive = function()
+				return table.concat {
+					'%#StatusLineNC# ',
+					string.format(' %s', vim.fn.FugitiveHead()),
+					'%=%2l:%2c'
+				}
+			end
+		},
 		man = {
 			active = function()
 				local fname = fn.fnamemodify(fn.expand('%'), ':t')
