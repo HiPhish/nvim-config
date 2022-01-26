@@ -7,6 +7,10 @@ local M = {}
 
 local sep = ' │ '
 
+local function not_empty(s)
+	return s ~= ''
+end
+
 local statusline = {
 	-- Thunks to execute for side effects
 	before = {
@@ -15,7 +19,6 @@ local statusline = {
 	ft = {
 		[''] = {
 			active = function()
-				local diag = comp.diagnostics('StatusLine', sep)
 				local result = {
 					'%#StatusLineAccentMode# ',
 					comp.mode(),
@@ -24,28 +27,21 @@ local statusline = {
 					' %#StatusLine# ',
 					comp.gps(),
 					'%=',
-					vim.opt.fileformat:get(),
-					diag ~= '' and sep or '',
-					diag,
+					table.concat(fun.filter(not_empty, {
+						vim.opt.fileformat:get(),
+						vim.opt.fileencoding:get(),
+						comp.diagnostics('StatusLine', sep)
+					}), sep),
 					' %#StatusLineAccent# ',
 					comp.filetype(),
 					comp.lsp_status(),
-					-- file progress
-					' %#StatusLineAccentMode# %P %3l:%02c ',  -- line info
+					' %#StatusLineAccentMode# %P %3l:%02c ',
 				}
 				return table.concat(fun.filter(function(txt) return txt ~= '' end, result))
 			end,
 			inactive = function()
 				return ' %F %= %3p%% │ %3l:%02c'
 			end,
-		},
-		nerdtree = {
-			active = function()
-				return 'NERDTree'
-			end,
-			inactive = function()
-				return 'NERDTree'
-			end
 		},
 		dirvish = {
 			active = function()
@@ -76,7 +72,15 @@ local statusline = {
 			inactive = function()
 				return ''
 			end
-		}
+		},
+		nerdtree = {
+			active = function()
+				return 'NERDTree'
+			end,
+			inactive = function()
+				return 'NERDTree'
+			end
+		},
 	},
 }
 
