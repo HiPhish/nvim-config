@@ -1,0 +1,38 @@
+local M = {}
+
+local api = vim.api
+
+M.modes = {
+	n      = {label = 'NORMAL'        , short = ' N ', hi = 'Normal'},
+	no     = {label = 'NORMAL'        , short = ' N ', hi = 'Normal'},
+	nt     = {label = 'NORMAL'        , short = ' N ', hi = 'Normal'},
+	v      = {label = 'VISUAL'        , short = ' v ', hi = 'Visual'},
+	V      = {label = 'VISULA LINE'   , short = ' V ', hi = 'Visual'},
+	[''] = {label = 'VISUAL BLOCK'  , short = '[V]', hi = 'Visual'},
+	s      = {label = 'SELECT'        , short = ' s ', hi = 'Select'},
+	S      = {label = 'SELECT LINE'   , short = ' S ', hi = 'Select'},
+	[''] = {label = 'SELECT BLOCK'  , short = '[S]', hi = 'Select'},
+	i      = {label = 'INSERT'        , short = ' i ', hi = 'Insert'},
+	ic     = {label = 'INSERT'        , short = ' i ', hi = 'Insert'},
+	R      = {label = 'REPLACE'       , short = ' r ', hi = 'Replace'},
+	Rv     = {label = 'VISUAL REPLACE', short = ' r ', hi = 'Replace'},
+	c      = {label = 'COMMAND'       , short = ' c ', hi = 'Cmd'},
+	cv     = {label = 'VIM EX'        , short = ' c ', hi = 'Cmd'},
+	ce     = {label = 'EX'            , short = ' c ', hi = 'Cmd'},
+	r      = {label = 'PROMPT'        , short = ' c ', hi = 'Cmd'},
+	rm     = {label = 'MORE'          , short = ' c ', hi = 'Cmd'},
+	['r?'] = {label = 'CONFIRM'       , short = ' c ', hi = 'Cmd'},
+	['!']  = {label = 'SHELL'         , short = ' c ', hi = 'Cmd'},
+	t      = {label = 'TERMINAL'      , short = ' t ', hi = 'Insert'},
+}
+
+-- Wraps a given text inside the highlight group of the current mode
+function M.hl_mode(text)
+	local current_mode = api.nvim_get_mode().mode
+	local spec = M.modes[current_mode] or {}
+	local hi = spec.hi or ''
+
+	return string.format('%%#StatusLineAccent%s#%s', hi, text)
+end
+
+return M
