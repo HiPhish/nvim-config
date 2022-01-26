@@ -26,6 +26,18 @@ M.modes = {
 	t      = {label = 'TERMINAL'      , short = ' t ', hi = 'Insert'},
 }
 
+-- Links the `StatusLineAccentMode` highlight group to the group of the current
+-- mode. Allows us to use the same static highlight group for components and
+-- have it automatically match the current mode; avoids many string
+-- allocations.
+function M.hi_statusline_accent_mode()
+	local current_mode = api.nvim_get_mode().mode
+	local spec = M.modes[current_mode]
+	if not spec then return end
+	local hi = spec.hi or ''
+	vim.cmd(string.format('hi link StatusLineAccentMode StatusLineAccent%s', hi))
+end
+
 -- Wraps a given text inside the highlight group of the current mode
 function M.hl_mode(text)
 	local current_mode = api.nvim_get_mode().mode

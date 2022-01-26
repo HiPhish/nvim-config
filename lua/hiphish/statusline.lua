@@ -8,87 +8,86 @@ local M = {}
 local sep = ' │ '
 
 local statusline = {
-	[''] = {
-		active = function()
-			local diag = comp.diagnostics('StatusLine', sep)
-			local result = {
-				'%#StatusLine#',
-				comp.mode_indicator(),
-				'%#StatusLineAccent# ',
-				comp.filename(),
-				' %#StatusLine# ',
-				comp.gps(),
-				'%=',
-				vim.opt.fileformat:get(),
-				diag ~= '' and sep or '',
-				diag,
-				' %#StatusLineAccent# ',
-				comp.filetype(),
-				comp.lsp_status(),
-				sep,
-				'%p%%',
-				sep,
-				-- file progress
-				'%P %l:%c',  -- line info
-			}
-			return table.concat(fun.filter(function(txt) return txt ~= '' end, result))
-		end,
-		inactive = function()
-			return ' %F '
-		end,
-		short = function()
-			return '%#StatusLineNC#'
-		end
+	-- Thunks to execute for side effects
+	before = {
+		util.hi_statusline_accent_mode,
 	},
-	nerdtree = {
-		active = function()
-			return 'NERDTree'
-		end,
-		inactive = function()
-			return 'NERDTree'
-		end
-	},
-	dirvish = {
-		active = function()
-			return table.concat {
-				util.hl_mode(' Dirvish '),
-				'%#StatusLineAccent# ',
-				fn.fnamemodify(fn.getcwd(), ':~'),
-				' %#StatusLine# ',
-				fn.fnamemodify(fn.expand('%'), ':.'),
-				'%=',
-				util.hl_mode(' %2l:%c ')
+	ft = {
+		[''] = {
+			active = function()
+				local diag = comp.diagnostics('StatusLine', sep)
+				local result = {
+					'%#StatusLineAccentMode# ',
+					comp.mode(),
+					' %#StatusLineAccent# ',
+					comp.filename(),
+					' %#StatusLine# ',
+					comp.gps(),
+					'%=',
+					vim.opt.fileformat:get(),
+					diag ~= '' and sep or '',
+					diag,
+					' %#StatusLineAccent# ',
+					comp.filetype(),
+					comp.lsp_status(),
+					-- file progress
+					' %#StatusLineAccentMode# %P %3l:%02c ',  -- line info
 				}
-		end,
-		inactive = function()
-			return table.concat {
-				'%#StatusLineAccent# Dirvish %#StatusLineNC# ',
-				fn.fnamemodify(fn.expand('%'), ':.'),
-				'%=',
-				'%P %l:%c'
+				return table.concat(fun.filter(function(txt) return txt ~= '' end, result))
+			end,
+			inactive = function()
+				return ' %F %= %3p%% │ %3l:%02c'
+			end,
+		},
+		nerdtree = {
+			active = function()
+				return 'NERDTree'
+			end,
+			inactive = function()
+				return 'NERDTree'
+			end
+		},
+		dirvish = {
+			active = function()
+				return table.concat {
+					'%#StatusLineAccentMode# Dirvish %#StatusLineAccent# ',
+					fn.fnamemodify(fn.getcwd(), ':~'),
+					' %#StatusLine# ',
+					fn.fnamemodify(fn.expand('%'), ':.'),
+					'%=%#StatusLineAccentMode# %2l:%c '
+					}
+			end,
+			inactive = function()
+				return table.concat {
+					'%#StatusLineAccent# Dirvish %#StatusLineNC# ',
+					fn.fnamemodify(fn.expand('%'), ':.'),
+					'%=%P %l:%c'
+					}
+			end
+		},
+		man = {
+			active = function()
+				return table.concat {
+					string.format('%%#StatusLineAccentMode# %s %%#StatusLine#%%=', fn.fnamemodify(fn.expand('%'), ':t')),
+					vim.bo.filetype,
+					' %#StatusLineAccent# %P %#StatusLineAccentMode# %l:%c ',
 				}
-		end
+			end,
+			inactive = function()
+				return ''
+			end
+		}
 	},
-	man = {
-		active = function()
-			return table.concat {
-				util.hl_mode(string.format(' %s ', fn.fnamemodify(fn.expand('%'), ':t'))),
-				'%#StatusLine#%=',
-				vim.bo.filetype,
-				' %#StatusLineAccent# %P ',
-				util.hl_mode(' %l:%c '),
-			}
-		end,
-		inactive = function()
-			return ''
-		end
-	}
 }
 
 -- Returns the complete status line string for the current window
 function M.get(type)
 	local ft = vim.bo.filetype
-	local spec = statusline[ft] or statusline[''] or {}
+	local spec = statusline.ft[ft] or statusline.ft[''] or {}
+	local before = statusline.before or {}
+	for _, hook in ipairs(before) do
+		hook()
+	end
 	local result = spec[type] and spec[type]() or ''
 	return result
 end

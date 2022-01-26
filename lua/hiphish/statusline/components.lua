@@ -33,11 +33,10 @@ function M.filetype()
 	return ft ~= '' and ft or ''
 end
 
-function M.mode_indicator()
+function M.mode()
 	local current_mode = api.nvim_get_mode().mode
 	local spec = util.modes[current_mode] or {}
-	local label = spec.label or ''
-	return util.hl_mode(string.format(' %s ', label))
+	return spec.label or ''
 end
 
 
@@ -64,7 +63,7 @@ function M.diagnostics(hl_base, sep)
 		end
 	end
 
-	local derp = fun.map(
+	local derp = fun.imap(
 		function(spec) return spec.message end,
 		fun.filter(function(spec) return spec.message end, specs))
 

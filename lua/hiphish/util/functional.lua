@@ -37,6 +37,15 @@ function M.map(f, ...)
 	return result
 end
 
+-- Apply `f` to each element of `items` in order, mutating the contents of
+-- `items` in-place.
+function M.imap(f, items)
+	for i, item in ipairs(items) do
+		items[i] = f(item)
+	end
+	return items
+end
+
 ---	Filter a list based on a predicate, only keep items matching the predicate.
 --
 -- @param p

@@ -1,11 +1,6 @@
 -- https://nuxshed.github.io/blog/custom-nvim-statusline.html#org5854583
-vim.api.nvim_exec([[
-	augroup StatusLine
-	au!
-	au WinEnter,BufEnter * setlocal statusline=%{%luaeval('require(\"hiphish.statusline\").get(\"active\")')%}
-	au WinLeave,BufLeave * setlocal statusline=%{%luaeval('require(\"hiphish.statusline\").get(\"inactive\")')%}
-	augroup END
-]], false)
+-- vim.api.nvim_exec([[
+-- ]], false)
 
 ---------------------------------------------------------------------------------
 -- local fn = vim.fn
