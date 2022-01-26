@@ -1,7 +1,3 @@
--- https://nuxshed.github.io/blog/custom-nvim-statusline.html#org5854583
--- vim.api.nvim_exec([[
--- ]], false)
-
 ---------------------------------------------------------------------------------
 -- local fn = vim.fn
 -- local filename = require 'hiphish.lualine.components.filename'
