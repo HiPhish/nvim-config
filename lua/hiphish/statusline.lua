@@ -63,14 +63,20 @@ local statusline = {
 		},
 		man = {
 			active = function()
+				local fname = fn.fnamemodify(fn.expand('%'), ':t')
+				local ftype = vim.bo.filetype
 				return table.concat {
-					string.format('%%#StatusLineAccentMode# %s %%#StatusLine#%%=', fn.fnamemodify(fn.expand('%'), ':t')),
-					vim.bo.filetype,
+					'%#StatusLineAccentMode# ',
+					fname,
+					' %#StatusLine#%=',
+					ftype,
 					' %#StatusLineAccent# %P %#StatusLineAccentMode# %l:%c ',
 				}
 			end,
 			inactive = function()
-				return ''
+				local fname = fn.fnamemodify(fn.expand('%'), ':t')
+				local ftype = vim.bo.filetype
+				return table.concat{'%#StatusLine# ', fname, ' %=', ftype, ' │ %P │ %l:%c '}
 			end
 		},
 		nerdtree = {
