@@ -43,9 +43,7 @@ local statusline = {
 				}
 				return table.concat(fun.filter(function(txt) return txt ~= '' end, result))
 			end,
-			inactive = function()
-				return ' %F %= %3p%% │ %3l:%02c'
-			end,
+			inactive = ' %F %= %3p%% │ %3l:%02c'
 		},
 		dirvish = {
 			active = function()
@@ -84,29 +82,21 @@ local statusline = {
 		},
 		man = {
 			active = function()
-				local fname = fn.fnamemodify(fn.expand('%'), ':t')
 				local ftype = vim.bo.filetype
 				return table.concat {
-					'%#StatusLineAccentMode# ',
-					fname,
-					' %#StatusLine#%=',
+					'%#StatusLineAccentMode# %t %#StatusLine#%=',
 					ftype,
 					' %#StatusLineAccent# %P %#StatusLineAccentMode# %l:%c ',
 				}
 			end,
 			inactive = function()
-				local fname = fn.fnamemodify(fn.expand('%'), ':t')
 				local ftype = vim.bo.filetype
-				return table.concat{'%#StatusLineNC# ', fname, ' %=', ftype, ' │ %P │ %l:%c '}
+				return table.concat{'%#StatusLineNC# %t%=', ftype, ' │ %P │ %l:%c '}
 			end
 		},
 		nerdtree = {
-			active = function()
-				return 'NERDTree'
-			end,
-			inactive = function()
-				return 'NERDTree'
-			end
+			active = '%#StatusLineAccentMode# NERDTree %#StatusLine#',
+			inactive = '%#StatusLineNC# NERDTree'
 		},
 		qf = {
 			active = function()
@@ -146,15 +136,15 @@ local statusline = {
 }
 
 -- Returns the complete status line string for the current window
-function M.get(type)
+function M.get(mode)
 	local ft = vim.bo.filetype
 	local spec = statusline.ft[ft] or statusline.ft[''] or {}
 	local before = statusline.before or {}
 	for _, hook in ipairs(before) do
 		hook()
 	end
-	local result = spec[type] and spec[type]() or ''
-	return result
+	local result = spec[mode] or ''
+	return type(result) ~= 'function' and result or result()
 end
 
 return M
