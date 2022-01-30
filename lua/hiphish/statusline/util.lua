@@ -14,7 +14,7 @@ M.modes = {
 	nt       = {label = 'NORMAL'         , short = ' N ', hi = 'Normal'},
 	v        = {label = 'VISUAL'         , short = ' v ', hi = 'Visual'},
 	vs       = {label = 'VISUAL'         , short = ' v ', hi = 'Visual'},
-	V        = {label = 'VISULA LINE'    , short = ' V ', hi = 'Visual'},
+	V        = {label = 'VISUAL LINE'    , short = ' V ', hi = 'Visual'},
 	['']   = {label = 'VISUAL BLOCK'   , short = '[V]', hi = 'Visual'},
 	['s']  = {label = 'VISUAL BLOCK'   , short = '[V]', hi = 'Visual'},
 	s        = {label = 'SELECT'         , short = ' s ', hi = 'Select'},
