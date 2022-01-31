@@ -161,6 +161,13 @@ nvim_lsp.elixirls.setup {
 }
 
 
+--- [ ERLANG_LS ]--------------------------------------------------------------
+nvim_lsp.erlangls.setup {
+	capabilities = capabilities,
+	on_attach = on_attach
+}
+
+
 --- [ GODOT GAME ENGINE ] -----------------------------------------------------
 nvim_lsp.gdscript.setup {
 	on_attach = on_attach,
