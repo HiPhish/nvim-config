@@ -81,6 +81,9 @@ local function on_attach(client, _)
 	-- Support for completion-nvim
 	completion_on_attach(client)
 
+	-- Use LSP as default formatter
+	vim.api.nvim_buf_set_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
+
 	-- Remap keys
 	local opts = {noremap = true, silent = true}
 	for mode, mappings in pairs(local_util.mappings) do
