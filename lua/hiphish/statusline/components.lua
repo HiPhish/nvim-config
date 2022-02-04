@@ -53,13 +53,14 @@ function M.diagnostics(hl_base, sep)
 	for level, spec in pairs(specs) do
 		local count = vim.tbl_count(vim.diagnostic.get(0, {severity = level}))
 		if count ~= 0 then
-			local hi = spec.hi
-			local label = spec.label
 			local name = spec.name
+			local sign = fn.sign_getdefined(string.format('DiagnosticSign%s', name))[1] or {}
+			local hi = spec.hi
+			local label = sign.text or spec.label
 			local fg = fn.synIDattr(fn.synIDtrans(fn.hlID(string.format('Diagnostic%s', name))), 'fg')
 			-- Create new highlight group
 			vim.cmd(string.format('hi StatusLineDiagnostic%s guifg=%s guibg=%s', hi, fg, bg))
-			spec.message = string.format('%%#StatusLineDiagnostic%s#%s: %d%%#%s#', hi, label, count, hl_base)
+			spec.message = string.format('%%#StatusLineDiagnostic%s#%s%d%%#%s#', hi, label, count, hl_base)
 		end
 	end
 

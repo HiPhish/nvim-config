@@ -3,13 +3,6 @@ local util       = require'vim.lsp.util'
 local local_util = require'hiphish.lsp.util'
 
 
---- [ HIGHLIGHT AND SIGNS ] ---------------------------------------------------
-vim.cmd 'sign define LspDiagnosticsSignError text=⛔'
-vim.cmd 'sign define LspDiagnosticsSignWarning text=⚠️'
-vim.cmd 'sign define LspDiagnosticsSignInformation text=ℹ️'
-vim.cmd 'sign define LspDiagnosticsSignHint text=💡'
-
-
 --- [ HELPER FUNCTIONS ] ------------------------------------------------------
 
 --- Directory containing all manually installed servers.
