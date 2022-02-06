@@ -162,7 +162,7 @@ function M.get(mode)
 	if vim.bo.buftype == 'terminal' then
 		local spec = statusline.terminal or {}
 		local thunk = spec[mode]
-		result = type(thunk) ~= 'function' and thunk or thunk()
+		result = type(thunk) ~= 'function' and thunk or (thunk and thunk())
 	end
 
 	if not result then
