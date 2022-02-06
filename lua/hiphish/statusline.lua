@@ -20,6 +20,20 @@ local statusline = {
 	before = {
 		util.hi_statusline_accent_mode,
 	},
+	terminal = {
+		-- Return nil to use the default file type status line
+		active = function()
+			if (vim.b.repl or {})['-'] then
+				local items = {
+					'%#StatusLineAccentMode# ',
+					comp.mode(),
+					' %#StatusLineAccent# ',
+					comp.repl_title(),
+					' %#StatusLine#'}
+				return table.concat(items)
+			end
+		end,
+	},
 	ft = {
 		[''] = {
 			active = function()
@@ -137,13 +151,26 @@ local statusline = {
 
 -- Returns the complete status line string for the current window
 function M.get(mode)
-	local ft = vim.bo.filetype
-	local spec = statusline.ft[ft] or statusline.ft[''] or {}
+	local result
+
 	local before = statusline.before or {}
 	for _, hook in ipairs(before) do
 		hook()
 	end
-	local result = spec[mode] or ''
+
+	-- Terminal buffers are a special case
+	if vim.bo.buftype == 'terminal' then
+		local spec = statusline.terminal or {}
+		local thunk = spec[mode]
+		result = type(thunk) ~= 'function' and thunk or thunk()
+	end
+
+	if not result then
+		local ft = vim.bo.filetype
+		local spec = statusline.ft[ft] or statusline.ft[''] or {}
+		result = spec[mode]
+	end
+
 	return type(result) ~= 'function' and result or result()
 end
 

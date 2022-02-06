@@ -104,4 +104,16 @@ function M.lsp_status()
 	return result
 end
 
+-- Title of a REPL instance (from repl.nvim plugin)
+function M.repl_title()
+	local type = vim.b.repl['-'].type
+	local repl
+	for _, scope in ipairs({'b', 'w', 't', 'g'}) do
+		repl = (vim[scope].repl or {})[type]
+		if repl then break end
+	end
+	if not repl then return end
+	return repl.title or string.format('REPL (%s), type')
+end
+
 return M
