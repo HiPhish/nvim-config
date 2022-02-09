@@ -32,7 +32,7 @@ except ${2:${3Exception} as ${4:e}}:
 	${5:pass}
 endsnippet
 
-snippet trye "Try-except" b
+snippet trye "Try-except-else" b
 try:
 	${1:pass}
 except ${2:${3Exception} as ${4:e}}:
@@ -41,7 +41,7 @@ else:
 	${6:pass}
 endsnippet
 
-snippet tryf "Try-except" b
+snippet tryf "Try-except-finally" b
 try:
 	${1:pass}
 except ${2:${3Exception} as ${4:e}}:
@@ -50,7 +50,7 @@ finally:
 	${6:pass}
 endsnippet
 
-snippet tryef "Try-except" b
+snippet tryef "Try-except-else-finally" b
 try:
 	${1:pass}
 except ${2:${3Exception} as ${4:e}}:
@@ -59,4 +59,9 @@ else:
 	${6:pass}
 finally:
 	${7:pass}
+endsnippet
+
+snippet test "Test function" b
+def test_${1:description}(self${2:, ${3:arg}}) -> None:
+	${0:pass}
 endsnippet
