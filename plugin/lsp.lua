@@ -59,6 +59,11 @@ util['fancy_floating_markdown'] = function (contents, opts)
 	return fancy_floating_markdown(contents, opts)
 end
 
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+	vim.lsp.handlers.hover, {
+		border = 'rounded',  -- See `:h nvim_open_win()`
+	}
+)
 
 --- [ COMMON CONFIGURATION ] --------------------------------------------------
 -- Settings which are relevant and useful for all language servers. Individual
