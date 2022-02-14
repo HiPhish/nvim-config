@@ -256,18 +256,21 @@ end
 
 --- [ Nim LS ] ----------------------------------------------------------------
 nvim_lsp.nimls.setup {
+	cmd = {vim.fn.expand '~/.nimble/bin/nimlsp'},
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
 
 
 --- [ OMNISHARP ] -------------------------------------------------------------
+-- Requires system Mono, bypass the included `run` script and launch the
+-- EXE directory instead
 nvim_lsp.omnisharp.setup {
 	cmd = {
-		-- server_dir .. '/omnisharp/run',
-		server_dir .. '/omnisharp-linux-x64/run',
+		'mono',
+		server_dir .. '/omnisharp-linux-x64/omnisharp/OmniSharp.exe',
+		'--languageserver',
 		'--hostPID', tostring(vim.fn.getpid()),
-		'--languageserver'
 	},
 	on_attach = on_attach,
 	capabilities = capabilities,
