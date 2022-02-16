@@ -310,6 +310,11 @@ do
 		nvim_lsp.metals.setup {
 			on_attach = on_attach,
 			capabilities = capabilities,
+			settings = {
+				metals = {
+					javaHome = vim.fn.environ()['JAVA_HOME'],
+				},
+			},
 		}
 	end
 end
