@@ -103,6 +103,21 @@ local capabilities = local_util.capabilities {
 }
 
 
+-- Displays nicely presented startup progress messages
+do
+	local success, fidget = pcall(require, 'fidget')
+	if success then
+		fidget.setup {
+			text = {
+				spinner = 'zip',
+			},
+			window = {
+				blend = 30,
+			},
+		}
+	end
+end
+
 --- [ Angular ]----------------------------------------------------------------
 nvim_lsp.angularls.setup {
 	on_attach = on_attach,
