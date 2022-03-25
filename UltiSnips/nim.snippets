@@ -1,3 +1,7 @@
+snippet from "From module import"
+from ${1:module} import ${2:symbol}
+endsnippet
+
 snippet proc "Procedure definition" b
 proc ${1:name}(${2:parameter})${3:: ${4:returnType}} =
 	${0:discard}
@@ -10,6 +14,11 @@ endsnippet
 
 snippet iterator "Iterator definition" b
 iterator ${1:name}(${2:parameter})${3:: ${4:returnType}} =
+	${0:discard}
+endsnippet
+
+snippet template "Template definition"
+template ${1:name}(${2:parameter}) =
 	${0:discard}
 endsnippet
 
