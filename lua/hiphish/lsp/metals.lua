@@ -47,9 +47,4 @@ function M.init_or_attach()
 	metals.initialize_or_attach(vim.tbl_extend('force', metals.bare_config(), config))
 end
 
-
-if vim.fn.executable('metals') then
-	vim.g.metals_use_global_executable = true
-end
-
 return M
