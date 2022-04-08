@@ -14,10 +14,24 @@ require'nvim-treesitter.configs'.setup {
 	},
 	context_commentstring = {
 		enable = true,
+		disable = {'python', 'yaml'},
 	},
 	playground = {
+	},
+	rainbow = {
+		enable = true,
+		extended_mode = true,
 	}
 }
+
+-- Link my own highlights to the ones from the plugin
+vim.cmd 'hi link rainbowcol1 RainbowRed'
+vim.cmd 'hi link rainbowcol2 RainbowYellow'
+vim.cmd 'hi link rainbowcol3 RainbowBlue'
+vim.cmd 'hi link rainbowcol4 RainbowGreen'
+vim.cmd 'hi link rainbowcol5 RainbowOrange'
+vim.cmd 'hi link rainbowcol6 RainbowCyan'
+vim.cmd 'hi link rainbowcol7 RainbowViolet'
 
 do  -- Fix spell checking
 	local success, spellsitter = pcall(require, 'spellsitter')
