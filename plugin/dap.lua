@@ -89,3 +89,15 @@ ui.setup {
 		max_width  = nil,  -- between 0 and 1 (size relative to screen size)
 	}
 }
+
+-- Prompt the user for an expression to evaluate
+local function dapui_eval()
+	local expr = vim.fn.input('DAP expression: ')
+	if vim.fn.empty(expr) ~= 0 then
+		return
+	end
+	ui.eval(expr)
+end
+
+vim.keymap.set({'n', 'v'}, '<M-k>', ui.eval, {})
+vim.keymap.set('n', '<M-K>', dapui_eval, {})

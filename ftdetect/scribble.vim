@@ -22,4 +22,3 @@
 " }}}
 
 autocmd! BufRead,BufNewFile *.scrbl set ft=scribble
-

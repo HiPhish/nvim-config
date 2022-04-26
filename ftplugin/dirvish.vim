@@ -25,4 +25,3 @@
 silent keeppatterns global@\v/\.[^\/]+/?$@d
 
 setlocal nospell
-

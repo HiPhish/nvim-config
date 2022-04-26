@@ -23,4 +23,3 @@
 
 " Recognise header files as C rather than C++; use 'hpp' for C++ instead.
 autocmd! BufRead,BufNewFile *.h  setfiletype c
-
