@@ -57,7 +57,7 @@ local statusline = {
 				}
 				return table.concat(fun.filter(function(txt) return txt ~= '' end, result))
 			end,
-			inactive = ' %F %= %3p%% │ %3l:%02c'
+			inactive = ' %f %= %3p%% │ %3l:%02c'
 		},
 		dirvish = {
 			active = function()
