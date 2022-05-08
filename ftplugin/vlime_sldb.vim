@@ -3,6 +3,6 @@
 "  \ \ / /| | | '_ ` _ \ / _ \
 "   \ V / | | | | | | | |  __/
 "    \_/  |_|_|_| |_| |_|\___|  Swank client for Vim
-                            
 
-setlocal nospell nonumber
+
+runtime ftplugin/vlime_repl
