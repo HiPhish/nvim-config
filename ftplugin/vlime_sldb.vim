@@ -5,4 +5,4 @@
 "    \_/  |_|_|_| |_| |_|\___|  Swank client for Vim
 
 
-runtime ftplugin/vlime_repl
+runtime ftplugin/vlime_repl.vim
