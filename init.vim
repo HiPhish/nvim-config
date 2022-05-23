@@ -37,7 +37,7 @@ endif
 
 " Vim settings
 set listchars=tab:├─,space:·,trail:•,eol:¬,extends:…,precedes:…
-set fillchars=msgsep:─
+set fillchars=msgsep:─,foldopen:┌,foldsep:│
 set splitright                  " Open splits the way I prefer it
 set formatoptions-=t            " Do not auto-wrap text
 set number                      " Line numbers.
