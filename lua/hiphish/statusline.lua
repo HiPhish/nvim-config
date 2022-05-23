@@ -57,7 +57,13 @@ local statusline = {
 				}
 				return table.concat(fun.filter(function(txt) return txt ~= '' end, result))
 			end,
-			inactive = ' %f %= %3p%% │ %3l:%02c'
+			inactive = function()
+				local result = {
+					comp.filename(),
+					'%= %3p%% │ %3l:%02c'
+				}
+				return table.concat(fun.filter(function(txt) return txt ~= '' end, result))
+			end
 		},
 		dirvish = {
 			active = function()
