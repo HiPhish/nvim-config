@@ -5,4 +5,4 @@
 "    \_/  |_|_|_| |_| |_|\___|  Swank client for Vim
                             
 
-setlocal nospell nonumber
+setlocal nospell nonumber winfixheight
