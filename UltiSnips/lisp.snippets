@@ -135,3 +135,11 @@ snippet dovar+ "Do-loop variable" w
 (${1:var} ${2:def})${3:
 dovar+}$4
 endsnippet
+
+
+# Testing with FiveAM
+snippet test "FiveAM test case"
+(test ${1:name}
+  ${2::description "${3:TODO: insert description here}"
+  }${4:assertion})
+endsnippet
