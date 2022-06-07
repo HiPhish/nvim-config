@@ -304,8 +304,11 @@ nvim_lsp.pylsp.setup {
 	settings = {
 		pylsp = {
 			plugins = {
-				['pylsp-mypy'] = {
+				-- If this plugin does not work try running MyPy from the
+				-- command line first
+				pylsp_mypy = {
 					enabled = true,
+					live_mode = true,
 				},
 			}
 		}
