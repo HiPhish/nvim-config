@@ -1,30 +1,52 @@
+local f = require 'hiphish.util.functional'
 -- See https://gist.github.com/folke/fe5d28423ea5380929c3f7ce674c41d8
 
-local library = {}
-for _, p in ipairs(vim.split(vim.o['runtimepath'], ',')) do
-	if vim.fn.isdirectory(p .. '/lua') ~= 0 then
-		library[p] = true
+-- Directory prefix of all package directories
+local package_prefix = vim.fn.expand((vim.env.XDG_DATA_HOME or '~/.local/share') ..  '/nvim/site/')
+
+-- Predicate which is only true for paths that belong to a package and have Lua
+-- modules.
+local function is_package_path(path)
+	if package_prefix ~= string.sub(path, 1, #package_prefix) then
+		return false
 	end
+	return vim.fn.isdirectory(path .. '/lua') ~= 0
 end
 
+-- https://github.com/sumneko/vscode-lua/blob/master/setting/schema.json
 local M = {
 	Lua = {
 		runtime = {
 			version = jit and 'LuaJIT' or _VERSION,
+			-- When using `require`, how to find the file based on the input
+			-- name.Setting this config to `?/init.lua` means that when you enter
+			-- `require 'myfile'`, `${workspace}/myfile/init.lua` will be searched from
+			-- the loaded files. if `runtime.pathStrict` is `false`,
+			-- `${workspace}/**/myfile/init.lua` will also be searched. If you want to
+			-- load files outside the workspace, you need to set `Lua.workspace.library`
+			-- first.
 			path = {
 				'lua/?.lua',
 				'lua/?/init.lua',
 			},
+			-- When enabled, `runtime.path` will only search the first level of
+			-- directories, see the description of `runtime.path`.
+			pathStrict = true,
 		},
-
 		diagnostics = {
 			globals = {
 				'vim',
 			},
 		},
-
 		workspace = {
-			library = library
+			-- In addition to the current workspace, which directories will
+			-- load files from. The files in these directories will be treated
+			-- as externally provided code libraries, and some features (such
+			-- as renaming fields) will not modify these files.
+			-- library = library
+			library = f.filter(is_package_path, vim.api.nvim_get_runtime_file('', true))
+			-- Very important: do not include the '/lua' subdirectory in the
+			-- above paths! The runtime.path entry taks care of that.
 		},
 	}
 }

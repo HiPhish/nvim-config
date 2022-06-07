@@ -18,19 +18,9 @@ local util = require'lspconfig'.util
 local rules = require'hiphish.lsp.sumneko_lua.rules'
 
 
----[ Helpers ]-----------------------------------------------------------------
-
---- Where the language server is installed
-local install_dir =
-	vim.fn.expand'~/Applications/lsp/sumneko_lua/lua-language-server'
-
-
--------------------------------------------------------------------------------
 M.config = {
 	cmd = {
-		string.format('%s/bin/%s/lua-language-server', install_dir, jit.os),
-		'-E',
-		string.format('%s/main.lua', install_dir),
+		vim.fn.expand'~/Applications/lsp/lua-language-server/bin/lua-language-server',
 	},
 
 	--- Try the rock specification, followed by the git repository. Fall back
