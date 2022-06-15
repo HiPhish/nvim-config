@@ -6,6 +6,11 @@ telescope.setup {
 	defaults = {
 		winblend = 30,
 		border = true,
+		file_ignore_patterns = {
+			'%.zip$', '%.tar$', '%.tar.gz$',
+			'%.so$', '%.a$', '%.fasl$', '%.pyc$', '%.whl$',
+			'%.bin$', '%.db$',
+		},
 		mappings = {
 			i = {
 			},
