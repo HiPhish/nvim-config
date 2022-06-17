@@ -2,9 +2,18 @@
 
 set completeopt=menuone,noinsert,noselect
 
+" Telescope has problems with completion frameworks, so we need to exclude it
+function! s:on_attach()
+	if '\v^Telescope.*' =~# &ft 
+		return
+	endif
+	lua require('completion').on_attach()
+endfunction
+
 augroup completion
 	autocmd!
-	autocmd BufEnter * lua require('completion').on_attach()
+	autocmd BufEnter * call s:on_attach()
+	" autocmd BufEnter *\(Telescope.*\)\@<! lua require('completion').on_attach()
 augroup END
 
 
