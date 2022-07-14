@@ -1,7 +1,7 @@
 autoload/plug.vim
 autoload/plug.vim.old
-rplugin
 spell/*.spl
 spell/*.sug
 doc/tags
 plugin/packer_compiled.lua
+rplugin/python3/__pycache__
