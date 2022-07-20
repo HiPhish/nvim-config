@@ -34,6 +34,7 @@ setlocal foldmethod=manual cursorline
 
 " Use 'o' key to [o]pen the selected error.
 nnoremap <buffer> o <CR>
+nnoremap <buffer> <ESC> <CMD>quit<CR>
 
 " Get the file type of the associated window
 function! s:associated_ft() abort
