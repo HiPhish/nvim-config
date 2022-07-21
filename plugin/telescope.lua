@@ -9,7 +9,7 @@ telescope.setup {
 		file_ignore_patterns = {
 			'%.zip$', '%.tar$', '%.tar.gz$',
 			'%.so$', '%.a$', '%.fasl$', '%.pyc$', '%.whl$',
-			'%.bin$', '%.db$',
+			'%.bin$', '%.db$', 'node_modules'
 		},
 		mappings = {
 			i = {
@@ -26,3 +26,7 @@ telescope.setup {
 
 vim.keymap.set('n', '<C-P>', builtin.find_files)
 vim.keymap.set('n', '<C-N>', builtin.buffers)
+
+
+---[ LSP handlers ]------------------------------------------------------------
+vim.lsp.handlers['textDocument/references'] = builtin.lsp_references
