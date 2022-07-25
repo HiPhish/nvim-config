@@ -67,22 +67,22 @@ ui.setup {
 		edit = {'c'},
 		repl = {'r'},
 	},
-	sidebar = {
-		elements = {
-			'breakpoints',
-			'watches',
-			'stacks',
-			'scopes',
+	layouts = {
+		{
+			elements = {
+				'breakpoints',
+				'watches',
+				'stacks',
+				'scopes',
+			},
+			size = 40,
+			position = 'right',
 		},
-		size = 40,
-		position = 'right',
-	},
-	tray = {
-		elements = {
-			'repl'
+		tray = {
+			elements = {'repl', 'console'},
+			size = 10,
+			position = 'bottom',
 		},
-		size = 10,
-		position = 'bottom',
 	},
 	floating = {
 		max_height = nil,  -- Either absolute integer or float

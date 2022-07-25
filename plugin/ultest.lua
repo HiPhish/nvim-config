@@ -1,6 +1,8 @@
 local ultest  = require 'ultest'
 local debugpy = require 'debugpy'
 
+vim.g.ultest_deprecation_notice = 0  -- Until I have fully migrated to Neotest
+
 ultest.setup {
 	builders = {
 		-- `cmd` is the shell command used to invoke the test runner for one
