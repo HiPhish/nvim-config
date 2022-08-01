@@ -38,15 +38,15 @@ end
 
 ---[ CALLBACKS ]---------------------------------------------------------------
 dap.listeners.after['event_initialized']['dapui_config'] = function()
-	ui.open()
+	ui.open({})
 end
 
 dap.listeners.before['event_terminated']['dapui_config'] = function()
-	ui.close()
+	ui.close({})
 end
 
 dap.listeners.before['event_exited']['dapui_config'] = function()
-	ui.close()
+	ui.close({})
 end
 
 
@@ -77,9 +77,9 @@ ui.setup {
 			},
 			size = 40,
 			position = 'right',
-		},
-		tray = {
-			elements = {'repl', 'console'},
+		}, {
+			-- elements = {'repl', 'console'},
+			elements = {'repl'},
 			size = 10,
 			position = 'bottom',
 		},
@@ -96,7 +96,7 @@ local function dapui_eval()
 	if vim.fn.empty(expr) ~= 0 then
 		return
 	end
-	ui.eval(expr)
+	ui.eval(expr, {})
 end
 
 vim.keymap.set({'n', 'v'}, '<M-k>', ui.eval, {})
