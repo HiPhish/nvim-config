@@ -28,12 +28,12 @@ local subcommands = {
 	run = function()
 		neotest.run.run()
 	end,
-	stop = function(fargs)
+	stop = function()
 		local config = {}
-		if fargs[1] == 'debug' then
-			config['strategy'] = 'dap'
-		end
 		neotest.run.stop(config)
+	end,
+	debug = function()
+		neotest.run.run {strategy = "dap"}
 	end,
 	summary = function(fargs)
 		local how = fargs[1] or 'toggle'
@@ -54,7 +54,8 @@ local subcommands = {
 }
 
 local completions = {
-	run = {debug = {}},
+	run = {},
+	debug = {},
 	summary = {open = {}, close = {}, toggle = {}},
 	output = {},
 	stop = {},

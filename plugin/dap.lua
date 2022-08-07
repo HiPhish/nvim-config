@@ -78,7 +78,6 @@ ui.setup {
 			size = 40,
 			position = 'right',
 		}, {
-			-- elements = {'repl', 'console'},
 			elements = {'repl'},
 			size = 10,
 			position = 'bottom',
