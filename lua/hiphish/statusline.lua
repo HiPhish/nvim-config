@@ -69,7 +69,6 @@ local statusline = {
 			active = function()
 				return table.concat {
 					'%#StatusLineAccentMode# Dirvish %#StatusLineAccent# ',
-					fn.fnamemodify(fn.getcwd(), ':~'),
 					fn.fnamemodify(fn.expand('%'), ':.'),
 					' %#StatusLine# ',
 					'%=%#StatusLineAccentMode# %2l:%c '
