@@ -12,7 +12,8 @@ vim.g.vlime_window_settings = {
 }
 
 vim.g.vlime_indent_keywords = {
-	['if'] = 1
+	['if'] = 1,
+	['the'] = 1,
 }
 
 
