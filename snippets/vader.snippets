@@ -1,0 +1,44 @@
+priority 100
+
+# Blocks
+snippet given "Given some buffer contents" b
+	Given${1: ${2:filetype}}${3: (${4:Comment})}:
+  	  $0
+
+snippet do "Normal-mode commands to perform" b
+	Do${1: (${2:Comment})}:
+  	  $0
+
+snippet execute "Ex-commands to execute" b
+	Execute${1: (${2:Comment})}:
+  	  $0
+
+snippet then "VimScript commands to follow" b
+	Then${1: (${2:Comment})}:
+  	  $0
+
+snippet expect "Expected buffer contents" b
+	Expect${1: filetype}${2: (${3:Comment})}:
+  	  $0
+
+
+# Assertions
+snippet assert "Boolean assertion" b
+	Assert ${1:<boolean>}${2:, ${3:message}}
+
+snippet assertequal "Equality assertion" b
+	AssertEqual ${1:<expected>}, ${2:<got>}${3:, ${4:message}}
+
+snippet assertnotequal "Inequality assertion" b
+	AssertNotEqual ${1:<expected>}, ${2:<got>}${3:, ${4:message}}
+
+snippet assertthrows "Error throwing assertion" b
+	AssertThrows ${1:<command>}
+
+
+# Syntax helper functions
+snippet syntaxat "Syntax at position" b
+	SyntaxAt(${1:${2:line}, }${3:column})
+
+snippet syntaxof "Syntax at position" b
+	SyntaxOf(${1:pattern}${2:, ${3:nth=1}})

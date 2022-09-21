@@ -1,0 +1,46 @@
+priority 100
+
+snippet f "Instance field definition"
+	${1:private} ${2:var} ${3:name} = ${4:value};
+
+snippet ff "Instance constant definition"
+	${1:private} final ${2:var} ${3:name} = ${4:value};
+
+snippet sf "Class field definition"
+	static ${1:private} ${2:var} ${3:name} = ${4:value};
+
+snippet sff "Class constant definition"
+	static ${1:private} final ${2:var} ${3:name} = ${4:value};
+
+snippet v "Variable definition"
+	${1:var} ${2:name} = ${3:value};
+
+snippet fv "Constant definition"
+	final ${1:var} ${2:name} = ${3:value};
+
+snippet ims "import static"
+	import static ${0:package}
+
+snippet try "try/catch" b
+	try {
+		$1${VISUAL}
+	} catch (${2:Exception} ${3:e}) {
+		${4:e.printStackTrace();}
+	}
+
+snippet twr "Try with resources"
+	try (${1:Resource})
+	{
+		$2${VISUAL}
+	} catch (${3:Exception} ${4:e}) {
+		${5:e.printStackTrace();}
+	}
+		
+
+snippet mthd "Method definition" b
+	${1:private} ${2:void} ${3:name}($4) {
+		$0
+	}
+
+snippet field "Field variable" b
+	${1:private} ${2:int} ${3:name}$4;$0

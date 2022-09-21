@@ -1,0 +1,102 @@
+priority 100
+
+# Definitions
+snippet defvar "Variable definition" b
+	(defvar *${1:name}* ${2:value} ${3:
+	  "${4:description}"})
+
+snippet defparameter "Parameter definition" b
+	(defparameter *${1:name}* ${2:value} ${3:
+	  "${4:description}"})
+
+snippet defun "Function definition" b
+	(defun ${1:name} (${2:lambda-list}) ${3:
+	  "${4:Documentation string}"}
+	  ${0:body})
+
+snippet defstruct "Structure definition" b
+	(defstruct ${1:name}
+	  ${0:body})
+
+snippet defmacro "Macro definition" b
+	(defmacro ${1:name} (${2:lambda-list}) ${3:
+	  "${4:Documentation string}" }
+	  ${0:body})
+
+snippet defpackage "Package definition" b
+	(defpackage ${1::package}
+	  (:use ${2::cl}))
+
+
+# Flow control
+snippet ife "If-expression with alternative"
+	(if ${1:condition}
+	  ${2:then-expression}
+	  ${3:else-expression})
+
+snippet cond "Conditional"
+	(cond
+	  (${1:condition} ${2:body}) ${3:
+	  case+}$0)
+
+snippet case "Case-switch"
+	(case ${1:keyform}
+	  (${2:condition} ${3:body})${4:
+	  case+})
+
+snippet ecase "Case-switch with error"
+	(ecase ${1:keyform}
+	  (${2:condition} ${3:body})${4:
+	  case+})
+
+snippet case+ "Case of a condition"
+	(${1:condition} ${2:body}) ${3:
+	case+}$0
+
+
+# Local defintions
+snippet let "Local variables"
+	(let ((${1:name} ${2:definition}) ${3: 
+	      letitem+}$4)
+	  ${0:body})
+
+snippet let* "Local variables"
+	(let* ((${1:name} ${2:definition}) ${3: 
+	       letitem+}$4)
+	  ${0:body})
+
+snippet letitem+ "Item of let/let*"
+	(${1:name} ${2:definition}) ${3:
+	letitem+}$0
+
+
+# Function-related
+snippet lambda "Anonymous function"
+	(lambda (${1:args})
+	  ${2:body})
+
+
+# Looping macros
+snippet dotimes "Fixed-number loop"
+	(dotimes (${1:i} ${2:n} ${3:result})
+	  ${0:body})
+
+snippet dolist "Loop over list items"
+	(dolist (${1:item} ${2:items} ${3:result})
+	  ${0:body})
+
+snippet do "Do-loop"
+	(do (${1:dovar+}$2)
+	    (${3:test} ${4:expr})
+	  ${0:body})
+
+snippet dovar+ "Do-loop variable" w
+	(${1:var} ${2:def}) ${3:
+	dovar+}$0
+
+
+# Testing with FiveAM
+snippet test "FiveAM test case"
+	(test ${1:name}
+	  ${2:"${3:TODO: insert description here}"}
+	  ${4:assertion})

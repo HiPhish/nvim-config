@@ -1,0 +1,17 @@
+priority 100
+
+snippet app "Application XDG Desktop entry"
+	[Desktop Entry]
+	Type=Application
+	Name=${1:Name}
+	Comment=${2:Comment}
+	Path=${3:Path}
+	Exec=${4:Exec}
+	Icon=${5:Icon}
+	Categories=${6:Categories}
+
+snippet action "Desktop entry action"
+	[Desktop Action ${1:Name}]
+	Path=${2:Path}
+	Name=${3:Name}
+	Icon=${4:Icon}

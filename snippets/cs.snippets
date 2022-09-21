@@ -1,0 +1,138 @@
+priority 100
+
+#  Classes  #
+#############
+snippet class "Class"
+	${1:private} class ${2:Name}${3: Parent} {
+		$0
+	}
+
+snippet m "Instance method"
+	${1:private} ${2:void} ${3:Name}(${4:arg}) {
+		$0
+	}
+
+
+#  Preprocessor directives  #
+#############################
+
+snippet #if "Conditional compilation" b
+	#if ${1:Condition}
+	${VISUAL}$0
+	#endif  // $1
+
+snippet #region "Region marker" b
+	#region  ${1:Region Name}
+	${VISUAL}$0
+	#endregion  // $1
+
+
+#  Conditionals and branching  #
+################################
+
+snippet if "if-statement"
+	if (${1:condition}) {
+		${VISUAL}$0
+	}
+
+snippet ife "if else statement" b
+	if (${1:condition}) {
+		${VISUAL}$0
+	} else {
+	}
+
+snippet elif "else if" b
+	else if ($1) {
+		$0
+	}
+
+snippet switch "switch statement" b
+	switch (${1:statement}) {
+		case ${2:value}:
+			break;
+		default:
+			$0break;
+	}
+
+snippet case "case" b
+	case ${1:value}:
+		$2
+		break;
+
+
+#  Looping  #
+#############
+
+snippet for "for-loop" b
+	for (var ${1:i} = 0; $1 < ${2:10}; ++$1) {
+		${VISUAL}$0
+	}
+
+snippet foreach "foreach loop" b
+	foreach (${3:var} ${2:item} in ${1:items}) {
+		${VISUAL}$0
+	}
+
+snippet while "while loop" b
+	while (${1:true}) {
+		${VISUAL}$0
+	}
+
+snippet do "do loop" b
+	do {
+		${VISUAL}$0
+	} while (${1:true});
+	
+
+#  Exception Handling  #
+########################
+
+snippet try "try catch block" b
+	try {
+		${VISUAL}$0
+	} catch (${1:Exception} ${2:e}) {
+		throw;
+	}
+
+snippet tryf "try finally block" b
+	try {
+		${VISUAL}$0
+	} finally {
+	}
+
+snippet throw "throw"
+	throw new $1Exception("$2");
+
+
+#  Comments  #
+##############
+
+snippet /// "XML summary comment" b
+	/// <summary>
+	///   $0
+	/// </summary>
+
+snippet <para "XML paragraph comment" w
+	<para>
+  	  ${2}
+	</para>
+
+snippet <param "XML pramameter comment" w
+	<param name="${1}">
+  	  ${2}
+	</param>
+
+snippet <ex "XML exception comment" w
+	<exception cref="${1:System.Exception}">
+  	  ${2}
+	</exception>
+
+snippet <ret "XML returns comment" w
+	<returns>
+  	  $0
+	</returns>
+
+snippet <code "XML code comment" w
+	<code>
+  	  $0
+	</code>

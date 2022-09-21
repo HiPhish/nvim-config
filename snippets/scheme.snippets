@@ -1,0 +1,9 @@
+priority 100
+
+# --- SRFI 64: Testing -------------------------------------------------------
+snippet test-begin "SRFI 64: Test block"
+	(test-begin "${1:name}")
+	
+	${0:${VISUAL:test-case}}
+	
+	(test-end "$1")

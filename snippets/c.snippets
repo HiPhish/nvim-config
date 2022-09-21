@@ -1,0 +1,29 @@
+priority 100
+
+snippet main "Main function" b
+	int main(int argc, char *argv[]) {
+		${1:return 0;}
+	}
+
+snippet dowhile "do-while loop" b
+	do {
+		$0
+	} while(${1:CONDITION});
+
+snippet fundef "Function definition" b
+	${1:static }${2:void} ${3:function_name}(${4:type arg}) \{
+		$0
+	}
+
+# TODO: Doxygen comments interpolation
+snippet fundec "Function declaration" b
+	${1:static }${2:void} ${3:function_name}(${4:type arg});
+
+snippet // "C-comment /*...*/"
+	/* $0 */
+
+snippet /// "Doxygen-comment /*...*/"
+	/** ${1:synopsis}
+	 *
+	 *  $0
+	 */

@@ -1,0 +1,35 @@
+priority 100
+
+snippet func "Function" b
+	function! ${1:name}(${2})
+		${0:" body}
+	endfunction
+
+snippet for "For loop" b
+	for ${1:var} in ${2:collection}
+		${0:" body}
+	endfor
+
+snippet while "While loop" b
+	while ${1:condition}
+		${0:" body}
+	endwhile
+
+snippet if "If statement" b
+	if ${1:condition}
+		${0:body}
+	endif
+
+snippet ife "If-else statement" b
+	if ${1:condition}
+		${2:body}
+	else
+		${0:body}
+	endif
+
+snippet try "Try-catch block"
+	try
+		${1:attempt}
+	catch ${2:/exception pattern/}
+		${3:exception handling}
+	endtry

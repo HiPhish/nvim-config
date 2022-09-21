@@ -1,0 +1,18 @@
+priority 100
+
+snippet import "Import statement" b
+	import {${2:identifier}} from ${1:package};
+
+snippet var "Variable definition" b
+	var ${1:name} = ${2:value};
+
+snippet let "Variable definition" b
+	let ${1:name} = ${2:value};
+
+snippet const "Constant definition" b
+	const ${1:name} = ${2:value};
+
+snippet while "while-loop" b
+	while (${1:false}) {
+		${0:body}
+	}

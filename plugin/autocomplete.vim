@@ -17,7 +17,7 @@ augroup completion
 augroup END
 
 
-let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_enable_snippet = 'snippy'
 let g:completion_enable_auto_paren = v:true
 let g:completion_trigger_on_delete = v:true
 let g:completion_auto_change_source = 1
@@ -39,8 +39,3 @@ let g:completion_chain_complete_list = {
 		\ {'mode': 'keyn'},
 	\ ],
 \ }
-
-imap <expr> <C-J> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-J>'
-smap <expr> <C-J> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-J>'
-imap <expr> <C-K> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-K>'
-smap <expr> <C-K> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-K>'

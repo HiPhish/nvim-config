@@ -1,0 +1,18 @@
+priority 100
+
+snippet M "Lua module"
+	local M = {}
+	
+	$0
+	
+	return M
+
+snippet for "numeric for loop"
+	for ${1:i} = ${2:first}, ${3:last}, ${4:step} do
+		$0
+	end
+
+snippet forin "for-in loop"
+	for ${1:var} in ${2:iterator} do
+		$0
+	end
