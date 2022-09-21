@@ -7,6 +7,7 @@
 (("<="  @TSOperator) (#set! conceal "≤"))
 ((">="  @TSOperator) (#set! conceal "≥"))
 (("!="  @TSOperator) (#set! conceal "≠"))
+(("->"  @TSOperator) (#set! conceal "→"))
 
 (("lambda" @TSKeywordFunction) (#set! conceal "λ"))
 
