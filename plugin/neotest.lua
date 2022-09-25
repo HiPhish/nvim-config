@@ -1,12 +1,19 @@
 local success, neotest = pcall(require, 'neotest')
 if not success then return end
 
-neotest.setup {
-	adapters = {
-		require 'neotest-python' {
-			dap = {justMyCode = false}
-		}
+local adapters = {
+	require 'neotest-python' {
+		dap = {justMyCode = false}
 	},
+}
+
+pcall(function()
+	adapters[#adapters + 1] = require 'neotest-elixir' {
+	}
+end)
+
+neotest.setup {
+	adapters = adapters,
 	icons = {
 		skipped = '-',
 	},
