@@ -18,6 +18,9 @@ M.mappings = {
 		['<F2>' ] =  '<cmd>lua vim.lsp.buf.rename()<CR>',
 		['K'    ] =  '<cmd>lua vim.lsp.buf.hover()<CR>',
 		['<CR>' ] =  '<cmd>lua vim.lsp.buf.code_action()<CR>',
+	},
+	v = {
+		['<CR>' ] =  '<cmd>lua vim.lsp.buf.code_action()<CR>',
 	}
 }
 

@@ -33,6 +33,7 @@ function M.root_patterns(...)
 		end
 	end
 end
+
 --- Default on attach function for all servers
 --
 -- Individual server configurations can included this one as part of their
