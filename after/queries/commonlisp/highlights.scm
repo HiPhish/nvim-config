@@ -1,3 +1,5 @@
+;; extends
+
 ;; --- [ MORE TERSE OPERATORS ]------------------------------------------------
 (((defun_header
     keyword:(defun_keyword) @TSFuncMacro

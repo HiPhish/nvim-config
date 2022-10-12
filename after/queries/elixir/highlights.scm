@@ -1,3 +1,5 @@
+;; extends
+
 (("in"   @TSOperator) (#set! conceal "∈"))
 (("<="   @TSOperator) (#set! conceal "≤"))
 ((">="   @TSOperator) (#set! conceal "≥"))

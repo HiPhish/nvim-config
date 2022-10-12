@@ -1,3 +1,5 @@
+;; extends
+
 ;; --- [ MORE TERSE OPERATORS ]------------------------------------------------
 (("not" @TSOperator) (#set! conceal "¬"))
 (("and" @TSOperator) (#set! conceal "∧"))
