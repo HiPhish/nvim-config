@@ -1,18 +1,27 @@
 local fn = vim.fn
-local fun = require 'hiphish.util.functional'
+local api = vim.api
 local comp = require 'hiphish.statusline.components'
 local util = require 'hiphish.statusline.util'
 
 local M = {}
 
-local sep = ' │ '
+---The default item separator.
+local sep = '╱'
+-- local sep = ' │ '
 
-local function not_empty(s)
+---Returns the buffer object in the context of the current status line
+local function get_current_buf()
+	return api.nvim_win_get_buf(vim.g.statusline_winid)
+end
+
+---True if the string argument is not empty
+local function not_empty(_, s)
 	return s ~= ''
 end
 
+---Whether the current window is a location list window
 local function is_loclist()
-  return vim.fn.getloclist(0, { filewinid = 1 }).filewinid ~= 0
+	return fn.getloclist(vim.g.statusline_winid, {filewinid = 1}).filewinid ~= 0
 end
 
 local statusline = {
@@ -20,67 +29,89 @@ local statusline = {
 	before = {
 		util.hi_statusline_accent_mode,
 	},
-	terminal = {
-		-- Return nil to use the default file type status line
-		active = function()
-			if (vim.b.repl or {})['-'] then
-				local items = {
-					'%#StatusLineAccentMode# ',
-					comp.mode(),
-					' %#StatusLineAccent# ',
-					comp.repl_title(),
-					' %#StatusLine#'}
-				return table.concat(items)
-			end
-		end,
-	},
 	ft = {
 		[''] = {
 			active = function()
 				local result = {
 					'%#StatusLineAccentMode# ',
 					comp.mode(),
-					' %#StatusLineAccent# ',
-					comp.filename(),
 					' %#StatusLine# ',
 					comp.gps(),
 					'%=',
-					table.concat(fun.filter(not_empty, {
-						vim.opt.fileformat:get(),
-						vim.opt.fileencoding:get(),
+					table.concat(fn.filter({
 						comp.diagnostics('StatusLine', sep)
-					}), sep),
-					' %#StatusLineAccent# ',
-					comp.filetype(),
-					comp.lsp_status(),
-					' %#StatusLineAccentMode# %P %3l:%02c ',
+					}, not_empty), sep),
 				}
-				return table.concat(fun.filter(function(txt) return txt ~= '' end, result))
+				return table.concat(fn.filter(result, not_empty))
 			end,
 			inactive = function()
 				local result = {
 					comp.filename(),
-					'%= %3p%% │ %3l:%02c'
+					'%= %3p%%', sep, '%3l:%02c'
 				}
-				return table.concat(fun.filter(function(txt) return txt ~= '' end, result))
+				return table.concat(fn.filter(result, not_empty))
 			end
+		},
+	},
+}
+
+local winbar = {
+	before = {
+		util.hi_statusline_accent_mode,
+	},
+	terminal = {
+		-- Return nil to use the default file type status line
+		active = function()
+			if (vim.b.repl or {})['-'] then
+				local template = '%%#StatusLineAccentMode#%s %%#StatusLine#%%=%%P | %%3l:%%02c'
+				return string.format(template, comp.repl_title())
+			end
+			return '%#StatusLineAccentMode#%t %#StatusLine#%=%P | %3l:%02c'
+		end,
+	},
+	ft = {
+		[''] = {
+			active = function()
+				local buf = get_current_buf()
+				local result = {
+					'%#StatusLineAccentMode# ',
+					comp.filename(),
+					' %#StatusLine#%=',
+					table.concat(fn.filter({
+						vim.bo[buf].fileformat or '',
+						vim.bo[buf].fileencoding or '',
+						comp.filetype(buf),
+						'%P',
+						'%3l:%02c ',
+					}, not_empty), sep),
+				}
+				return table.concat(fn.filter(result, not_empty))
+			end,
+			inactive = function()
+				local result = {
+					'%#StatusLineNC#',
+					comp.filename(),
+					'%= %3p%%', sep, '%3l:%02c'
+				}
+				return table.concat(fn.filter(result, not_empty))
+			end
+		},
+		nerdtree = {
+			active = '%#StatusLineAccentMode#NERDTree %#StatusLine#',
+			inactive = '%#StatusLineNC#NERDTree',
 		},
 		dirvish = {
 			active = function()
 				return table.concat {
-					'%#StatusLineAccentMode# Dirvish %#StatusLineAccent# ',
+					'%#StatusLineAccentMode#',
 					fn.fnamemodify(fn.expand('%'), ':.'),
-					' %#StatusLine# ',
+					'%#StatusLine# ',
 					'%=%#StatusLineAccentMode# %2l:%c '
 					}
 			end,
 			inactive = function()
-				return table.concat {
-					'%#StatusLineNC# ',
-					fn.fnamemodify(fn.getcwd(), ':~'),
-					fn.fnamemodify(fn.expand('%'), ':.'),
-					'%=%P %l:%c'
-					}
+				local fname = api.nvim_buf_get_name(get_current_buf())
+				return string.format('%%#StatusLineNC#%s', fn.fnamemodify(fname, ':~'))
 			end
 		},
 		fugitive = {
@@ -110,21 +141,17 @@ local statusline = {
 			end,
 			inactive = function()
 				local ftype = vim.bo.filetype
-				return table.concat{'%#StatusLineNC# %t%=', ftype, ' │ %P │ %l:%c '}
+				return table.concat{'%#StatusLineNC# %t%=', ftype, sep, '%P', sep, '%l:%c '}
 			end
-		},
-		nerdtree = {
-			active = '%#StatusLineAccentMode# NERDTree %#StatusLine#',
-			inactive = '%#StatusLineNC# NERDTree'
 		},
 		qf = {
 			active = function()
 				local label = is_loclist() and 'Location' or 'Quickfix'
 				local title
 				if is_loclist() then
-					title = vim.fn.getloclist(0, { title = 0 }).title
+					title = vim.fn.getloclist(vim.g.statusline_winid, {title = 0}).title
 				else
-					title = vim.fn.getqflist({ title = 0 }).title
+					title = vim.fn.getqflist({title = 0}).title
 				end
 				return table.concat {
 					'%#StatusLineAccentMode#',
@@ -138,9 +165,9 @@ local statusline = {
 				local label = is_loclist() and 'Location' or 'Quickfix'
 				local title
 				if is_loclist() then
-					title = vim.fn.getloclist(0, { title = 0 }).title
+					title = vim.fn.getloclist(vim.g.statusline_winid, {title = 0}).title
 				else
-					title = vim.fn.getqflist({ title = 0 }).title
+					title = vim.fn.getqflist({title = 0}).title
 				end
 				return table.concat {
 					'%#StatusLineNC#',
@@ -155,28 +182,38 @@ local statusline = {
 }
 
 -- Returns the complete status line string for the current window
-function M.get(mode)
+local function get(bar, mode)
 	local result
 
-	local before = statusline.before or {}
+	local before = bar.before or {}
 	for _, hook in ipairs(before) do
 		hook()
 	end
 
 	-- Terminal buffers are a special case
 	if vim.bo.buftype == 'terminal' then
-		local spec = statusline.terminal or {}
-		local thunk = spec[mode]
-		result = type(thunk) ~= 'function' and thunk or (thunk and thunk())
-	end
-
-	if not result then
-		local ft = vim.bo.filetype
-		local spec = statusline.ft[ft] or statusline.ft[''] or {}
+		local spec = bar.terminal or {}
 		result = spec[mode]
 	end
 
-	return type(result) ~= 'function' and result or result()
+	if not result then
+		local ft = vim.bo[get_current_buf()].filetype
+		local spec = bar.ft[ft] or bar.ft[''] or {}
+		result = spec[mode]
+	end
+
+	if result then
+		return type(result) ~= 'function' and result or result()
+	end
+	return ''
+end
+
+function M.statusline(mode)
+	return get(statusline, mode)
+end
+
+function M.winbar(mode)
+	return get(winbar, mode)
 end
 
 return M

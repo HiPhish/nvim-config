@@ -7,6 +7,17 @@ local severity = vim.diagnostic.severity
 local fun = require 'hiphish.util.functional'
 local util = require 'hiphish.statusline.util'
 
+local function lsp_indicator(buf)
+	local clients = vim.lsp.get_active_clients {bufnr = buf}
+
+	for _, client in pairs(clients) do
+		if not vim.lsp.client_is_stopped(client.id) then
+			return '•'
+		end
+	end
+	return ''
+end
+
 function M.filename()
 	local winid = vim.g.statusline_winid
 	local bufnr = vim.fn.winbufnr(winid)
@@ -28,9 +39,10 @@ function M.filename()
 	return result
 end
 
-function M.filetype()
-	local ft = vim.bo.filetype
-	return ft ~= '' and ft or ''
+function M.filetype(buf)
+	local ft = vim.bo[buf or 0].filetype or ''
+	local marker = lsp_indicator(buf)
+	return string.format('%s%s', ft, marker)
 end
 
 function M.mode()
@@ -90,18 +102,6 @@ end
 
 function M.gps()
 	return has_gps and gps.is_available() and gps.get_location() or ''
-end
-
-function M.lsp_status()
-	local clients = vim.lsp.buf_get_clients()
-
-	for _, client in pairs(clients) do
-		if not vim.lsp.client_is_stopped(client.id) then
-			return ' •'
-		end
-	end
-	local result = ''
-	return result
 end
 
 -- Title of a REPL instance (from repl.nvim plugin)
