@@ -1,4 +1,10 @@
+-- This file contains all the configuration for the built-in LSP client
+
+
+local api = vim.api
 local util = require'vim.lsp.util'
+local completion = require 'completion'
+local local_util = require 'hiphish.lsp.util'
 
 --- [ OVERRIDE CLIENT FUNCTIONS ] ---------------------------------------------
 -- Here I override the functions of the LSP client to my liking. An override
@@ -44,3 +50,24 @@ do
 		}
 	end
 end
+
+api.nvim_create_autocmd('LspAttach', {
+	callback = function(args)
+        local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+		-- Support for completion-nvim
+		completion.on_attach(client)
+
+		-- Use LSP as default formatter
+		vim.bo[bufnr].formatexpr =  'v:lua.vim.lsp.formatexpr()'
+
+		-- Remap keys
+		local opts = {noremap = true, silent = true}
+		for mode, mappings in pairs(local_util.mappings) do
+			for lhs, rhs in pairs(mappings) do
+				api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
+			end
+		end
+	end
+})

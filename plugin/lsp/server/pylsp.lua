@@ -35,7 +35,6 @@ nvim_lsp.pylsp.setup {
 			and 'pylsp'
 			or vim.env.HOME .. '/.local/bin/pylsp'
 	},
-	on_attach = defaults.on_attach,
 	capabilities = defaults.capabilities,
 	settings = {
 		pylsp = {

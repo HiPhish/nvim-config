@@ -1,3 +1,6 @@
+-- This file contains all the LSP server configurations
+
+
 local nvim_lsp = require'lspconfig'
 local defaults = require 'hiphish.lsp.defaults'
 
@@ -7,27 +10,25 @@ local root_patterns = defaults.root_patterns
 
 --- [ Angular ]----------------------------------------------------------------
 nvim_lsp.angularls.setup {
-	on_attach = defaults.on_attach,
 	capabilities = defaults.capabilities,
 }
 
 
 --- [ CLANGD ]-----------------------------------------------------------------
 nvim_lsp.clangd.setup {
-	on_attach = defaults.on_attach,
 	capabilities = defaults.capabilities,
 }
 
 
 --- [ DOCKERFILE LS NODEJS ]---------------------------------------------------
 nvim_lsp.dockerls.setup {
-	on_attach = defaults.on_attach,
 	capabilities = defaults.capabilities,
 }
 
 
 --- [ ECLIPSE.JDT.LS ] --------------------------------------------------------
 do
+	local jdtls = require 'jdtls'
 	local root_files = {
 		{'build.xml', 'settings.gradle', 'settings.gradle.kts'},
 		{'pom.xml', 'build.gradle', 'build.gradle.kts'},
@@ -39,12 +40,12 @@ do
 	config.root_dir = root_patterns(unpack(root_files))
 
 	config.on_attach = function (client, bufnr)
-		defaults.on_attach(client, bufnr)
-		vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', '<cmd>lua require"jdtls".code_action()<CR>', {noremap = true, silent = true})
+		local opts = {noremap = true, silent = true, buffer = true}
+		vim.keymap.set('n', '<CR>', jdtls.code_action, opts)
 		if old_on_attach then
 			old_on_attach(client, bufnr)
 		end
-		require('jdtls').setup_dap()
+		jdtls.setup_dap()
 	end
 
 	config.capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -59,20 +60,17 @@ nvim_lsp.elixirls.setup {
 		server_dir .. '/elixir-ls/release/language_server.sh'
 	},
 	capabilities = defaults.capabilities,
-	on_attach = defaults.on_attach
 }
 
 
 --- [ ERLANG_LS ]--------------------------------------------------------------
 nvim_lsp.erlangls.setup {
 	capabilities = defaults.capabilities,
-	on_attach = defaults.on_attach
 }
 
 
 --- [ GODOT GAME ENGINE ] -----------------------------------------------------
 nvim_lsp.gdscript.setup {
-	on_attach = defaults.on_attach,
 	capabilities = defaults.capabilities,
 }
 
@@ -90,7 +88,6 @@ do
 	}
 
 	nvim_lsp.graphql.setup {
-		on_attach = defaults.on_attach,
 		capabilities = defaults.capabilities,
 		root_dir = require'lspconfig.util'
 			.root_pattern(unpack(config_files))
@@ -103,7 +100,6 @@ do
 	local status, _ = pcall(require, 'nvim_lsp.groovy')
 	if status then
 		nvim_lsp.groovy.setup {
-			on_attach = defaults.on_attach,
 			capabilities = defaults.capabilities,
 		}
 	end
@@ -112,7 +108,6 @@ end
 
 --- [ HTML ]-------------------------------------------------------------------
 nvim_lsp.html.setup {
-	on_attach = defaults.on_attach,
 	capabilities = defaults.capabilities,
 }
 
@@ -139,7 +134,6 @@ do
 			},
 		},
     	root_dir = root_patterns(unpack(root_files)),
-		on_attach = defaults.on_attach,
 		capabilities = defaults.capabilities,
 	}
 end
@@ -147,8 +141,7 @@ end
 
 --- [ LUA LANGUAGE SERVER ]----------------------------------------------------
 do
-	local config = require'hiphish.lsp.sumneko_lua'
-	config.on_attach = defaults.on_attach
+	local config = require 'hiphish.lsp.sumneko_lua'
 	config.capabilities = defaults.capabilities
 
 	nvim_lsp.sumneko_lua.setup(config)
@@ -158,7 +151,6 @@ end
 --- [ Nim LS ] ----------------------------------------------------------------
 nvim_lsp.nimls.setup {
 	cmd = {vim.fn.expand '~/.nimble/bin/nimlsp'},
-	on_attach = defaults.on_attach,
 	capabilities = defaults.capabilities,
 }
 
@@ -173,7 +165,6 @@ nvim_lsp.omnisharp.setup {
 		'--languageserver',
 		'--hostPID', tostring(vim.fn.getpid()),
 	},
-	on_attach = defaults.on_attach,
 	capabilities = defaults.capabilities,
 }
 
@@ -188,7 +179,6 @@ do
 
 	if not success then
 		nvim_lsp.metals.setup {
-			on_attach = defaults.on_attach,
 			capabilities = defaults.capabilities,
 			settings = {
 				metals = {
@@ -202,7 +192,6 @@ end
 
 --- [ TYPESCRIPT ]-------------------------------------------------------------
 nvim_lsp.tsserver.setup {
-	on_attach = defaults.on_attach,
 	capabilities = defaults.capabilities,
 }
 
@@ -210,7 +199,6 @@ nvim_lsp.tsserver.setup {
 --- [ VALA LANGUAGE SERVER ] --------------------------------------------------
 nvim_lsp.vala_ls.setup {
 	cmd = {server_dir .. '/vala-language-server/build/src/vala-language-server'},
-	on_attach = defaults.on_attach,
 	capabilities = defaults.capabilities,
 	-- Workaround for projects with multiple build files
 	root_dir = function(fname)
@@ -222,7 +210,5 @@ nvim_lsp.vala_ls.setup {
 
 --- [ VUE.JS LANGUAGE SERVER ]-------------------------------------------------
 nvim_lsp.vuels.setup {
-	on_attach = defaults.on_attach,
 	capabilities = defaults.capabilities,
 }
-
