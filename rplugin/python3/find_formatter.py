@@ -9,15 +9,8 @@ known_formatters = ['autopep8', 'yapf', 'black']
 class FormatterDetector:
 
     def __init__(self, nvim):
-        self.nvim = nvim
+        pass
 
     @pynvim.function(name='DetectPythonFormatters', sync=True)
-    def detect_python_formatters(self, args: List[Any]):
-        result: List[str] = []
-
-        for formatter_name in known_formatters:
-            module = find_spec(formatter_name)
-            if module is not None:
-                result.append(formatter_name)
-
-        return result
+    def detect_python_formatters(self, args: List[Any]) -> List[str]:
+        return [name for name in known_formatters if find_spec(name) is not None]
