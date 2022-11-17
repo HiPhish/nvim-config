@@ -83,10 +83,22 @@ ui.setup {
 			position = 'bottom',
 		},
 	},
+	controls = {
+		icons = {
+			pause = '⏸️',
+			play = '▶',
+			step_into = '⏬',
+			step_over = '⏭',
+			step_out = '⏫',
+			step_back = '⏮',
+			run_last = '🔁',
+			terminate = '⏹',
+		}
+	},
 	floating = {
 		max_height = nil,  -- Either absolute integer or float
 		max_width  = nil,  -- between 0 and 1 (size relative to screen size)
-	}
+	},
 }
 
 -- Prompt the user for an expression to evaluate
