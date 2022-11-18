@@ -56,10 +56,6 @@ vt.setup {}
 
 ---[ DAP UI ]------------------------------------------------------------------
 ui.setup {
-	icons = {
-		expanded = '⯆',
-		collapsed = '⯈'
-	},
 	mappings = {
 		expand = {'<CR>', '<LeftMouse>'},
 		open = {'o'},
@@ -82,18 +78,6 @@ ui.setup {
 			size = 10,
 			position = 'bottom',
 		},
-	},
-	controls = {
-		icons = {
-			pause = '⏸️',
-			play = '▶',
-			step_into = '⏬',
-			step_over = '⏭',
-			step_out = '⏫',
-			step_back = '⏮',
-			run_last = '🔁',
-			terminate = '⏹',
-		}
 	},
 	floating = {
 		max_height = nil,  -- Either absolute integer or float
