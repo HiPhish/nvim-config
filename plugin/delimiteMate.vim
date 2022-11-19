@@ -64,6 +64,11 @@ augroup Jinja
 				\ | endif
 augroup END
 
+augroup Django
+	autocmd!
+	autocmd FileType htmldjango let b:delimitMate_quotes = '" '' # %'
+augroup END
+
 augroup Lisp-Family
 	autocmd FileType lisp,scheme,racket  let b:delimitMate_quotes = '"'
 	autocmd FileType lisp,scheme,racket  let b:delimitMate_expand_cr = 1
