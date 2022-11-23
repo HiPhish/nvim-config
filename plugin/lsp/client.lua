@@ -3,7 +3,6 @@
 
 local api = vim.api
 local util = require'vim.lsp.util'
-local completion = require 'completion'
 local local_util = require 'hiphish.lsp.util'
 
 --- [ OVERRIDE CLIENT FUNCTIONS ] ---------------------------------------------
@@ -55,9 +54,6 @@ api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
         local bufnr = args.buf
         local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-		-- Support for completion-nvim
-		completion.on_attach(client)
 
 		-- Use LSP as default formatter
 		vim.bo[bufnr].formatexpr =  'v:lua.vim.lsp.formatexpr()'
