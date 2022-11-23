@@ -34,7 +34,7 @@ return function()
 
 	result = result .. '%#TabLineFill#%='
 	if fn['fugitive#Head'] and fn['fugitive#Head'](7) ~= '' then
-		result = result .. ' %{fugitive#Head(7)}%='
+		result = result .. ' %{fugitive#Head(7)}%='
 	end
 	result = result .. '%#TabLine# %{strftime("%H:%M")} │ %{strftime("%Y-%m-%d %a")} '
 	return result

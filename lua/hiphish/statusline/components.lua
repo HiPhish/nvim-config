@@ -33,7 +33,7 @@ function M.filename()
 		result = result .. ' +'
 	end
 	if fn.getbufvar(bufnr, '&readonly') ~= 0 then
-		result = ' ' .. result
+		result = ' ' .. result
 	end
 
 	return result

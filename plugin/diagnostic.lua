@@ -3,10 +3,10 @@
 
 --- [ HIGHLIGHT AND SIGNS ] ---------------------------------------------------
 vim.fn.sign_define {
-	{name='DiagnosticSignError', text='⛔', texthl='DiagnosticSignError', linehl='', numhl=''},
-	{name='DiagnosticSignWarn' , text='⚠️' , texthl='DiagnosticSignWarn' , linehl='', numhl=''},
-	{name='DiagnosticSignInfo' , text='ℹ️' , texthl='DiagnosticSignInfo' , linehl='', numhl=''},
-	{name='DiagnosticSignHint' , text='💡', texthl='DiagnosticSignHint' , linehl='', numhl=''},
+	{name='DiagnosticSignError', text='', texthl='DiagnosticSignError', linehl='', numhl=''},
+	{name='DiagnosticSignWarn' , text='' , texthl='DiagnosticSignWarn' , linehl='', numhl=''},
+	{name='DiagnosticSignInfo' , text='' , texthl='DiagnosticSignInfo' , linehl='', numhl=''},
+	{name='DiagnosticSignHint' , text='', texthl='DiagnosticSignHint' , linehl='', numhl=''},
 }
 
 

@@ -99,7 +99,8 @@ function M.is_vim_plugin_dir()
 	for _, plugin_dir in ipairs(plugin_dirs) do
 		if isdirectory(plugin_dir) then
 			local vim_files = fn.glob(plugin_dir .. '/*.vim')
-			if #vim_files > 0 then return true end
+			local lua_files = fn.glob(plugin_dir .. '/*.lua')
+			if #vim_files + #lua_files > 0 then return true end
 		end
 	end
 
