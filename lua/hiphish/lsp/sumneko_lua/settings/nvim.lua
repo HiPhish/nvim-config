@@ -2,7 +2,7 @@ local f = require 'hiphish.util.functional'
 -- See https://gist.github.com/folke/fe5d28423ea5380929c3f7ce674c41d8
 
 -- Directory prefix of all package directories
-local package_prefix = vim.fn.expand((vim.env.XDG_DATA_HOME or '~/.local/share') ..  '/nvim/site/')
+local package_prefix = vim.fn.expand(vim.fn.stdpath('data') .. '/site/')
 
 -- Predicate which is only true for paths that belong to a package and have Lua
 -- modules.
@@ -46,7 +46,7 @@ local M = {
 			-- library = library
 			library = f.filter(is_package_path, vim.api.nvim_get_runtime_file('', true))
 			-- Very important: do not include the '/lua' subdirectory in the
-			-- above paths! The runtime.path entry taks care of that.
+			-- above paths! The runtime.path entry takes care of that.
 		},
 	}
 }

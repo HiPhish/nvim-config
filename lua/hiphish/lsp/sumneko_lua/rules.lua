@@ -19,19 +19,11 @@ local rules = {
 		settings = require 'hiphish.lsp.sumneko_lua.settings.luarocks',
 		priority = 1,
 	}, {
-		test = tests.cwd(vim.fn.stdpath('config')),
+		test = tests.any(
+			tests.config_dir,
+			tests.plugin_dir
+		),
 		settings = require 'hiphish.lsp.sumneko_lua.settings.nvim',
-		priority = 1,
-	}, {
-		test = tests.is_vim_plugin_dir,
-		settings = function ()
-			local result = require 'hiphish.lsp.sumneko_lua.settings.nvim'
-			local cwd = vim.fn.getcwd()
-			if vim.fn.isdirectory(cwd .. '/lua') ~= 0 then
-				result.Lua.workspace.library[cwd .. '/lua/..'] = true
-			end
-			return result
-		end,
 		priority = 1,
 	}, {
 		test = tests.file('main.lua'),

@@ -56,6 +56,7 @@ function M.never()
 end
 
 --- Returns a test which passes if and only if all its argument tests pass.
+--- @param ... function  Individual tests
 function M.all(...)
 	local tests = {...}
 	return function()
@@ -67,7 +68,8 @@ function M.all(...)
 end
 
 --- Returns a test which passes if any of its argument tests pass.
-function M.some(...)
+--- @param ... function  Individual tests
+function M.any(...)
 	local tests = {...}
 	return function()
 		for _, test in ipairs(tests) do
@@ -92,8 +94,12 @@ function M.cwd(path)
 	end
 end
 
+---Whether the current working directory is the standard configuration
+---directory.
+M.config_dir = M.cwd(vim.fn.stdpath('config'))
+
 --- The current directory is a Vim plugin directory; only an educated guess.
-function M.is_vim_plugin_dir()
+function M.plugin_dir()
 	-- This is flawed because it does not search sub-directories of 'autoload'.
 	local plugin_dirs = {'plugin', 'autoload', 'after/plugin'}
 	for _, plugin_dir in ipairs(plugin_dirs) do
