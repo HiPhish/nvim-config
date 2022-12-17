@@ -18,6 +18,34 @@ require'nvim-treesitter.configs'.setup {
 	rainbow = {
 		enable = true,
 		extended_mode = true,
+	},
+	context_commentstring = {
+		enable = true,
+		config = {
+			c = '/* %s */',
+			commonlisp = ';; %s',
+			lisp = ';; %s',
+			python = '# %s',
+			xml = '<!-- %s -->'
+		}
+	},
+	matchup = {
+		enable = true,
+		disable = {},
+	},
+	-- I want to be able to set mappings per file type, but the textobject
+	-- plugin does not support that. I should look for a better tree
+	-- manipulation plugin instead.
+	textobjects = {
+		swap = {
+			enable = true,
+			swap_next = {
+				['<m-l>'] = '@SExpr',
+			},
+			swap_previous = {
+				['<m-h>'] = '@SExpr',
+			}
+		}
 	}
 }
 
