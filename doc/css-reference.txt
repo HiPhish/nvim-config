@@ -16,9 +16,10 @@ TABLE OF CONTENTS                                     *css-reference-contents*
     0. Box model ............................................. |css-box-model|
     1. Selectors ............................................. |css-selectors|
        1. Basic  ....................................... |css-selectors-basic|
-       1. Combinators ...........................  |css-selectors-combinators|
+       2. Combinators ............................ |css-selectors-combinators|
     2. Pseudo classes ................................... |css-pseudo-classes|
     3. Pseudo elements ................................. |css-pseudo-elements|
+    4. Units ..................................................... |css-units|
 
 Appendix~
     A. References ........................................... |css-references|
@@ -135,6 +136,216 @@ used to change the font of the first line of a paragraph.
 ::slotted()~
 ::spelling-error ~
 
+
+==============================================================================
+UNITS                                                              *css-units*
+------------------------------------------------------------------------------
+https://developer.mozilla.org/en-US/docs/Web/CSS/length
+
+
+------------------------------------------------------------------------------
+RELATIVE LENGTH UNITS BASED ON FONT
+------------------------------------------------------------------------------
+
+Font lengths define the {length} value in terms of the size of a particular
+character or font attribute in the font currently in effect in an element or
+its parent.
+
+Note:
+These units, especially em and rem, are often used to create scalable layouts,
+which maintain the vertical rhythm of the page even when the user changes the
+font size.
+
+
+cap~
+(Experimental)
+    Represents the "cap height" (nominal height of capital letters) of the element's font.
+
+ch~
+(experimental)
+    Represents the width or more precisely the advance measure of the glyph 0
+    (zero, the Unicode character U+0030) in the element's font. In cases where
+    it is impossible or impractical to determine the measure of the 0 glyph,
+    it must be assumed to be 0.5em wide by 1em tall.
+
+em~
+    Represents the calculated font-size of the element. If used on the
+    font-size property itself, it represents the inherited font-size of the
+    element.
+
+ex~
+    Represents the x-height of the element's font. In fonts with the x letter,
+    this is generally the height of lowercase letters in the font; 1ex ≈ 0.5em
+    in many fonts.
+
+ic~
+    Equal to the used advance measure of the "水" glyph (CJK water ideograph,
+    U+6C34), found in the font used to render it.
+
+lh~
+(Experimental Non-standard)
+    Equal to the computed value of the line-height property of the element on
+    which it is used, converted to an absolute length.
+
+rem~
+    Represents the font-size of the root element (typically <html>). When used
+    within the root element font-size, it represents its initial value (a
+    common browser default is 16px, but user-defined preferences may modify
+    this).
+
+rlh~
+(Experimental, Non-standard)
+    Equal to the computed value of the line-height property on the root
+    element (typically <html>), converted to an absolute length. When used on
+    the font-size or line-height properties of the root element, it refers to
+    the properties' initial value.
+
+
+------------------------------------------------------------------------------
+RELATIVE LENGTH UNITS BASED ON VIEWPORT
+------------------------------------------------------------------------------
+
+The viewport-percentage length units are based on four different viewport
+sizes: small, large, dynamic, and default. The allowance for the different
+viewport sizes is in response to browser interfaces expanding and retracting
+dynamically and hiding and showing the content underneath.
+
+
+Small~
+    When you want the smallest possible viewport in response to browser
+    interfaces expanding dynamically, you should use the small viewport size.
+    The small viewport size allows the content you design to fill the entire
+    viewport when browser interfaces are expanded. Choosing this size might
+    also possibly leave empty spaces when browser interfaces retract.
+
+    For example, an element that is sized using viewport-percentage units
+    based on the small viewport size, the element will fill the screen
+    perfectly without any of its content being obscured when all the dynamic
+    browser interfaces are shown. When those browser interfaces are hidden,
+    however, there might be extra space visible around the element. Therefore,
+    the small viewport-percentage units are "safer" to use in general, but
+    might not produce the most attractive layout after a user starts
+    interacting with the page.
+
+    The small viewport size is represented by the sv prefix and results in the
+    sv* viewport-percentage length units. The sizes of the small
+    viewport-percentage units are fixed, and therefore stable, unless the
+    viewport itself is resized.
+
+Large~
+    When you want the largest possible viewport in response to browser
+    interfaces retracting dynamically, you should use the large viewport size.
+    The large viewport size allows the content you design to fill the entire
+    viewport when browser interfaces are retracting. You need to be aware
+    though that the content might get hidden when browser interfaces expand.
+
+    For example, on mobile phones where the screen real-estate is at a
+    premium, browsers often hide part or all of the title and address bar
+    after a user starts scrolling the page. When an element is sized using a
+    viewport-percentage unit based on the large viewport size, the content of
+    the element will fill the entire visible page when these browser
+    interfaces are hidden. However, when these retractable browser interfaces
+    are shown, they can hide the content that is sized or positioned using the
+    large viewport-percentage units.
+
+    The large viewport unit is represented by the lv prefix and results in the
+    lv* viewport-percentage units. The sizes of the large viewport-percentage
+    units are fixed, and therefore stable, unless the viewport itself is
+    resized.
+
+Dynamic~
+    When you want the viewport to be automatically sized in response to
+    browser interfaces dynamically expanding or retracting, you can use the
+    dynamic viewport size. The dynamic viewport size allows the content you
+    design to fit exactly within the viewport, irrespective of the presence of
+    dynamic browser interfaces.
+
+    The dynamic viewport unit is represented by the dv prefix and results in
+    the dv* viewport-percentage units. The sizes of the dynamic
+    viewport-percentage units are not stable, even when the viewport itself is
+    unchanged.
+
+    Note: While the dynamic viewport size can give you more control and
+    flexibility, using viewport-percentage units based on the dynamic viewport
+    size can cause the content to resize while a user is scrolling a page.
+    This can lead to degradation of the user interface and cause a performance
+    hit.
+
+Default~
+    The default viewport size is defined by the browser. The behavior of the
+    resulting viewport-percentage unit could be equivalent to the
+    viewport-percentage unit based on the small viewport size, the large
+    viewport size, an intermediate size between the two, or the dynamic
+    viewport size.
+
+    Note: For example, a browser might implement the default
+    viewport-percentage unit for height (vh) that is equivalent to the large
+    viewport-percentage height unit (lvh). If so, this could obscure content
+    on a full-page display while the browser interface is expanded.
+
+Viewport-percentage lengths define <length> values in percentage relative to
+the size of the initial containing block, which in turn is based on either the
+size of the viewport or the page area, i.e., the visible portion of the
+document. When the height or width of the initial containing block is changed,
+the elements that are sized based on them are scaled accordingly. There is a
+viewport-percentage length unit variant corresponding to each of the viewport
+sizes, as described below.
+
+Note: Viewport lengths are invalid in @page declaration blocks.
+
+vh~
+    Represents a percentage of the height of the viewport's initial containing
+    block. 1vh is 1% of the viewport height. For example, if the viewport
+    height is 300px, then a value of 70vh on a property will be 210px.
+
+    For small, large, and dynamic viewport sizes, the respective
+    viewport-percentage units are svh, lvh, and dvh. vh represents the
+    viewport-percentage length unit based on the browser default viewport
+    size.
+
+vw~
+    Represents a percentage of the width of the viewport's initial containing
+    block. 1vw is 1% of the viewport width. For example, if the viewport width
+    is 800px, then a value of 50vw on a property will be 400px.
+
+    For small, large, and dynamic viewport sizes, the respective
+    viewport-percentage units are svw, lvw, and dvw. vw represents the
+    viewport-percentage length unit based on the browser default viewport
+    size.
+
+vmax~
+    Represents in percentage the largest of vw and vh.
+
+    For small, large, and dynamic viewport sizes, the respective
+    viewport-percentage units are svmax, lvmax, and dvmax. vmax represents the
+    viewport-percentage length unit based on the browser default viewport
+    size.
+
+vmin~
+    Represents in percentage the smallest of vw and vh.
+
+    For small, large, and dynamic viewport sizes, the respective
+    viewport-percentage units are svmin, lvmin, and dvmin. vmin represents the
+    viewport-percentage length unit based on the browser default viewport
+    size.
+
+vb~
+    Represents percentage of the size of the initial containing block, in the
+    direction of the root element's block axis.
+
+    For small, large, and dynamic viewport sizes, the respective
+    viewport-percentage units are svb, lvb, and dvb, respectively. vb
+    represents the viewport-percentage length unit based on the browser
+    default viewport size.
+
+vi~
+    Represents a percentage of the size of the initial containing block, in
+    the direction of the root element's inline axis.
+
+    For small, large, and dynamic viewport sizes, the respective
+    viewport-percentage units are svi, lvi, and dvi. vi represents the
+    viewport-percentage length unit based on the browser default viewport
+    size.
 
 
 ==============================================================================
