@@ -9,13 +9,14 @@ augroup END
 
 function! s:custom() abort
 	" Custom highlight groups for nvim-ts-rainbow
-	hi link rainbowcol1 RainbowRed
-	hi link rainbowcol2 RainbowYellow
-	hi link rainbowcol3 RainbowBlue
-	hi link rainbowcol4 RainbowGreen
-	hi link rainbowcol5 RainbowOrange
-	hi link rainbowcol6 RainbowCyan
-	hi link rainbowcol7 RainbowViolet
+	hi link TSRainbowRed    RainbowRed
+	hi link TSRainbowYellow RainbowYellow
+	hi link TSRainbowBlue   RainbowBlue
+	hi link TSRainbowGreen  RainbowGreen
+	hi link TSRainbowCyan   RainbowCyan
+	hi link TSRainbowOrange RainbowOrange
+	hi link TSRainbowViolet RainbowViolet
+
 	hi MatchWord gui=bold  " Extension from vim-matchup
 	let g:matchup_matchparen_offscreen = {}
 endfunction

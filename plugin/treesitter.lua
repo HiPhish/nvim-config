@@ -17,7 +17,10 @@ require'nvim-treesitter.configs'.setup {
 	},
 	rainbow = {
 		enable = true,
-		extended_mode = true,
+		strategy = {
+			require 'ts-rainbow.strategy.global',
+			html = require 'ts-rainbow.strategy.local',
+		},
 	},
 	context_commentstring = {
 		enable = true,
