@@ -1,0 +1,35 @@
+priority 100
+
+snippet ctable "Create a table"
+	CREATE TABLE ${1:name} (
+		$0
+	);
+
+snippet references "Foreign key definition"
+	REFERENCES ${1:table} (${2:column})
+
+snippet cascade "Deleting the foreign object deletes this row as well"
+	ON DELETE CASCADE
+
+snippet constraint "Table constraint"
+	CONSTRAINT ${1:name} ${0:constraint}
+
+snippet primkey "PRIMARY KEY constraint"
+	CONSTRAINT ${1:name} PRIMARY KEY (${2:columns})
+
+snippet check "CHECK constraint"
+	CONSTRAINT ${1:name} CHECK (${2:condition})
+
+snippet select "Select data"
+	SELECT (${1:columns}) FROM ${2:table};
+
+snippet where "Selection condition"
+	WHERE ${0:condition}
+
+snippet insert "Insert values"
+	INSERT INTO ${1:table} (${2:columns})
+	VALUES
+		$0;
+
+snippet cindex "CREATE INDEX"
+	CREATE INDEX ${1:name} ON ${2:table} (${3:column});
