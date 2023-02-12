@@ -62,3 +62,12 @@ try
 	endfunction
 catch
 endtry
+
+
+" Guard for lazy-loading Lisp plugins 
+let s:done_lazy_loading = v:false
+if s:done_lazy_loading | finish | endif
+let s:done_lazy_loading = v:true
+
+packadd vlime
+packadd cmp-vlime
