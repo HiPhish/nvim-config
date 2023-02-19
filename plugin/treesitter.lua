@@ -1,3 +1,5 @@
+local rainbow = require 'ts-rainbow'
+
 require'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true,
@@ -18,8 +20,8 @@ require'nvim-treesitter.configs'.setup {
 	rainbow = {
 		enable = true,
 		strategy = {
-			require 'ts-rainbow.strategy.global',
-			html = require 'ts-rainbow.strategy.local',
+			rainbow.strategy.global,
+			commonlisp = rainbow.strategy['local'],
 		},
 	},
 	context_commentstring = {
