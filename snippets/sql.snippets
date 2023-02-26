@@ -21,7 +21,7 @@ snippet check "CHECK constraint"
 	CONSTRAINT ${1:name} CHECK (${2:condition})
 
 snippet select "Select data"
-	SELECT (${1:columns}) FROM ${2:table};
+	SELECT ${1:columns} FROM ${2:table};
 
 snippet where "Selection condition"
 	WHERE ${0:condition}
