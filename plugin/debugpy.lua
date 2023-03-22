@@ -3,6 +3,7 @@ local debugpy = require 'debugpy'
 
 local default_config = {
 	justMyCode = false,
+	django = true;
 }
 
 debugpy.run = function(config)
