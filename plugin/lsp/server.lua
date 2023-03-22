@@ -141,10 +141,10 @@ end
 
 --- [ LUA LANGUAGE SERVER ]----------------------------------------------------
 do
-	local config = require 'hiphish.lsp.sumneko_lua'
+	local config = require 'hiphish.lsp.lua_ls'
 	config.capabilities = defaults.capabilities
 
-	nvim_lsp.sumneko_lua.setup(config)
+	nvim_lsp.lua_ls.setup(config)
 end
 
 

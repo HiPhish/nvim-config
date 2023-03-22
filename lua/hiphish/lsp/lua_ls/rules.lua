@@ -1,4 +1,4 @@
-local tests    = require'hiphish.lsp.sumneko_lua.tests'
+local tests    = require'hiphish.lsp.lua_ls.tests'
 
 
 -- [ RULES ] ------------------------------------------------------------------
@@ -12,23 +12,23 @@ local tests    = require'hiphish.lsp.sumneko_lua.tests'
 local rules = {
 	{
 		test = tests.always,
-		settings = require 'hiphish.lsp.sumneko_lua.settings.default',
+		settings = require 'hiphish.lsp.lua_ls.settings.default',
 		priority = 0,
 	}, {
 		test = tests.has_rockspec,
-		settings = require 'hiphish.lsp.sumneko_lua.settings.luarocks',
+		settings = require 'hiphish.lsp.lua_ls.settings.luarocks',
 		priority = 1,
 	}, {
 		test = tests.any(
 			tests.config_dir,
 			tests.plugin_dir
 		),
-		settings = require 'hiphish.lsp.sumneko_lua.settings.nvim',
+		settings = require 'hiphish.lsp.lua_ls.settings.nvim',
 		priority = 1,
 	}, {
 		test = tests.file('main.lua'),
 		-- test = tests.never,
-		settings = require 'hiphish.lsp.sumneko_lua.settings.love2d',
+		settings = require 'hiphish.lsp.lua_ls.settings.love2d',
 		priority = 1,
 	},
 }

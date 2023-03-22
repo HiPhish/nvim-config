@@ -15,7 +15,7 @@
 local M = {}
 
 local util = require'lspconfig'.util
-local rules = require'hiphish.lsp.sumneko_lua.rules'
+local rules = require'hiphish.lsp.lua_ls.rules'
 
 
 M.config = {
