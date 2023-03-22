@@ -71,3 +71,7 @@ let s:done_lazy_loading = v:true
 
 packadd vlime
 packadd cmp-vlime
+" These need to be called manually, lazy-loading their plugins will not
+" automatically source these files.
+call vlime#plugin#Setup()
+runtime plugin/cmp-vlime.lua
