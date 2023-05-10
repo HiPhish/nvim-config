@@ -10,6 +10,13 @@ local plugins = {
 	},
 }
 
+if vim.fn.executable('ruff') then
+	plugins.ruff = {
+		enabled = true,
+		extendSelect = {'I'}
+	}
+end
+
 if vim.fn.DetectPythonFormatters then
 	-- dummy-call the function first; it returns nil on first call. This is a
 	-- bug in Neovim
