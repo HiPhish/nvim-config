@@ -44,8 +44,8 @@ call repl#define_repl('lisp', {'bin': 'sbcl', 'args': ['--linedit']}, 'force')
 try
 	silent call vlime#plugin#InteractionMode()
 
-	nnoremap K  :call <SID>go_documentation()<CR>
-	nnoremap gd :call <SID>go_definition()<CR>
+	nnoremap <buffer> K  :call <SID>go_documentation()<CR>
+	nnoremap <buffer> gd :call <SID>go_definition()<CR>
 
 	function! s:go_documentation()
 		let l:connection = vlime#connection#Get(v:true)
