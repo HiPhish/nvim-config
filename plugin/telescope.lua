@@ -31,3 +31,4 @@ vim.keymap.set('n', '<C-N>', builtin.buffers)
 ---[ LSP handlers ]------------------------------------------------------------
 vim.lsp.handlers['textDocument/references'] = builtin.lsp_references
 vim.lsp.handlers['textDocument/documentSymbol'] = builtin.lsp_document_symbols
+vim.lsp.handlers['textDocument/definition'] = builtin.lsp_definitions
