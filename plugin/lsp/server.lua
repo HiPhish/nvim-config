@@ -1,5 +1,6 @@
 -- This file contains all the LSP server configurations
 
+local fn = vim.fn
 
 local nvim_lsp = require'lspconfig'
 local defaults = require 'hiphish.lsp.defaults'
@@ -149,10 +150,16 @@ end
 
 
 --- [ Nim LS ] ----------------------------------------------------------------
-nvim_lsp.nimls.setup {
-	cmd = {vim.fn.expand '~/.nimble/bin/nimlsp'},
-	capabilities = defaults.capabilities,
-}
+if fn.executable(vim.fn.expand '~/.nimble/bin/nimlangserver') then
+	nvim_lsp.nim_langserver.setup {
+		cmd = {vim.fn.expand '~/.nimble/bin/nimlangserver'}
+	}
+else
+	nvim_lsp.nimls.setup {
+		cmd = {vim.fn.expand '~/.nimble/bin/nimlsp'},
+		capabilities = defaults.capabilities,
+	}
+end
 
 
 --- [ OMNISHARP ] -------------------------------------------------------------
