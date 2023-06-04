@@ -1,0 +1,174 @@
+                                                             *elixir-quickref*
+
+==============================================================================
+1. Data types
+
+                                                              *elixir-numbers*
+NUMBERS
+https://hexdocs.pm/elixir/Integer.html
+https://hexdocs.pm/elixir/Float.html
+
+Integer: `0`, `1`, `2`, ...
+
+Float: `0.0`, `1.0`, `2.0`, ...
+
+
+                                                                 *elixir-atom*
+ATOM
+https://hexdocs.pm/elixir/Atom.html
+
+Unique identifier.
+>
+  # Regular syntax
+  :ok
+
+  # Use quotation marks to include any characters
+  :"herp derp!"
+
+  # Names of modules are actually atoms with a fixed prefix
+  :"Elixir.String" = String
+<
+
+
+                                                                *elixir-tuple*
+TUPLE
+https://hexdocs.pm/elixir/Tuple.html
+
+Fixed-size collection of items.
+>
+  # Empty tuple
+  {}
+
+  # Tuple with three elements of different type
+  {:ok, 12, "success"}
+<
+
+                                                                 *elixir-list*
+LIST
+https://hexdocs.pm/elixir/List.html
+
+A singly-linked list, similar to lists in Lisp.  Lists are built from a chain
+of "cons cells".
+
+>
+  # Empty list
+  e = []
+
+  # Improper list (a cons pair)
+  p = [1 | 2]
+
+  # Proper list (list syntax)
+  l = [1, 2, 3]
+
+  # Proper list (cons cell syntax)
+  l = [1 | [2 | [3 | []]]]
+<
+
+                                                         *elixir-keyword-list*
+KEYWORD LIST
+https://hexdocs.pm/elixir/Keyword.html
+
+A list where each element is a tuple whose first element is an atom.  These
+are similar to association lists in Lisp.  The keyword list notation is
+syntactic sugar to make keyword lists look more like mappings.
+>
+  [{:a, 1}, {:b, 2}, {:"herp derp", 3}] = [a: 1, b: 2, "herp derp": 3]
+<
+
+Keyword lists are used when a function accepts "keyword arguments".  In Elixir
+functions have fixed arity and there is no such thing as keyword arguments.
+Instead the last argument is a keyword list.  Syntactic sugar allows us to
+write the contents of the keyword list without brackets.
+>
+  # Keyword argument syntax for calling String.split/3
+  String.split("1-0", "-", trim: true, parts: 2)
+
+  # Desugared notation
+  String.split("1-0", "-", [trim: true, parts: 2])
+<
+
+
+                                                             *elixir-charlist*
+CHARACTER LIST
+https://hexdocs.pm/elixir/List.html#module-charlists
+
+A list which consists only of integers which are valid Unicode code points.
+>
+  [104, 233, 108, 108, 111] = 'héllo'
+  [104, 233, 108, 108, 111] = ~c"héllo"
+<
+
+
+                                                                  *elixir-map*
+MAP
+https://hexdocs.pm/elixir/Map.html
+
+Key-value mapping.  Each key must be unique.  Keys can be of any type.
+>
+  # Arrow syntax works always
+  %{"one" => 1, "two" => 2}
+
+  # Colon syntax works with atom keys
+  %{a: 1, b: 2}
+  
+  # The two can be mixed, but colon syntax has to come last
+  %{"one" => 1, "two" => 2, a: 1, b: 2}
+<
+
+                                                            *elixir-bitstring*
+BITSTRING
+https://hexdocs.pm/elixir/Kernel.SpecialForms.html#%3C%3C%3E%3E/1
+
+Contiguous sequence of bits in memory.
+>
+  # By default each number is stored as eight bits
+  <<42>> = <<42::8>>
+
+  # An explicit size can be given
+  <<3::4>> = <<3::size(4)>>
+  <<3::4>> = <<0::1, 0::1, 1::1, 1::1>>
+
+  # If a number cannot fit in eight bits it is truncated
+  <<1>> = <<257>>  # Only the least significant bytes remain
+<
+
+
+                                                               *elixir-binary*
+BINARY
+A bit string where the number of bits is a multiple of 8.
+>
+  true = is_binary(<<0, 255, 42>>)
+  true = is_binary(<<42::16>>)
+
+  # Binary concatenation
+  <<1, 2, 3>> = <<1, 2>> <> <<3>>
+<
+
+                                                               *elixir-string*
+STRING
+https://hexdocs.pm/elixir/String.html
+
+A string is actually a UTF-8 encoded binary.
+>
+  <<104, 101, 108, 108, 111>> = "hello"
+
+  # The last character is encoded as two bytes
+  <<104, 101, 108, 108, 195, 182>> = "hellö"
+  <<104, 101, 108, 108, 50102::16>> = "hellö"
+
+  # String interpolation
+  with name <- "world" do
+    "Hello #{name}!"    
+  end
+
+  # String concatenation is just binary concatenation
+  "Hello world!" = "Hello" <> " " <> "world!"
+
+  # Pattern-matching strings, use the utf8 size specifier
+  <<x::utf8, rest::binary>> = "über"  # x is 252
+<
+
+
+
+==============================================================================
+vim:tw=78:ts=4:sw=2:et:ft=help:norl:
