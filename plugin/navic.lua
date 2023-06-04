@@ -8,7 +8,6 @@ if not success then
 end
 
 local set_hl = vim.api.nvim_set_hl
-local get_hl = vim.api.nvim_get_hl
 
 -- Highlight groups
 local icon_highlights = {
@@ -40,10 +39,8 @@ local icon_highlights = {
 	'NavicIconsTypeParameter',
 }
 
-local icon_hl = get_hl(0, {name = 'StatusLine'})
-icon_hl.italic = true
 for _, hlgroup in ipairs(icon_highlights) do
-	set_hl(0, hlgroup, icon_hl)
+	set_hl(0, hlgroup, {link = 'StatusLineNC'})
 end
 
 set_hl(0, 'NavicSeparator', {link = 'StatusLineNC'})
@@ -57,31 +54,31 @@ navic.setup {
 		auto_attach = true,
 	},
 	icons = {
-		File          = "F ",
-		Module        = "M ",
-		Namespace     = "N ",
-		Package       = "P ",
-		Class         = "C ",
-		Method        = "m ",
-		Property      = "p ",
-		Field         = "f ",
-		Constructor   = "c ",
-		Enum          = "E",
-		Interface     = "I",
-		Function      = "f ",
-		Variable      = "v ",
-		Constant      = "c ",
-		String        = "s ",
-		Number        = "n ",
+		File          = "𝐅 ",
+		Module        = "𝐌 ",
+		Namespace     = "𝐍 ",
+		Package       = "𝐏 ",
+		Class         = "𝐶 ",
+		Method        = "𝑚 ",
+		Property      = "𝑝 ",
+		Field         = "𝒇 ",
+		Constructor   = "𝐜 ",
+		Enum          = "𝐸",
+		Interface     = "𝐼",
+		Function      = "𝑓 ",
+		Variable      = "𝑣 ",
+		Constant      = "𝑐 ",
+		String        = "𝑠 ",
+		Number        = "𝑛 ",
 		Boolean       = "? ",
 		Array         = "[] ",
-		Object        = "o ",
-		Key           = "k: ",
+		Object        = "𝑜 ",
+		Key           = "🗝 ",
 		Null          = "∅ ",
-		EnumMember    = "e ",
-		Struct        = "s ",
-		Event         = "e ",
+		EnumMember    = "𝑒 ",
+		Struct        = "𝑆 ",
+		Event         = "𝑒 ",
 		Operator      = "∘ ",
-		TypeParameter = "T ",
+		TypeParameter = "𝐓 ",
 	}
 }
