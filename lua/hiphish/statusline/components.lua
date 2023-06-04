@@ -2,7 +2,7 @@ local M = {}
 
 local fn = vim.fn
 local api = vim.api
-local has_gps, gps = pcall(require, 'nvim-gps')
+local has_navic, navic = pcall(require, 'nvim-navic')
 local severity = vim.diagnostic.severity
 local fun = require 'hiphish.util.functional'
 local util = require 'hiphish.statusline.util'
@@ -83,26 +83,10 @@ function M.diagnostics(hl_base, sep)
 	return table.concat(derp, sep)
 end
 
-if has_gps then
-	gps.setup {
-		icons = {
-			['class-name'] = '',
-			['function-name'] = '',
-			['method-name'] = '',
-			['container-name'] = '',
-			['tag-name'] = '',
-		},
-		languages = {
-			vim = false,
-		},
-		separator = ' ╱ ',
-		depth_limit_indicator = '…'
-}
+function M.navic()
+	return has_navic and navic.is_available() and navic.get_location() or ''
 end
 
-function M.gps()
-	return has_gps and gps.is_available() and gps.get_location() or ''
-end
 
 -- Title of a REPL instance (from repl.nvim plugin)
 function M.repl_title()

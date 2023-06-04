@@ -35,8 +35,8 @@ local statusline = {
 				local result = {
 					'%#StatusLineAccentMode# ',
 					comp.mode(),
-					' %#StatusLine# ',
-					comp.gps(),
+					' %* ',
+					comp.navic(),
 					'%=',
 					table.concat(fn.filter({
 						comp.diagnostics('StatusLine', sep)
