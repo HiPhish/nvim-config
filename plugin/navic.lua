@@ -39,11 +39,13 @@ local icon_highlights = {
 	'NavicIconsTypeParameter',
 }
 
-for _, hlgroup in ipairs(icon_highlights) do
-	set_hl(0, hlgroup, {link = 'StatusLineNC'})
-end
+local function update_hl()
+	for _, hlgroup in ipairs(icon_highlights) do
+		set_hl(0, hlgroup, {link = 'StatusLineNC'})
+	end
 
-set_hl(0, 'NavicSeparator', {link = 'StatusLineNC'})
+	set_hl(0, 'NavicSeparator', {link = 'StatusLineNC'})
+end
 
 navic.setup {
 	separator = ' ╱ ',
@@ -82,3 +84,12 @@ navic.setup {
 		TypeParameter = "𝐓 ",
 	}
 }
+
+local augroup = vim.api.nvim_create_augroup('navic', {})
+vim.api.nvim_create_autocmd('ColorScheme', {
+	group = augroup,
+	desc = 'Update the highlight definition used by the navic plugin',
+	callback = update_hl,
+})
+
+update_hl()
