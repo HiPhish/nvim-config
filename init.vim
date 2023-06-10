@@ -82,7 +82,7 @@ endif
 
 " ---[ THEME SETTINGS ]--------------------------------------------------------
 set background=dark
-colorscheme solarized-dark
+colorscheme selenized-dark
 " Alternate cursor shape in insert mode
 if has('nvim')
 	set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50

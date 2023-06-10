@@ -62,13 +62,3 @@ do  -- Fix spell checking
 		}
 	end
 end
-
-local highlight_links = {
-	TSPunctDelimiter = 'NONE',
-	TSTagDelimiter   = 'NONE',
-	TSPunctBracket   = 'NONE',
-}
-
-for key, value in pairs(highlight_links) do
-	vim.cmd(string.format('highlight link %s %s', key, value))
-end
