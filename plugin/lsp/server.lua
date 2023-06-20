@@ -219,3 +219,9 @@ nvim_lsp.vala_ls.setup {
 nvim_lsp.vuels.setup {
 	capabilities = defaults.capabilities,
 }
+
+
+--- [ YAML LANGUAGE SERVER ]--------------------------------------------------
+nvim_lsp.yamlls.setup {
+	capabilities = defaults.capabilities,
+}
