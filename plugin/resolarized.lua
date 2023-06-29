@@ -94,6 +94,30 @@ selenized.NavicIconsTypeParameter = 'StatusLineNC'
 selenized.NavicSeparator          = 'StatusLineNC'
 
 
+---[ Neotest ]-----------------------------------------------------------------
+for scheme in ipairs(selenized, solarized) do
+	scheme.NeotestPassed  = {fg = 'green',  bg=selenized.LineNr.bg}
+	scheme.NeotestFailed  = {fg = 'red',    bg=selenized.LineNr.bg}
+	scheme.NeotestRunning = {fg = 'yellow', bg=selenized.LineNr.bg}
+	scheme.NeotestSkipped = {fg = 'yellow', bg=selenized.LineNr.bg}
+end
+-- 'NeotestAdapterName'
+-- 'NeotestBorder'
+-- 'NeotestDir'
+-- 'NeotestExpandMarker'
+-- 'NeotestFile'
+-- 'NeotestFocused'
+-- 'NeotestIndent'
+-- 'NeotestMarked'
+-- 'NeotestNamespace'
+-- 'NeotestWinSelect'
+-- 'NeotestTarget'
+-- 'NeotestTest'
+-- 'NeotestUnknown'
+
+
+
+
 -------------------------------------------------------------------------------
 
 for _, scheme in ipairs(schemes) do
