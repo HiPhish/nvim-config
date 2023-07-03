@@ -30,6 +30,21 @@ selenized.TSRainbowCyan   = selenized.RainbowCyan
 selenized.TSRainbowOrange = selenized.RainbowOrange
 selenized.TSRainbowViolet = selenized.RainbowViolet
 
+solarized.RainbowDelimiterRed    = solarized.RainbowRed
+solarized.RainbowDelimiterYellow = solarized.RainbowYellow
+solarized.RainbowDelimiterBlue   = solarized.RainbowBlue
+solarized.RainbowDelimiterGreen  = solarized.RainbowGreen
+solarized.RainbowDelimiterCyan   = solarized.RainbowCyan
+solarized.RainbowDelimiterOrange = solarized.RainbowOrange
+solarized.RainbowDelimiterViolet = solarized.RainbowViolet
+
+selenized.RainbowDelimiterRed    = selenized.RainbowRed
+selenized.RainbowDelimiterYellow = selenized.RainbowYellow
+selenized.RainbowDelimiterBlue   = selenized.RainbowBlue
+selenized.RainbowDelimiterGreen  = selenized.RainbowGreen
+selenized.RainbowDelimiterCyan   = selenized.RainbowCyan
+selenized.RainbowDelimiterOrange = selenized.RainbowOrange
+selenized.RainbowDelimiterViolet = selenized.RainbowViolet
 
 ---[ vim-matchup ]-------------------------------------------------------------
 solarized.MatchWord = {bold = true}

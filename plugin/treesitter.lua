@@ -1,5 +1,3 @@
-local rainbow = require 'ts-rainbow'
-
 require'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true,
@@ -16,13 +14,6 @@ require'nvim-treesitter.configs'.setup {
 		disable = {'python', 'yaml'},
 	},
 	playground = {
-	},
-	rainbow = {
-		enable = true,
-		strategy = {
-			rainbow.strategy.global,
-			commonlisp = rainbow.strategy['local'],
-		},
 	},
 	context_commentstring = {
 		enable = true,
