@@ -197,6 +197,12 @@ do
 end
 
 
+--- [ RACKET ] ----------------------------------------------------------------
+nvim_lsp.racket_langserver.setup {
+	capabilities = defaults.capabilities,
+}
+
+
 --- [ TYPESCRIPT ]-------------------------------------------------------------
 nvim_lsp.tsserver.setup {
 	capabilities = defaults.capabilities,
