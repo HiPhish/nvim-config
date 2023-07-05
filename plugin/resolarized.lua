@@ -110,7 +110,7 @@ selenized.NavicSeparator          = 'StatusLineNC'
 
 
 ---[ Neotest ]-----------------------------------------------------------------
-for scheme in ipairs(selenized, solarized) do
+for _, scheme in ipairs({selenized, solarized}) do
 	scheme.NeotestPassed  = {fg = 'green',  bg=selenized.LineNr.bg}
 	scheme.NeotestFailed  = {fg = 'red',    bg=selenized.LineNr.bg}
 	scheme.NeotestRunning = {fg = 'yellow', bg=selenized.LineNr.bg}
