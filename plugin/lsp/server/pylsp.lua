@@ -8,6 +8,9 @@ local plugins = {
 		enabled = true,
 		live_mode = true,
 	},
+	rope_autoimport = {
+		enabled = false,
+	}
 }
 
 if vim.fn.executable('ruff') then
