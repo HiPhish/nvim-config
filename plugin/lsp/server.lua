@@ -228,6 +228,13 @@ nvim_lsp.vuels.setup {
 
 
 --- [ YAML LANGUAGE SERVER ]--------------------------------------------------
-nvim_lsp.yamlls.setup {
-	capabilities = defaults.capabilities,
-}
+do
+	local settings_file = 'yamlls-settings.json'
+	local config = {
+		capabilities = defaults.capabilities,
+	}
+	if fn.filereadable(settings_file) ~= 0 then
+		config.settings = fn.json_decode(fn.readfile(settings_file))
+	end
+	nvim_lsp.yamlls.setup(config)
+end
