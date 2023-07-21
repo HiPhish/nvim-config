@@ -150,13 +150,13 @@ end
 
 
 --- [ Nim LS ] ----------------------------------------------------------------
-if fn.executable(vim.fn.expand '~/.nimble/bin/nimlangserver') then
+if fn.executable(fn.expand '~/.nimble/bin/nimlangserver') then
 	nvim_lsp.nim_langserver.setup {
-		cmd = {vim.fn.expand '~/.nimble/bin/nimlangserver'}
+		cmd = {fn.expand '~/.nimble/bin/nimlangserver'}
 	}
 else
 	nvim_lsp.nimls.setup {
-		cmd = {vim.fn.expand '~/.nimble/bin/nimlsp'},
+		cmd = {fn.expand '~/.nimble/bin/nimlsp'},
 		capabilities = defaults.capabilities,
 	}
 end
@@ -170,7 +170,7 @@ nvim_lsp.omnisharp.setup {
 		'mono',
 		server_dir .. '/omnisharp-linux-x64/omnisharp/OmniSharp.exe',
 		'--languageserver',
-		'--hostPID', tostring(vim.fn.getpid()),
+		'--hostPID', tostring(fn.getpid()),
 	},
 	capabilities = defaults.capabilities,
 }
@@ -189,7 +189,7 @@ do
 			capabilities = defaults.capabilities,
 			settings = {
 				metals = {
-					javaHome = vim.fn.environ()['JAVA_HOME'],
+					javaHome = fn.environ()['JAVA_HOME'],
 				},
 			},
 		}
@@ -215,7 +215,7 @@ nvim_lsp.vala_ls.setup {
 	capabilities = defaults.capabilities,
 	-- Workaround for projects with multiple build files
 	root_dir = function(fname)
-      return (vim.fn.filereadable('meson.build') and vim.fn.getcwd())
+      return (fn.filereadable('meson.build') and fn.getcwd())
       	or nvim_lsp.vala_ls.document_config.default_config.root_dir(fname)
 	end
 }
