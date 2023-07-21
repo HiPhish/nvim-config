@@ -74,7 +74,10 @@ syntax spell default
 set spell spelllang=en
 
 " Use Ack instead of Grep
-if executable('ack')
+if executable('ag')
+	set grepprg=ag\ --nogroup\ --column\ $*
+	set grepformat=%f:%l:%c:%m
+elseif executable('ack')
 	set grepprg=ack\ --nogroup\ --column\ $*
 	set grepformat=%f:%l:%c:%m
 endif
