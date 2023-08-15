@@ -70,6 +70,13 @@ nvim_lsp.erlangls.setup {
 }
 
 
+--- [ FENNEL_LS ]--------------------------------------------------------------
+-- https://git.sr.ht/~xerool/fennel-ls
+nvim_lsp.fennel_ls.setup {
+	cmd = {server_dir .. '/fennel-ls/fennel-ls'}
+}
+
+
 --- [ GODOT GAME ENGINE ] -----------------------------------------------------
 nvim_lsp.gdscript.setup {
 	capabilities = defaults.capabilities,
