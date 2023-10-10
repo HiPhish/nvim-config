@@ -5,5 +5,5 @@ let g:rainbow_delimiters = {
 		\ 'racket': g:rainbow_delimiters#strategy.local,
 		\ 'clojure': g:rainbow_delimiters#strategy.local,
 	\ },
-	\ 'blacklist': ['comment']
+	\ 'blacklist': ['comment'],
 \ }

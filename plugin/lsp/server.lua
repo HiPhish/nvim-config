@@ -157,9 +157,14 @@ end
 
 
 --- [ Nim LS ] ----------------------------------------------------------------
-if fn.executable(fn.expand '~/.nimble/bin/nimlangserver') then
+-- Prefer the newer language server if both are available
+if fn.executable(fn.expand '~/.nimble/bin/nimlangserver') ~= 0 then
 	nvim_lsp.nim_langserver.setup {
-		cmd = {fn.expand '~/.nimble/bin/nimlangserver'}
+		cmd = {fn.expand '~/.nimble/bin/nimlangserver'},
+		settings = {
+			nim = {
+			}
+		}
 	}
 else
 	nvim_lsp.nimls.setup {
