@@ -20,7 +20,9 @@ if vim.fn.executable('ruff') then
 	}
 end
 
-if vim.fn.DetectPythonFormatters then
+-- Hack: This relies on a function from a remote plugin which might not be
+-- available.  Ignore errors silently.
+pcall(function()
 	-- dummy-call the function first; it returns nil on first call. This is a
 	-- bug in Neovim
 	vim.fn.DetectPythonFormatters()
@@ -37,7 +39,7 @@ if vim.fn.DetectPythonFormatters then
 			enabled = false
 		}
 	end
-end
+end)
 
 nvim_lsp.pylsp.setup {
 	cmd = {
