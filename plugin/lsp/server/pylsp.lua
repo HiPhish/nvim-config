@@ -9,7 +9,7 @@ local plugins = {
 		live_mode = true,
 	},
 	rope_autoimport = {
-		enabled = false,
+		enabled = true,
 	}
 }
 
