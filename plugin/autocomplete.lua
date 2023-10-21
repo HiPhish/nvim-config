@@ -58,3 +58,10 @@ cmp.setup.filetype({'lisp'}, {
 		{name = 'path'},
 	}
 })
+
+cmp.setup.filetype({'sql'}, {
+	sources = {
+		{name = 'vim-dadbod-completion'},
+		{name = 'snippy'},
+	},
+})
