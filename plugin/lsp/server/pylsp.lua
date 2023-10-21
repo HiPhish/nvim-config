@@ -8,9 +8,13 @@ local plugins = {
 		enabled = true,
 		live_mode = true,
 	},
-	rope_autoimport = {
-		enabled = true,
-	}
+	-- rope_completion = {
+	-- 	enabled = true,
+	-- },
+	-- rope_autoimport = {
+	-- 	enabled = true,
+	-- },
+	-- jedi_completion = {enabled = false}
 }
 
 if vim.fn.executable('ruff') then
