@@ -11,6 +11,13 @@ local function outside_comment()
 	return not within_treesitter_comment and not within_syntax_comment
 end
 
+---Definitions of source specifications for reuse.
+local sources = {
+	snippy = {name = 'snippy'},
+	path   = {name = 'path'},
+	dap    = {name = 'dap'},
+}
+
 
 cmp.setup {
 	enabled = true,
@@ -40,28 +47,28 @@ cmp.setup {
 	sources = cmp.config.sources {
 		{name = 'nvim_lsp', entry_filter = outside_comment},
 		{name = 'nvim_lsp_signature_help'},
-		{name = 'snippy'},
-		{name = 'path'}
+		sources.snippy,
+		sources.path,
 	}
 }
 
 cmp.setup.filetype({'dap-repl', 'dapui_watches', 'dapui_hover'}, {
 	sources = {
-		{name = 'dap'}
+		sources.dap,
 	}
 })
 
 cmp.setup.filetype({'lisp'}, {
 	sources = {
-		{name = 'vlime', option = {fuzzy = true}},
-		{name = 'snippy'},
-		{name = 'path'},
+		{name = 'vlime', option = {fuzzy = true}, entry_filter = outside_comment},
+		sources.snippy,
+		sources.path,
 	}
 })
 
 cmp.setup.filetype({'sql'}, {
 	sources = {
-		{name = 'vim-dadbod-completion'},
-		{name = 'snippy'},
+		{name = 'vim-dadbod-completion', entry_filter = outside_comment},
+		sources.snippy,
 	},
 })
