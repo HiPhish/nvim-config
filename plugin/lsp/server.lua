@@ -120,6 +120,12 @@ nvim_lsp.html.setup {
 }
 
 
+--- [ JSON ]-------------------------------------------------------------------
+nvim_lsp.jsonls.setup {
+	capabilities = defaults.capabilities,
+}
+
+
 --- [ KOTLIN LANGUAGE SERVER ]-------------------------------------------------
 do
 	local root_files = {
