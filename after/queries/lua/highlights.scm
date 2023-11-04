@@ -9,5 +9,9 @@
 ((">="  @operator.) (#set! conceal "≥"))
 (("~="  @operator.) (#set! conceal "≠"))
 
+(function_definition
+  "function" @keyword.function.lua (#set! conceal "λ"))
+
+
 ;; ----------------------------------------------------------------------------
 ; vim: ft=query
