@@ -119,7 +119,7 @@ local winbar = {
 				return table.concat {
 					'%#StatusLineAccentMode# ',
 					string.format(' %s', vim.fn.FugitiveHead()),
-					' %#StatusLine#%=%#StatusLineAccentMode# %2l:%2c'
+					' %#StatusLine#%=%#StatusLineAccentMode# %2l:%2c',
 				}
 			end,
 			inactive = function()
