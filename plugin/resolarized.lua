@@ -37,61 +37,22 @@ selenized.MatchWord = {bold = true}
 
 
 ---[ navic ]-------------------------------------------------------------------
-solarized.NavicIconsFile          = 'StatusLineNC'
-solarized.NavicIconsModule        = 'StatusLineNC'
-solarized.NavicIconsNamespace     = 'StatusLineNC'
-solarized.NavicIconsPackage       = 'StatusLineNC'
-solarized.NavicIconsClass         = 'StatusLineNC'
-solarized.NavicIconsMethod        = 'StatusLineNC'
-solarized.NavicIconsProperty      = 'StatusLineNC'
-solarized.NavicIconsField         = 'StatusLineNC'
-solarized.NavicIconsConstructor   = 'StatusLineNC'
-solarized.NavicIconsEnum          = 'StatusLineNC'
-solarized.NavicIconsInterface     = 'StatusLineNC'
-solarized.NavicIconsFunction      = 'StatusLineNC'
-solarized.NavicIconsVariable      = 'StatusLineNC'
-solarized.NavicIconsConstant      = 'StatusLineNC'
-solarized.NavicIconsString        = 'StatusLineNC'
-solarized.NavicIconsNumber        = 'StatusLineNC'
-solarized.NavicIconsBoolean       = 'StatusLineNC'
-solarized.NavicIconsArray         = 'StatusLineNC'
-solarized.NavicIconsObject        = 'StatusLineNC'
-solarized.NavicIconsKey           = 'StatusLineNC'
-solarized.NavicIconsNull          = 'StatusLineNC'
-solarized.NavicIconsEnumMember    = 'StatusLineNC'
-solarized.NavicIconsStruct        = 'StatusLineNC'
-solarized.NavicIconsEvent         = 'StatusLineNC'
-solarized.NavicIconsOperator      = 'StatusLineNC'
-solarized.NavicIconsTypeParameter = 'StatusLineNC'
-solarized.NavicSeparator          = 'StatusLineNC'
+do
+	local navic_groups = {
+		'IconsFile', 'IconsModule', 'IconsNamespace', 'IconsPackage',
+		'IconsClass', 'IconsMethod', 'IconsProperty', 'IconsField',
+		'IconsConstructor', 'IconsEnum', 'IconsInterface', 'IconsFunction',
+		'IconsVariable', 'IconsConstant', 'IconsString', 'IconsNumber',
+		'IconsBoolean', 'IconsArray', 'IconsObject', 'IconsKey', 'IconsNull',
+		'IconsEnumMember', 'IconsStruct', 'IconsEvent', 'IconsOperator',
+		'IconsTypeParameter', 'Separator',
+	}
 
-selenized.NavicIconsFile          = 'StatusLineNC'
-selenized.NavicIconsModule        = 'StatusLineNC'
-selenized.NavicIconsNamespace     = 'StatusLineNC'
-selenized.NavicIconsPackage       = 'StatusLineNC'
-selenized.NavicIconsClass         = 'StatusLineNC'
-selenized.NavicIconsMethod        = 'StatusLineNC'
-selenized.NavicIconsProperty      = 'StatusLineNC'
-selenized.NavicIconsField         = 'StatusLineNC'
-selenized.NavicIconsConstructor   = 'StatusLineNC'
-selenized.NavicIconsEnum          = 'StatusLineNC'
-selenized.NavicIconsInterface     = 'StatusLineNC'
-selenized.NavicIconsFunction      = 'StatusLineNC'
-selenized.NavicIconsVariable      = 'StatusLineNC'
-selenized.NavicIconsConstant      = 'StatusLineNC'
-selenized.NavicIconsString        = 'StatusLineNC'
-selenized.NavicIconsNumber        = 'StatusLineNC'
-selenized.NavicIconsBoolean       = 'StatusLineNC'
-selenized.NavicIconsArray         = 'StatusLineNC'
-selenized.NavicIconsObject        = 'StatusLineNC'
-selenized.NavicIconsKey           = 'StatusLineNC'
-selenized.NavicIconsNull          = 'StatusLineNC'
-selenized.NavicIconsEnumMember    = 'StatusLineNC'
-selenized.NavicIconsStruct        = 'StatusLineNC'
-selenized.NavicIconsEvent         = 'StatusLineNC'
-selenized.NavicIconsOperator      = 'StatusLineNC'
-selenized.NavicIconsTypeParameter = 'StatusLineNC'
-selenized.NavicSeparator          = 'StatusLineNC'
+	for _, name in ipairs(navic_groups) do
+		solarized[string.format('Navic%s', name)] = 'StatusLineNC'
+		selenized[string.format('Navic%s', name)] = 'StatusLineNC'
+	end
+end
 
 
 ---[ Neotest ]-----------------------------------------------------------------
