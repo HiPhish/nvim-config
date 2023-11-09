@@ -13,23 +13,7 @@ local solarized = resolarized.scheme.solarized.hlgroups
 local selenized = resolarized.scheme.selenized.hlgroups
 
 
----[ nvim-ts-rainbow2 ]--------------------------------------------------------
-solarized.TSRainbowRed    = solarized.RainbowRed
-solarized.TSRainbowYellow = solarized.RainbowYellow
-solarized.TSRainbowBlue   = solarized.RainbowBlue
-solarized.TSRainbowGreen  = solarized.RainbowGreen
-solarized.TSRainbowCyan   = solarized.RainbowCyan
-solarized.TSRainbowOrange = solarized.RainbowOrange
-solarized.TSRainbowViolet = solarized.RainbowViolet
-
-selenized.TSRainbowRed    = selenized.RainbowRed
-selenized.TSRainbowYellow = selenized.RainbowYellow
-selenized.TSRainbowBlue   = selenized.RainbowBlue
-selenized.TSRainbowGreen  = selenized.RainbowGreen
-selenized.TSRainbowCyan   = selenized.RainbowCyan
-selenized.TSRainbowOrange = selenized.RainbowOrange
-selenized.TSRainbowViolet = selenized.RainbowViolet
-
+---[ rainbow-delimiters.nvim ]-------------------------------------------------
 solarized.RainbowDelimiterRed    = solarized.RainbowRed
 solarized.RainbowDelimiterYellow = solarized.RainbowYellow
 solarized.RainbowDelimiterBlue   = solarized.RainbowBlue
@@ -45,6 +29,7 @@ selenized.RainbowDelimiterGreen  = selenized.RainbowGreen
 selenized.RainbowDelimiterCyan   = selenized.RainbowCyan
 selenized.RainbowDelimiterOrange = selenized.RainbowOrange
 selenized.RainbowDelimiterViolet = selenized.RainbowViolet
+
 
 ---[ vim-matchup ]-------------------------------------------------------------
 solarized.MatchWord = {bold = true}
@@ -137,6 +122,7 @@ end
 
 for _, scheme in ipairs(schemes) do
 	if vim.g.colors_name == scheme then
-		vim.cmd.colorscheme(scheme)
+		vim.cmd {cmd = 'colorscheme', args = {scheme}}
+		break
 	end
 end
