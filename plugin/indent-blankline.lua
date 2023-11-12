@@ -1,19 +1,29 @@
-local settings = {
-	filetype = {'python', 'nim'},
-	enabled = true,
-	char = '│',
-	space_char = ' ',
-	space_char_blankline = ' ',
-	show_current_context = true,
-	context_patterns = {
-		'class', 'function', 'def', 'method', '^if', '^elif', '^else', '^for',
-		'^with', '^while', '^until', '^try', '^except', '^finally'
-	},
-	context_highlight_list = {
-		'RainbowRed', 'RainbowYellow', 'RainbowBlue', 'RainbowGreen',
-		'RainbowCyan', 'RainbowOrange', 'RainbowViolet'
-	},
-}
-settings.space_char_blankline_highlight_list = settings.context_highlight_list
+local ibl   = require 'ibl'
+local hooks = require "ibl.hooks"
 
-require('indent_blankline').setup(settings)
+ibl.setup {
+	enabled = true,
+	indent = {
+		char = '▏',
+	},
+	scope = {
+		char = '▎',
+		show_start = false,
+		show_end = false,
+		highlight = {
+    		"RainbowRed",
+    		"RainbowYellow",
+    		"RainbowBlue",
+    		"RainbowGreen",
+    		"RainbowCyan",
+    		"RainbowOrange",
+    		"RainbowViolet",
+		},
+	},
+	exclude = {
+		filetypes = {'*'}
+	}
+}
+
+-- Use rainbow delimiters to highlight the current scope
+hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
