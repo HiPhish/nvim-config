@@ -23,9 +23,6 @@ ibl.setup {
     		"RainbowViolet",
 		},
 	},
-	exclude = {
-		filetypes = {'*'}
-	}
 }
 
 -- Only enable for select languages
