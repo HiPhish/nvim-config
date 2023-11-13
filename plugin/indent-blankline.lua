@@ -1,5 +1,8 @@
 local ibl   = require 'ibl'
 local hooks = require "ibl.hooks"
+local get_option_value = vim.api.nvim_get_option_value
+
+local enabled_for = {'python', 'nim', 'yaml'}
 
 ibl.setup {
 	enabled = true,
@@ -24,6 +27,12 @@ ibl.setup {
 		filetypes = {'*'}
 	}
 }
+
+-- Only enable for select languages
+hooks.register(hooks.type.ACTIVE, function(bufnr)
+	local ft = get_option_value('filetype', {buf = bufnr})
+	return vim.tbl_contains(enabled_for, ft)
+end)
 
 -- Use rainbow delimiters to highlight the current scope
 hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
