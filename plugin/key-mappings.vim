@@ -37,6 +37,8 @@ let g:maplocalleader = ' '
 " Swap ':' and ';'
 nnoremap : ;
 nnoremap ; :
+vnoremap : ;
+vnoremap ; :
 
 " Quickly exit insert- and command mode by pressing kj in succession (supports
 " Latin, Cyrillic and Greek)
