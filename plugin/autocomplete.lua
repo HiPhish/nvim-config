@@ -72,3 +72,9 @@ cmp.setup.filetype({'sql'}, {
 		sources.snippy,
 	},
 })
+
+cmp.setup.filetype({'fennel-repl'}, {
+	sources = {
+		{name = 'fennel-repl'}
+	}
+})
