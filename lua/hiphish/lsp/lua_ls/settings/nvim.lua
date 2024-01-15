@@ -43,10 +43,14 @@ local M = {
 			-- load files from. The files in these directories will be treated
 			-- as externally provided code libraries, and some features (such
 			-- as renaming fields) will not modify these files.
-			-- library = library
-			library = f.filter(is_package_path, vim.api.nvim_get_runtime_file('', true))
+			--
 			-- Very important: do not include the '/lua' subdirectory in the
 			-- above paths! The runtime.path entry takes care of that.
+			library = f.filter(is_package_path, vim.api.nvim_get_runtime_file('', true)),
+			-- Ignore the fake user directory structure in plugins.  This
+			-- should be part of the `.luarc.json` of the plugin, but for some
+			-- reason that does not work, so I define it here instead.
+			ignoreDir = {'test/xdg'},
 		},
 	}
 }
