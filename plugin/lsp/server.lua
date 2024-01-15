@@ -21,6 +21,16 @@ nvim_lsp.clangd.setup {
 }
 
 
+--- [ DART ]-------------------------------------------------------------------
+nvim_lsp.dartls.setup {
+	capabilities = defaults.capabilities,
+	settings = {
+		dart ={
+		},
+	},
+}
+
+
 --- [ DOCKERFILE LS NODEJS ]---------------------------------------------------
 nvim_lsp.dockerls.setup {
 	capabilities = defaults.capabilities,
