@@ -16,3 +16,17 @@ snippet forin "for-in loop"
 	for ${1:var} in ${2:iterator} do
 		$0
 	end
+
+
+# Snippets for testing with Busted
+# https://lunarmodules.github.io/busted/
+
+snippet describe "Busted context block"
+	describe('${1:Description}', function()
+		${0:body}
+	end)
+
+snippet it "Busted test"
+	it('${1:Does something}', function()
+		${0:body}
+	end)
