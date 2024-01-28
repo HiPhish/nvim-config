@@ -1,3 +1,8 @@
+-- Context comment string
+-- See |ts-context-commentstring.txt|
+vim.g.skip_ts_context_commentstring_module = true
+
+
 require'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true,
@@ -12,18 +17,6 @@ require'nvim-treesitter.configs'.setup {
 	indent = {
 		enable = true,
 		disable = {'python', 'yaml'},
-	},
-	playground = {
-	},
-	context_commentstring = {
-		enable = true,
-		config = {
-			c = '/* %s */',
-			commonlisp = ';; %s',
-			lisp = ';; %s',
-			python = '# %s',
-			xml = '<!-- %s -->'
-		}
 	},
 	matchup = {
 		enable = true,
