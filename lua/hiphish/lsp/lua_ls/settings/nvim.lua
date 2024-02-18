@@ -1,11 +1,13 @@
-local f = require 'hiphish.util.functional'
 -- See https://gist.github.com/folke/fe5d28423ea5380929c3f7ce674c41d8
 
 -- Directory prefix of all package directories
 local package_prefix = vim.fn.expand(vim.fn.stdpath('data') .. '/site/')
 
--- Predicate which is only true for paths that belong to a package and have Lua
--- modules.
+---Predicate which is only true for paths that belong to a package and have Lua
+---modules.
+---
+---@param path string
+---@return boolean
 local function is_package_path(path)
 	if package_prefix ~= string.sub(path, 1, #package_prefix) then
 		return false
@@ -46,7 +48,7 @@ local M = {
 			--
 			-- Very important: do not include the '/lua' subdirectory in the
 			-- above paths! The runtime.path entry takes care of that.
-			library = f.filter(is_package_path, vim.api.nvim_get_runtime_file('', true)),
+			library = vim.tbl_filter(is_package_path, vim.api.nvim_get_runtime_file('', true)),
 			-- Ignore the fake user directory structure in plugins.  This
 			-- should be part of the `.luarc.json` of the plugin, but for some
 			-- reason that does not work, so I define it here instead.

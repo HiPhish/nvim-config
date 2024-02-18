@@ -4,7 +4,6 @@ local fn = vim.fn
 local api = vim.api
 local has_navic, navic = pcall(require, 'nvim-navic')
 local severity = vim.diagnostic.severity
-local fun = require 'hiphish.util.functional'
 local util = require 'hiphish.statusline.util'
 
 local function lsp_indicator(buf)
@@ -76,9 +75,9 @@ function M.diagnostics(hl_base, sep)
 		end
 	end
 
-	local derp = fun.imap(
+	local derp = vim.tbl_map(
 		function(spec) return spec.message end,
-		fun.filter(function(spec) return spec.message end, specs))
+		vim.tbl_filter(function(spec) return spec.message end, specs, specs))
 
 	return table.concat(derp, sep)
 end
