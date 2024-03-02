@@ -40,11 +40,19 @@ do
 	local success, fidget = pcall(require, 'fidget')
 	if success then
 		fidget.setup {
-			text = {
-				spinner = 'zip',
+			progress = {
+				display = {
+					-- progress_icon = {'dots_pulse'},
+					progress_icon = {
+						pattern = {'·', "∙", "●", "∙",}
+					},
+				}
 			},
-			window = {
-				blend = 30,
+			notification = {
+				window = {
+					winblend = 30,
+					border = 'rounded',
+				},
 			},
 		}
 	end
@@ -53,7 +61,6 @@ end
 api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
         local bufnr = args.buf
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
 
 		-- Use LSP as default formatter
 		vim.bo[bufnr].formatexpr =  'v:lua.vim.lsp.formatexpr()'
