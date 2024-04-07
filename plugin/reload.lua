@@ -27,17 +27,16 @@ end
 ---
 ---@param modname string  Name of the module
 ---@return any module  The reloaded module
-function reload(modname)
+function _G.reload(modname)
 	local old = require(modname)
 	package.loaded[modname] = nil
 	local success, new = pcall(require, modname)
 
-	if success then
-		if type(new) == 'table' then
-			reload_table(old, new)
-		end
-	end
+	if not success then error(new) end
 
-	package.loaded[modname] = old
-	return old
+	if type(old) == 'table' and type(new) == 'table' then
+		reload_table(old, new)
+		package.loaded[modname] = old
+	end
+	return package.loaded[modname]
 end
