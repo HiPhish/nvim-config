@@ -60,7 +60,7 @@ cmp.setup.filetype({'dap-repl', 'dapui_watches', 'dapui_hover'}, {
 
 cmp.setup.filetype({'lisp'}, {
 	sources = {
-		{name = 'vlime', option = {fuzzy = true}, entry_filter = outside_comment},
+		{name = 'nvlime'},
 		sources.snippy,
 		sources.path,
 	}
