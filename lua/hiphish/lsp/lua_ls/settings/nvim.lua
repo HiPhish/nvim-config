@@ -5,7 +5,6 @@ local package_prefix = vim.fn.expand(vim.fn.stdpath('data') .. '/site/')
 
 ---Predicate which is only true for paths that belong to a package and have Lua
 ---modules.
----
 ---@param path string
 ---@return boolean
 local function is_package_path(path)
@@ -14,6 +13,16 @@ local function is_package_path(path)
 	end
 	return vim.fn.isdirectory(path .. '/lua') ~= 0
 end
+
+-- In addition to the current workspace, which directories will load files
+-- from. The files in these directories will be treated as externally provided
+-- code libraries, and some features (such as renaming fields) will not modify
+-- these files.
+--
+-- Very important: do not include the '/lua' subdirectory in the above paths!
+-- The runtime.path entry takes care of that.
+local library = vim.tbl_filter(is_package_path, vim.api.nvim_get_runtime_file('', true))
+
 
 -- https://github.com/sumneko/vscode-lua/blob/master/setting/schema.json
 local M = {
@@ -36,19 +45,10 @@ local M = {
 			pathStrict = true,
 		},
 		diagnostics = {
-			globals = {
-				'vim',
-			},
+			globals = {'vim', jit and 'jit'},
 		},
 		workspace = {
-			-- In addition to the current workspace, which directories will
-			-- load files from. The files in these directories will be treated
-			-- as externally provided code libraries, and some features (such
-			-- as renaming fields) will not modify these files.
-			--
-			-- Very important: do not include the '/lua' subdirectory in the
-			-- above paths! The runtime.path entry takes care of that.
-			library = vim.tbl_filter(is_package_path, vim.api.nvim_get_runtime_file('', true)),
+			library = library,
 			-- Ignore the fake user directory structure in plugins.  This
 			-- should be part of the `.luarc.json` of the plugin, but for some
 			-- reason that does not work, so I define it here instead.
@@ -56,10 +56,5 @@ local M = {
 		},
 	}
 }
-
-if jit then
-	local globals = M.Lua.diagnostics.globals
-	globals[#globals + 1] = 'jit'
-end
 
 return M
