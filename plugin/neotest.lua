@@ -8,6 +8,7 @@ local adapters = {
 			justMyCode = false
 		},
 	},
+	require 'neotest-busted',
 }
 
 pcall(function()
