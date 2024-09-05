@@ -32,3 +32,11 @@
 " Use tabs for indentation, appear two spaces wide
 setlocal noexpandtab copyindent preserveindent
 setlocal softtabstop=0 shiftwidth=2 tabstop=2
+
+" If the other language has Tree-sitter highlighting regular syntax
+" highlighting will be disabled.  This autocommand forces it back on.
+if !exists('b:jinja_syntax_autocmd_loaded')
+	let b:jinja_syntax_autocmd_loaded = v:true
+	" TODO: test if there really is no Tree-sitter support for Jinja
+	autocmd FileType <buffer> setlocal syntax=on
+endif
