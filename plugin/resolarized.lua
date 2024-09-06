@@ -6,7 +6,7 @@ local schemes = {
 	'selenized-dark',
 	'selenized-light',
 	'selenized-black',
-	'selenized-light',
+	'selenized-white',
 }
 
 local solarized = resolarized.scheme.solarized.hlgroups
