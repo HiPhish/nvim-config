@@ -86,6 +86,15 @@ endif
 " ---[ THEME SETTINGS ]--------------------------------------------------------
 set background=dark
 colorscheme selenized-dark
+
+" I have a custom Alacritty script
+if executable('alacritty-theme') && $TERM == 'alacritty'
+	let theme = systemlist(['alacritty-theme', 'get'])[0]
+	if len(nvim_get_runtime_file(printf('colors/%s.*', theme),  v:false))
+		execute 'colorscheme' theme
+	endif
+endif
+
 " Alternate cursor shape in insert mode
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 	\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
