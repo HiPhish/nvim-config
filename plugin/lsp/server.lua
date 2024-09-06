@@ -21,6 +21,12 @@ nvim_lsp.clangd.setup {
 }
 
 
+--- [ CSS ]--------------------------------------------------------------------
+nvim_lsp.cssls.setup {
+	capabilities = defaults.capabilities,
+}
+
+
 --- [ DART ]-------------------------------------------------------------------
 nvim_lsp.dartls.setup {
 	capabilities = defaults.capabilities,
@@ -70,6 +76,12 @@ nvim_lsp.elixirls.setup {
 	cmd = {
 		server_dir .. '/elixir-ls/release/language_server.sh'
 	},
+	capabilities = defaults.capabilities,
+}
+
+
+---[ ELM ]---------------------------------------------------------------------
+nvim_lsp.elmls.setup {
 	capabilities = defaults.capabilities,
 }
 
@@ -223,6 +235,12 @@ do
 		}
 	end
 end
+
+
+--- [ PURESCRIPT ] ------------------------------------------------------------
+nvim_lsp.purescriptls.setup {
+	capabilities = defaults.capabilities,
+}
 
 
 --- [ RACKET ] ----------------------------------------------------------------
