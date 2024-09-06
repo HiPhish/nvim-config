@@ -79,5 +79,10 @@ snippet tryef "Try-except-else-finally" b
 
 # Testing
 snippet test "Test function" b
-	def test_${1:description}(self${2:, ${3:arg}}) -> None:
+	def test_${1:description}(${2:arg}):
+		${0:pass}
+
+snippet fixture "Pytest fixture"
+	@pytest.fixture
+	def ${1:name}(${2:arg}) -> ${3:type}:
 		${0:pass}
