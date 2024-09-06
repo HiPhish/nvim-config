@@ -20,6 +20,7 @@ TABLE OF CONTENTS                                     *css-reference-contents*
     2. Pseudo classes ................................... |css-pseudo-classes|
     3. Pseudo elements ................................. |css-pseudo-elements|
     4. Units ..................................................... |css-units|
+    5. CSS Grid ................................................... |css-grid|
 
 Appendix~
     A. References ........................................... |css-references|
@@ -346,6 +347,56 @@ vi~
     viewport-percentage units are svi, lvi, and dvi. vi represents the
     viewport-percentage length unit based on the browser default viewport
     size.
+
+
+==============================================================================
+CSS Grid                                                            *css-grid*
+------------------------------------------------------------------------------
+
+A two-dimensional layout system.
+
+
+TERMINOLOGY
+
+Container
+    An element which has `display: grid` applied
+
+Item
+    Elements which are direct descendants of the grid container
+
+Line
+    Dividing lines, either vertical (column) or horizontal (row)
+
+Cell
+    Space between both two adjacent row- and column lines
+
+Track
+    Space between either two adjacent row- or column lines
+
+Area
+    Space surrounded by four grid lines; same as a rectangle of grid cells
+
+>html
+    <div class="container">             <!-- Grid container -->
+	<div class="item">Item 1</div>  <!-- Grid item      -->
+	<div class="item">Item 1</div>  <!-- Grid item      -->
+	<div class="item">Item 1</div>  <!-- Grid item      -->
+    </div>
+<
+
+
+
+>css
+    .container {
+	display: grid;
+    	grid-template-columns: <value> | <name>;
+    	grid-template-rows: <value> | <name>;
+    }
+<
+
+
+See also:
+    • https://css-tricks.com/snippets/css/complete-guide-grid/
 
 
 ==============================================================================
