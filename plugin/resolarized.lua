@@ -60,7 +60,11 @@ for _, scheme in ipairs({selenized, solarized}) do
 	scheme.NeotestPassed  = {fg = 'green',  bg=scheme.LineNr.bg}
 	scheme.NeotestFailed  = {fg = 'red',    bg=scheme.LineNr.bg}
 	scheme.NeotestRunning = {fg = 'yellow', bg=scheme.LineNr.bg}
-	scheme.NeotestSkipped = {fg = 'yellow', bg=scheme.LineNr.bg}
+	scheme.NeotestSkipped = {fg = 'blue',   bg=scheme.LineNr.bg}
+
+	scheme.NeotestAdapterName = {fg = 'magenta'}
+	scheme.NeotestDir  = {fg = 'cyan'}
+	scheme.NeotestFile = {fg = 'cyan'}
 end
 -- 'NeotestAdapterName'
 -- 'NeotestBorder'
@@ -76,6 +80,13 @@ end
 -- 'NeotestTest'
 -- 'NeotestUnknown'
 
+
+
+---[ DAP UI ]------------------------------------------------------------------
+for _, scheme in ipairs({selenized, solarized}) do
+	scheme.DapUIDecoration = {fg = 'cyan'}
+	scheme.DapUiType = 'Type'
+end
 
 
 
