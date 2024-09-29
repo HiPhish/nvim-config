@@ -2,12 +2,25 @@
 
 local fn = vim.fn
 
-local nvim_lsp = require'lspconfig'
+local nvim_lsp = require 'lspconfig'
+local util     = require 'lspconfig.util'
 local defaults = require 'hiphish.lsp.defaults'
 
 --- Directory containing all manually installed servers.
 local server_dir = defaults.server_dir
 local root_patterns = defaults.root_patterns
+
+
+--- [ Ada ] -------------------------------------------------------------------
+nvim_lsp.als.setup {
+	capabilities = defaults.capabilities,
+    root_dir = util.root_pattern('Makefile', '.git', '*.gpr', '*.adc', 'alire.toml'),
+    settings = {
+    	ada = {
+    		projectFile = 'gnat/lsp_server.gpr'
+    	}
+    }
+}
 
 --- [ Angular ]----------------------------------------------------------------
 nvim_lsp.angularls.setup {
@@ -119,8 +132,7 @@ do
 
 	nvim_lsp.graphql.setup {
 		capabilities = defaults.capabilities,
-		root_dir = require'lspconfig.util'
-			.root_pattern(unpack(config_files))
+		root_dir = util.root_pattern(unpack(config_files))
 	}
 end
 
