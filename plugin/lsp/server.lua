@@ -263,7 +263,7 @@ nvim_lsp.typst_lsp.setup {
 
 
 --- [ TYPESCRIPT ]-------------------------------------------------------------
-nvim_lsp.tsserver.setup {
+nvim_lsp.ts_ls.setup {
 	capabilities = defaults.capabilities,
 }
 
