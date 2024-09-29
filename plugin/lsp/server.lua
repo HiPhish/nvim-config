@@ -11,19 +11,14 @@ local server_dir = defaults.server_dir
 local root_patterns = defaults.root_patterns
 
 
---- [ Ada ] -------------------------------------------------------------------
-nvim_lsp.als.setup {
-	capabilities = defaults.capabilities,
-    root_dir = util.root_pattern('Makefile', '.git', '*.gpr', '*.adc', 'alire.toml'),
-    settings = {
-    	ada = {
-    		projectFile = 'gnat/lsp_server.gpr'
-    	}
-    }
-}
-
 --- [ Angular ]----------------------------------------------------------------
 nvim_lsp.angularls.setup {
+	capabilities = defaults.capabilities,
+}
+
+
+--- [ Ansible ]----------------------------------------------------------------
+nvim_lsp.ansiblels.setup {
 	capabilities = defaults.capabilities,
 }
 
