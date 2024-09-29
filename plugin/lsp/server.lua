@@ -249,6 +249,12 @@ nvim_lsp.racket_langserver.setup {
 }
 
 
+--- [ TYPST ] -----------------------------------------------------------------
+nvim_lsp.typst_lsp.setup {
+	capabilities = defaults.capabilities,
+}
+
+
 --- [ TYPESCRIPT ]-------------------------------------------------------------
 nvim_lsp.tsserver.setup {
 	capabilities = defaults.capabilities,
