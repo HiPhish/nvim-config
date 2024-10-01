@@ -25,16 +25,16 @@
 ;; --- [ LESS NOISY COMPREHENSIONS ]-------------------------------------------
 ([(list_comprehension
     (for_in_clause
-      "for" @repeat.python))
+      "for" @keyword.repeat.python))
   (set_comprehension
     (for_in_clause
-      "for" @repeat.python))
+      "for" @keyword.repeat.python))
   (dictionary_comprehension
     (for_in_clause
-      "for" @repeat.python))
+      "for" @keyword.repeat.python))
   (generator_expression
     (for_in_clause
-      "for" @repeat.python))]
+      "for" @keyword.repeat.python))]
  (#set! conceal "∀"))
 
 ([(list_comprehension
@@ -53,16 +53,16 @@
 
 ([(list_comprehension
     (if_clause
-      "if" @conditional.python))
+      "if" @keyword.conditional.python))
   (set_comprehension
     (if_clause
-      "if" @conditional.python))
+      "if" @keyword.conditional.python))
   (dictionary_comprehension
     (if_clause
-      "if" @conditional.python))
+      "if" @keyword.conditional.python))
   (generator_expression
     (if_clause
-      "if" @conditional.python))]
+      "if" @keyword.conditional.python))]
  (#set! conceal "|"))
 
 
