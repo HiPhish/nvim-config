@@ -84,7 +84,14 @@ end
 
 ---[ DAP UI ]------------------------------------------------------------------
 for _, scheme in ipairs({selenized, solarized}) do
-	scheme.DapUIDecoration = {fg = 'cyan'}
+	scheme.DapUIDecoration      = {fg = 'cyan'}
+	scheme.DapUIScope           = {fg = 'cyan'}
+	scheme.DapUIScope           = {fg = 'cyan'}
+	scheme.DapUIStoppedThread   = {fg = 'cyan'}
+	scheme.DapUIStoppedThread   = {fg = 'cyan'}
+	scheme.DapUIBreakpointsPath = {fg = 'cyan'}
+	scheme.DapUIBreakpointsLine = {fg = 'cyan'}
+	scheme.DapUILineNumber      = {fg = 'cyan'}
 	scheme.DapUiType = 'Type'
 end
 
