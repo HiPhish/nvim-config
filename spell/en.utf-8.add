@@ -10,3 +10,8 @@ plugin
 Gradle
 RPC
 fallback
+autocommand
+extmark
+extmarks
+Django
+Jinja
