@@ -29,6 +29,6 @@ let s:fname = expand('%')
 if fnamemodify(s:fname, ':e') == 'po'  |" Skip POT files
 	let s:spelllang = matchstr(fnamemodify(s:fname, ':h:h:t'), '\v^[[:lower:]]{2}\ze(_[[:upper:]]{2})?$')
 	if indexof(split(&spelllang, ','), {_, v -> v == s:spelllang}) < 0
-		let &spelllang = printf('%s,%s', &spelllang, s:spelllang)
+		let &l:spelllang = printf('%s,%s', &spelllang, s:spelllang)
 	endif
 endif
