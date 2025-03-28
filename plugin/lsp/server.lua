@@ -82,7 +82,7 @@ end
 --- [ ELIXIR LS ]--------------------------------------------------------------
 nvim_lsp.elixirls.setup {
 	cmd = {
-		server_dir .. '/elixir-ls/release/language_server.sh'
+		'/usr/local/stow/elixir_ls-0.26.4/bin/elixirls'
 	},
 	capabilities = defaults.capabilities,
 }
@@ -270,7 +270,6 @@ nvim_lsp.ts_ls.setup {
 
 --- [ VALA LANGUAGE SERVER ] --------------------------------------------------
 nvim_lsp.vala_ls.setup {
-	cmd = {server_dir .. '/vala-language-server/build/src/vala-language-server'},
 	capabilities = defaults.capabilities,
 	-- Workaround for projects with multiple build files
 	root_dir = function(fname)

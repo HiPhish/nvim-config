@@ -45,7 +45,7 @@ do
 				display = {
 					-- progress_icon = {'dots_pulse'},
 					progress_icon = {
-						pattern = {'·', "∙", "●", "∙",}
+						pattern = {' ', ' ', ' '},
 					},
 				}
 			},
