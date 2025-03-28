@@ -34,6 +34,19 @@ nvim_lsp.cssls.setup {
 	capabilities = defaults.capabilities,
 }
 
+nvim_lsp.somesass_ls.setup {
+	capabilities = defaults.capabilities,
+	filetypes = {'scss', 'sass', 'css'},
+	root_dir = util.root_pattern('package.json', '.package.json', '.git'),
+	settings = {
+		somesass = {
+			workspace = {
+				loadPaths = {'node_modules'},
+			}
+		},
+	},
+}
+
 
 --- [ DART ]-------------------------------------------------------------------
 nvim_lsp.dartls.setup {
