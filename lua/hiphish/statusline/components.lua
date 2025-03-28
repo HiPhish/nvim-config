@@ -6,8 +6,8 @@ local has_navic, navic = pcall(require, 'nvim-navic')
 local severity = vim.diagnostic.severity
 local util = require 'hiphish.statusline.util'
 
-local function lsp_indicator(buf)
-	local clients = vim.lsp.get_active_clients {bufnr = buf}
+local function lsp_indicator(bufnr)
+	local clients = vim.lsp.get_clients({bufnr = bufnr})
 
 	for _, client in pairs(clients) do
 		if not vim.lsp.client_is_stopped(client.id) then
