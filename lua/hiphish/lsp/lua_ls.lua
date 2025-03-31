@@ -19,10 +19,6 @@ local rules = require'hiphish.lsp.lua_ls.rules'
 
 
 M.config = {
-	cmd = {
-		vim.fn.expand'~/Applications/lsp/lua-language-server/bin/lua-language-server',
-	},
-
 	--- Try the rock specification, followed by the git repository. Fall back
 	--- on current directory.
 	root_dir = function(fname)
