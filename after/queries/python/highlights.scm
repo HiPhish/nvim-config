@@ -1,17 +1,27 @@
 ;; extends
 
 ;; --- [ MORE TERSE OPERATORS ]------------------------------------------------
-(("not" @keyword.operator.python) (#set! conceal "¬"))
-(("and" @keyword.operator.python) (#set! conceal "∧"))
-(("or"  @keyword.operator.python) (#set! conceal "∨"))
-(("in"  @keyword.operator.python) (#set! conceal "∈"))
-(("=="  @operator.python) (#set! conceal "≡"))
-(("<="  @operator.python) (#set! conceal "≤"))
-((">="  @operator.python) (#set! conceal "≥"))
-(("!="  @operator.python) (#set! conceal "≠"))
-(("->"  @operator.python) (#set! conceal "→"))
+(comparison_operator
+  ("not in" @keyword.operator.python (#set! conceal "∉")))
+(not_operator
+  ("not" @keyword.operator.python (#set! conceal "¬")))
+(comparison_operator
+  ("in" @keyword.operator.python (#set! conceal "∈")))
+(boolean_operator
+  ("and" @keyword.operator.python (#set! conceal "∧")))
+(boolean_operator
+  ("or" @keyword.operator.python (#set! conceal "∨")))
+(comparison_operator
+  ("<=" @keyword.operator.python (#set! conceal "≤")))
+(comparison_operator
+  (">=" @keyword.operator.python (#set! conceal "≥")))
+(comparison_operator
+  ("!=" @keyword.operator.python (#set! conceal "≠")))
+(function_definition
+  ("->" @keyword.operator.python (#set! conceal "→")))
 
-(("lambda" @keyword.function.python) (#set! conceal "λ"))
+(lambda
+  ("lambda" @keyword.operator.python (#set! conceal "λ")))
 
 ;; Other ideas: https://gist.github.com/graelo/2d1f5bc6775432a5c8eb6d6c8b624011
 ;;  - all()   -> ∀
