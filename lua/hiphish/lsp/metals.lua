@@ -1,6 +1,12 @@
 local M = {}
 
-local metals = require 'metals'
+local success, metals = pcall(require)('metals')
+if not success then
+	M.init_or_attach = function()
+	end
+	return M
+end
+
 local util = require'hiphish.lsp.util'
 
 local config = {
