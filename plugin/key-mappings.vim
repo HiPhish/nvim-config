@@ -46,12 +46,5 @@ noremap! kj <esc>
 noremap! кј <esc>
 noremap! κξ <esc>
 
-" Map keys for scrolling though command line history
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
-
 " Shortcut to rapidly toggle 'set list'
 nnoremap <silent> <leader>l :set list!<CR>
-
-" Turn off search highlights when refreshing the screen
-nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
