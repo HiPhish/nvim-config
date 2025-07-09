@@ -33,11 +33,6 @@
 " }}}
 
 
-augroup Terminal
-	autocmd!
-	autocmd TermOpen * setlocal nonumber nospell
-augroup END
-
 " An alternative terminal command, opens the terminal in a new window
 command! -bang -nargs=? -complete=shellcmd Terminal call <SID>term(<q-bang>, <q-mods>, <q-args>)
 
