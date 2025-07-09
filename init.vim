@@ -36,6 +36,7 @@ endif
 
 
 " Vim settings
+set winborder=rounded
 set listchars=tab:├─,space:·,trail:•,eol:,extends:…,precedes:…
 set fillchars=msgsep:─,foldopen:┌,foldsep:│
 set splitright                  " Open splits the way I prefer it

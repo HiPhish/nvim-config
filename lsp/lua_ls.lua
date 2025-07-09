@@ -12,22 +12,11 @@
 --
 -- One downside is that the settings are read once and are then fixed. It would
 -- be better if a function was executed.
-local M = {}
-
-local util = require'lspconfig'.util
 local rules = require'hiphish.lsp.lua_ls.rules'
 
-
-M.config = {
-	--- Try the rock specification, followed by the git repository. Fall back
-	--- on current directory.
-	root_dir = function(fname)
-		return util.root_pattern('*.rockspeck')(fname)
-			or util.find_git_ancestor(fname)
-			or vim.fn.getcwd()
-	end,
-
+return {
+	cmd = {'lua-language-server'},
+    filetypes = {'lua'},
+	root_markers = {'.luarc.json', '*.rockspeck', '.git'},
 	settings = rules.apply(),
 }
-
-return M.config

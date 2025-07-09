@@ -1,311 +1,57 @@
 -- This file contains all the LSP server configurations
 
-local fn = vim.fn
-
-local nvim_lsp = require 'lspconfig'
-local util     = require 'lspconfig.util'
-local defaults = require 'hiphish.lsp.defaults'
-
---- Directory containing all manually installed servers.
-local server_dir = defaults.server_dir
-local root_patterns = defaults.root_patterns
-
-
---- [ Angular ]----------------------------------------------------------------
-nvim_lsp.angularls.setup {
-	capabilities = defaults.capabilities,
-}
-
 
 --- [ Ansible ]----------------------------------------------------------------
-nvim_lsp.ansiblels.setup {
-	capabilities = defaults.capabilities,
-}
+vim.lsp.enable 'ansiblels'
 
 
 --- [ CLANGD ]-----------------------------------------------------------------
-nvim_lsp.clangd.setup {
-	capabilities = defaults.capabilities,
-}
+vim.lsp.enable 'clangd'
 
 
 --- [ CSS ]--------------------------------------------------------------------
-nvim_lsp.cssls.setup {
-	capabilities = defaults.capabilities,
-}
-
-nvim_lsp.somesass_ls.setup {
-	capabilities = defaults.capabilities,
-	filetypes = {'scss', 'sass', 'css'},
-	root_dir = util.root_pattern('package.json', '.package.json', '.git'),
-	settings = {
-		somesass = {
-			workspace = {
-				loadPaths = {'node_modules'},
-			}
-		},
-	},
-}
-
-
---- [ DART ]-------------------------------------------------------------------
-nvim_lsp.dartls.setup {
-	capabilities = defaults.capabilities,
-	settings = {
-		dart ={
-		},
-	},
-}
+vim.lsp.enable 'some-sass'
 
 
 --- [ DOCKERFILE LS NODEJS ]---------------------------------------------------
-nvim_lsp.dockerls.setup {
-	capabilities = defaults.capabilities,
-}
-
-
---- [ ECLIPSE.JDT.LS ] --------------------------------------------------------
-do
-	local jdtls = require 'jdtls'
-	local root_files = {
-		{'build.xml', 'settings.gradle', 'settings.gradle.kts'},
-		{'pom.xml', 'build.gradle', 'build.gradle.kts'},
-	}
-
-	local config = require'hiphish.lsp.jdtls'
-	local old_on_attach = config.on_attach
-
-	config.root_dir = root_patterns(unpack(root_files))
-
-	config.on_attach = function (client, bufnr)
-		local opts = {noremap = true, silent = true, buffer = true}
-		vim.keymap.set('n', '<CR>', jdtls.code_action, opts)
-		if old_on_attach then
-			old_on_attach(client, bufnr)
-		end
-		jdtls.setup_dap()
-	end
-
-	config.capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-	nvim_lsp.jdtls.setup(config)
-end
+vim.lsp.enable 'dockerls'
 
 
 --- [ ELIXIR LS ]--------------------------------------------------------------
-nvim_lsp.elixirls.setup {
-	cmd = {
-		'/usr/local/stow/elixir_ls-0.26.4/bin/elixirls'
-	},
-	capabilities = defaults.capabilities,
-}
-
-
----[ ELM ]---------------------------------------------------------------------
-nvim_lsp.elmls.setup {
-	capabilities = defaults.capabilities,
-}
-
-
---- [ ERLANG_LS ]--------------------------------------------------------------
-nvim_lsp.erlangls.setup {
-	capabilities = defaults.capabilities,
-}
+vim.lsp.enable 'elixirls'
 
 
 --- [ FENNEL_LS ]--------------------------------------------------------------
--- https://git.sr.ht/~xerool/fennel-ls
-nvim_lsp.fennel_ls.setup {
-	cmd = {server_dir .. '/fennel-ls/fennel-ls'}
-}
-
-
---- [ GODOT GAME ENGINE ] -----------------------------------------------------
-nvim_lsp.gdscript.setup {
-	capabilities = defaults.capabilities,
-}
-
-
---- [ GRAPH QL ] --------------------------------------------------------------
--- For configuration see https://graphql-config.com/introduction
-do
-	local config_files = {
-		'.git', '.graphqlrc',
-		'.graphqlrc.yml', '.graphqlrc.yaml',
-		'graphql.config.json', '.graphqlrc.json',
-		'graphql.config.toml', '.graphqlrc.toml',
-		'graphql.config.js', '.graphqlrc.js',
-		'graphql.config.ts', '.graphqlrc.ts',
-	}
-
-	nvim_lsp.graphql.setup {
-		capabilities = defaults.capabilities,
-		root_dir = util.root_pattern(unpack(config_files))
-	}
-end
-
-
---- [ GROOVY ]-----------------------------------------------------------------
-do
-	local status, _ = pcall(require, 'nvim_lsp.groovy')
-	if status then
-		nvim_lsp.groovy.setup {
-			capabilities = defaults.capabilities,
-		}
-	end
-end
+-- vim.lsp.enable 'fennel_ls'
 
 
 --- [ HTML ]-------------------------------------------------------------------
-nvim_lsp.html.setup {
-	capabilities = defaults.capabilities,
-}
+vim.lsp.enable 'html'
 
 
 --- [ JSON ]-------------------------------------------------------------------
-nvim_lsp.jsonls.setup {
-	capabilities = defaults.capabilities,
-}
-
-
---- [ KOTLIN LANGUAGE SERVER ]-------------------------------------------------
-do
-	local root_files = {
-		{'build.xml', 'settings.gradle', 'settings.gradle.kts'},
-		{'pom.xml', 'build.gradle', 'build.gradle.kts'},
-	}
-
-
-	nvim_lsp.kotlin_language_server.setup{
-		cmd = {
-			server_dir .. '/kotlin-language-server/server/bin/kotlin-language-server',
-		},
-		settings = {
-			kotlin = {
-				compiler = {
-					jvm = {
-						target = '1.8'  -- Required for Spring Boot projects
-					}
-				}
-			},
-		},
-    	root_dir = root_patterns(unpack(root_files)),
-		capabilities = defaults.capabilities,
-	}
-end
+vim.lsp.enable 'jsonls'
 
 
 --- [ LUA LANGUAGE SERVER ]----------------------------------------------------
-do
-	local config = require 'hiphish.lsp.lua_ls'
-	config.capabilities = defaults.capabilities
-
-	nvim_lsp.lua_ls.setup(config)
-end
+vim.lsp.enable 'lua_ls'
 
 
---- [ Nim LS ] ----------------------------------------------------------------
--- Prefer the newer language server if both are available
-if fn.executable(fn.expand '~/.nimble/bin/nimlangserver') ~= 0 then
-	nvim_lsp.nim_langserver.setup {
-		cmd = {fn.expand '~/.nimble/bin/nimlangserver'},
-		settings = {
-			nim = {
-			}
-		}
-	}
-else
-	nvim_lsp.nimls.setup {
-		cmd = {fn.expand '~/.nimble/bin/nimlsp'},
-		capabilities = defaults.capabilities,
-	}
-end
+--- [ PYTHON LSP SERVER ]------------------------------------------------------
+vim.lsp.enable 'pylsp'
 
 
---- [ OMNISHARP ] -------------------------------------------------------------
--- Requires system Mono, bypass the included `run` script and launch the
--- EXE directory instead
-nvim_lsp.omnisharp.setup {
-	cmd = {
-		'mono',
-		server_dir .. '/omnisharp-linux-x64/omnisharp/OmniSharp.exe',
-		'--languageserver',
-		'--hostPID', tostring(fn.getpid()),
-	},
-	capabilities = defaults.capabilities,
-}
-
-
---- [ METALS ]-----------------------------------------------------------------
--- Metals has a lot of extension to the protocol, so we use a dedicated plugin
--- for it. If the plugin is not installed we fall back to regular Neovim
--- configuration.
-
-do
-	local success = pcall(function() require 'hiphish.lsp.metals' end)
-
-	if not success then
-		nvim_lsp.metals.setup {
-			capabilities = defaults.capabilities,
-			settings = {
-				metals = {
-					javaHome = fn.environ()['JAVA_HOME'],
-				},
-			},
-		}
-	end
-end
-
-
---- [ PURESCRIPT ] ------------------------------------------------------------
-nvim_lsp.purescriptls.setup {
-	capabilities = defaults.capabilities,
-}
-
-
---- [ RACKET ] ----------------------------------------------------------------
-nvim_lsp.racket_langserver.setup {
-	capabilities = defaults.capabilities,
-}
+--- [ TS_LS ] -----------------------------------------------------------------
+vim.lsp.enable 'ts_ls'
 
 
 --- [ TYPST ] -----------------------------------------------------------------
-nvim_lsp.typst_lsp.setup {
-	capabilities = defaults.capabilities,
-}
-
-
---- [ TYPESCRIPT ]-------------------------------------------------------------
-nvim_lsp.ts_ls.setup {
-	capabilities = defaults.capabilities,
-}
+vim.lsp.enable 'typst_lsp'
 
 
 --- [ VALA LANGUAGE SERVER ] --------------------------------------------------
-nvim_lsp.vala_ls.setup {
-	capabilities = defaults.capabilities,
-	-- Workaround for projects with multiple build files
-	root_dir = function(fname)
-      return (fn.filereadable('meson.build') and fn.getcwd())
-      	or nvim_lsp.vala_ls.document_config.default_config.root_dir(fname)
-	end
-}
-
-
---- [ VUE.JS LANGUAGE SERVER ]-------------------------------------------------
-nvim_lsp.vuels.setup {
-	capabilities = defaults.capabilities,
-}
+vim.lsp.enable 'vala_ls'
 
 
 --- [ YAML LANGUAGE SERVER ]--------------------------------------------------
-do
-	local settings_file = 'yamlls-settings.json'
-	local config = {
-		capabilities = defaults.capabilities,
-	}
-	if fn.filereadable(settings_file) ~= 0 then
-		config.settings = fn.json_decode(fn.readfile(settings_file))
-	end
-	nvim_lsp.yamlls.setup(config)
-end
+vim.lsp.enable 'yamlls'
