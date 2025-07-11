@@ -43,3 +43,5 @@ function! s:term(bang, mods, args)
 	execute 'terminal' a:args
 	normal! G$a
 endfunction
+
+autocmd TermOpen * setlocal nospell
