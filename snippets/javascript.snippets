@@ -14,5 +14,28 @@ snippet const "Constant definition" b
 
 snippet while "while-loop" b
 	while (${1:false}) {
+		${0:// body}
+	}
+
+snippet for "For-loop" b
+	for (let ${1:${2:i} = ${3:0}}; ${4:$2 < ${5:n}}; ${6:++${2}}) {
 		${0:body}
 	}
+
+snippet => "Arrow function"
+	($1) => ${2:value}
+
+snippet describe "Test group"
+	describe('${1:description}', () => {
+		$0
+	});
+
+snippet test "Jest test"
+	test('${1:description}', ($2) => {
+		$0
+	});
+
+snippet it "Vitest test"
+	it('${1:description}', ($2) => {
+		$0
+	});
