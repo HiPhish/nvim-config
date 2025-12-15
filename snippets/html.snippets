@@ -3,5 +3,18 @@ snippet T "Generic multiline-tag"
 		${0}
 	</${1}>
 
+snippet T/ "Generic self-closing multiline tag"
+	<${1:tag}
+		${0}
+	/>
+	
+
 snippet t "Generic inline-tag"
 	<${1:tag}>${0}</${1}>
+
+snippet t/ "Generic self-closing inline tag"
+	<${1:tag}${0} />
+	
+
+snippet = "Attribute"
+	${1:key}="${2:value}"
