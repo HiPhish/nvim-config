@@ -36,8 +36,12 @@ setlocal softtabstop=0 shiftwidth=2 tabstop=2
 " If the other language has Tree-sitter highlighting regular syntax
 " highlighting will be disabled.  This autocommand forces it back on.
 if !get(b:, 'jinja_syntax_autocmd_loaded', v:false)
-	if luaeval("vim.treesitter.language.get_lang('jinja')") == v:null
+	let s:ts_lang = luaeval('vim.treesitter.language.get_lang("jinja")')
+	try
+		" If there is no Tree-sitter Jinja parser this call will fail
+		call luaeval('vim.treesitter.language.inspect(_A)', s:ts_lang)
+	catch
 		autocmd FileType <buffer> if !empty(&ft) | setlocal syntax=on | endif
-	endif
+	endtry
 	let b:jinja_syntax_autocmd_loaded = v:true
 endif
