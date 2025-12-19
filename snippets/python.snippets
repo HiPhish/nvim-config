@@ -7,6 +7,9 @@ snippet var "Variable definition or assignment"
 snippet from "Selective import"
 	from ${1:module} import ${2:symbol}
 
+snippet import "Import as"
+	import ${1:module} as ${2:symbol}
+
 # Function definitions
 snippet def "Function definition" b
 	def ${1:function}(${2:arg}):
@@ -38,7 +41,8 @@ snippet defi "Constructor definition" b
 
 # Class definitions
 snippet class "Class definition"
-	class ${1:name}${2:(${3:Object})}:
+	class ${1:name}${2:(${3:object})}:
+		${4:"""${5:Docstring}"""}
 		${0:pass}
 
 # Control flow
