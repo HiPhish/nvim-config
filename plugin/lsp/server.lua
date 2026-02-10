@@ -83,6 +83,10 @@ vim.lsp.config('qmlls', {
 vim.lsp.enable 'qmlls'
 
 
+--- [ TAILWIND CSS ]-----------------------------------------------------------
+vim.lsp.enable('tailwindcss')
+
+
 --- [ TS_LS ] -----------------------------------------------------------------
 vim.lsp.enable 'ts_ls'
 
