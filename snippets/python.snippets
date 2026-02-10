@@ -98,6 +98,17 @@ snippet tryef "Try-except-else-finally" b
 	finally:
 		${7:pass}
 
+
+# Context manager
+snippet with "Context manager"
+	with ${1:context}:
+		${2:pass}
+
+snippet withas "Context manager and binding"
+	with ${1:context} as ${2:binding}:
+		${3:pass}
+	
+
 # Testing
 snippet test "Test function" b
 	def test_${1:description}(${2:arg}):
