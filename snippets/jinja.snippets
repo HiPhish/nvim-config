@@ -12,3 +12,21 @@ snippet for "For-in loop"
 	{% for ${1:var} in ${2:collection} %}
 	$0
 	{% endfor %}
+
+snippet if "Conditional block"
+	{% if ${1:cond} %}
+	$0
+	{% endif %}
+
+snippet ife "Conditional and alternative block"
+	{% if ${1:cond} %}
+	$2
+	{% else %}
+	$3
+	{% endif %}
+	
+snippet % "Statement"
+	{% $0 %}
+	
+snippet # "Comment"
+	{# $0 #}
