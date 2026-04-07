@@ -53,8 +53,8 @@ augroup SGML-Family
 augroup END
 
 augroup Jinja
-	autocmd FileType jinja   let b:delimitMate_quotes = '" '' # %'
-	autocmd FileType jinja.* let b:delimitMate_quotes = '" '' # %'
+	autocmd FileType jinja   let b:delimitMate_quotes = '" '''
+	autocmd FileType jinja.* let b:delimitMate_quotes = '" '''
 
 	autocmd FileType *.jinja
 				\ if exists('b:delimitMate_quotes')
