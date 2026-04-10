@@ -1,6 +1,7 @@
 ---@type rainbow_delimiters.config
 vim.g.rainbow_delimiters = {
 	strategy = {
+		commonlisp = 'rainbow-delimiters.strategy.local',
 	},
 	query = {
 		query = function (bufnr)
