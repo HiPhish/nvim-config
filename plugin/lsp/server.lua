@@ -6,6 +6,13 @@ vim.lsp.enable 'ansiblels'
 
 
 --- [ ASTRO ]----------------------------------------------------------------
+vim.lsp.config('astro', {
+	init_options = {
+		typescript = {
+			tsdk = vim.fn.systemlist({'npm', 'root', '-g'})[1] .. '/typescript/lib',
+		},
+	},
+})
 vim.lsp.enable 'astro'
 
 
