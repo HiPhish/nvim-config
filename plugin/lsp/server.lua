@@ -44,6 +44,10 @@ vim.lsp.config('lua_ls', {
 vim.lsp.enable 'lua_ls'
 
 
+--- [ COAML LSP SERVER ] ------------------------------------------------------
+vim.lsp.enable 'ocamllsp'
+
+
 --- [ PYTHON LSP SERVER ]------------------------------------------------------
 vim.lsp.config('pylsp', {
 	settings = {
