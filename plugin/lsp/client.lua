@@ -16,11 +16,6 @@ do
 	end
 end
 
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-	vim.lsp.handlers.hover, {
-		-- max_width = 80,
-	}
-)
 
 -- Displays nicely presented startup progress messages
 do

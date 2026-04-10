@@ -6,17 +6,6 @@ local has_navic, navic = pcall(require, 'nvim-navic')
 local severity = vim.diagnostic.severity
 local util = require 'hiphish.statusline.util'
 
-local function lsp_indicator(bufnr)
-	local clients = vim.lsp.get_clients({bufnr = bufnr})
-
-	for _, client in pairs(clients) do
-		if not vim.lsp.client_is_stopped(client.id) then
-			return '•'
-		end
-	end
-	return ''
-end
-
 function M.filename()
 	local winid = vim.g.statusline_winid
 	local bufnr = vim.fn.winbufnr(winid)
@@ -40,7 +29,7 @@ end
 
 function M.filetype(buf)
 	local ft = vim.bo[buf or 0].filetype or ''
-	local marker = lsp_indicator(buf)
+	local marker = #vim.lsp.get_clients({bufnr = buf}) > 0 and '•' or ''
 	return string.format('%s%s', ft, marker)
 end
 
