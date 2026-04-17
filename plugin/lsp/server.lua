@@ -108,4 +108,19 @@ vim.lsp.enable 'vala_ls'
 
 
 --- [ YAML LANGUAGE SERVER ]--------------------------------------------------
+vim.lsp.config('yamlls', {
+	settings = {
+		yaml = {
+			schemas = {
+				['https://www.schemastore.org/github-issue-forms.json'] = {
+					'.github/ISSUE_TEMPLATE/*.yaml',
+					'.github/ISSUE_TEMPLATE/*.yml',
+				},
+			},
+			schemaStore = {
+				enable = true,
+			}
+		}
+	}
+})
 vim.lsp.enable 'yamlls'
