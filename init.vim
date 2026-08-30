@@ -28,13 +28,6 @@
 " }}}
 
 
-" UTF-8 everywhere
-if !has('nvim')
-	set encoding=utf-8
-	scriptencoding utf-8
-endif
-
-
 " Vim settings
 set winborder=rounded
 set listchars=tab:├─,space:·,trail:•,eol:,extends:…,precedes:…
@@ -56,11 +49,9 @@ set shortmess+=c                " Don't show messages from completion menu
 set shortmess-=F                " Do show file messages
 set termguicolors               " Use GUI colours in the terminal
 set completeopt=noinsert,menuone,noselect
-if has('nvim')
-	set inccommand=nosplit
-	set tabline=%!luaeval('require\"hiphish.tabline\"()')
-	set pumblend=20
-endif
+set inccommand=nosplit
+set tabline=%!luaeval('require\"hiphish.tabline\"()')
+set pumblend=20
 
 
 " Search settings: Jump to match while typing, ignore case except when upper,
