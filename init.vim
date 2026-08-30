@@ -39,6 +39,7 @@ endif
 set winborder=rounded
 set listchars=tab:├─,space:·,trail:•,eol:,extends:…,precedes:…
 set fillchars=msgsep:─,foldopen:┌,foldsep:│
+set exrc                        " Project-local settings
 set splitright                  " Open splits the way I prefer it
 set formatoptions-=t            " Do not auto-wrap text
 set number                      " Line numbers.
