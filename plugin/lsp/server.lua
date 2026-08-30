@@ -21,7 +21,8 @@ vim.lsp.enable 'clangd'
 
 
 --- [ CSS ]--------------------------------------------------------------------
-vim.lsp.enable 'some-sass'
+vim.lsp.enable 'cssls'
+vim.lsp.enable 'tailwindcss'
 
 
 --- [ DOCKERFILE LS NODEJS ]---------------------------------------------------
@@ -96,10 +97,6 @@ vim.lsp.config('qmlls', {
 	cmd = {'/usr/lib/qt6/bin/qmlls'},
 })
 vim.lsp.enable 'qmlls'
-
-
---- [ TAILWIND CSS ]-----------------------------------------------------------
-vim.lsp.enable('tailwindcss')
 
 
 --- [ TS_LS ] -----------------------------------------------------------------
