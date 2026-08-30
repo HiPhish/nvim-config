@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: © 2022 HiPhish
+# SPDX-License-Identifier: Unlicense
+
 import pynvim
 from typing import Any, List
 from importlib.util import find_spec

@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2021 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 local dap = require 'dap'
 local ui  = require 'dapui'
 local vt  = require 'nvim-dap-virtual-text'

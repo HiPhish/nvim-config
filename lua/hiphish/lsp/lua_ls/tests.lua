@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2020 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 local fn = vim.fn
 
 --- Various predefined tests for the language server

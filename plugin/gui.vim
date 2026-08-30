@@ -1,3 +1,6 @@
+" SPDX-FileCopyrightText: © 2022 HiPhish
+" SPDX-License-Identifier: Unlicense
+
 " Various settings for GUI and GUI-like terminals
 
 

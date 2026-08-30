@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2021 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 --- Settings suitable for Löve2D game development
 local M = {
 	Lua = {

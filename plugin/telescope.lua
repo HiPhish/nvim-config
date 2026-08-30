@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2022 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 local success, telescope = pcall(require, 'telescope')
 if not success then return end
 local builtin = require 'telescope.builtin'

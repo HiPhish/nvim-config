@@ -1,3 +1,6 @@
+" SPDX-FileCopyrightText: © 2021 HiPhish
+" SPDX-License-Identifier: Unlicense
+
 " Disable NetRW, Dirvish will take its place
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1

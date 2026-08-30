@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2021 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 local fn = vim.fn
 
 local function get_bufname(i)

@@ -1,0 +1,15 @@
+version = 1
+
+
+# Automatically generated spell files have no copyright
+[[annotations]]
+path = 'spell/*.add'
+SPDX-FileCopyrightText = 'NONE'
+SPDX-License-Identifier = 'Unlicense'
+
+
+# Automatically generated package lock file has no copyright
+[[annotations]]
+path = 'nvim-pack-lock.json'
+SPDX-FileCopyrightText = 'NONE'
+SPDX-License-Identifier = 'Unlicense'

@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2023 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 local resolarized = require 'resolarized'
 local schemes = {
 	'solarized',

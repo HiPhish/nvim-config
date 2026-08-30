@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2022 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 -- This file contains all the LSP server configurations
 
 
@@ -97,6 +100,10 @@ vim.lsp.config('qmlls', {
 	cmd = {'/usr/lib/qt6/bin/qmlls'},
 })
 vim.lsp.enable 'qmlls'
+
+
+--- [ RUST-ANALYZER ]----------------------------------------------------------
+vim.lsp.enable('rust_analyzer')
 
 
 --- [ TS_LS ] -----------------------------------------------------------------

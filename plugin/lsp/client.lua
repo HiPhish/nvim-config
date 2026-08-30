@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2022 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 --- This file contains all the configuration for the built-in LSP client
 
 

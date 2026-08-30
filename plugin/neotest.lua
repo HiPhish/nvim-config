@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2022 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 local success, neotest = pcall(require, 'neotest')
 if not success then return end
 

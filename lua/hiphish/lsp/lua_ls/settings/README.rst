@@ -1,3 +1,5 @@
+.. SPDX-FileCopyrightText: © 2021 HiPhish
+.. SPDX-License-Identifier: Unlicense
 .. default-role:: code
 
 Predefined settings

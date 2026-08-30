@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2023 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 ---Given an existing old table and a new one, make the two tables equal by
 ---value.  The old table will contain exactly the same keys as the new table.
 ---The subversion runs deeply, i.e. if the old table contains a table that

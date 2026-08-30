@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2026 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 --- List of 3rd-party plugins suitable for `vim.plug.add`.
 
 --- Transform a `user/repo` string into a GitHub URL.

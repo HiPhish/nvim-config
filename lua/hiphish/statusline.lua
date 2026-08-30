@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2022 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 local fn = vim.fn
 local api = vim.api
 local comp = require 'hiphish.statusline.components'

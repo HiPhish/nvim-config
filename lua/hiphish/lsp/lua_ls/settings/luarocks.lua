@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2021 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 --- Convert a list of paths to a table suitable for `Lua.workspace.library`.
 local function paths_to_library(paths)
 	paths = paths or {}

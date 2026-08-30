@@ -1,9 +1,5 @@
-" __     __             _
-" \\\   ///   _  ___   (_)___
-"  \\\ /// | | |/ _ \  | / __|
-"   \\V//| |_| |  __/_ | \__ \
-"    \_/  \__,_|\___(_)/ |___/
-"                    |__/
+" SPDX-FileCopyrightText: © 2020 HiPhish
+" SPDX-License-Identifier: Unlicense
 
 setlocal tabstop=2 shiftwidth=0
 

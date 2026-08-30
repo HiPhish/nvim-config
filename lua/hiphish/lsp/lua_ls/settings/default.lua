@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2021 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 ---Default settings, used by all other settings.
 ---
 ---This table forms a basis of my personal defaults which I want to use for all

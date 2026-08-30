@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2022 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 local ibl   = require 'ibl'
 local hooks = require "ibl.hooks"
 local get_option_value = vim.api.nvim_get_option_value

@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2021 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 --- Table of DAP adapter configurations, maps language onto configuration
 --- table.
 local M = {}

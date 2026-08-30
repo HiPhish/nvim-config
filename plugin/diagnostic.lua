@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2022 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 -- Settings for Neovim's diagnostic framework, see :h diagnostic.txt
 
 

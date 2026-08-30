@@ -1,3 +1,6 @@
+" SPDX-FileCopyrightText: © 2022 HiPhish
+" SPDX-License-Identifier: Unlicense
+
 lua require('snippy').setup {}
 
 

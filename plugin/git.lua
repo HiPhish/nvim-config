@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2023 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 -- Git integration plugins
 local success, gitsigns = pcall(require, 'gitsigns')
 if not success then return end

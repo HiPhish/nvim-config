@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2022 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 local cmp = require 'cmp'
 local conf_context = require 'cmp.config.context'
 local snippy = require 'snippy'

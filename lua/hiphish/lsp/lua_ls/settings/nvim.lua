@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: © 2021 HiPhish
+-- SPDX-License-Identifier: Unlicense
+
 -- See https://gist.github.com/folke/fe5d28423ea5380929c3f7ce674c41d8
 
 -- Directory prefix of all package directories
