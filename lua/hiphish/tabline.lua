@@ -33,9 +33,15 @@ return function()
 	local result = make_tab_entries(fn.range(fn.tabpagenr('$')), fn.tabpagenr())
 
 	result = result .. '%#TabLineFill#%='
-	if fn['fugitive#Head'] and fn['fugitive#Head'](7) ~= '' then
-		result = result .. ' %{fugitive#Head(7)}%='
+
+	-- Add Git branch name if it exists
+	if vim.fn.executable('git') then
+		local branch = vim.system({'git', 'branch', '--show-current'}):wait().stdout:gsub('\n', '')
+		if branch ~= '' then
+			result = string.format('%s  %s%%=', result, branch)
+		end
 	end
+
 	result = result .. '%#TabLine# %{strftime("%H:%M")} │ %{strftime("%Y-%m-%d %a")} '
 	return result
 end
