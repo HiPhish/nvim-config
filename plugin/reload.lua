@@ -1,5 +1,5 @@
 -- SPDX-FileCopyrightText: © 2023 HiPhish
--- SPDX-License-Identifier: Unlicense
+-- SPDX-License-Identifier: 0BSD
 
 ---Given an existing old table and a new one, make the two tables equal by
 ---value.  The old table will contain exactly the same keys as the new table.

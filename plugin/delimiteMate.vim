@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2018 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 let g:delimitMate_expand_space         = 1
 let g:delimitMate_expand_cr            = 1

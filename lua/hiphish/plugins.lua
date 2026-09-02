@@ -1,5 +1,5 @@
 -- SPDX-FileCopyrightText: © 2026 HiPhish
--- SPDX-License-Identifier: Unlicense
+-- SPDX-License-Identifier: 0BSD
 
 --- List of 3rd-party plugins suitable for `vim.plug.add`.
 

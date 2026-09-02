@@ -1,1 +1,1 @@
-LICENSES/Unlicense.txt
+LICENSES/0BSD.txt

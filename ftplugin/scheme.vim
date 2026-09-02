@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2018 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 " This highlights matching braces in insert-mode
 setlocal showmatch

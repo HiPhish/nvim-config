@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2018 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 " Add the target language of the PO file to the spelling languages if it is
 " not yet part of the setting.  We assume that the PO file follows standard

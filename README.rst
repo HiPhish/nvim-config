@@ -1,5 +1,5 @@
 .. SPDX-FileCopyrightText: © 2018 HiPhish
-.. SPDX-License-Identifier: Unlicense
+.. SPDX-License-Identifier: 0BSD
 
 #########################
  My Neovim configuration
@@ -14,9 +14,9 @@ mileage may vary.
 License
 #######
 
-Released under the `Unlicense`.  See the LICENSE_ file for details.  Truth be
-told, I don't care, but I am including a license just in case.  Do whatever you
-want with the code.
+Released under the `0BSD`.  See the LICENSE_ file for details.  Truth be told,
+I don't care, but I am including a license just in case.  Do whatever you want
+with the code.
 
 
 .. _LICENSE: LICENSE.txt

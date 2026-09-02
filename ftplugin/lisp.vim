@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2018 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 " Use spaces for everything
 setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab

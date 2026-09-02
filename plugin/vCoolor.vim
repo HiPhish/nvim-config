@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2022 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 let g:vcoolor_disable_mappings = 1
 let g:vcoolor_custom_picker = 'kcolorchooser --print'

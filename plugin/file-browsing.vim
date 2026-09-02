@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2021 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 " Disable NetRW, Dirvish will take its place
 let g:loaded_netrw       = 1

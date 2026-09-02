@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2018 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 syntax match recutilsComment    '\v^#.*$'
 syntax match recutilsNewline    '\v\zs^\+ ?\ze.+'

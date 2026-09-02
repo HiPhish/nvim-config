@@ -1,5 +1,5 @@
 -- SPDX-FileCopyrightText: © 2021 HiPhish
--- SPDX-License-Identifier: Unlicense
+-- SPDX-License-Identifier: 0BSD
 
 --- Settings suitable for Löve2D game development
 local M = {

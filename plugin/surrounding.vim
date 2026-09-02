@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2021 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 " rhysd/vim-operator-surround
 nmap <silent> sa <Plug>(operator-surround-append)

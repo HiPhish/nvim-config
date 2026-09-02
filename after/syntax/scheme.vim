@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2018 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 " Use explicit spell checking only in certain syntax items. Otherwise
 " everything or nothing will be spell-checked.

@@ -5,11 +5,11 @@ version = 1
 [[annotations]]
 path = 'spell/*.add'
 SPDX-FileCopyrightText = 'NONE'
-SPDX-License-Identifier = 'Unlicense'
+SPDX-License-Identifier = '0BSD'
 
 
 # Automatically generated package lock file has no copyright
 [[annotations]]
 path = 'nvim-pack-lock.json'
 SPDX-FileCopyrightText = 'NONE'
-SPDX-License-Identifier = 'Unlicense'
+SPDX-License-Identifier = '0BSD'

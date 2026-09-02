@@ -1,5 +1,5 @@
 -- SPDX-FileCopyrightText: © 2021 HiPhish
--- SPDX-License-Identifier: Unlicense
+-- SPDX-License-Identifier: 0BSD
 
 --- Table of DAP adapter configurations, maps language onto list of
 --- configurations.

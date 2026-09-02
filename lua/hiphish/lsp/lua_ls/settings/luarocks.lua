@@ -1,5 +1,5 @@
 -- SPDX-FileCopyrightText: © 2021 HiPhish
--- SPDX-License-Identifier: Unlicense
+-- SPDX-License-Identifier: 0BSD
 
 --- Convert a list of paths to a table suitable for `Lua.workspace.library`.
 local function paths_to_library(paths)

@@ -1,4 +1,4 @@
 " SPDX-FileCopyrightText: © 2019 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 set commentstring=;\ %s

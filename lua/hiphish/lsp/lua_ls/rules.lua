@@ -1,5 +1,5 @@
 -- SPDX-FileCopyrightText: © 2020 HiPhish
--- SPDX-License-Identifier: Unlicense
+-- SPDX-License-Identifier: 0BSD
 
 local tests    = require'hiphish.lsp.lua_ls.tests'
 

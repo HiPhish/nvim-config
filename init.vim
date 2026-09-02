@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2018 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 " __     ___           ____   ____    _____       _ _         _
 " \ \   / (_)_ __ ___ |  _ \ / ___|  / /_ _|_ __ (_) |___   _(_)_ __ ___

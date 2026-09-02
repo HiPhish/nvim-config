@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2018 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 " Try extracting the name of the locale from the file name: if the file name
 " ends in '_xx.properties', then the 'xx' is the name of the locale

@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2019 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 " Rofi Advanced Style Information
 

@@ -1,5 +1,5 @@
 -- SPDX-FileCopyrightText: © 2023 HiPhish
--- SPDX-License-Identifier: Unlicense
+-- SPDX-License-Identifier: 0BSD
 
 -- Location position in a buffer powered by LSP
 -- https://github.com/SmiteshP/nvim-navic

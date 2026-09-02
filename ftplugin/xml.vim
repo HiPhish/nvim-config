@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2018 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 " Use tabs for indentation, appear two spaces wide
 setlocal noexpandtab copyindent preserveindent

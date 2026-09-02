@@ -1,5 +1,5 @@
 " SPDX-FileCopyrightText: © 2020 HiPhish
-" SPDX-License-Identifier: Unlicense
+" SPDX-License-Identifier: 0BSD
 
 setlocal tabstop=2 shiftwidth=0
 

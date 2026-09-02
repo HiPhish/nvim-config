@@ -1,5 +1,5 @@
 -- SPDX-FileCopyrightText: © 2023 HiPhish
--- SPDX-License-Identifier: Unlicense
+-- SPDX-License-Identifier: 0BSD
 
 local success, color_picker = pcall(require, 'color-picker')
 if not success then return end
