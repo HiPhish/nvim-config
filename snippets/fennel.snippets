@@ -3,6 +3,12 @@
 
 priority 100
 
+# REUSE-IgnoreStart
+snippet reuse "REUSE license and copyright header"
+	;;; SPDX-License-Identifier: ${1:MIT}
+	;;; SPDX-FileCopyrightText: © `strftime('%Y')` ${2:HiPhish}
+# REUSE-IgnoreEnd
+	
 snippet fn "Function definition"
 	(fn ${1:${2:name} }[${3:args}]
 	  ${0:body})

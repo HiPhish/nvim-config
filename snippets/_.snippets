@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: © 2026 HiPhish
+# SPDX-License-Identifier: 0BSD
+
+
+# REUSE-IgnoreStart
+snippet reuse "REUSE license and copyright header"
+	`printf(&commentstring, '')`SPDX-License-Identifier: ${1:MIT}
+	`printf(&commentstring, '')`SPDX-FileCopyrightText: © `strftime('%Y')` ${2:HiPhish}
+# REUSE-IgnoreEnd
