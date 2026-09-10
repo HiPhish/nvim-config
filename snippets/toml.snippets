@@ -3,3 +3,28 @@
 
 snippet . "Map item"
 	${1:key} = ${2:value}
+
+snippet pyproject "Python 'pyproject.toml' skeleton"
+	[build-system]
+	requires = ['setuptools >= 77.0.3']
+	build-backend = 'setuptools.build_meta'
+
+	[project]
+	name = "${1:name}"
+	version = "${2:0.0.0}"
+	description = "${3:description}"
+	readme = "README.rst"
+	requires-python = ">=3.12"
+	authors = [
+		# {name = '...', email = '...'}
+	]
+	dependencies = [
+	]
+
+	[project.optional-dependencies]
+	test = [
+		'pytest>=9.0.0',
+	]
+
+	[tool.setuptools.packages.find]
+	where = ["src"]
