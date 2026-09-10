@@ -68,7 +68,7 @@ vim.lsp.config('pylsp', {
 				-- If this plugin does not work try running MyPy from the
 				-- command line first
 				pylsp_mypy = {
-					enabled = vim.fn.executable('mypy'),
+					enabled = true,
 					live_mode = true,
 				},
 				-- This used to be too slow the last time I tried it
