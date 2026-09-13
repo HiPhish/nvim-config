@@ -28,6 +28,11 @@
       "rev": "becbd2d353a2366171852387288ebb4b33a02487",
       "src": "https://github.com/Raimondi/delimitMate"
     },
+    "fennel": {
+      "rev": "9af5e47fa7ddea806544d15507412ddc51bd046d",
+      "src": "https://git.sr.ht/~technomancy/fennel",
+      "version": "1.6.0 - 1.7.0"
+    },
     "fennel.vim": {
       "rev": "30b9beabad2c4f09b9b284caf5cd5666b6b4dc89",
       "src": "https://github.com/bakpakin/fennel.vim"

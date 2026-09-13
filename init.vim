@@ -56,6 +56,25 @@ elseif executable('ack')
 endif
 
 
+" ---[ FENNEL INTEGRATION ]----------------------------------------------------
+lua << EOF
+	require('lisp-at-home').setup {
+		src = 'https://git.sr.ht/~technomancy/fennel',
+		version = vim.version.range('1.6'), 
+		name = 'fennel',
+		build = function(evt)
+			local cmd = {
+				'make',
+				'fennel.lua',
+				([[LUA=sh -c 'exec "%s" -l "$$@" 2>&1' nvim-lua]]):format(vim.v.progpath),
+				'LUA_VERSION=5.1'
+			}
+			vim.system(cmd, {cwd = evt.data.path}):wait()
+		end
+	}
+EOF
+
+
 " ---[ THEME SETTINGS ]--------------------------------------------------------
 set background=dark
 colorscheme selenized-dark
